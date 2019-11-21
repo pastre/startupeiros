@@ -18,11 +18,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let view = SkillsSliderView(frame: self.view.frame)
-        
-        self.view.addSubview(view)
-        
-        view.setup()
     }
 
 }
