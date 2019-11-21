@@ -10,6 +10,8 @@ import UIKit
 
 class DecideStartViewController: UIViewController {
 
+    var hasJustCreated: Bool!  = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +29,14 @@ class DecideStartViewController: UIViewController {
         
         indicator.startAnimating()
         
-        if Authenticator.instance.hasCreated() {
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.hasJustCreated || Authenticator.instance.hasCreated() {
             let vc = UIViewController()
             
             vc.view.backgroundColor = .blue
@@ -35,13 +44,11 @@ class DecideStartViewController: UIViewController {
             self.present(vc, animated: true, completion: nil)
         } else {
             let vc = FirstViewController()
-            
+            vc.navParent = self
             self.present(vc, animated: true, completion: nil)
         }
         
-        // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
