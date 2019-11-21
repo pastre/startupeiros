@@ -9,12 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let view = SkillsSliderView(frame: self.view.frame)
+        
+        self.view.addSubview(view)
+        
+        view.setup()
+    }
 
 }
 
