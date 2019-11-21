@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CreateNameViewController: UIViewController {
 
     let textView: UITextView = {
         let textView = UITextView()

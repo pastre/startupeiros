@@ -45,17 +45,17 @@ class DecideStartViewController: UIViewController {
     }
     
     func presentGameView()  {
-        let vc = UIViewController()
-        
-        vc.view.backgroundColor = .blue
+        let vc = JoinGameViewController()
         
         self.present(vc, animated: true, completion: nil)
     }
     
     func presentFirstView(){
-        let vc = FirstViewController()
+        let vc = CreateNameViewController()
         vc.navParent = self
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .overCurrentContext
+        self.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
     }
+    
 }
