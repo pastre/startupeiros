@@ -60,7 +60,9 @@ class FirstViewController: UIViewController {
         Authenticator.instance.createPlayer(named: textView.text) { error in
             print("ERROR", error)
             self.navParent.hasJustCreated  = true
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true) {
+                self.navParent.presentGameView()
+            }
         }
     }
 
