@@ -57,17 +57,19 @@ class Authenticator {
         return (self.player != nil)
     }
     
-    func createPlayer(named name: String) {
+    func createPlayer(named name: String, completion: @escaping (_ error:  Error?) -> ()) {
         Auth.auth().signInAnonymously { (authResult, error) in
             guard let auth = authResult  else {
                 // TODO: - Avisar o erro para o  usuario
                 print("Erro ao autenticar!", error!)
+                completion(error)
                 return
             }
             
             self.player = Player(user: auth.user, name: name)
             self.player?.create()
             self.player?.sync()
+            completion(nil)
         }
     }
     

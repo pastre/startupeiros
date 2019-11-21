@@ -25,6 +25,8 @@ class FirstViewController: UIViewController {
         return button
     }()
     
+    var navParent: DecideStartViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +57,11 @@ class FirstViewController: UIViewController {
     
     
     @objc func onNext() {
-        Authenticator.instance.createPlayer(named: textView.text)
+        Authenticator.instance.createPlayer(named: textView.text) { error in
+            print("ERROR", error)
+            self.navParent.hasJustCreated  = true
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     /*
