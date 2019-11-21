@@ -1,0 +1,6 @@
+framework module Pods_startupeiros {
+  umbrella header "Pods-startupeiros-umbrella.h"
+
+  export *
+  module * { export * }
+}
