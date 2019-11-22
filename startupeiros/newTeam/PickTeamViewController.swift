@@ -9,13 +9,53 @@
 import UIKit
 import FirebaseDatabase
 
-class Room {
+class JoiningPlayer {
+    var id: String
+    var isReady: Bool!
+    
+    init(_ id: String, from dict: NSDictionary ) {
+        self.id = id
+        self.isReady = dict[id] as! Bool
+    }
+    
+    convenience init(from snap: DataSnapshot) {
+        self.init(snap.key, from: snap.value as! NSDictionary)
+    }
+}
+
+class Room: NSObject, Encodable, Decodable {
     var id: String!
     var name: String!
+    var players: [Player]!
+    
+    enum CodingKeys: String, CodingKey{
+        case id = "id"
+        case name = "name"
+        case players = "players"
+    }
+
+    required init(decoder aDecoder: Decoder) throws {
+        let container = try aDecoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.players = try container.decode([Player].self, forKey: .players)
+    }
+
     
     init(_ id: String, from dict: NSDictionary ) {
         self.id = id
         self.name = dict["name"] as! String
+//        self.players =  JSONDecoder().decode([Player].self, from: d)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        let container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(players, forKey: .players)
+        
     }
     
     convenience init(from snap: DataSnapshot) {
