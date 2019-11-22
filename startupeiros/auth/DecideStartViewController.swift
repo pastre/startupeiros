@@ -36,28 +36,32 @@ class DecideStartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.hasJustCreated || Authenticator.instance.hasCreated() {
-            let vc = UIViewController()
-            
-            vc.view.backgroundColor = .blue
-            
-            self.present(vc, animated: true, completion: nil)
+        if self.hasJustCreated {
+            self.presentGameView()
+        } else if Authenticator.instance.hasCreated() {
+            Authenticator.instance.login { (error) in
+                if let error = error {
+                    print("Erro ao fazer login!", error)
+                }
+            }
+            self.presentGameView()
         } else {
-            let vc = FirstViewController()
-            vc.navParent = self
-            self.present(vc, animated: true, completion: nil)
+            self.presentFirstView()
         }
+    }
+    
+    func presentGameView()  {
+        let vc = NewTeamViewController()
         
+        self.present(vc, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func presentFirstView(){
+        let vc = CreateNameViewController()
+        vc.navParent = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
     }
-    */
-
+    
 }

@@ -14,11 +14,16 @@
 		D720015D2384F1D00087ADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D720015B2384F1D00087ADCE /* Main.storyboard */; };
 		D720015F2384F1D10087ADCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D720015E2384F1D10087ADCE /* Assets.xcassets */; };
 		D72001622384F1D10087ADCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72001602384F1D10087ADCE /* LaunchScreen.storyboard */; };
+		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
+		D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB412388271D00E5A2D6 /* RoomViewController.swift */; };
 		D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C4DB223861888008CD453 /* SkillsSliderView.swift */; };
+		D7811A1A2388223400784268 /* JoinTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* JoinTeamViewController.swift */; };
+		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
-		D7D28BCB238714C7002ACF82 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* FirstViewController.swift */; };
+		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
+		D7FB129D238730C400D8B19A /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,11 +37,16 @@
 		D720015E2384F1D10087ADCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D72001612384F1D10087ADCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72001632384F1D10087ADCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
+		D742EB412388271D00E5A2D6 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		D76C4DB223861888008CD453 /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
+		D7811A192388223400784268 /* JoinTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTeamViewController.swift; sourceTree = "<group>"; };
+		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
-		D7D28BCA238714C7002ACF82 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
+		D7FB129C238730C400D8B19A /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +100,7 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				D7811A18238821F200784268 /* newTeam */,
 				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D76C4DB223861888008CD453 /* SkillsSliderView.swift */,
 				D7FB129B2387201500D8B19A /* auth */,
@@ -104,12 +115,24 @@
 			path = startupeiros;
 			sourceTree = "<group>";
 		};
+		D7811A18238821F200784268 /* newTeam */ = {
+			isa = PBXGroup;
+			children = (
+				D7FB129C238730C400D8B19A /* NewGameViewController.swift */,
+				D7811A192388223400784268 /* JoinTeamViewController.swift */,
+				D7811A1B2388224F00784268 /* CreateTeamViewController.swift */,
+				D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */,
+				D742EB412388271D00E5A2D6 /* RoomViewController.swift */,
+			);
+			path = newTeam;
+			sourceTree = "<group>";
+		};
 		D7FB129B2387201500D8B19A /* auth */ = {
 			isa = PBXGroup;
 			children = (
 				D7D28BC823870F19002ACF82 /* AuthReference.swift */,
 				D7FB129923871BD700D8B19A /* DecideStartViewController.swift */,
-				D7D28BCA238714C7002ACF82 /* FirstViewController.swift */,
+				D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -230,13 +253,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7811A1A2388223400784268 /* JoinTeamViewController.swift in Sources */,
+				D7FB129D238730C400D8B19A /* NewGameViewController.swift in Sources */,
 				D720015A2384F1D00087ADCE /* ViewController.swift in Sources */,
+				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
 				D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
-				D7D28BCB238714C7002ACF82 /* FirstViewController.swift in Sources */,
+				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
+				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
+				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

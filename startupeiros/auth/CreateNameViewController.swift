@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CreateNameViewController: UIViewController {
 
     let textView: UITextView = {
         let textView = UITextView()
@@ -25,7 +25,7 @@ class FirstViewController: UIViewController {
         return button
     }()
     
-    var navParent: DecideStartViewController!
+    var navParent: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class FirstViewController: UIViewController {
         self.view.addSubview(textView)
         
         textView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
         
         textView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
         textView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.15).isActive = true
@@ -59,8 +59,11 @@ class FirstViewController: UIViewController {
     @objc func onNext() {
         Authenticator.instance.createPlayer(named: textView.text) { error in
             print("ERROR", error)
-            self.navParent.hasJustCreated  = true
-            self.dismiss(animated: true, completion: nil)
+            guard let navParent = (self.navParent as? DecideStartViewController) else  { return }
+            navParent.hasJustCreated  = true
+            self.dismiss(animated: true) {
+                navParent.presentGameView()
+            }
         }
     }
 

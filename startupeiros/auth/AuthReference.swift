@@ -23,6 +23,11 @@ class Player {
         self.name = name
     }
     
+    init(user: User) {
+        self.user = user
+    }
+    
+    
     func sync() {
         
         self.firebaseRef.child("users").child(self.user.uid).observe(.childChanged) { (snap) in
@@ -44,7 +49,6 @@ class Authenticator {
     
     static var instance = Authenticator()
 
-    private var user: User?
     private var player: Player?
     
     private init() { }
@@ -53,8 +57,25 @@ class Authenticator {
         return self.player?.name
     }
     
+    func getUserId() -> String? {
+        return self.player?.user.uid
+    }
+    
     func isLoggedIn() ->  Bool {
         return (self.player != nil)
+    }
+    
+    func login(completion: @escaping (_ error:  Error?) -> ()) {
+        Auth.auth().signInAnonymously { (authResult, error) in
+            guard let auth = authResult  else {
+                // TODO: - Avisar o erro para o  usuario
+                print("Erro ao autenticar!", error!)
+                completion(error)
+                return
+            }
+            self.player = Player(user: auth.user)
+            self.player?.sync()
+        }
     }
     
     func createPlayer(named name: String, completion: @escaping (_ error:  Error?) -> ()) {
