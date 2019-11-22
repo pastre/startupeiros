@@ -41,7 +41,7 @@ class JoiningPlayer: NSObject, Encodable, Decodable {
 
     init(_ id: String, from dict: NSDictionary ) {
         self.id = id
-        self.isReady = dict["isReady"] as! Bool
+        self.isReady = (dict["isReady"] as! Bool)
         self.name = dict["username"] as! String
     }
     

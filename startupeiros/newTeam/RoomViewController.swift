@@ -12,13 +12,28 @@ import FirebaseDatabase
 
 class RoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    lazy var baseRef = Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue)
+
     var roomId: String!
     var players: [JoiningPlayer] = []
     var tableView: UITableView!
+    var readyButton: UIButton = {
+       let button = UIButton()
+        
+        button.backgroundColor = .cyan
+        button.setTitle("Ready!", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
+    var isReady: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        self.setupReadyButton()
         self.setupObservers()
         
         
@@ -26,9 +41,6 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setupObservers(){
-        
-
-        let baseRef = Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue)
         
         baseRef.observe(.childAdded) { (snap) in
             self.onAdded(snap)
@@ -60,7 +72,18 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
+    func setupReadyButton() {
+        self.readyButton.addTarget(self, action: #selector(self.onReady), for: .touchDown)
+        
+        self.view.addSubview(readyButton)
+        
+        self.readyButton.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor).isActive = true
+        self.readyButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 20).isActive = true
+        self.readyButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.2).isActive = true
+        self.readyButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive =  true
+        
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,7 +123,8 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .green
+        label.textColor = .black
+        label.backgroundColor = player.isReady ? UIColor.green : UIColor.red
         label.text = player.name
         
         for view in cell.contentView.subviews  {
@@ -121,6 +145,22 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tableView.frame.height / CGFloat(self.players.count)
     }
     
+    // MARK: - Callbacks
+    
+    @objc func onReady () {
+        guard let username = Authenticator.instance.getUserId() else { return }
+        
+        self.isReady = !self.isReady
+        
+        if self.isReady {
+            self.readyButton.setTitle("Cancel", for: .normal)
+        } else {
+            self.readyButton.setTitle("Ready", for: .normal)
+        }
+        
+        self.baseRef.child(username).child("isReady").setValue(self.isReady)
+    }
+    
     // MARK: - Observer methods
     
     func onAdded(_ snap: DataSnapshot) {
@@ -134,6 +174,16 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func onChanged(_ snap: DataSnapshot) {
         print("Changed!", snap)
+        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+        
+        for (i, player) in self.players.enumerated()  {
+            if player.id == newPlayer.id {
+                self.players[i] = newPlayer
+                break
+            }
+        }
+        
+        self.tableView.reloadData()
     }
     
     func onRemoved(_ snap: DataSnapshot) {
