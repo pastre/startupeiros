@@ -25,7 +25,7 @@ class CreateNameViewController: UIViewController {
         return button
     }()
     
-    var navParent: DecideStartViewController!
+    var navParent: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +59,10 @@ class CreateNameViewController: UIViewController {
     @objc func onNext() {
         Authenticator.instance.createPlayer(named: textView.text) { error in
             print("ERROR", error)
-            self.navParent.hasJustCreated  = true
+            guard let navParent = (self.navParent as? DecideStartViewController) else  { return }
+            navParent.hasJustCreated  = true
             self.dismiss(animated: true) {
-                self.navParent.presentGameView()
+                navParent.presentGameView()
             }
         }
     }

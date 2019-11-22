@@ -30,6 +30,8 @@ class NewTeamViewController: UIViewController {
     
     var createButton: UIButton!
     var joinButton: UIButton!
+
+    var hasJustCreated: Bool! = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +52,28 @@ class NewTeamViewController: UIViewController {
         self.joinButton.topAnchor.constraint(equalTo: self.createButton.bottomAnchor).isActive = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.hasJustCreated  {
+            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+            self.joinRoom(roomId)
+        }
+    }
+    
+    func joinRoom(_ roomId: String) {
+        let vc = RoomViewController()
+
+        vc.view.backgroundColor = .brown
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     @objc func onCreate() {
         print("Creating")
         let vc = CreateTeamViewController()
-        
-        
+        vc.navParent = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func onJoin() {

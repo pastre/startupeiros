@@ -44,13 +44,16 @@ class Authenticator {
     
     static var instance = Authenticator()
 
-    private var user: User?
     private var player: Player?
     
     private init() { }
     
     func getUsername() -> String? {
         return self.player?.name
+    }
+    
+    func getUserId() -> String? {
+        return self.player?.user.uid
     }
     
     func isLoggedIn() ->  Bool {

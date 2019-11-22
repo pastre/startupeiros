@@ -1,5 +1,5 @@
 //
-//  CreateTeamViewController.swift
+//  RoomViewController.swift
 //  startupeiros
 //
 //  Created by Bruno Pastre on 22/11/19.
@@ -8,26 +8,12 @@
 
 import UIKit
 
-class CreateTeamViewController: CreateNameViewController {
+class RoomViewController: UIViewController {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .gray
         // Do any additional setup after loading the view.
-    }
-    
-    override func onNext() {
-        NewTeamDatabaseFacade.createRoom(named: self.textView.text) { (error) in
-            if let error  = error {
-                print("Erro ao criar a sala", error)
-                return
-            }
-            guard let navParent = self.navParent as? NewTeamViewController else { return }
-            navParent.hasJustCreated = true
-        }
     }
     
 

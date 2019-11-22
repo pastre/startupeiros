@@ -41,7 +41,6 @@ class DecideStartViewController: UIViewController {
         } else {
             self.presentFirstView()
         }
-        
     }
     
     func presentGameView()  {
