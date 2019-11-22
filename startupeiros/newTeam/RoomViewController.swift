@@ -46,7 +46,10 @@ class RoomViewController: UIViewController {
     }
     
     func onRemoved(_ snap: DataSnapshot) {
-        
+        print(snap)
+        self.players.removeAll { (player) -> Bool in
+            player.id == snap.key
+        }
     }
     
     
