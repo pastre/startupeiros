@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinGameViewController: UIViewController {
+class NewTeamViewController: UIViewController {
 
     func getButton(named name: String, selector: Selector)  ->  UIButton {
         let button = UIButton()
@@ -52,6 +52,9 @@ class JoinGameViewController: UIViewController {
     
     @objc func onCreate() {
         print("Creating")
+        let vc = CreateTeamViewController()
+        
+        
     }
     
     @objc func onJoin() {

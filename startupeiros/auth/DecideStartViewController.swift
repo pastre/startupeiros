@@ -45,7 +45,7 @@ class DecideStartViewController: UIViewController {
     }
     
     func presentGameView()  {
-        let vc = JoinGameViewController()
+        let vc = NewTeamViewController()
         
         self.present(vc, animated: true, completion: nil)
     }
