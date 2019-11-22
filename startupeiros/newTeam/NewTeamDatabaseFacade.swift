@@ -9,15 +9,15 @@
 import Foundation
 import FirebaseDatabase
 
+public enum FirebaseKeys: String  {
+    case newRooms = "newRooms"
+}
 class NewTeamDatabaseFacade {
     
     static let rootRef = Database.database().reference().root
     static let auth = Authenticator.instance
     static var newRoomId: String?
     
-    enum FirebaseKeys: String  {
-        case newRooms = "newRooms"
-    }
     
     static func createRoom(named name: String, completion:  @escaping (Error?) -> ()) {
         guard let userId = auth.getUserId() else { return }

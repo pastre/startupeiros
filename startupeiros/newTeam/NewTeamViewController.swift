@@ -67,6 +67,8 @@ class NewTeamViewController: UIViewController {
     }
     
     @objc func onJoin() {
-        print("join")
+        let vc = PickTeamViewController()
+        vc.navParent = self
+        self.present(vc, animated: true, completion: nil)
     }
 }
