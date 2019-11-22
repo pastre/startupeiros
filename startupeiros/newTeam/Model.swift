@@ -13,10 +13,12 @@ class JoiningPlayer: NSObject, Encodable, Decodable {
     
     var id: String
     var isReady: Bool!
+    var name: String
     
     enum CodingKeys: String, CodingKey{
         case id = "id"
         case isReady = "isReady"
+        case name = "name"
     }
 
     required init(decoder aDecoder: Decoder) throws {
@@ -24,6 +26,7 @@ class JoiningPlayer: NSObject, Encodable, Decodable {
         
         self.id = try container.decode(String.self, forKey: .id)
         self.isReady = try container.decode(Bool.self, forKey: .isReady)
+        self.name = try container.decode(String.self, forKey: .name)
     }
     
     
@@ -32,12 +35,14 @@ class JoiningPlayer: NSObject, Encodable, Decodable {
     
         try container.encode(id, forKey: .id)
         try container.encode(isReady, forKey: .isReady)
+        try container.encode(name, forKey: .name)
         
     }
 
     init(_ id: String, from dict: NSDictionary ) {
         self.id = id
         self.isReady = dict["isReady"] as! Bool
+        self.name = dict["username"] as! String
     }
     
     convenience init(from snap: DataSnapshot) {
