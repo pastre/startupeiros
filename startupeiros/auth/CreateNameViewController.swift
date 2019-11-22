@@ -39,7 +39,7 @@ class CreateNameViewController: UIViewController {
         self.view.addSubview(textView)
         
         textView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
         
         textView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
         textView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.15).isActive = true

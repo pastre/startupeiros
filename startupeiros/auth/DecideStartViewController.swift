@@ -36,7 +36,14 @@ class DecideStartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.hasJustCreated || Authenticator.instance.hasCreated() {
+        if self.hasJustCreated {
+            self.presentGameView()
+        } else if Authenticator.instance.hasCreated() {
+            Authenticator.instance.login { (error) in
+                if let error = error {
+                    print("Erro ao fazer login!", error)
+                }
+            }
             self.presentGameView()
         } else {
             self.presentFirstView()

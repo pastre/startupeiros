@@ -10,8 +10,6 @@ import UIKit
 
 class CreateTeamViewController: CreateNameViewController {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,8 +23,11 @@ class CreateTeamViewController: CreateNameViewController {
                 print("Erro ao criar a sala", error)
                 return
             }
-            guard let navParent = self.navParent as? NewTeamViewController else { return }
-            navParent.hasJustCreated = true
+
+            self.dismiss(animated: true)  {
+                guard let navParent = self.navParent as? NewTeamViewController else { return }
+                navParent.joinRoom(NewTeamDatabaseFacade.newRoomId!)
+            }
         }
     }
     

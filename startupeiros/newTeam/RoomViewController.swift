@@ -10,6 +10,8 @@ import UIKit
 
 class RoomViewController: UIViewController {
 
+    var roomId: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
