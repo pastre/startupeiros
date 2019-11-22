@@ -53,7 +53,8 @@ class NewTeamViewController: UIViewController {
     
     func joinRoom(_ roomId: String) {
         let vc = RoomViewController()
-
+        
+        vc.roomId = roomId
         vc.view.backgroundColor = .brown
         
         self.present(vc, animated: true, completion: nil)

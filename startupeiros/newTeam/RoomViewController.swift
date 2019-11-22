@@ -13,6 +13,7 @@ import FirebaseDatabase
 class RoomViewController: UIViewController {
 
     var roomId: String!
+    var players: [JoiningPlayer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class RoomViewController: UIViewController {
     }
     
     func onAdded(_ snap: DataSnapshot) {
+        print("Snaps is", snap)
+        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
         
+        self.players.append(newPlayer)
     }
     
     func onChanged(_ snap: DataSnapshot) {
@@ -50,6 +54,17 @@ class RoomViewController: UIViewController {
         super.viewWillAppear(animated)
         
         NewTeamDatabaseFacade.joinRoom(self.roomId) { error in
+            if let error = error {
+                print("erro ao entrar na sala", error)
+            }
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NewTeamDatabaseFacade.leaveRoom(self.roomId) { error in
             if let error = error {
                 print("erro ao entrar na sala", error)
             }

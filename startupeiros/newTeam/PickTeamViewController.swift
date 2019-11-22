@@ -9,84 +9,6 @@
 import UIKit
 import FirebaseDatabase
 
-class JoiningPlayer: NSObject, Encodable, Decodable {
-    
-    var id: String
-    var isReady: Bool!
-    
-    enum CodingKeys: String, CodingKey{
-        case id = "id"
-        case isReady = "isReady"
-    }
-
-    required init(decoder aDecoder: Decoder) throws {
-        let container = try aDecoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = try container.decode(String.self, forKey: .id)
-        self.isReady = try container.decode(Bool.self, forKey: .isReady)
-    }
-    
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-    
-        try container.encode(id, forKey: .id)
-        try container.encode(isReady, forKey: .isReady)
-        
-    }
-    
-
-    
-    init(_ id: String, from dict: NSDictionary ) {
-        self.id = id
-        self.isReady = dict[id] as! Bool
-    }
-    
-    convenience init(from snap: DataSnapshot) {
-        self.init(snap.key, from: snap.value as! NSDictionary)
-    }
-}
-
-class Room: NSObject, Encodable, Decodable {
-    var id: String!
-    var name: String!
-    var players: [JoiningPlayer]! = []
-    
-    enum CodingKeys: String, CodingKey{
-        case id = "id"
-        case name = "name"
-        case players = "players"
-    }
-
-    required init(decoder aDecoder: Decoder) throws {
-        let container = try aDecoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = try container.decode(String.self, forKey: .id)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.players = try container.decode([JoiningPlayer].self, forKey: .players)
-    }
-
-    
-    init(_ id: String, from dict: NSDictionary ) {
-        self.id = id
-        self.name = dict["name"] as! String
-//        self.players =  JSONDecoder().decode([Player].self, from: d)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(players, forKey: .players)
-        
-    }
-    
-    convenience init(from snap: DataSnapshot) {
-        self.init(snap.key, from: snap.value as! NSDictionary)
-    }
-}
-
 class PickTeamViewController: UIViewController {
 
     var navParent: UIViewController!
@@ -95,9 +17,21 @@ class PickTeamViewController: UIViewController {
     
     var rooms: [Room]! = []
     
+    var joinFirstButton: UIButton = {
+       let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Join first", for: .normal)
+        button.backgroundColor = .red
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let child = self.ref.child(FirebaseKeys.newRooms.rawValue)
+        
         child.observe(.childAdded) { (snap) in
             self.onChildAdded(snap)
         }
@@ -105,7 +39,19 @@ class PickTeamViewController: UIViewController {
         child.observe(.childChanged) { (snap) in
             self.onChildChanged(to: snap)
         }
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = .green
+        
+        self.joinFirstButton.addTarget(self, action: #selector(self.onJoin), for: .touchDown)
+        
+        self.view.addSubview(self.joinFirstButton)
+        
+        self.joinFirstButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.joinFirstButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        
+        self.joinFirstButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
+        self.joinFirstButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2).isActive = true
+        
     }
     
     func onChildAdded(_ snap: DataSnapshot) {
@@ -123,14 +69,11 @@ class PickTeamViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func onJoin() {
+        self.dismiss(animated: true)  {
+            guard let room = self.rooms.first else { return }
+            guard let navParent = self.navParent as? NewTeamViewController else { return }
+            navParent.joinRoom(room.id)
+        }
     }
-    */
-
 }

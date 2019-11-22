@@ -40,10 +40,18 @@ class NewTeamDatabaseFacade {
         guard let userId =  Authenticator.instance.getUserId() else { return }
         guard let playerName = Authenticator.instance.getUsername() else { return }
         
-        self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue([
+        self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue([
             "isReady": false,
             "username": playerName,
         ]) { (error, ref) in
+            completion(error)
+        }
+    }
+    
+    static func leaveRoom(_ roomId: String, completion: @escaping (Error?) -> ()) {
+        guard let userId =  Authenticator.instance.getUserId() else { return }
+        self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue(nil) {
+            (error, ref) in
             completion(error)
         }
     }
