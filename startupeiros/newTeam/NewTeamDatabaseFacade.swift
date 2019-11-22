@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 public enum FirebaseKeys: String  {
     case newRooms = "newRooms"
+    case playersInRoom = "players"
 }
 class NewTeamDatabaseFacade {
     
@@ -22,9 +23,9 @@ class NewTeamDatabaseFacade {
     static func createRoom(named name: String, completion:  @escaping (Error?) -> ()) {
         guard let userId = auth.getUserId() else { return }
         let payload: [String: Any] = [
-            "players": [
-                userId : "false"
-            ],
+//            "players": [
+//                userId : "false"
+//            ],
             "name": name
         ]
         
@@ -33,5 +34,17 @@ class NewTeamDatabaseFacade {
             newRoomId = ref.key
         }
         
+    }
+    
+    static func joinRoom(_ roomId: String, completion: @escaping (Error?) -> ()) {
+        guard let userId =  Authenticator.instance.getUserId() else { return }
+        guard let playerName = Authenticator.instance.getUsername() else { return }
+        
+        self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue([
+            "isReady": false,
+            "username": playerName,
+        ]) { (error, ref) in
+            completion(error)
+        }
     }
 }

@@ -50,7 +50,7 @@ class JoiningPlayer: NSObject, Encodable, Decodable {
 class Room: NSObject, Encodable, Decodable {
     var id: String!
     var name: String!
-    var players: [JoiningPlayer]!
+    var players: [JoiningPlayer]! = []
     
     enum CodingKeys: String, CodingKey{
         case id = "id"
