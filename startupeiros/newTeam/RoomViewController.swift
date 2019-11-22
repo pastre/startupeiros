@@ -103,6 +103,10 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         label.textColor = .green
         label.text = player.name
         
+        for view in cell.contentView.subviews  {
+            view.removeFromSuperview()
+        }
+        
         cell.contentView.addSubview(label)
         
         label.topAnchor.constraint(equalTo: cell.contentView.topAnchor).isActive = true
@@ -111,6 +115,10 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         label.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor).isActive = true
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / CGFloat(self.players.count)
     }
     
     // MARK: - Observer methods
