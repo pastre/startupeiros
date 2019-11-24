@@ -55,7 +55,7 @@ class PickTeamViewController: UIViewController {
     }
     
     func onChildAdded(_ snap: DataSnapshot) {
-        let newRoom = Room(from: snap)
+        let newRoom = Room(snap.key, from: snap.value  as! NSDictionary)
         
         self.rooms.append(newRoom)
     }
@@ -63,7 +63,7 @@ class PickTeamViewController: UIViewController {
     func onChildChanged(to snap: DataSnapshot) {
         for (i, room) in self.rooms.enumerated() {
             if room.id == snap.key {
-                rooms[i] = Room(from: snap)
+                rooms[i] = Room(snap.key, from: snap.value  as! NSDictionary)
                 return
             }
         }

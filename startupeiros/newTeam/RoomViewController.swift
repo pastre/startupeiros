@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class RoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let playerThreshold = 3
     
     lazy var baseRef = Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue)
 
@@ -158,7 +159,36 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.readyButton.setTitle("Ready", for: .normal)
         }
         
-        self.baseRef.child(username).child("isReady").setValue(self.isReady)
+        self.baseRef.child(username).child("isReady").setValue(self.isReady) {
+            (error, ref ) in
+            if let error = error {
+                print("Erro pra atualizar a ready!", error)
+                return
+            }
+            
+            self.createTeamIfAllReady()
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    func createTeamIfAllReady() {
+        for player in self.players {
+            if !player.isReady { return }
+        }
+        
+        let vc = PickClassViewController()
+        vc.roomId = self.roomId
+        self.present(vc, animated: true) {
+            NewTeamDatabaseFacade.completeRoom(self.roomId) {
+                error in
+                if let error = error{
+                    print("Erro ao remover a sala!", error)
+                }
+                
+                self.baseRef.removeAllObservers()
+            }
+        }
     }
     
     // MARK: - Observer methods
@@ -182,7 +212,8 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             }
         }
-        
+
+        self.createTeamIfAllReady()
         self.tableView.reloadData()
     }
     

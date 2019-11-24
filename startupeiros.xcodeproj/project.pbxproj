@@ -23,6 +23,7 @@
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
+		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D7EE5DCC23887F8900399155 /* PickClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickClassViewController.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,11 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				D7811A18238821F200784268 /* newTeam */,
-				D72001592384F1D00087ADCE /* ViewController.swift */,
-				D76C4DB223861888008CD453 /* SkillsSliderView.swift */,
 				D7FB129B2387201500D8B19A /* auth */,
 				D72001552384F1D00087ADCE /* AppDelegate.swift */,
+				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D72001572384F1D00087ADCE /* SceneDelegate.swift */,
+				D76C4DB223861888008CD453 /* SkillsSliderView.swift */,
 				D72001632384F1D10087ADCE /* Info.plist */,
 				D720015B2384F1D00087ADCE /* Main.storyboard */,
 				D720015E2384F1D10087ADCE /* Assets.xcassets */,
@@ -121,11 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				D7FB129C238730C400D8B19A /* NewTeamViewController.swift */,
-				D7811A192388223400784268 /* PickTeamViewController.swift */,
 				D7811A1B2388224F00784268 /* CreateTeamViewController.swift */,
+				D7811A192388223400784268 /* PickTeamViewController.swift */,
 				D742EB412388271D00E5A2D6 /* RoomViewController.swift */,
-				D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */,
+				D7EE5DCC23887F8900399155 /* PickClassViewController.swift */,
 				D7EE5DCA23884C8A00399155 /* Model.swift */,
+				D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */,
 			);
 			path = newTeam;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
+				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
 				D720015A2384F1D00087ADCE /* ViewController.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,

@@ -12,6 +12,7 @@ import FirebaseDatabase
 public enum FirebaseKeys: String  {
     case newRooms = "newRooms"
     case playersInRoom = "players"
+    case pickingClass = "pickingClass"
 }
 class NewTeamDatabaseFacade {
     
@@ -54,5 +55,31 @@ class NewTeamDatabaseFacade {
             (error, ref) in
             completion(error)
         }
+    }
+    
+    static func completeRoom(_ roomId: String, completion: @escaping(Error?) ->  () ) {
+        self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(roomId).setValue(nil) {
+            (error, ref) in
+            completion(error)
+        }
+    }
+    
+    static func startPickingClass(_ roomId: String, completion: @escaping(Error?) ->  () ) {
+        guard let userId =  Authenticator.instance.getUserId() else { return }
+        guard let playerName = Authenticator.instance.getUsername() else { return }
+        self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players").child(userId).setValue([
+                "currentClass" : "none",
+                "isReady": false,
+                "username" : playerName,
+            ]) {
+            (error, _) in
+            completion(error)
+        }
+    }
+    
+    static func pickClass(_ roomId: String, class pickedClass: String) {
+        
+        guard let userId =  Authenticator.instance.getUserId() else { return }
+        self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players").child(userId).child("currentClass").setValue(pickedClass)
     }
 }
