@@ -194,7 +194,7 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Observer methods
     
     func onAdded(_ snap: DataSnapshot) {
-        print("Snaps is", snap)
+        
         let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
         
         self.players.append(newPlayer)
@@ -203,7 +203,7 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func onChanged(_ snap: DataSnapshot) {
-        print("Changed!", snap)
+        
         let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
         
         for (i, player) in self.players.enumerated()  {
@@ -218,7 +218,7 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func onRemoved(_ snap: DataSnapshot) {
-        print(snap)
+        
         self.players.removeAll { (player) -> Bool in
             player.id == snap.key
         }

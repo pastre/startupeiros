@@ -13,6 +13,8 @@ public enum FirebaseKeys: String  {
     case newRooms = "newRooms"
     case playersInRoom = "players"
     case pickingClass = "pickingClass"
+    case playerClass = "class"
+    case teams = "teams"
 }
 class NewTeamDatabaseFacade {
     
@@ -82,4 +84,26 @@ class NewTeamDatabaseFacade {
         guard let userId =  Authenticator.instance.getUserId() else { return }
         self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players").child(userId).child("currentClass").setValue(pickedClass)
     }
+    
+    static func joinTeam(_ roomId: String, classed className: String, completion: @escaping(Error?) ->  ()) {
+        guard let userId =  Authenticator.instance.getUserId() else { return }
+    self.rootRef.child(FirebaseKeys.teams.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue(
+            [
+                FirebaseKeys.playerClass.rawValue: className
+            ]) {
+            (error, ref) in
+            
+            completion(error)
+            if let error =  error {
+                print("Erro!!!!", error)
+                return
+            }
+                
+        self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).setValue(nil)
+                
+            PlayerFacade.createPlayer(classed: className, in: roomId)
+        }
+
+    }
+    
 }

@@ -20,6 +20,7 @@
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
+		D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8613238A03B400A9843F /* PlayerFacade.swift */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
@@ -45,6 +46,7 @@
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D7AF8613238A03B400A9843F /* PlayerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFacade.swift; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				D720015E2384F1D10087ADCE /* Assets.xcassets */,
 				D72001602384F1D10087ADCE /* LaunchScreen.storyboard */,
 				D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */,
+				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -127,8 +130,8 @@
 				D7811A192388223400784268 /* PickTeamViewController.swift */,
 				D742EB412388271D00E5A2D6 /* RoomViewController.swift */,
 				D7EE5DCC23887F8900399155 /* PickClassViewController.swift */,
-				D7EE5DCA23884C8A00399155 /* Model.swift */,
 				D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */,
+				D7EE5DCA23884C8A00399155 /* Model.swift */,
 			);
 			path = newTeam;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */,
 				D7EE5DCB23884C8A00399155 /* Model.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
+				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,

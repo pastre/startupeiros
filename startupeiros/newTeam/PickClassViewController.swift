@@ -120,12 +120,16 @@ class PickClassViewController: UIViewController {
     // MARK: - Helpers methods
     
     func createTeamIfAllReady() {
-        
+        guard let currentClass = self.currentClass else { return }
         for player in self.players {
             if !player.isReady { return }
         }
-
-        print("OPAOBA deu boa!!")
+        
+        NewTeamDatabaseFacade.joinTeam(self.roomId, classed: currentClass) { (erro) in
+            if let error = erro {
+                print("Erro ao entrar para o time", error)
+            }
+        }
     }
     
     func updateButtonState() {
@@ -169,6 +173,7 @@ class PickClassViewController: UIViewController {
         }
         
         self.updateButtonState()
+        self.createTeamIfAllReady()
     }
     
     func onRemoved(_ snap: DataSnapshot) {
