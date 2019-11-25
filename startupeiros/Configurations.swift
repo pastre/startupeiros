@@ -23,6 +23,9 @@ class Hustler: Player {
             }
         })
     }
+    func save(){
+        Database.database().reference().child("Game").child("Configurations").child("Skills").child("HustlerSkills").setValue(skills)
+    }
 }
 
 class Hacker: Player {
@@ -75,30 +78,64 @@ class Job{
     func getLevel() -> Int{
         return self.level
     }
+    func setLevel(newLevel: Int){
+        self.level = newLevel
+    }
 }
 
 class Task{
-    internal init(title: String, history: String, scrumPoints: Float, time: Float) {
-        self.title = title
-        self.history = history
-        self.scrumPoints = scrumPoints
-        self.time = time // in seconds
+    internal init(name: String, duration: Float, costPerRun: Float, costPerUpdate: Float) {
+        self.name = name
+        self.duration = duration // in seconds
+        self.costPerRun = costPerRun
+        self.costPerUpdate = costPerUpdate
     }
     
-    private var title: String
-    private var history: String
-    private var scrumPoints: Float
-    private var time: Float
+    private var name: String
+    private var duration: Float
+    private var costPerRun: Float
+    private var costPerUpdate: Float
+    
+//    private var reward: Rewardable
     private var level: Int = 0
-    private var necessarySkills: [String] = []
-    private var unecessarySkills: [String] = []
+    private var isActive: Bool = false
+    private var completed: Bool = false
+    private var canRun: Bool = false
+    private var isLocked: Bool = true
+    private var multiplier: Float = 1
     
-    func addNecessarySkills(_ necessarySkill: String){
-        self.necessarySkills.append(necessarySkill)
+    func getLevel() -> Int{
+        return self.level
+    }
+
+}
+
+class Skill{
+    
+    internal init(name: String, icon: String, tasks: [Task]){
+        self.name = name
+        self.icon = icon
+        self.tasks = tasks
     }
     
-    func addUnecessarySkills(_ unecessarySkill: String){
-        self.unecessarySkills.append(unecessarySkill)
+    private var name: String
+    private var icon: String
+    private var tasks: [Task]
+    
+    
+    var isLocked: Bool = true
+    var completitionRate: Float = 0
+    var completed: Bool = false
+    
+    func getLevel(index: Int) -> Int{
+        var soma = 0
+        for task in tasks{
+            soma += task.getLevel()
+        }
+        return soma/tasks.count
+    }
+    func getLevelProgress(){
+        
     }
 }
 
@@ -163,6 +200,8 @@ class Startup{
 
 }
 
+
+
 class Game: GKDecisionTree{
     var myDecisionThree: GKDecisionTree!
     
@@ -212,6 +251,8 @@ class Game: GKDecisionTree{
         
     }
 }
+
+
 
 // EXAMPLE
 //// Create a Player
