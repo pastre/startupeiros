@@ -6,8 +6,8 @@ target 'startupeiros' do
   use_frameworks!
 
   pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 
   # Pods for startupeiros
