@@ -30,9 +30,9 @@ class Player {
     
     func sync() {
         
-        self.firebaseRef.child("users").child(self.user.uid).observe(.childChanged) { (snap) in
-            guard let playerDict = snap as? NSDictionary else { return }
-            self.name = playerDict[FirebaseKeys.name.rawValue] as? String
+        self.firebaseRef.child("users").child(self.user.uid).observe(.value) { (snap) in
+            guard let playerDict = snap.value as? NSDictionary else { return }
+            self.name = playerDict[FirebaseKeys.name.rawValue] as! String
         }
     }
     
