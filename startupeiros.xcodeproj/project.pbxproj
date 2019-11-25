@@ -25,11 +25,10 @@
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
 		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
+		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F088F1692389A344006CCF49 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088F1682389A344006CCF49 /* Configurations.swift */; };
 		F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72001592384F1D00087ADCE /* ViewController.swift */; };
 		F088F16C238A0D5A006CCF49 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F088F16B238A0D5A006CCF49 /* CoreML.framework */; };
-		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
-		D7FB129D238730C400D8B19A /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,6 @@
 		D7EE5DCC23887F8900399155 /* PickClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickClassViewController.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
-		D7FB129C238730C400D8B19A /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		F088F1682389A344006CCF49 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		F088F16B238A0D5A006CCF49 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
@@ -271,12 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7811A1A2388223400784268 /* JoinTeamViewController.swift in Sources */,
-				D7FB129D238730C400D8B19A /* NewGameViewController.swift in Sources */,
+				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
 				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
-				D720015A2384F1D00087ADCE /* ViewController.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
 				F088F1692389A344006CCF49 /* Configurations.swift in Sources */,
