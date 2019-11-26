@@ -19,7 +19,7 @@ class Skill: Profiter {
     
     func receive(_ amount: Coin, from producer: Producer) {
         self.currentValue.append(amount)
-        print("RECVD", amount, "FROM", producer)
+        print("RECVD", amount, producer)
     }
     
     func debugTasks() {
@@ -27,4 +27,6 @@ class Skill: Profiter {
             task.runTask()
         }
     }
+    
+    
 }
