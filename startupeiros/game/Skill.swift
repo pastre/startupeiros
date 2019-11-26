@@ -16,7 +16,7 @@ class Skill: Profiter, Producer {
     var tasks: [Task] = []
     
     init() {
-        self.tasks = [Task].init(repeating: Task(profiter: self), count: 10)
+        self.tasks = [Task].init(repeating: Task(profiter: self), count: 2)
     }
     
     // MARK: - Profiter
@@ -38,5 +38,10 @@ class Skill: Profiter, Producer {
         self.profiter.receive(amount, from: self)
     }
     
+    func debugSkill() {
+        for task in self.tasks {
+            task.runTask()
+        }
+    }
     
 }

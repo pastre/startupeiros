@@ -10,6 +10,13 @@ import Foundation
 
 class Job: Profiter {
     var currentValue: [Coin]!
+    var skills: [Skill] = []
+    
+    init() {
+        self.skills = [Skill].init(repeating: Skill(), count: 2)
+        
+        print("SKILLS", skills)
+    }
     
     func receive(_ amount: Coin, from producer: Producer) {
         self.currentValue.append(amount)
@@ -21,5 +28,10 @@ class Job: Profiter {
         }.reduce(0, +)
     }
     
+    func debugJob() {
+        for skill in self.skills {
+            skill.debugSkill()
+        }
+    }
     
 }

@@ -8,22 +8,9 @@
 
 import UIKit
 
-class GameViewController: UIViewController, TimerDelegate
-{
+class GameViewController: UIViewController{
     
-    var currentTimer: TaskTimer?
-    func onTrigger() {
-        print("TRIGER")
-    }
-    
-    func onComplete() {
-        print("COMPLETE")
-    }
-    
-    func onInvalidated() {
-        print("INVALIDATED")
-    }
-    
+    let job = Job()
 
     let button: UIButton = {
         let button = UIButton()
@@ -51,9 +38,7 @@ class GameViewController: UIViewController, TimerDelegate
     }
     
     @objc func onButton() {
-        self.currentTimer = TimerFactory.timer(delegate: self)
-        
-        self.currentTimer?.run()
+        self.job.debugJob()
     }
 
     /*
