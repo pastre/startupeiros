@@ -18,6 +18,7 @@
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
 		D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */; };
 		D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D0238CCFC100CD7482 /* GameViewController.swift */; };
+		D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */; };
 		D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C4DB223861888008CD453 /* SkillsSliderView.swift */; };
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
@@ -50,6 +51,7 @@
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
 		D75E34D0238CCFC100CD7482 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProtocols.swift; sourceTree = "<group>"; };
 		D76C4DB223861888008CD453 /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */,
+				D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */,
 			);
 			path = timer;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
+				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
