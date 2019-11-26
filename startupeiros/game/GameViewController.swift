@@ -51,8 +51,8 @@ class GameViewController: UIViewController, TimerDelegate
     }
     
     @objc func onButton() {
-        self.currentTimer = TimerFactory.timer()
-        self.currentTimer?.delegate = self
+        self.currentTimer = TimerFactory.timer(delegate: self)
+        
         self.currentTimer?.run()
     }
 

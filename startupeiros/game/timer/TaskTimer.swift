@@ -74,7 +74,9 @@ class TaskTimer: Timeable {
 }
 
 class TimerFactory {
-    static func timer() -> TaskTimer {
-        return TaskTimer(duration: 2)
+    static func timer(delegate: TimerDelegate) -> TaskTimer {
+        let timer = TaskTimer(duration: 2)
+        timer.delegate = delegate
+        return timer
     }
 }
