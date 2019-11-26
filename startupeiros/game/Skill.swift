@@ -8,7 +8,18 @@
 
 import Foundation
 
-class Skill: Profiter, Producer {
+class Skill: Profiter, Producer , Identifier {
+    func getName() -> String {
+        return self.name
+    }
+
+    func getIconName() -> String {
+        return self.iconName
+    }
+
+
+    var name: String
+    var iconName: String
     
     var profiter: Profiter!
     
@@ -16,6 +27,8 @@ class Skill: Profiter, Producer {
     var tasks: [Task] = []
     
     init() {
+        self.name = "kjhgf"
+        self.iconName = "lkjhg"
         self.tasks = [Task].init(repeating: Task(profiter: self), count: 2)
     }
     

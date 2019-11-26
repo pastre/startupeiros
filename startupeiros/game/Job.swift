@@ -8,11 +8,26 @@
 
 import Foundation
 
-class Job: Profiter {
+class Job: Profiter , Identifier {
+    func getName() -> String {
+        return self.name
+    }
+
+    func getIconName() -> String {
+        return self.iconName
+    }
+
+
+    var name: String
+    var iconName: String
+    
     var currentValue: [Coin]!
     var skills: [Skill] = []
     
     init() {
+        self.name = "kjhgf"
+        self.iconName = "lkjhg"
+        
         self.skills = [Skill].init(repeating: Skill(), count: 2)
         
         print("SKILLS", skills)

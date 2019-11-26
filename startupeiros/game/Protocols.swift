@@ -47,3 +47,9 @@ protocol Levelable {
     func getLevelProgress() -> Int
     func getNextLevelRequirement() -> Int
 }
+
+
+protocol Identifier {
+    func getName() -> String
+    func getIconName() -> String
+}
