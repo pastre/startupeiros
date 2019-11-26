@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol TimerDelegate {
+    func onTrigger()
+    func onComplete()
+    func onInvalidated()
+}
+
 protocol Timeable {
     var duration: TimeInterval { get set }
     var _isRunning: Bool { get set }
@@ -55,11 +61,15 @@ class TaskTimer: Timeable {
     internal var duration: TimeInterval
     internal var _isRunning: Bool
     internal var currentTime: TimeInterval
+    internal var canRun: Bool
     
+    private var triggerCount: Int = 0
+    var delegate: TimerDelegate?
     
     init(duration: TimeInterval) {
         self.duration = duration
         self._isRunning = false
+        self.canRun = false
         self.currentTime = 0
     }
     
@@ -85,28 +95,29 @@ class TaskTimer: Timeable {
         return self._isRunning
     }
     
-    func setupTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTrigger), userInfo: nil, repeats: false)
-    }
-    
     func run() {
-        self.runCycle(self.duration)
+        self.timer  = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
+            self.onTrigger()
+        })
     }
-    
-    private func runCycle(_ remainingCyles: TimeInterval) {
-        if let timer = self.timer {
-            timer.
-        } else { return }
-    }
-    
+
     func stop() {
-        <#code#>
+        self.delegate?.onInvalidated()
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
-    
-    
-    @objc func onTrigger() {
+    private func onTrigger() {
+        if self.timer == nil { return }
         
+        if self.triggerCount == Int(self.duration) {
+            self.delegate?.onComplete()
+            self.timer?.invalidate()
+            self.timer = nil
+        }
+        
+        self.onTrigger()
+        self.triggerCount += 1
     }
     
 }
