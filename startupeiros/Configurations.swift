@@ -58,7 +58,7 @@ class Hipster: Player {
     }
 }
 
-class Job{
+class Job1{
     internal init(title: String, description: String, level: Int) {
         self.title = title
         self.description = description

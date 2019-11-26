@@ -21,6 +21,8 @@
 		D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */; };
 		D75E34D5238D6D8100CD7482 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D4238D6D8100CD7482 /* Task.swift */; };
 		D75E34D7238D772D00CD7482 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D6238D772D00CD7482 /* Skill.swift */; };
+		D75E34D9238D8B6100CD7482 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D8238D8B6100CD7482 /* Coins.swift */; };
+		D75E34DB238D8BB100CD7482 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34DA238D8BB100CD7482 /* Job.swift */; };
 		D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C4DB223861888008CD453 /* SkillsSliderView.swift */; };
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
@@ -56,6 +58,8 @@
 		D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProtocols.swift; sourceTree = "<group>"; };
 		D75E34D4238D6D8100CD7482 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D75E34D6238D772D00CD7482 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		D75E34D8238D8B6100CD7482 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		D75E34DA238D8BB100CD7482 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		D76C4DB223861888008CD453 /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				D75E34D0238CCFC100CD7482 /* GameViewController.swift */,
 				D75E34D4238D6D8100CD7482 /* Task.swift */,
 				D75E34D6238D772D00CD7482 /* Skill.swift */,
+				D75E34DA238D8BB100CD7482 /* Job.swift */,
+				D75E34D8238D8B6100CD7482 /* Coins.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
+				D75E34D9238D8B6100CD7482 /* Coins.swift in Sources */,
 				D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */,
 				F088F1692389A344006CCF49 /* Configurations.swift in Sources */,
 				D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */,
@@ -319,6 +326,7 @@
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
+				D75E34DB238D8BB100CD7482 /* Job.swift in Sources */,
 				D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */,
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,

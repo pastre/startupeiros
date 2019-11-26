@@ -26,13 +26,13 @@ protocol Coaster {
 
 protocol Producer {
     var profiter: Profiter! { get set }
-    
     func deliver(_ amount: Coin, to profiter: Profiter)
 }
 
 protocol Profiter {
-    var currentValue: [Coin] { get set }
+    var currentValue: [Coin]! { get set }
     func receive(_ amount: Coin, from producer: Producer)
+    func getCurrentAmount() -> Double
 }
 
 protocol Upgradeable {
