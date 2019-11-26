@@ -15,7 +15,7 @@ extension Int: Coin {
 }
 
 class Task: Producer, Upgradeable, TimerDelegate {
-    
+
     var timer: TaskTimer?
     var profiter: Profiter!
     
@@ -23,21 +23,12 @@ class Task: Producer, Upgradeable, TimerDelegate {
         self.profiter = profiter
     }
     
-    // MARK: - Timer  Delegate
-    func onTrigger() {
-        print("Trigger  ")
-    }
-    
-    func onComplete() {
-        self.deliver(10, to: self.profiter)
-    }
-    
-    func onInvalidated() {
-        print("INVALIDOU")
-    }
-    
     // MARK: - Upgradeable
-        
+
+    func isUpgradeable() -> Bool {
+        return false
+    }
+    
     func getUpgradeCoast() -> Double {
         return 0
     }
@@ -57,6 +48,21 @@ class Task: Producer, Upgradeable, TimerDelegate {
     func runTask() {
         self.timer =  TimerFactory.timer(delegate: self)
         self.timer?.run()
+    }
+    
+    
+    
+    // MARK: - Timer  Delegate
+    func onTrigger() {
+        print("Trigger  ")
+    }
+    
+    func onComplete() {
+        self.deliver(10, to: self.profiter)
+    }
+    
+    func onInvalidated() {
+        print("INVALIDOU")
     }
     
 }

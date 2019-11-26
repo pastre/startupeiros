@@ -83,7 +83,7 @@ class Job{
     }
 }
 
-class Task{
+class Task1{
     internal init(name: String, duration: Float, costPerRun: Float, costPerUpdate: Float) {
         self.name = name
         self.duration = duration // in seconds
@@ -110,9 +110,9 @@ class Task{
 
 }
 
-class Skill{
+class Skill1{
     
-    internal init(name: String, icon: String, tasks: [Task]){
+    internal init(name: String, icon: String, tasks: [Task1]){
         self.name = name
         self.icon = icon
         self.tasks = tasks
@@ -120,7 +120,7 @@ class Skill{
     
     private var name: String
     private var icon: String
-    private var tasks: [Task]
+    private var tasks: [Task1]
     
     
     var isLocked: Bool = true

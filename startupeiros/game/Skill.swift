@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Skill: Profiter {
+class Skill: Profiter, Producer {
+    
+    var profiter: Profiter!
     
     var currentValue: [Coin] = []
     var tasks: [Task] = []
@@ -22,10 +24,10 @@ class Skill: Profiter {
         print("RECVD", amount, producer)
     }
     
-    func debugTasks() {
-        for task in self.tasks {
-            task.runTask()
-        }
+    
+    // MARK: - Producer
+    func deliver(_ amount: Coin, to profiter: Profiter) {
+        self.profiter.receive(amount, from: self)
     }
     
     

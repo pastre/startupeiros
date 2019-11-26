@@ -25,6 +25,8 @@ protocol Coaster {
 }
 
 protocol Producer {
+    var profiter: Profiter! { get set }
+    
     func deliver(_ amount: Coin, to profiter: Profiter)
 }
 
@@ -34,7 +36,7 @@ protocol Profiter {
 }
 
 protocol Upgradeable {
-
+    func isUpgradeable() -> Bool
     func getUpgradeCoast() -> Double
     func getUpgradeMultiplier() -> Double
 }
