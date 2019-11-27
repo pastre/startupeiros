@@ -8,15 +8,14 @@
 
 import Foundation
 
-class SkillCompletionCoin: Coin {
-    var count: Double
-    
-    init(count: Double){
-        self.count = count
-    }
-    
+class CoffeeCoin: Coin {
     func getRawAmount() -> Double {
-        return self.count
+        return 1
     }
-    
+}
+
+class WorkCoin: Coin {
+    func getRawAmount() -> Double {
+        return 1
+    }
 }

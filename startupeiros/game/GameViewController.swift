@@ -8,16 +8,38 @@
 
 import UIKit
 
-class GameViewController: UIViewController{
-    
-    let job = Job(name: "", iconName: "")
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    let button: UIButton = {
+    
+    var skill: Skill!
+    
+    var work: Work?
+    var coffee: Coffee?
+    
+    let tableView: UITableView! = {
+       let tableView = UITableView()
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        return tableView
+    }()
+    let coffeeButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("TESTE", for: .normal)
-        button.backgroundColor = .green
+        button.setTitle("☕️", for: .normal)
+        button.backgroundColor = .brown
+        
+        return button
+    }()
+    
+    let workButton: UIButton = {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("👨‍💻", for: .normal)
+        button.backgroundColor = .blue
         
         return button
     }()
@@ -25,22 +47,91 @@ class GameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.button.addTarget(self, action: #selector(self.onButton), for: .touchDown)
+        self.skill = Skill()
         
-        self.view.addSubview(self.button)
+        self.setupWorkButton()
+        self.setupCoffeeButton()
         
-        self.button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        self.button.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7).isActive = true
-        self.button.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
+        self.setupTableView()
         // Do any additional setup after loading the view.
     }
     
-    @objc func onButton() {
-        self.job.debugJob()
+    
+    
+    @objc func onWork() {
+        if let work = self.work {
+            if !(work.taskTimer?.isDone() ?? false)  { return }
+        }
+        self.work = Work()
+        self.work?.run()
+    }
+    
+    @objc func onCoffee() {
+        if let coffee = self.coffee {
+            if !(coffee.taskTimer?.isDone() ?? false)  { return }
+        }
+        self.coffee = Coffee()
+        self.coffee?.run()
     }
 
+    
+    // MARK: - Setup methods
+    
+    func setupTableView() {
+        
+        self.view.addSubview(tableView)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        
+        self.tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        self.tableView.bottomAnchor.constraint(equalTo: self.workButton.topAnchor).isActive = true
+        
+        self.tableView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8).isActive = true
+        self.tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    func setupWorkButton() {
+        
+        self.workButton.addTarget(self, action: #selector(self.onWork), for: .touchDown)
+        
+        self.view.addSubview(self.workButton)
+        
+        self.workButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        self.workButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        self.workButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
+        self.workButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
+    }
+    
+    func setupCoffeeButton() {
+        
+        self.coffeeButton.addTarget(self, action: #selector(self.onCoffee), for: .touchDown)
+        
+        self.view.addSubview(self.coffeeButton)
+        
+        self.coffeeButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.coffeeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        self.coffeeButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
+        self.coffeeButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
+    }
+    
+    
+    // MARK: - TableViewDelegate
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.skill.tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "cell")!
+    }
     /*
     // MARK: - Navigation
 

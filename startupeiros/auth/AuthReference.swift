@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class Player {
+class AuthPlayer {
     
     enum FirebaseKeys: String {
         case name = "name"
@@ -49,7 +49,7 @@ class Authenticator {
     
     static var instance = Authenticator()
 
-    private var player: Player?
+    private var player: AuthPlayer?
     
     private init() { }
     
@@ -73,7 +73,7 @@ class Authenticator {
                 completion(error)
                 return
             }
-            self.player = Player(user: auth.user)
+            self.player = AuthPlayer(user: auth.user)
             self.player?.sync()
         }
     }
@@ -87,7 +87,7 @@ class Authenticator {
                 return
             }
             
-            self.player = Player(user: auth.user, name: name)
+            self.player = AuthPlayer(user: auth.user, name: name)
             self.player?.create()
             self.player?.sync()
             completion(nil)

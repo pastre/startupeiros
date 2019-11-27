@@ -19,9 +19,15 @@ protocol Lockable {
 }
 
 protocol Coaster {
-    func getCoastPerRun() -> Double
+    var giver: Giver! { get set }
+    
+    func getCoastPerRun() -> Coin
     func getMultiplier() -> Double
-    func coast(from profiter: Profiter)
+    func coast(from giver: Giver)
+}
+
+protocol Giver {
+    func take(_ amount: Coin)
 }
 
 protocol Producer {
