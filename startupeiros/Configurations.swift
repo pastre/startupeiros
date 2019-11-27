@@ -200,56 +200,56 @@ class Startup{
 }
 
 
-
-class Game: GKDecisionTree{
-    var myDecisionThree: GKDecisionTree!
-    
-    func trainDT() {
-        let attributes = [ "Type?", "HP?", "Special?" ]
-        let examples = [
-            // Each sub-array has a value for each attribute:
-            [ "Electric", 10,  true ], // Note: enum value for the "Type?" attribute
-            [ "Electric", 30, false ],
-            [ "Electric", 40, true ],
-            [ "Fire", 20 , false ],
-            [ "Fire", 30 , false ],
-            [ "Water", 50 , true ],
-            [ "Water", 40 , false ],
-//            [ "Fase 8", "Hustler" , 25 ],
-//            [ "Fase 9", "Hipster" , 23 ],
-        ]
-        let actions = [ // One for each entry in the examples array
-            ["Psychic Strike"],
-            ["Pound"],
-            ["Barrier"],
-            ["Pound"],
-            ["Tackle"],
-            ["Pound"],
-            ["Tackle"],
-//            ["Business Model"],
-//            ["UI"],
-            ]
-         
-        // Multiple type casts required to convert to collections of NSObjectProtocol in Swift
-        self.myDecisionThree = GKDecisionTree(examples: examples as NSArray as! [[NSObjectProtocol]],
-                                            actions: actions as NSArray as! [NSObjectProtocol],
-                                            attributes: attributes as NSArray as! [NSObjectProtocol])
-    }
-    func testDT(){
-        let answers = [
-            "Type?": "Electrical", // an enum value
-            "HP?": 39,
-            "Special?": false,
-            ] as [String : Any]
-        if let result = self.myDecisionThree.findAction(forAnswers: answers as! [AnyHashable : NSObjectProtocol]){
-            print("DECISION TREE")
-            print(myDecisionThree)
-            print("RESULT =====>")
-            print(result)
-        }
-        
-    }
-}
+//
+//class Game: GKDecisionTree{
+//    var myDecisionThree: GKDecisionTree!
+//    
+//    func trainDT() {
+//        let attributes = [ "Type?", "HP?", "Special?" ]
+//        let examples = [
+//            // Each sub-array has a value for each attribute:
+//            [ "Electric", 10,  true ], // Note: enum value for the "Type?" attribute
+//            [ "Electric", 30, false ],
+//            [ "Electric", 40, true ],
+//            [ "Fire", 20 , false ],
+//            [ "Fire", 30 , false ],
+//            [ "Water", 50 , true ],
+//            [ "Water", 40 , false ],
+////            [ "Fase 8", "Hustler" , 25 ],
+////            [ "Fase 9", "Hipster" , 23 ],
+//        ]
+//        let actions = [ // One for each entry in the examples array
+//            ["Psychic Strike"],
+//            ["Pound"],
+//            ["Barrier"],
+//            ["Pound"],
+//            ["Tackle"],
+//            ["Pound"],
+//            ["Tackle"],
+////            ["Business Model"],
+////            ["UI"],
+//            ]
+//         
+//        // Multiple type casts required to convert to collections of NSObjectProtocol in Swift
+//        self.myDecisionThree = GKDecisionTree(examples: examples as NSArray as! [[NSObjectProtocol]],
+//                                            actions: actions as NSArray as! [NSObjectProtocol],
+//                                            attributes: attributes as NSArray as! [NSObjectProtocol])
+//    }
+//    func testDT(){
+//        let answers = [
+//            "Type?": "Electrical", // an enum value
+//            "HP?": 39,
+//            "Special?": false,
+//            ] as [String : Any]
+//        if let result = self.myDecisionThree.findAction(forAnswers: answers as! [AnyHashable : NSObjectProtocol]){
+//            print("DECISION TREE")
+//            print(myDecisionThree)
+//            print("RESULT =====>")
+//            print(result)
+//        }
+//        
+//    }
+//}
 
 
 

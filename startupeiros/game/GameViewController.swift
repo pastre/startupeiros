@@ -10,7 +10,6 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    
     var skill: Skill!
     
     var work: Work?
@@ -47,31 +46,22 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.skill = Skill()
+        self.skill = Skill(name: "skill", iconName: "debugSkillIcon")
         
         self.setupWorkButton()
         self.setupCoffeeButton()
         
         self.setupTableView()
-        // Do any additional setup after loading the view.
     }
     
     
     
     @objc func onWork() {
-        if let work = self.work {
-            if !(work.taskTimer?.isDone() ?? false)  { return }
-        }
-        self.work = Work()
-        self.work?.run()
+        ResourceFacade.instance.workManager.runTask()
     }
     
     @objc func onCoffee() {
-        if let coffee = self.coffee {
-            if !(coffee.taskTimer?.isDone() ?? false)  { return }
-        }
-        self.coffee = Coffee()
-        self.coffee?.run()
+        ResourceFacade.instance.coffeeManager.runTask()
     }
 
     

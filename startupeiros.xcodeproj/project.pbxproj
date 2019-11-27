@@ -13,6 +13,8 @@
 		D720015D2384F1D00087ADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D720015B2384F1D00087ADCE /* Main.storyboard */; };
 		D720015F2384F1D10087ADCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D720015E2384F1D10087ADCE /* Assets.xcassets */; };
 		D72001622384F1D10087ADCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72001602384F1D10087ADCE /* LaunchScreen.storyboard */; };
+		D721941F238EF94B0069F11D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721941E238EF94B0069F11D /* Extensions.swift */; };
+		D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7219420238EFDD50069F11D /* ResourceManager.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
 		D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB412388271D00E5A2D6 /* RoomViewController.swift */; };
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
@@ -38,6 +40,7 @@
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
 		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
+		D7EE9AB5238EF59B00423993 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE9AB4238EF59B00423993 /* ProgressView.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */; };
@@ -61,6 +64,8 @@
 		D720015E2384F1D10087ADCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D72001612384F1D10087ADCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72001632384F1D10087ADCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D721941E238EF94B0069F11D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D7219420238EFDD50069F11D /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
 		D742EB412388271D00E5A2D6 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D7EE5DCC23887F8900399155 /* PickClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickClassViewController.swift; sourceTree = "<group>"; };
+		D7EE9AB4238EF59B00423993 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdmin.swift; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				F088F1682389A344006CCF49 /* Configurations.swift */,
 				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
+				D7EE9AB4238EF59B00423993 /* ProgressView.swift */,
+				D721941E238EF94B0069F11D /* Extensions.swift */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 				D75E34DE238DBA8E00CD7482 /* Player.swift */,
 				D75E34E1238EEB9500CD7482 /* PlayerProducer.swift */,
 				D75E34E3238EEBAA00CD7482 /* Work.swift */,
+				D7219420238EFDD50069F11D /* ResourceManager.swift */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -407,8 +416,11 @@
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
 				D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */,
+				D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */,
 				D75E34D7238D772D00CD7482 /* Skill.swift in Sources */,
+				D721941F238EF94B0069F11D /* Extensions.swift in Sources */,
 				F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */,
+				D7EE9AB5238EF59B00423993 /* ProgressView.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
 			);
@@ -556,9 +568,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,9 +588,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

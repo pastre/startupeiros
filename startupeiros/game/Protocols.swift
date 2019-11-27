@@ -36,9 +36,7 @@ protocol Producer {
 }
 
 protocol Profiter {
-    var currentValue: [Coin]! { get set }
     func receive(_ amount: Coin, from producer: Producer)
-    func getCurrentAmount() -> Double
 }
 
 protocol Upgradeable {

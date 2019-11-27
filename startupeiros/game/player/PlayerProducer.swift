@@ -25,8 +25,8 @@ class PlayerProducer: Producer, TimerDelegate {
     var profiter: Profiter!
     var taskTimer: TaskTimer?
     
-    init() {
-        self.profiter = Player.instance
+    required init(_  profiter: Profiter) {
+        self.profiter = profiter
     }
     
     func deliver(_ amount: Coin, to profiter: Profiter) {

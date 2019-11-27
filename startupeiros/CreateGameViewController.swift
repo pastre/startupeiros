@@ -63,7 +63,7 @@ class CreateGameViewController: UIViewController {
         // Create a JOB
         let mvp = DatabaseJob(name: "Create a Minimal Viable Product (MVP)", icon: "mvp.png", hackerSkills: [backEnd, frontEnd, embeddedEletronics, modelling], hustlerSkills: [], hipsterSkills: [])
         
-        mvp.saveGame()
+//        mvp.saveGame()
     }
 
     /*

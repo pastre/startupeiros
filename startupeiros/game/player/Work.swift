@@ -26,8 +26,11 @@ class Work: PlayerProducer, Coaster {
         
         giver.take(self.getCoastPerRun())
     }
-    override init() {
-        self.giver = Player.instance
+    
+    
+    required init(_ profiter: Profiter) {
+        super.init(profiter)
+        self.giver = ResourceFacade.instance.coffeeManager
     }
     
    override  func onComplete() {
