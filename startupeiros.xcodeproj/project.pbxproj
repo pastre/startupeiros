@@ -161,14 +161,12 @@
 		D75E34C9238C682A00CD7482 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				D75E34EC238EECB600CD7482 /* startup */,
 				D75E34E5238EEC1400CD7482 /* coin */,
 				D75E34E0238EEB7D00CD7482 /* player */,
 				D75E34CD238CCE5700CD7482 /* timer */,
 				D75E34CB238C690800CD7482 /* Protocols.swift */,
 				D75E34D0238CCFC100CD7482 /* GameViewController.swift */,
-				D75E34D4238D6D8100CD7482 /* Task.swift */,
-				D75E34D6238D772D00CD7482 /* Skill.swift */,
-				D75E34DA238D8BB100CD7482 /* Job.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -201,6 +199,16 @@
 				D75E34EA238EEC5E00CD7482 /* WorkCoin.swift */,
 			);
 			path = coin;
+			sourceTree = "<group>";
+		};
+		D75E34EC238EECB600CD7482 /* startup */ = {
+			isa = PBXGroup;
+			children = (
+				D75E34D4238D6D8100CD7482 /* Task.swift */,
+				D75E34D6238D772D00CD7482 /* Skill.swift */,
+				D75E34DA238D8BB100CD7482 /* Job.swift */,
+			);
+			path = startup;
 			sourceTree = "<group>";
 		};
 		D7811A18238821F200784268 /* newTeam */ = {

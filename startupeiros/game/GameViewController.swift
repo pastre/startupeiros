@@ -75,7 +75,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     
-    
     // MARK: - Setup methods
     
     func setupTableView() {
