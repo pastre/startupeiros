@@ -9,17 +9,22 @@
 import Foundation
 
 class Player: Profiter, Giver {
+    
+    static let instance = Player()
+    var currentValue: [Coin]!
+    
+    private init(){
+        self.currentValue = []
+    }
+
     func take(_ amount: Coin) {
-        for i in 0..<Int(amount.getRawAmount()) {
+        for _ in 0..<Int(amount.getRawAmount()) {
             self.currentValue.removeFirst()
         }
         
         print("THE PLAYERS HAS", self.getCoffeeAmount(), "COFFEE POINTS")
         print("THE PLAYERS HAS", self.getWorkAmount(), "WORK POINTS")
     }
-    
-   
-    var currentValue: [Coin]!
     
     func receive(_ amount: Coin, from producer: Producer) {
         self.currentValue.append(amount)
@@ -60,12 +65,5 @@ class Player: Profiter, Giver {
             return coin as! WorkCoin
         }
     }
-    
-    static let instance = Player()
-    
-    private init(){
-        self.currentValue = []
-    }
-    
-    
+        
 }

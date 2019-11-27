@@ -9,17 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.skill.tasks.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "cell")!
-    }
+
     
     var skill: Skill!
     
@@ -128,6 +118,20 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.coffeeButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
         self.coffeeButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
+    }
+    
+    
+    // MARK: - TableViewDelegate
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.skill.tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "cell")!
     }
     /*
     // MARK: - Navigation
