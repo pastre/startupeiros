@@ -25,6 +25,8 @@
 		D75E34DB238D8BB100CD7482 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34DA238D8BB100CD7482 /* Job.swift */; };
 		D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34DC238DB9A700CD7482 /* Coffee.swift */; };
 		D75E34DF238DBA8E00CD7482 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34DE238DBA8E00CD7482 /* Player.swift */; };
+		D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34E1238EEB9500CD7482 /* PlayerProducer.swift */; };
+		D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34E3238EEBAA00CD7482 /* Work.swift */; };
 		D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C4DB223861888008CD453 /* SkillsSliderView.swift */; };
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
@@ -64,6 +66,8 @@
 		D75E34DA238D8BB100CD7482 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		D75E34DC238DB9A700CD7482 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		D75E34DE238DBA8E00CD7482 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D75E34E1238EEB9500CD7482 /* PlayerProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProducer.swift; sourceTree = "<group>"; };
+		D75E34E3238EEBAA00CD7482 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		D76C4DB223861888008CD453 /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 		D75E34C9238C682A00CD7482 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				D75E34E0238EEB7D00CD7482 /* player */,
 				D75E34CD238CCE5700CD7482 /* timer */,
 				D75E34CB238C690800CD7482 /* Protocols.swift */,
 				D75E34D0238CCFC100CD7482 /* GameViewController.swift */,
@@ -160,8 +165,6 @@
 				D75E34D6238D772D00CD7482 /* Skill.swift */,
 				D75E34DA238D8BB100CD7482 /* Job.swift */,
 				D75E34D8238D8B6100CD7482 /* Coins.swift */,
-				D75E34DC238DB9A700CD7482 /* Coffee.swift */,
-				D75E34DE238DBA8E00CD7482 /* Player.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -173,6 +176,17 @@
 				D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */,
 			);
 			path = timer;
+			sourceTree = "<group>";
+		};
+		D75E34E0238EEB7D00CD7482 /* player */ = {
+			isa = PBXGroup;
+			children = (
+				D75E34DC238DB9A700CD7482 /* Coffee.swift */,
+				D75E34DE238DBA8E00CD7482 /* Player.swift */,
+				D75E34E1238EEB9500CD7482 /* PlayerProducer.swift */,
+				D75E34E3238EEBAA00CD7482 /* Work.swift */,
+			);
+			path = player;
 			sourceTree = "<group>";
 		};
 		D7811A18238821F200784268 /* newTeam */ = {
@@ -317,7 +331,9 @@
 			files = (
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
+				D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */,
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
 				D75E34DF238DBA8E00CD7482 /* Player.swift in Sources */,
 				D75E34D5238D6D8100CD7482 /* Task.swift in Sources */,
