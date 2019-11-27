@@ -34,6 +34,7 @@
 		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
+		F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */; };
 		F088F1692389A344006CCF49 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088F1682389A344006CCF49 /* Configurations.swift */; };
 		F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72001592384F1D00087ADCE /* ViewController.swift */; };
 		F088F16C238A0D5A006CCF49 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F088F16B238A0D5A006CCF49 /* CoreML.framework */; };
@@ -75,6 +76,7 @@
 		D7EE5DCC23887F8900399155 /* PickClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickClassViewController.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
+		F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdmin.swift; sourceTree = "<group>"; };
 		F088F1682389A344006CCF49 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		F088F16B238A0D5A006CCF49 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F097F719238E225A00EA176E /* DatabaseJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseJob.swift; sourceTree = "<group>"; };
@@ -151,9 +153,7 @@
 				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
 				F088F1682389A344006CCF49 /* Configurations.swift */,
 				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
-				F097F719238E225A00EA176E /* DatabaseJob.swift */,
-				F097F71D238E236900EA176E /* DatabaseTask.swift */,
-				F097F71F238E238200EA176E /* DatabaseSkill.swift */,
+				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -203,6 +203,17 @@
 				D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */,
 			);
 			path = auth;
+			sourceTree = "<group>";
+		};
+		F07BC3E9238EEC6E00556997 /* databaseGameCreator */ = {
+			isa = PBXGroup;
+			children = (
+				F097F719238E225A00EA176E /* DatabaseJob.swift */,
+				F097F71D238E236900EA176E /* DatabaseTask.swift */,
+				F097F71F238E238200EA176E /* DatabaseSkill.swift */,
+				F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */,
+			);
+			path = databaseGameCreator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34D7238D772D00CD7482 /* Skill.swift in Sources */,
+				F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
 			);
