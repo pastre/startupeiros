@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-class Job: Profiter , Identifier {
+class Job: Profiter, Identifier {
+    
     func getName() -> String {
         return self.name
     }
@@ -16,19 +18,23 @@ class Job: Profiter , Identifier {
     func getIconName() -> String {
         return self.iconName
     }
-
-
-    var name: String
-    var iconName: String
+    
+    private var name: String
+    private var iconName: String
     
     var currentValue: [Coin]!
-    var skills: [Skill] = []
     
-    init() {
-        self.name = "kjhgf"
-        self.iconName = "lkjhg"
+    private var skills: [Skill] = []
+    
+    func addSkill(_ newSkill: Skill){
+        newSkill.profiter = self
+        self.skills.append(newSkill)
+    }
+    
+    init(name: String, iconName: String) {
+        self.name = name
+        self.iconName = iconName
         
-        self.skills = [Skill].init(repeating: Skill(), count: 2)
         
         print("SKILLS", skills)
     }
