@@ -8,15 +8,32 @@
 
 import Foundation
 
-class Skill: Profiter, Producer {
+class Skill: Profiter, Producer , Identifier {
+    func getName() -> String {
+        return self.name
+    }
+
+    func getIconName() -> String {
+        return self.iconName
+    }
+
+    private var name: String
+    private var iconName: String
     
     var profiter: Profiter!
     
     var currentValue: [Coin]! = []
     var tasks: [Task] = []
     
-    init() {
-        self.tasks = [Task].init(repeating: Task(profiter: self), count: 2)
+    init(name: String, iconName: String) {
+        self.name = name
+        self.iconName = iconName
+        
+    }
+    
+    func addTask(_ task: Task){
+        task.profiter = self
+        self.tasks.append(task)
     }
     
     // MARK: - Profiter

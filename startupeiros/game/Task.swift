@@ -14,13 +14,26 @@ extension Int: Coin {
     }
 }
 
-class Task: Producer, Upgradeable, TimerDelegate {
+class Task: Producer, Upgradeable, TimerDelegate, Identifier {
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getIconName() -> String {
+        return self.iconName
+    }
+    
 
+    var name: String
+    var iconName: String
+    
     var timer: TaskTimer?
     var profiter: Profiter!
     
-    init(profiter: Profiter) {
-        self.profiter = profiter
+    
+    init(name: String, iconName: String) {
+        self.name = name
+        self.iconName = iconName
     }
     
     // MARK: - Upgradeable
