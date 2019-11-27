@@ -13,4 +13,9 @@ extension CGFloat  {
     static func * (lhr: Float, rhr: Self) -> CGFloat  {
         return CGFloat(lhr) * rhr
     }
+    
+    static func * (lhr: Double, rhr: Self) -> CGFloat  {
+        return CGFloat(lhr) * rhr
+    }
+    
 }

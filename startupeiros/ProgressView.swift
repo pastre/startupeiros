@@ -15,6 +15,20 @@ protocol ProgressSupplicant {
     func getProgress() -> CGFloat
 }
 
+class ProgressBarSupplicator {
+    var supplicant: ProgressSupplicant!
+    
+    init(supplicant: ProgressSupplicant) {
+        self.supplicant = supplicant
+    }
+    
+    func supplicate() {
+        Timer.scheduledTimer(withTimeInterval: 1/60, repeats: true) { (t) in
+            self.supplicant.updateProgress()
+        }
+    }
+}
+
 class ProgressBarView: UIView, ProgressSupplicant {
     
     var progressViewWidthConstraint: NSLayoutConstraint?
@@ -53,6 +67,8 @@ class ProgressBarView: UIView, ProgressSupplicant {
         self.progressViewWidthConstraint?.isActive = true
     }
     
+    
+    
     func updateProgress() {
         let completePercent = self.getProgress()
         
@@ -73,8 +89,22 @@ class ProgressBarView: UIView, ProgressSupplicant {
 }
 
 class CoffeeBar: ProgressBarView{
+
+    var supplicator: ProgressBarSupplicator!
+
+    override func commonInit() {
+        super.commonInit()
+        
+        self.supplicator = ProgressBarSupplicator(supplicant: self)
+        self.supplicator.supplicate()
+    }
+    
     override func getProgress() -> CGFloat {
 //        return Player.instance.cof
-        return .zero
+        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return 0 }
+        guard let timer = task.taskTimer else { return 1}
+        
+        let completion = (timer.getDuration() - timer.getCurrentTime()) /  timer.getDuration()
+        return completion * self.layer.frame.width
     }
 }

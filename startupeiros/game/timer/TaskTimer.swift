@@ -9,6 +9,7 @@
 import Foundation
 
 class TaskTimer: Timeable {
+    let updateFrequency: TimeInterval = 60 // Quantidade de vezes por segundo que a variavel eh atualizada
     internal var duration: TimeInterval
     internal var _isRunning: Bool
     internal var currentTime: TimeInterval
@@ -46,8 +47,10 @@ class TaskTimer: Timeable {
     }
     
     func run() {
-        self.timer  = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
-            self.onTrigger()
+        let interval = TimeInterval(1/self.updateFrequency)
+        self.timer  = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { (t) in
+            self.currentTime += interval
+            if self.currentTime * self.updateFrequency == 1 { self.onTrigger() }
         })
     }
 
