@@ -20,3 +20,15 @@ class SkillCompletionCoin: Coin {
     }
     
 }
+
+class CoffeeCoin: Coin {
+    func getRawAmount() -> Double {
+        return 1
+    }
+}
+
+class WorkCoin: Coin {
+    func getRawAmount() -> Double {
+        return 1
+    }
+}

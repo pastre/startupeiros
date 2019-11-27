@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import GameKit
 
-class Hustler: Player {
+class Hustler: AuthPlayer {
     var skills: [String] = []
     func readSkills(completion: ((Bool) -> Void)? = nil){
         Database.database().reference().child("Game").child("Configurations").observe(DataEventType.value, with: { (snapshot) in
@@ -28,7 +28,7 @@ class Hustler: Player {
     }
 }
 
-class Hacker: Player {
+class Hacker: AuthPlayer {
     var skills: [String] = []
     func readSkills(completion: ((Bool) -> Void)? = nil){
         Database.database().reference().child("Game").child("Configurations").observe(DataEventType.value, with: { (snapshot) in
@@ -43,7 +43,7 @@ class Hacker: Player {
     }
 }
 
-class Hipster: Player {
+class Hipster: AuthPlayer {
     var skills: [String] = []
     func readSkills(completion: ((Bool) -> Void)? = nil){
         Database.database().reference().child("Game").child("Configurations").observe(DataEventType.value, with: { (snapshot) in
@@ -150,7 +150,7 @@ class Startup{
     private var nich: String
     private var country: String
     
-    var players: [Player] = []
+    var players: [AuthPlayer] = []
     private var jobs: [Job] = []
     private var level: Int = 0
     
@@ -162,11 +162,11 @@ class Startup{
         self.nich = newNich
     }
     
-    func addPlayer(_ player: Player){
+    func addPlayer(_ player: AuthPlayer){
         self.players.append(player)
     }
     
-    func removePlayer(_ player: Player){
+    func removePlayer(_ player: AuthPlayer){
         self.players.removeAll { (player) -> Bool in
             true
         }
