@@ -8,19 +8,6 @@
 
 import Foundation
 
-class SkillCompletionCoin: Coin {
-    var count: Double
-    
-    init(count: Double){
-        self.count = count
-    }
-    
-    func getRawAmount() -> Double {
-        return self.count
-    }
-    
-}
-
 class CoffeeCoin: Coin {
     func getRawAmount() -> Double {
         return 1
