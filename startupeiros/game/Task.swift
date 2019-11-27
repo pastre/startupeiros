@@ -30,10 +30,10 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier {
     var timer: TaskTimer?
     var profiter: Profiter!
     
-    init(profiter: Profiter) {
-        self.name = "kjhgf"
-        self.iconName = "lkjhg"
-        self.profiter = profiter
+    
+    init(name: String, iconName: String) {
+        self.name = name
+        self.iconName = iconName
     }
     
     // MARK: - Upgradeable
