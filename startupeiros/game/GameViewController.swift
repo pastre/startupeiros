@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController{
     
-    let job = Job()
+    let job = Job(name: "", iconName: "")
 
     let button: UIButton = {
         let button = UIButton()
