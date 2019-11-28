@@ -14,6 +14,7 @@ class TaskTimer: Timeable {
     internal var _isRunning: Bool
     internal var currentTime: TimeInterval
     internal var canRun: Bool
+    internal var runCount = 0
     
     var delegate: TimerDelegate?
     
@@ -39,7 +40,7 @@ class TaskTimer: Timeable {
     }
     
     func isDone() -> Bool {
-        return self.getDuration() == self.getCurrentTime()
+        return self.getDuration() <= self.getCurrentTime()
     }
     
     func isRunning() -> Bool {
@@ -49,8 +50,19 @@ class TaskTimer: Timeable {
     func run() {
         let interval = TimeInterval(1/self.updateFrequency)
         self.timer  = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { (t) in
+            
             self.currentTime += interval
-            if self.currentTime * self.updateFrequency == 1 { self.onTrigger() }
+            self.runCount += 1
+        
+            
+            if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
+            
+            if self.isDone() {
+                self.delegate?.onComplete()
+                self.timer?.invalidate()
+                self.timer = nil
+            }
+            
         })
     }
 
@@ -71,7 +83,6 @@ class TaskTimer: Timeable {
         }
         
         self.delegate?.onTrigger()
-        self.currentTime += 1
     }
     
 }

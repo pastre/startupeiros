@@ -35,6 +35,7 @@ class PlayerProducer: Producer, TimerDelegate {
     
     func run() {
         self.taskTimer = TimerFactory.timer(delegate: self)
+        
         self.taskTimer?.run()
     }
 }

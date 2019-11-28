@@ -16,5 +16,6 @@ class Coffee: PlayerProducer {
     override func onComplete() {
         let amount = CoffeeCoin()
         self.deliver(amount, to: self.profiter)
+        print("-------Coffee completed!!!")
     }
 }

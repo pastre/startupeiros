@@ -43,6 +43,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return button
     }()
     
+    let coffeeProgressBar: CoffeeBar = {
+        let bar = CoffeeBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .green
+        
+        return bar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,20 +61,33 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.setupCoffeeButton()
         
         self.setupTableView()
+        
+        self.setupCofeeBar()
     }
-    
-    
-    
+    let workManager = ResourceFacade.instance.workManager
     @objc func onWork() {
-        ResourceFacade.instance.workManager.runTask()
+        
+        workManager.runTask()
     }
     
     @objc func onCoffee() {
+        self.coffeeProgressBar.startProgress()
         ResourceFacade.instance.coffeeManager.runTask()
     }
 
     
     // MARK: - Setup methods
+    
+    func setupCofeeBar() {
+        self.view.addSubview(self.coffeeProgressBar)
+        
+        self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+        self.coffeeProgressBar.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor).isActive = true
+        self.coffeeProgressBar.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor).isActive = true
+        self.coffeeProgressBar.heightAnchor.constraint(equalTo: self.tableView.heightAnchor, multiplier: 0.1).isActive = true
+        
+        
+    }
     
     func setupTableView() {
         

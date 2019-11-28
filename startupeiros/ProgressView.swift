@@ -13,19 +13,29 @@ import UIKit
 protocol ProgressSupplicant {
     func updateProgress()
     func getProgress() -> CGFloat
+    func isDone() -> Bool
+    func onComplete()
 }
 
 class ProgressBarSupplicator {
     var supplicant: ProgressSupplicant!
-    
+    var timer: Timer?
     init(supplicant: ProgressSupplicant) {
         self.supplicant = supplicant
     }
     
     func supplicate() {
-        Timer.scheduledTimer(withTimeInterval: 1/60, repeats: true) { (t) in
+        if let timer = self.timer {
+            timer.fire()
+            return
+        }
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1/60, repeats: true) { (t) in
             self.supplicant.updateProgress()
         }
+    }
+    
+    func complete() {
+        self.timer?.invalidate()
     }
 }
 
@@ -63,13 +73,19 @@ class ProgressBarView: UIView, ProgressSupplicant {
         self.progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.progressView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        self.progressViewWidthConstraint = self.progressView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        self.progressViewWidthConstraint = self.progressView.widthAnchor.constraint(equalToConstant: 0)
         self.progressViewWidthConstraint?.isActive = true
     }
     
-    
+    func startProgress() {
+        
+    }
     
     func updateProgress() {
+        if self.isDone() {
+            self.onComplete()
+            return
+        }
         let completePercent = self.getProgress()
         
         self.completion = completePercent
@@ -77,7 +93,8 @@ class ProgressBarView: UIView, ProgressSupplicant {
     }
     
     func updateProgressView(){
-        let completed = self.completion * self.layer.frame.width
+        let completed = self.getProgress()
+        
         self.progressViewWidthConstraint?.constant = completed
         
         self.layoutIfNeeded()
@@ -86,25 +103,52 @@ class ProgressBarView: UIView, ProgressSupplicant {
     func getProgress() -> CGFloat {
         fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING getProgress \(self)")
     }
+    
+    func isDone() -> Bool {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
+    }
+    
+    func onComplete() {
+        self.progressViewWidthConstraint?.constant = 0
+    }
 }
 
 class CoffeeBar: ProgressBarView{
 
-    var supplicator: ProgressBarSupplicator!
+    var supplicator: ProgressBarSupplicator?
 
     override func commonInit() {
         super.commonInit()
-        
+    }
+    
+    override func startProgress() {
+        print("Configuring supplicator")
         self.supplicator = ProgressBarSupplicator(supplicant: self)
-        self.supplicator.supplicate()
+        self.supplicator?.supplicate()
+    }
+    
+    
+    override func onComplete() {
+        super.onComplete()
+        self.supplicator?.complete()
+        self.supplicator = nil
     }
     
     override func getProgress() -> CGFloat {
 //        return Player.instance.cof
         guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return 0 }
-        guard let timer = task.taskTimer else { return 1}
+        guard let timer = task.taskTimer else { return  0 }
         
-        let completion = (timer.getDuration() - timer.getCurrentTime()) /  timer.getDuration()
+        let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
+
         return completion * self.layer.frame.width
+    }
+    
+    override func isDone() -> Bool {
+        
+        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return false }
+        guard let timer = task.taskTimer else { return  false }
+        
+        return timer.isDone()
     }
 }
