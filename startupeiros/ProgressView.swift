@@ -117,10 +117,6 @@ class CoffeeBar: ProgressBarView{
 
     var supplicator: ProgressBarSupplicator?
 
-    override func commonInit() {
-        super.commonInit()
-    }
-    
     override func startProgress() {
         print("Configuring supplicator")
         self.supplicator = ProgressBarSupplicator(supplicant: self)
