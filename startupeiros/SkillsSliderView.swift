@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-class TimeView: UIView {
-    
-    func setup(colors: [UIColor]) {
-        
-    }
-}
 
 class SkillsSliderView: UIView {
 

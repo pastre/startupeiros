@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var workBarSpace: UIView!
     @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
-    
+    @IBOutlet weak var skillNameLabel: UILabel!
     @IBOutlet weak var skillsCollectionView: UICollectionView!
+    @IBOutlet weak var tasksTableView: UITableView!
     
     var skills: [Skill]!
+    var currentSelected = 0
     
     let coffeeProgressBar: CoffeeBar = {
         let bar = CoffeeBar()
@@ -51,10 +53,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupWorkBar()
         
         self.setupSkillsCollectionView()
-        // Do any additional setup after loading the view.
+        self.setupTasksTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateCurrentSelectedSkill()
     }
     
     // MARK: - Setup methods
+    
+    func setupTasksTableView(){
+        self.tasksTableView.delegate = self
+        self.tasksTableView.dataSource = self
+    }
     
     func setupSkillsCollectionView()  {
         self.skillsCollectionView.delegate = self
@@ -89,6 +101,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
          self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.coffeeProgressBarSpace .bottomAnchor).isActive = true
     }
     
+    // MARK: - Table view methods
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.getCurrentSkill().tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskRow") as! TaskTableViewCell
+        let task = self.getCurrentSkill().tasks[indexPath.item]
+        
+        cell.taskLabel.text = task.getName()
+        cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        
+        return cell
+    }
+    
     // MARK: -  Collection view methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -100,9 +132,38 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skillCell", for: indexPath)
-          
-          return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skillCell", for: indexPath) as! SkillCollectionViewCell
+        let skill = skills[indexPath.item]
+        
+        cell.skillNameLabel.text = skill.getName()
+        cell.skillIcon.image = UIImage(named: "failedToLoadTexture")
+        
+        if indexPath.item == self.currentSelected {
+            cell.backgroundColor = .lightGray
+        } else {
+            cell.backgroundColor = .white
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width * 0.25
+        let heitgh = collectionView.frame.height * 0.9
+        
+        return CGSize(width: width, height: heitgh)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.currentSelected = indexPath.item
+        self.updateCurrentSelectedSkill()
+    }
+    
+    func updateCurrentSelectedSkill() {
+        self.skillNameLabel.text = self.getCurrentSkill().getName()
+        
+        self.skillsCollectionView.reloadData()
     }
     
     // MARK: - Button callbacks
@@ -115,6 +176,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func onWork(_ sender: Any) {
         self.workProgressBar.startProgress()
         ResourceFacade.instance.workManager.runTask()
+    }
+    
+    
+    func getCurrentSkill() -> Skill {
+        return self.skills[self.currentSelected]
     }
 }
 

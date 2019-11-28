@@ -393,7 +393,7 @@ Cg
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="ec4-xl-01z">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskRow" rowHeight="70" id="ec4-xl-01z" customClass="TaskTableViewCell" customModule="startupeiros" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ec4-xl-01z" id="VMP-O7-zXj">
@@ -530,6 +530,10 @@ Cg
                                                         <constraint firstItem="ww3-MZ-UgP" firstAttribute="centerY" secondItem="VMP-O7-zXj" secondAttribute="centerY" id="n9g-zZ-EGv"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="taskIcon" destination="m8a-wE-2z9" id="W2M-Lb-Fth"/>
+                                                    <outlet property="taskLabel" destination="M4v-B6-8b8" id="CpS-Hn-7zH"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -627,6 +631,7 @@ Cg
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
                         <outlet property="skillsCollectionView" destination="8BJ-lD-gec" id="Ur6-n1-YWK"/>
+                        <outlet property="tasksTableView" destination="G19-za-dnI" id="4jq-Do-cT2"/>
                         <outlet property="workBarSpace" destination="7EN-g8-Ta6" id="7Ei-xY-nFZ"/>
                     </connections>
                 </viewController>

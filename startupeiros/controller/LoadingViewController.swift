@@ -25,7 +25,13 @@ class LoadingViewController: UIViewController {
             let vc = storyboard.instantiateViewController(identifier: "viewController") as! ViewController
             let skills = jobList[0].hackerSkills
             vc.skills = skills.map({ (skill) -> Skill in
-                return Skill(name: skill.name, iconName: skill.icon)
+                let parsedSkill = Skill(name: skill.name, iconName: skill.icon)
+                
+                let tasks = skill.tasks.map { (dbTask) -> Task in
+                    return Task(name: dbTask.name, iconName: dbTask.icon)
+                }
+                parsedSkill.tasks = tasks
+                return parsedSkill
             })
             
             vc.modalPresentationStyle = .overFullScreen

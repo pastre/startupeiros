@@ -10,4 +10,7 @@ import UIKit
 
 class SkillCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var skillNameLabel: UILabel!
+    @IBOutlet weak var skillIcon: UIImageView!
+    
 }
