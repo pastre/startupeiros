@@ -19,7 +19,6 @@ class WorkBar: TimedProgressBar{
         self.supplicator?.supplicate()
     }
     
-    
     override func onComplete() {
         self.progressViewWidthConstraint?.constant = 0
         self.supplicator?.complete()

@@ -44,7 +44,7 @@ class TaskTimer: Timeable {
     }
     
     func isRunning() -> Bool {
-        return self._isRunning
+        return self.timer != nil
     }
     
     func run() {
@@ -56,7 +56,7 @@ class TaskTimer: Timeable {
             self.runCount += 1
         
             
-            if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
+             if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
             
             if self.isDone() {
                 self.delegate?.onComplete()

@@ -1,5 +1,5 @@
 //
-//  CoffeeBar.swift
+//  TaskBar.swift
 //  startupeiros
 //
 //  Created by Bruno Pastre on 28/11/19.
@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-class CoffeeBar: TimedProgressBar{
-
+class TaskBar: TimedProgressBar  {
+    
     var supplicator: ProgressBarSupplicator?
+    var task: Task?
 
     override func startProgress() {
         print("Configuring supplicator")
         self.supplicator = ProgressBarSupplicator(supplicant: self)
         self.supplicator?.supplicate()
     }
-    
     
     override func onComplete() {
         self.progressViewWidthConstraint?.constant = 0
@@ -28,8 +28,8 @@ class CoffeeBar: TimedProgressBar{
     
     override func getProgress() -> CGFloat {
         
-        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return 0 }
-        guard let timer = task.taskTimer else { return  0 }
+        guard let task = self.task else { return 0 }
+        guard let timer = task.timer else { return  0 }
         
         let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
 
@@ -38,8 +38,8 @@ class CoffeeBar: TimedProgressBar{
     
     override func isDone() -> Bool {
         
-        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return false }
-        guard let timer = task.taskTimer else { return  false }
+        guard let task = self.task else { return false }
+        guard let timer = task.timer else { return  false }
         
         return timer.isDone()
     }

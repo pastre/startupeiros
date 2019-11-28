@@ -123,7 +123,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = self.getCurrentSkill().tasks[indexPath.item]
+        
         if task.canRun() {
+            let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
+            cell.runProgressBar(with: task)
             task.runTask()
         }
     }

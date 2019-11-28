@@ -533,6 +533,7 @@ Cg
                                                 <connections>
                                                     <outlet property="taskIcon" destination="m8a-wE-2z9" id="W2M-Lb-Fth"/>
                                                     <outlet property="taskLabel" destination="M4v-B6-8b8" id="CpS-Hn-7zH"/>
+                                                    <outlet property="taskProgressBarSpace" destination="iy3-0Q-7N5" id="AxO-hI-Qxh"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

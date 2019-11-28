@@ -33,7 +33,12 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
     }
     
     func canRun() -> Bool {
-        if self.timer?.isRunning() ?? false { return false }
+        if let timer = self.timer {
+            if timer.isRunning() {
+                return false
+            }
+        }
+        
         return self.getCoastPerRun().getRawAmount() <= ResourceFacade.instance.workManager.accumulated
     }
     
