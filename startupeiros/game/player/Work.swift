@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class Work: PlayerProducer, Coaster {
     var giver: Giver!
     override func onTrigger() {
@@ -23,7 +24,6 @@ class Work: PlayerProducer, Coaster {
     }
     
     func coast(from giver: Giver) {
-        
         giver.take(self.getCoastPerRun())
     }
     
@@ -40,4 +40,5 @@ class Work: PlayerProducer, Coaster {
         self.coast(from: self.giver)
     
     }
+    
 }

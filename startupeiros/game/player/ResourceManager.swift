@@ -9,10 +9,6 @@
 import Foundation
 
 class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
-    func take(_ amount: Coin) {
-        self.accumulated -= amount.getRawAmount()
-        print(self, accumulated)
-    }
     
     var currentTask: T?
     var accumulated: Double = 0
@@ -34,8 +30,22 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
     // MARK: - PROFITER
     func receive(_ amount: Coin, from producer: Producer) {
         self.accumulated += amount.getRawAmount()
-        print(self, accumulated)
+        self.triggerIfPossible()
     }
+    
+    func take(_ amount: Coin) {
+        self.accumulated -= amount.getRawAmount()
+        print(self, accumulated)
+        self.triggerIfPossible()
+    }
+    
+    func triggerIfPossible() {
+        guard let task = self.currentTask, let supplicator = task as? BindedSupplicator else { return }
+   
+        supplicator.triggerUpdate()
+    }
+    
+
 }
 
 class ResourceFacade {

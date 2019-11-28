@@ -585,6 +585,7 @@ Cg
                     </view>
                     <connections>
                         <outlet property="coffeeProgressBarSpace" destination="WWj-TT-j1y" id="kLQ-WU-D1Q"/>
+                        <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

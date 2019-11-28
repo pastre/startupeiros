@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 protocol Coin {
     func getRawAmount() -> Double
 }
@@ -56,4 +56,19 @@ protocol Levelable {
 protocol Identifier {
     func getName() -> String
     func getIconName() -> String
+}
+
+@objc protocol BindedSupplicant {
+    @objc func update()
+}
+
+protocol BindedSupplicator {
+    func triggerUpdate()
+}
+
+protocol ProgressSupplicant {
+    func updateProgress()
+    func getProgress() -> CGFloat
+    func isDone() -> Bool
+    func onComplete()
 }

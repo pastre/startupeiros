@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 
 
-protocol ProgressSupplicant {
-    func updateProgress()
-    func getProgress() -> CGFloat
-    func isDone() -> Bool
-    func onComplete()
-}
-
 class ProgressBarSupplicator {
     var supplicant: ProgressSupplicant!
     var timer: Timer?
@@ -154,26 +147,18 @@ class CoffeeBar: TimedProgressBar{
     }
 }
 
-@objc protocol BindedSupplicant {
-    @objc func update()
-}
-
 class WorkBar: ProgressBarView, BindedSupplicant {
-    func update() {
-        self.getProgress()
+    
+    func setup() {
+        EventBinder.bind(self, to: .energy)
     }
     
+    func update() {
+        self.updateProgressView()
+    }
     
     override func getProgress() -> CGFloat {
         return CGFloat(ResourceFacade.instance.coffeeManager.accumulated) / 10
-    }
-    
-    func isDone() -> Bool {
-        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
-    }
-    
-    func onComplete() {
-        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING onComplete \(self)")
     }
     
 }

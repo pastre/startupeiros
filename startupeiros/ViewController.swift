@@ -10,22 +10,44 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
     
     
     let coffeeProgressBar: CoffeeBar = {
         let bar = CoffeeBar()
+        
         bar.translatesAutoresizingMaskIntoConstraints = false
         
         return bar
     }()
+    
+    let energyProgressBar: WorkBar =  {
+        let bar = WorkBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.setup()
+        
+        return bar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupCoffeeProgressBar()
+        self.setupEnergyBar()
         // Do any additional setup after loading the view.
     }
 
+    func setupEnergyBar() {
+        self.energyBarSpace.addSubview(self.energyProgressBar)
+        
+        self.energyProgressBar.topAnchor.constraint(equalTo: self.energyBarSpace.topAnchor).isActive = true
+        self.energyProgressBar.leadingAnchor.constraint(equalTo: self.energyBarSpace.leadingAnchor).isActive = true
+        self.energyProgressBar.bottomAnchor.constraint(equalTo: self.energyBarSpace.bottomAnchor).isActive = true
+        self.energyProgressBar.trailingAnchor.constraint(equalTo: self.energyBarSpace.trailingAnchor).isActive = true
+    }
+    
     func setupCoffeeProgressBar() {
         self.coffeeProgressBarSpace.addSubview(self.coffeeProgressBar)
         

@@ -9,6 +9,11 @@
 import Foundation
 
 class Coffee: PlayerProducer {
+    
+    override func triggerUpdate() {
+        EventBinder.trigger(event: .energy)
+    }
+    
     override func onTrigger() {
         print("Coffee triggered")
     }

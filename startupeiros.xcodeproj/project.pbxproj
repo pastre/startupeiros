@@ -156,6 +156,7 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 				D75E34C9238C682A00CD7482 /* game */,
 				D7811A18238821F200784268 /* newTeam */,
 				D7FB129B2387201500D8B19A /* auth */,
@@ -171,7 +172,6 @@
 				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
 				F088F1682389A344006CCF49 /* Configurations.swift */,
 				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
-				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 				D7EE9AB4238EF59B00423993 /* ProgressView.swift */,
 				D721941E238EF94B0069F11D /* Extensions.swift */,
 			);
