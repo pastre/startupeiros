@@ -44,4 +44,3 @@ class CoffeeBar: TimedProgressBar{
         return timer.isDone()
     }
 }
-

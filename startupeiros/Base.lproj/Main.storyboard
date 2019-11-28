@@ -532,10 +532,17 @@ Cg
                                         <state key="normal" title="👨‍💻">
                                             <color key="titleColor" red="0.07101624459028244" green="0.26519763469696045" blue="0.17851689457893372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onWork:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cnl-wu-Ivh"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWj-TT-j1y">
                                         <rect key="frame" x="20.5" y="258" width="166" height="28.5"/>
                                         <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EN-g8-Ta6">
+                                        <rect key="frame" x="227.5" y="258" width="166" height="28.5"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -543,13 +550,17 @@ Cg
                                 <constraints>
                                     <constraint firstItem="WWj-TT-j1y" firstAttribute="bottom" secondItem="xGV-Hd-kwC" secondAttribute="bottom" id="6g6-lV-FeT"/>
                                     <constraint firstAttribute="bottom" secondItem="xGV-Hd-kwC" secondAttribute="bottom" id="6sG-Q4-1Su"/>
+                                    <constraint firstItem="7EN-g8-Ta6" firstAttribute="bottom" secondItem="vKT-Xv-IUh" secondAttribute="bottom" id="QX6-OE-Pwu"/>
                                     <constraint firstItem="xGV-Hd-kwC" firstAttribute="top" secondItem="XIT-Wr-031" secondAttribute="top" id="UHp-9l-G6d"/>
+                                    <constraint firstItem="7EN-g8-Ta6" firstAttribute="width" secondItem="WWj-TT-j1y" secondAttribute="width" id="VkK-3m-s0E"/>
                                     <constraint firstItem="xGV-Hd-kwC" firstAttribute="width" secondItem="XIT-Wr-031" secondAttribute="width" multiplier="0.5" id="Zl8-kO-VzK"/>
                                     <constraint firstItem="WWj-TT-j1y" firstAttribute="height" secondItem="xGV-Hd-kwC" secondAttribute="height" multiplier="0.1" id="aPW-B8-iiq"/>
                                     <constraint firstItem="xGV-Hd-kwC" firstAttribute="leading" secondItem="XIT-Wr-031" secondAttribute="leading" id="bnV-QD-vsZ"/>
+                                    <constraint firstItem="7EN-g8-Ta6" firstAttribute="height" secondItem="WWj-TT-j1y" secondAttribute="height" id="d6K-UG-gF2"/>
                                     <constraint firstItem="vKT-Xv-IUh" firstAttribute="width" secondItem="XIT-Wr-031" secondAttribute="width" multiplier="0.5" id="e8H-cr-m9u"/>
                                     <constraint firstItem="WWj-TT-j1y" firstAttribute="centerX" secondItem="xGV-Hd-kwC" secondAttribute="centerX" id="l12-aU-DJp"/>
                                     <constraint firstAttribute="trailing" secondItem="vKT-Xv-IUh" secondAttribute="trailing" id="lJ9-WZ-DPS"/>
+                                    <constraint firstItem="7EN-g8-Ta6" firstAttribute="centerX" secondItem="vKT-Xv-IUh" secondAttribute="centerX" id="oGa-ZQ-R29"/>
                                     <constraint firstItem="vKT-Xv-IUh" firstAttribute="top" secondItem="XIT-Wr-031" secondAttribute="top" id="rup-WW-q4D"/>
                                     <constraint firstAttribute="bottom" secondItem="vKT-Xv-IUh" secondAttribute="bottom" id="t4L-1Z-m1J"/>
                                     <constraint firstItem="WWj-TT-j1y" firstAttribute="width" secondItem="xGV-Hd-kwC" secondAttribute="width" multiplier="0.8" id="xvP-mM-Zyv"/>
@@ -586,6 +597,7 @@ Cg
                     <connections>
                         <outlet property="coffeeProgressBarSpace" destination="WWj-TT-j1y" id="kLQ-WU-D1Q"/>
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
+                        <outlet property="workBarSpace" destination="7EN-g8-Ta6" id="7Ei-xY-nFZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

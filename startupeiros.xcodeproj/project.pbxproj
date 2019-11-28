@@ -17,11 +17,12 @@
 		D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7219420238EFDD50069F11D /* ResourceManager.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
 		D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB412388271D00E5A2D6 /* RoomViewController.swift */; };
-		D7515A75238F7EBB00290A4A /* WorkBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A74238F7EBB00290A4A /* WorkBar.swift */; };
+		D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A74238F7EBB00290A4A /* EnergyBar.swift */; };
 		D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A76238F7EE300290A4A /* CoffeeBar.swift */; };
 		D7515A7A238F7F2900290A4A /* ProgressBarSupplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A79238F7F2900290A4A /* ProgressBarSupplicator.swift */; };
 		D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7B238F7F4300290A4A /* ProgressBarView.swift */; };
 		D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7E238F7F6800290A4A /* EventBinder.swift */; };
+		D7515A81238FF94800290A4A /* WorkBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A80238FF94800290A4A /* WorkBar.swift */; };
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
 		D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */; };
 		D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D0238CCFC100CD7482 /* GameViewController.swift */; };
@@ -73,11 +74,12 @@
 		D7219420238EFDD50069F11D /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
 		D742EB412388271D00E5A2D6 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
-		D7515A74238F7EBB00290A4A /* WorkBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBar.swift; sourceTree = "<group>"; };
+		D7515A74238F7EBB00290A4A /* EnergyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBar.swift; sourceTree = "<group>"; };
 		D7515A76238F7EE300290A4A /* CoffeeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBar.swift; sourceTree = "<group>"; };
 		D7515A79238F7F2900290A4A /* ProgressBarSupplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarSupplicator.swift; sourceTree = "<group>"; };
 		D7515A7B238F7F4300290A4A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D7515A7E238F7F6800290A4A /* EventBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBinder.swift; sourceTree = "<group>"; };
+		D7515A80238FF94800290A4A /* WorkBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBar.swift; sourceTree = "<group>"; };
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
 		D75E34D0238CCFC100CD7482 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -210,9 +212,10 @@
 		D7515A7D238F7F5800290A4A /* event */ = {
 			isa = PBXGroup;
 			children = (
-				D7515A74238F7EBB00290A4A /* WorkBar.swift */,
+				D7515A74238F7EBB00290A4A /* EnergyBar.swift */,
 				D7515A76238F7EE300290A4A /* CoffeeBar.swift */,
 				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
+				D7515A80238FF94800290A4A /* WorkBar.swift */,
 			);
 			path = event;
 			sourceTree = "<group>";
@@ -435,7 +438,7 @@
 				F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */,
 				D75E34D5238D6D8100CD7482 /* Task.swift in Sources */,
 				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
-				D7515A75238F7EBB00290A4A /* WorkBar.swift in Sources */,
+				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
 				D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */,
@@ -446,6 +449,7 @@
 				F097F71C238E22F100EA176E /* CreateGameViewController.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
+				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
 				D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */,

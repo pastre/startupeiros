@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WorkBar.swift
 //  startupeiros
 //
 //  Created by Bruno Pastre on 28/11/19.
@@ -9,18 +9,41 @@
 import Foundation
 import UIKit
 
-class WorkBar: ProgressBarView, BindedSupplicant {
-    
-    func setup() {
-        EventBinder.bind(self, to: .energy)
+class WorkBar: TimedProgressBar{
+
+    var supplicator: ProgressBarSupplicator?
+
+    override func startProgress() {
+        print("Configuring supplicator")
+        self.supplicator = ProgressBarSupplicator(supplicant: self)
+        self.supplicator?.supplicate()
     }
     
-    func update() {
-        self.updateProgressView()
+    
+    override func onComplete() {
+        self.progressViewWidthConstraint?.constant = 0
+        self.supplicator?.complete()
+        self.supplicator = nil
     }
     
     override func getProgress() -> CGFloat {
-        return CGFloat(ResourceFacade.instance.coffeeManager.accumulated) / 10
+//        return Player.instance.cof
+        guard let task = ResourceFacade.instance.workManager.currentTask else { return 0 }
+        guard let timer = task.taskTimer else { return  0 }
+        
+        let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
+
+        return CGFloat(completion)
     }
     
+    override func isDone() -> Bool {
+        
+        guard let task = ResourceFacade.instance.workManager.currentTask else { return false }
+        guard let timer = task.taskTimer else { return  false }
+        
+        return timer.isDone()
+    }
 }
+
+
+

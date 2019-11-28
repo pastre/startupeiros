@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var workBarSpace: UIView!
     @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
     
@@ -22,21 +23,39 @@ class ViewController: UIViewController {
         return bar
     }()
     
-    let energyProgressBar: WorkBar =  {
-        let bar = WorkBar()
-        
+    let energyProgressBar: EnergyBar =  {
+        let bar = EnergyBar()
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.setup()
         
         return bar
     }()
     
+    let workProgressBar: WorkBar = {
+        let bar = WorkBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupCoffeeProgressBar()
         self.setupEnergyBar()
+        self.setupWorkBar()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupWorkBar() {
+        
+        self.workBarSpace.addSubview(self.workProgressBar)
+        
+        self.workProgressBar.topAnchor.constraint(equalTo: self.workBarSpace.topAnchor).isActive = true
+         self.workProgressBar.leadingAnchor.constraint(equalTo: self.workBarSpace.leadingAnchor).isActive = true
+         self.workProgressBar.trailingAnchor.constraint(equalTo: self.workBarSpace.trailingAnchor).isActive = true
+         self.workProgressBar.bottomAnchor.constraint(equalTo: self.workBarSpace.bottomAnchor).isActive = true
     }
 
     func setupEnergyBar() {
@@ -51,20 +70,25 @@ class ViewController: UIViewController {
     func setupCoffeeProgressBar() {
         self.coffeeProgressBarSpace.addSubview(self.coffeeProgressBar)
         
-        self.coffeeProgressBar.topAnchor.constraint(equalTo: self.coffeeProgressBarSpace.topAnchor).isActive = true
+        self.coffeeProgressBar.topAnchor.constraint(equalTo: self.coffeeProgressBarSpace .topAnchor).isActive = true
          self.coffeeProgressBar.leadingAnchor.constraint(equalTo: self.coffeeProgressBarSpace.leadingAnchor).isActive = true
-         self.coffeeProgressBar.trailingAnchor.constraint(equalTo: self.coffeeProgressBarSpace.trailingAnchor).isActive = true
-         self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.coffeeProgressBarSpace.bottomAnchor).isActive = true
+         self.coffeeProgressBar.trailingAnchor.constraint(equalTo: self.coffeeProgressBarSpace   .trailingAnchor).isActive = true
+         self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.coffeeProgressBarSpace .bottomAnchor).isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
+    
     @IBAction func onCoffee(_ sender: Any) {
         self.coffeeProgressBar.startProgress()
         ResourceFacade.instance.coffeeManager.runTask()
     }
     
+    @IBAction func onWork(_ sender: Any) {
+        self.workProgressBar.startProgress()
+        ResourceFacade.instance.workManager.runTask()
+    }
 }
 
