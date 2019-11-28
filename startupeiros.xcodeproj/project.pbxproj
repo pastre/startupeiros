@@ -61,6 +61,14 @@
 		F097F71C238E22F100EA176E /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71B238E22F100EA176E /* CreateGameViewController.swift */; };
 		F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71D238E236900EA176E /* DatabaseTask.swift */; };
 		F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71F238E238200EA176E /* DatabaseSkill.swift */; };
+		F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85366238FFC48005CC468 /* FlappyGameScene.swift */; };
+		F0D85369238FFC88005CC468 /* FlappyGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */; };
+		F0D8536D238FFDDE005CC468 /* FlappyGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */; };
+		F0D85371239006C9005CC468 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F0D85370239006C9005CC468 /* GameScene.sks */; };
+		F0D8537B23900BA1005CC468 /* bird-03.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537723900BA1005CC468 /* bird-03.png */; };
+		F0D8537C23900BA1005CC468 /* bird-02.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537823900BA1005CC468 /* bird-02.png */; };
+		F0D8537D23900BA1005CC468 /* bird-01.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537923900BA1005CC468 /* bird-01.png */; };
+		F0D8537E23900BA1005CC468 /* bird-04.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537A23900BA1005CC468 /* bird-04.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +129,14 @@
 		F097F71B238E22F100EA176E /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		F097F71D238E236900EA176E /* DatabaseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTask.swift; sourceTree = "<group>"; };
 		F097F71F238E238200EA176E /* DatabaseSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSkill.swift; sourceTree = "<group>"; };
+		F0D85366238FFC48005CC468 /* FlappyGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameScene.swift; sourceTree = "<group>"; };
+		F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameViewController.swift; sourceTree = "<group>"; };
+		F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlappyGame.storyboard; sourceTree = "<group>"; };
+		F0D85370239006C9005CC468 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		F0D8537723900BA1005CC468 /* bird-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-03.png"; sourceTree = "<group>"; };
+		F0D8537823900BA1005CC468 /* bird-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-02.png"; sourceTree = "<group>"; };
+		F0D8537923900BA1005CC468 /* bird-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-01.png"; sourceTree = "<group>"; };
+		F0D8537A23900BA1005CC468 /* bird-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-04.png"; sourceTree = "<group>"; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +196,7 @@
 				D7515A73238F7EA900290A4A /* bar */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 				D75E34C9238C682A00CD7482 /* game */,
+				F0D8536A238FFD3E005CC468 /* miniGames */,
 				D7811A18238821F200784268 /* newTeam */,
 				D7FB129B2387201500D8B19A /* auth */,
 				D720015B2384F1D00087ADCE /* Main.storyboard */,
@@ -329,6 +346,37 @@
 			path = databaseGameCreator;
 			sourceTree = "<group>";
 		};
+		F0D8536A238FFD3E005CC468 /* miniGames */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8536B238FFD53005CC468 /* flappyGame */,
+			);
+			path = miniGames;
+			sourceTree = "<group>";
+		};
+		F0D8536B238FFD53005CC468 /* flappyGame */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */,
+				F0D8537623900BA1005CC468 /* bird.atlas */,
+				F0D85366238FFC48005CC468 /* FlappyGameScene.swift */,
+				F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */,
+				F0D85370239006C9005CC468 /* GameScene.sks */,
+			);
+			path = flappyGame;
+			sourceTree = "<group>";
+		};
+		F0D8537623900BA1005CC468 /* bird.atlas */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8537723900BA1005CC468 /* bird-03.png */,
+				F0D8537823900BA1005CC468 /* bird-02.png */,
+				F0D8537923900BA1005CC468 /* bird-01.png */,
+				F0D8537A23900BA1005CC468 /* bird-04.png */,
+			);
+			path = bird.atlas;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,8 +438,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72001622384F1D10087ADCE /* LaunchScreen.storyboard in Resources */,
+				F0D8536D238FFDDE005CC468 /* FlappyGame.storyboard in Resources */,
+				F0D8537B23900BA1005CC468 /* bird-03.png in Resources */,
 				D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */,
+				F0D8537E23900BA1005CC468 /* bird-04.png in Resources */,
+				F0D8537D23900BA1005CC468 /* bird-01.png in Resources */,
 				D720015F2384F1D10087ADCE /* Assets.xcassets in Resources */,
+				F0D85371239006C9005CC468 /* GameScene.sks in Resources */,
+				F0D8537C23900BA1005CC468 /* bird-02.png in Resources */,
 				D720015D2384F1D00087ADCE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +528,7 @@
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
 				D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */,
+				F0D85369238FFC88005CC468 /* FlappyGameViewController.swift in Sources */,
 				D75E34DB238D8BB100CD7482 /* Job.swift in Sources */,
 				D75E34E7238EEC2600CD7482 /* SkillCompletionCoin.swift in Sources */,
 				D7515A8923901D4D00290A4A /* SkillCollectionViewCell.swift in Sources */,
@@ -482,6 +537,7 @@
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
+				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
@@ -640,7 +696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM43B7QRF9;
+				DEVELOPMENT_TEAM = 3D684SCS2D;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -660,7 +716,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM43B7QRF9;
+				DEVELOPMENT_TEAM = 3D684SCS2D;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
