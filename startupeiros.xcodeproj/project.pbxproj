@@ -23,6 +23,7 @@
 		D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7B238F7F4300290A4A /* ProgressBarView.swift */; };
 		D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7E238F7F6800290A4A /* EventBinder.swift */; };
 		D7515A81238FF94800290A4A /* WorkBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A80238FF94800290A4A /* WorkBar.swift */; };
+		D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */; };
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
 		D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */; };
 		D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D0238CCFC100CD7482 /* GameViewController.swift */; };
@@ -80,6 +81,7 @@
 		D7515A7B238F7F4300290A4A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D7515A7E238F7F6800290A4A /* EventBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBinder.swift; sourceTree = "<group>"; };
 		D7515A80238FF94800290A4A /* WorkBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBar.swift; sourceTree = "<group>"; };
+		D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplicantLabel.swift; sourceTree = "<group>"; };
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
 		D75E34D0238CCFC100CD7482 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				D7515A7D238F7F5800290A4A /* event */,
 				D7515A78238F7F1900290A4A /* core */,
+				D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */,
 			);
 			path = bar;
 			sourceTree = "<group>";
@@ -214,8 +217,8 @@
 			children = (
 				D7515A74238F7EBB00290A4A /* EnergyBar.swift */,
 				D7515A76238F7EE300290A4A /* CoffeeBar.swift */,
-				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 				D7515A80238FF94800290A4A /* WorkBar.swift */,
+				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 			);
 			path = event;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */,
 				D7EE9AB5238EF59B00423993 /* TimedProgressBar.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
+				D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

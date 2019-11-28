@@ -111,7 +111,7 @@ Name</string>
                                                     <constraint firstAttribute="height" constant="30" id="upk-Kv-QmH"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-0W-g08">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-0W-g08" customClass="WorkSupplicantLabel" customModule="startupeiros" customModuleProvider="target">
                                                 <rect key="frame" x="56.5" y="2" width="67" height="48"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="1234">

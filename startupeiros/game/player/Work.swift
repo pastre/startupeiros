@@ -11,6 +11,10 @@ import Foundation
 
 class Work: PlayerProducer, Coaster {
     var giver: Giver!
+    
+    override func triggerUpdate() {
+        EventBinder.trigger(event: .work)
+    }
     override func onTrigger() {
         print("Work triggered")
     }

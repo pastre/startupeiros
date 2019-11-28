@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     
     let energyProgressBar: EnergyBar =  {
         let bar = EnergyBar()
+        
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.setup()
         
