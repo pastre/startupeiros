@@ -19,6 +19,10 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
             if !(task.taskTimer?.isDone() ?? false)  { return }
         }
         
+        if let task = self.currentTask as? Coaster {
+            if !task.canRun()  { return }
+        }
+        
         self.currentTask = T(profiter)
         self.currentTask?.run()
     }
@@ -41,9 +45,10 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
     
     func triggerIfPossible() {
         guard let task = self.currentTask, let supplicator = task as? BindedSupplicator else { return }
-   
+        
         supplicator.triggerUpdate()
     }
+    
 }
 
 class ResourceFacade {

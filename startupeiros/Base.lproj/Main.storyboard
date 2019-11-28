@@ -253,7 +253,7 @@ Cg
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7d-QS-y8r">
                                                 <rect key="frame" x="0.0" y="0.0" width="186.5" height="86"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-L3-pBL">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controller" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-L3-pBL">
                                                         <rect key="frame" x="10" y="11.5" width="176" height="43"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                         <nil key="textColor"/>

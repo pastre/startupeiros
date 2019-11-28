@@ -21,6 +21,7 @@ protocol Lockable {
 protocol Coaster {
     var giver: Giver! { get set }
     
+    func canRun() -> Bool
     func getCoastPerRun() -> Coin
     func getMultiplier() -> Double
     func coast(from giver: Giver)

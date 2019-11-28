@@ -164,6 +164,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.skillNameLabel.text = self.getCurrentSkill().getName()
         
         self.skillsCollectionView.reloadData()
+        self.tasksTableView.reloadData()
     }
     
     // MARK: - Button callbacks

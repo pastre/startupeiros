@@ -19,11 +19,11 @@ class LoadingViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         DatabaseAdmin.shared.loadJobs { (i, jobList) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "viewController") as! ViewController
             let skills = jobList[0].hackerSkills
+            
             vc.skills = skills.map({ (skill) -> Skill in
                 let parsedSkill = Skill(name: skill.name, iconName: skill.icon)
                 

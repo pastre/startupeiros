@@ -15,8 +15,13 @@ class Work: PlayerProducer, Coaster {
     override func triggerUpdate() {
         EventBinder.trigger(event: .work)
     }
+    
     override func onTrigger() {
         print("Work triggered")
+    }
+    
+    func canRun() -> Bool {
+        return ResourceFacade.instance.coffeeManager.accumulated >= 1
     }
     
     func getCoastPerRun() -> Coin {
