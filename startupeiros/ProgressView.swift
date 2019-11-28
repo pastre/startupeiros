@@ -93,7 +93,9 @@ class ProgressBarView: UIView {
 
 class TimedProgressBar: ProgressBarView, ProgressSupplicant {
     
-    
+    func startProgress() {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING startProgress \(self)")
+    }
     func isDone() -> Bool {
         fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
     }
@@ -152,7 +154,15 @@ class CoffeeBar: TimedProgressBar{
     }
 }
 
-class WorkBar: ProgressBarView {
+@objc protocol BindedSupplicant {
+    @objc func update()
+}
+
+class WorkBar: ProgressBarView, BindedSupplicant {
+    func update() {
+        self.getProgress()
+    }
+    
     
     override func getProgress() -> CGFloat {
         return CGFloat(ResourceFacade.instance.coffeeManager.accumulated) / 10
@@ -166,4 +176,25 @@ class WorkBar: ProgressBarView {
         fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING onComplete \(self)")
     }
     
+}
+
+class EventBinder {
+    private static let notificationCenter = NotificationCenter.default
+    
+    enum Event: String {
+        
+        case energy = "energy"
+        
+        func asNotificationName() -> NSNotification.Name {
+            return NSNotification.Name.init(rawValue: self.rawValue)
+        }
+    }
+    
+    static func bind<T: BindedSupplicant>(_ clasz: T,to event: Event) {
+        notificationCenter.addObserver(clasz, selector: #selector(clasz.update), name: event.asNotificationName(), object: nil)
+    }
+    
+    static func trigger(event: Event) {
+        notificationCenter.post(name: event.asNotificationName(), object: nil)
+    }
 }
