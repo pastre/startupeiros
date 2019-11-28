@@ -31,7 +31,7 @@ class Job: Profiter, Identifier {
         self.skills.append(newSkill)
     }
     
-    init(name: String, iconName: String) {
+    required init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
         
