@@ -8,21 +8,10 @@
 
 import Foundation
 
-extension Int: Coin {
-    func getRawAmount() -> Double {
-        return Double(self)
-    }
-}
 
-class Task: Producer, Upgradeable, TimerDelegate, Identifier {
-    func getName() -> String {
-        return self.name
-    }
-    
-    func getIconName() -> String {
-        return self.iconName
-    }
-    
+
+class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
+    var giver: Giver!
 
     var name: String
     var iconName: String
@@ -34,7 +23,40 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier {
     required init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
+        self.giver = ResourceFacade.instance.workManager
     }
+    
+    // MARK: - Coaster
+    func onStart() {
+        self.coast(from: self.giver)
+        EventBinder.trigger(event: .work)
+    }
+    
+    func canRun() -> Bool {
+        if self.timer?.isRunning() ?? false { return false }
+        return self.getCoastPerRun().getRawAmount() <= ResourceFacade.instance.workManager.accumulated
+    }
+    
+    func getCoastPerRun() -> Coin {
+        return 1 * getMultiplier()
+    }
+    
+    func getMultiplier() -> Double {
+        return 1
+    }
+    
+    func coast(from giver: Giver) {
+        giver.take(self.getCoastPerRun())
+    }
+    // MARK: - Identifier
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getIconName() -> String {
+        return self.iconName
+    }
+    
     
     // MARK: - Upgradeable
 
@@ -71,7 +93,7 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier {
     }
     
     func onComplete() {
-        self.deliver(10, to: self.profiter)
+//        self.deliver(10, to: self.profiter)
     }
     
     func onInvalidated() {

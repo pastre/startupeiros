@@ -49,6 +49,7 @@ class TaskTimer: Timeable {
     
     func run() {
         let interval = TimeInterval(1/self.updateFrequency)
+        self.delegate?.onStart()
         self.timer  = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { (t) in
             
             self.currentTime += interval

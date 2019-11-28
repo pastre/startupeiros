@@ -9,6 +9,7 @@
 import Foundation
 
 protocol TimerDelegate {
+    func onStart()
     func onTrigger()
     func onComplete()
     func onInvalidated()

@@ -121,6 +121,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = self.getCurrentSkill().tasks[indexPath.item]
+        if task.canRun() {
+            task.runTask()
+        }
+    }
+    
     // MARK: -  Collection view methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

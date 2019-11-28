@@ -19,3 +19,18 @@ extension CGFloat  {
     }
     
 }
+
+
+extension Int: Coin {
+    func getRawAmount() -> Double {
+        return Double(self)
+    }
+}
+
+
+
+extension Double: Coin {
+    func getRawAmount() -> Double {
+        return self
+    }
+}
