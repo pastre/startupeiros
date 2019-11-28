@@ -25,7 +25,8 @@ class Skill: Profiter, Producer , Identifier {
     var currentValue: [Coin]! = []
     var tasks: [Task] = []
     
-    init(name: String, iconName: String) {
+    
+    required init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
         

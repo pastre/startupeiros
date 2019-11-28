@@ -24,6 +24,9 @@
 		D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7E238F7F6800290A4A /* EventBinder.swift */; };
 		D7515A81238FF94800290A4A /* WorkBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A80238FF94800290A4A /* WorkBar.swift */; };
 		D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */; };
+		D7515A8523900FB500290A4A /* DatabaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A8423900FB500290A4A /* DatabaseConverter.swift */; };
+		D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A8623901BE000290A4A /* LoadingViewController.swift */; };
+		D7515A8923901D4D00290A4A /* SkillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */; };
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
 		D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */; };
 		D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D0238CCFC100CD7482 /* GameViewController.swift */; };
@@ -82,6 +85,9 @@
 		D7515A7E238F7F6800290A4A /* EventBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBinder.swift; sourceTree = "<group>"; };
 		D7515A80238FF94800290A4A /* WorkBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBar.swift; sourceTree = "<group>"; };
 		D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplicantLabel.swift; sourceTree = "<group>"; };
+		D7515A8423900FB500290A4A /* DatabaseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConverter.swift; sourceTree = "<group>"; };
+		D7515A8623901BE000290A4A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCollectionViewCell.swift; sourceTree = "<group>"; };
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
 		D75E34D0238CCFC100CD7482 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -170,17 +176,17 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				D7515A8A23901D5700290A4A /* controller */,
 				D7515A73238F7EA900290A4A /* bar */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 				D75E34C9238C682A00CD7482 /* game */,
 				D7811A18238821F200784268 /* newTeam */,
 				D7FB129B2387201500D8B19A /* auth */,
+				D720015B2384F1D00087ADCE /* Main.storyboard */,
 				D72001552384F1D00087ADCE /* AppDelegate.swift */,
-				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D72001572384F1D00087ADCE /* SceneDelegate.swift */,
 				D76C4DB223861888008CD453 /* SkillsSliderView.swift */,
 				D72001632384F1D10087ADCE /* Info.plist */,
-				D720015B2384F1D00087ADCE /* Main.storyboard */,
 				D720015E2384F1D10087ADCE /* Assets.xcassets */,
 				D72001602384F1D10087ADCE /* LaunchScreen.storyboard */,
 				D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */,
@@ -188,6 +194,7 @@
 				F088F1682389A344006CCF49 /* Configurations.swift */,
 				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
 				D721941E238EF94B0069F11D /* Extensions.swift */,
+				D7515A8423900FB500290A4A /* DatabaseConverter.swift */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -221,6 +228,16 @@
 				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 			);
 			path = event;
+			sourceTree = "<group>";
+		};
+		D7515A8A23901D5700290A4A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				D7515A8623901BE000290A4A /* LoadingViewController.swift */,
+				D72001592384F1D00087ADCE /* ViewController.swift */,
+				D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		D75E34C9238C682A00CD7482 /* game */ = {
@@ -458,11 +475,13 @@
 				D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */,
 				D75E34DB238D8BB100CD7482 /* Job.swift in Sources */,
 				D75E34E7238EEC2600CD7482 /* SkillCompletionCoin.swift in Sources */,
+				D7515A8923901D4D00290A4A /* SkillCollectionViewCell.swift in Sources */,
 				D75E34EB238EEC5E00CD7482 /* WorkCoin.swift in Sources */,
 				D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */,
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
+				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
@@ -475,6 +494,7 @@
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 				D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
+				D7515A8523900FB500290A4A /* DatabaseConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

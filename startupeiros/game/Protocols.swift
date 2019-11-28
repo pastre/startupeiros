@@ -56,6 +56,8 @@ protocol Levelable {
 protocol Identifier {
     func getName() -> String
     func getIconName() -> String
+    
+    init(name: String, iconName: String)
 }
 
 @objc protocol BindedSupplicant {

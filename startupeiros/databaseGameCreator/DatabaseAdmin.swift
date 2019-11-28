@@ -32,7 +32,7 @@ class DatabaseAdmin {
         }
     }
     
-    func loadJobs(completion: ((Bool) -> Void)? = nil) -> [DatabaseJob]{
+    func loadJobs(completion: ((Bool, [DatabaseJob]) -> Void)? = nil) -> [DatabaseJob]{
         let db = Firestore.firestore()
         var jobList: [DatabaseJob] = []
         db.collection("Jobs").getDocuments() { (querySnapshot, err) in
@@ -53,7 +53,7 @@ class DatabaseAdmin {
                 }
                 
                 if let completion = completion {
-                    completion(true)
+                    completion(true, jobList)
                 }
             }
         }

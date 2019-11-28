@@ -8,12 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var workBarSpace: UIView!
     @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
     
+    @IBOutlet weak var skillsCollectionView: UICollectionView!
+    
+    var skills: [Skill]!
     
     let coffeeProgressBar: CoffeeBar = {
         let bar = CoffeeBar()
@@ -46,7 +49,16 @@ class ViewController: UIViewController {
         self.setupCoffeeProgressBar()
         self.setupEnergyBar()
         self.setupWorkBar()
+        
+        self.setupSkillsCollectionView()
         // Do any additional setup after loading the view.
+    }
+    
+    // MARK: - Setup methods
+    
+    func setupSkillsCollectionView()  {
+        self.skillsCollectionView.delegate = self
+        self.skillsCollectionView.dataSource = self
     }
     
     func setupWorkBar() {
@@ -77,10 +89,23 @@ class ViewController: UIViewController {
          self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.coffeeProgressBarSpace .bottomAnchor).isActive = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    // MARK: -  Collection view methods
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.skills.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skillCell", for: indexPath)
+          
+          return cell
+    }
+    
+    // MARK: - Button callbacks
     
     @IBAction func onCoffee(_ sender: Any) {
         self.coffeeProgressBar.startProgress()

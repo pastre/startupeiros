@@ -31,7 +31,7 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier {
     var profiter: Profiter!
     
     
-    init(name: String, iconName: String) {
+    required init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
     }
