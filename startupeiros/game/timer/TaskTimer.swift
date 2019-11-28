@@ -9,10 +9,12 @@
 import Foundation
 
 class TaskTimer: Timeable {
+    let updateFrequency: TimeInterval = 60 // Quantidade de vezes por segundo que a variavel eh atualizada
     internal var duration: TimeInterval
     internal var _isRunning: Bool
     internal var currentTime: TimeInterval
     internal var canRun: Bool
+    internal var runCount = 0
     
     var delegate: TimerDelegate?
     
@@ -38,7 +40,7 @@ class TaskTimer: Timeable {
     }
     
     func isDone() -> Bool {
-        return self.getDuration() == self.getCurrentTime()
+        return self.getDuration() <= self.getCurrentTime()
     }
     
     func isRunning() -> Bool {
@@ -46,8 +48,21 @@ class TaskTimer: Timeable {
     }
     
     func run() {
-        self.timer  = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
-            self.onTrigger()
+        let interval = TimeInterval(1/self.updateFrequency)
+        self.timer  = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { (t) in
+            
+            self.currentTime += interval
+            self.runCount += 1
+        
+            
+            if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
+            
+            if self.isDone() {
+                self.delegate?.onComplete()
+                self.timer?.invalidate()
+                self.timer = nil
+            }
+            
         })
     }
 
@@ -68,7 +83,6 @@ class TaskTimer: Timeable {
         }
         
         self.delegate?.onTrigger()
-        self.currentTime += 1
     }
     
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    
     var skill: Skill!
     
     var work: Work?
@@ -44,38 +43,51 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return button
     }()
     
+    let coffeeProgressBar: CoffeeBar = {
+        let bar = CoffeeBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .green
+        
+        return bar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.skill = Skill()
+        self.skill = Skill(name: "skill", iconName: "debugSkillIcon")
         
         self.setupWorkButton()
         self.setupCoffeeButton()
         
         self.setupTableView()
-        // Do any additional setup after loading the view.
+        
+        self.setupCofeeBar()
     }
-    
-    
-    
+    let workManager = ResourceFacade.instance.workManager
     @objc func onWork() {
-        if let work = self.work {
-            if !(work.taskTimer?.isDone() ?? false)  { return }
-        }
-        self.work = Work()
-        self.work?.run()
+        
+        workManager.runTask()
     }
     
     @objc func onCoffee() {
-        if let coffee = self.coffee {
-            if !(coffee.taskTimer?.isDone() ?? false)  { return }
-        }
-        self.coffee = Coffee()
-        self.coffee?.run()
+        self.coffeeProgressBar.startProgress()
+        ResourceFacade.instance.coffeeManager.runTask()
     }
 
     
     // MARK: - Setup methods
+    
+    func setupCofeeBar() {
+        self.view.addSubview(self.coffeeProgressBar)
+        
+        self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+        self.coffeeProgressBar.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor).isActive = true
+        self.coffeeProgressBar.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor).isActive = true
+        self.coffeeProgressBar.heightAnchor.constraint(equalTo: self.tableView.heightAnchor, multiplier: 0.1).isActive = true
+        
+        
+    }
     
     func setupTableView() {
         
