@@ -71,8 +71,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func onCoffee() {
-        self.coffeeProgressBar.startProgress()
-        ResourceFacade.instance.coffeeManager.runTask()
     }
 
     

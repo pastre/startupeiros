@@ -8,7 +8,12 @@
 
 import Foundation
 
-class PlayerProducer: Producer, TimerDelegate {
+class PlayerProducer: Producer, TimerDelegate, BindedSupplicator {
+    func triggerUpdate() {
+        
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
     func onTrigger() {
         // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
     }

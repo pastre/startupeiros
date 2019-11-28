@@ -21,8 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
 //        skill.debugTasks()
-        
-        let vc = GameViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
+//        let vc = GameViewController()
         
         for window in scene.windows {
             window.rootViewController = vc
