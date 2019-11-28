@@ -44,8 +44,6 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
    
         supplicator.triggerUpdate()
     }
-    
-
 }
 
 class ResourceFacade {
@@ -54,8 +52,6 @@ class ResourceFacade {
     
     static let instance = ResourceFacade()
     
-    private init() {
-        
-    }
+    private init() {}
 
 }
