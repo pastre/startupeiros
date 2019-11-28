@@ -39,7 +39,7 @@ class ProgressBarSupplicator {
     }
 }
 
-class ProgressBarView: UIView, ProgressSupplicant {
+class ProgressBarView: UIView {
     
     var progressViewWidthConstraint: NSLayoutConstraint?
     var completion: CGFloat = 0
@@ -77,9 +77,31 @@ class ProgressBarView: UIView, ProgressSupplicant {
         self.progressViewWidthConstraint?.isActive = true
     }
     
-    func startProgress() {
+    func updateProgressView(){
+        let completed = self.getProgress() * self.layer.frame.width
         
+        self.progressViewWidthConstraint?.constant = completed
+        
+        self.layoutIfNeeded()
     }
+    
+    
+    func getProgress() -> CGFloat {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING getProgress \(self)")
+    }
+}
+
+class TimedProgressBar: ProgressBarView, ProgressSupplicant {
+    
+    
+    func isDone() -> Bool {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
+    }
+    
+    func onComplete() {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING onComplete \(self)")
+    }
+    
     
     func updateProgress() {
         if self.isDone() {
@@ -91,29 +113,10 @@ class ProgressBarView: UIView, ProgressSupplicant {
         self.completion = completePercent
         self.updateProgressView()
     }
-    
-    func updateProgressView(){
-        let completed = self.getProgress()
-        
-        self.progressViewWidthConstraint?.constant = completed
-        
-        self.layoutIfNeeded()
-    }
 
-    func getProgress() -> CGFloat {
-        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING getProgress \(self)")
-    }
-    
-    func isDone() -> Bool {
-        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
-    }
-    
-    func onComplete() {
-        self.progressViewWidthConstraint?.constant = 0
-    }
 }
 
-class CoffeeBar: ProgressBarView{
+class CoffeeBar: TimedProgressBar{
 
     var supplicator: ProgressBarSupplicator?
 
@@ -125,7 +128,7 @@ class CoffeeBar: ProgressBarView{
     
     
     override func onComplete() {
-        super.onComplete()
+        self.progressViewWidthConstraint?.constant = 0
         self.supplicator?.complete()
         self.supplicator = nil
     }
@@ -137,7 +140,7 @@ class CoffeeBar: ProgressBarView{
         
         let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
 
-        return completion * self.layer.frame.width
+        return CGFloat(completion)
     }
     
     override func isDone() -> Bool {
@@ -147,4 +150,20 @@ class CoffeeBar: ProgressBarView{
         
         return timer.isDone()
     }
+}
+
+class WorkBar: ProgressBarView {
+    
+    override func getProgress() -> CGFloat {
+        return CGFloat(ResourceFacade.instance.coffeeManager.accumulated) / 10
+    }
+    
+    func isDone() -> Bool {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING isDone \(self)")
+    }
+    
+    func onComplete() {
+        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING onComplete \(self)")
+    }
+    
 }
