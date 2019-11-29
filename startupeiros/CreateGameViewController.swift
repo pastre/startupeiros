@@ -14,9 +14,23 @@ class CreateGameViewController: UIViewController {
         super.viewDidLoad()
 
 //        self.createGame()
-        // Do any additional setup after loading the view.
     }
     
+//    let t1s1 = DatabaseTask(name: "Skill 1", icon: "")
+//    let t2s1 = DatabaseTask(name: "Skill 2", icon: "")
+//    let t3s1 = DatabaseTask(name: "Skill 3", icon: "")
+//
+//    let skill1 = DatabaseSkill(name: "Skill 1", icon: "", tasks: [t1s1, t2s1, t3s1])
+//
+//    let t1s2 = DatabaseTask(name: "Skill 1", icon: "")
+//    let t2s2 = DatabaseTask(name: "Skill 2", icon: "")
+//    let t3s2 = DatabaseTask(name: "Skill 3", icon: "")
+//
+//    let skill2 = DatabaseSkill(name: "Skill 2", icon: "", tasks: [t1s2, t2s2, t3s2])
+//
+//    let job1 = DatabaseJob(name: "Job1", icon: "", hackerSkills: [skill1, skill2], hustlerSkills: [skill1, skill2], hipsterSkills: [skill1, skill2])
+//    DatabaseAdmin.shared.saveJob(job: job1)
+
 //    func createGame(){
 //        let entities =  DatabaseTask(name: "Entities", icon: "entities.png")
 //        let attributes =  DatabaseTask(name: "Attributes", icon: "attributes.png")
@@ -63,17 +77,8 @@ class CreateGameViewController: UIViewController {
 //        // Create a JOB
 //        let mvp = DatabaseJob(name: "Create a Minimal Viable Product (MVP)", icon: "mvp.png", hackerSkills: [backEnd, frontEnd, embeddedEletronics, modelling], hustlerSkills: [], hipsterSkills: [])
 //
-//        mvp.saveGame()
+//
 //    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
