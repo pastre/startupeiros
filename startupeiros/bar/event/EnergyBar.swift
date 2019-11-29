@@ -9,18 +9,12 @@
 import Foundation
 import UIKit
 
-class EnergyBar: ProgressBarView, BindedSupplicant {
+class EnergyBar: ProgressBarView {
     
     func setup() {
         EventBinder.bind(self, to: .energy)
     }
     
-    func update() {
-        self.updateProgressView()
-    }
     
-    override func getProgress() -> CGFloat {
-        return CGFloat(ResourceFacade.instance.coffeeManager.accumulated) / 10
-    }
     
 }

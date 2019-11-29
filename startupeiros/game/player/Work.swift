@@ -16,6 +16,13 @@ class Work: PlayerProducer, Coaster {
         EventBinder.trigger(event: .work)
     }
     
+    override func onStart() {
+        let payload = [
+            "duration": self.taskTimer!.getDuration()
+        ]
+        EventBinder.trigger(event: .workStart, payload: payload)
+    }
+    
     override func onTrigger() {
         print("Work triggered")
     }
@@ -47,7 +54,9 @@ class Work: PlayerProducer, Coaster {
     
         self.deliver(amount, to: self.profiter)
         self.coast(from: self.giver)
-    
+
+        EventBinder.trigger(event: .energy)
+
     }
     
 }

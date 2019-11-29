@@ -9,38 +9,11 @@
 import Foundation
 import UIKit
 
-class TaskBar: TimedProgressBar  {
-    
-    var supplicator: ProgressBarSupplicator?
-    var task: Task?
+class TaskBar: ProgressBarView  {
+    var task: Task!
 
-    override func startProgress() {
-//        print("Configuring supplicator")
-//        self.supplicator = ProgressBarSupplicator(supplicant: self)
-//        self.supplicator?.supplicate()
+    func startProgress() {
+        EventBinder.bind(self, to: task)
     }
     
-    override func onComplete() {
-        self.progressViewWidthConstraint?.constant = 0
-        self.supplicator?.complete()
-        self.supplicator = nil
-    }
-    
-    override func getProgress() -> CGFloat {
-        
-        guard let task = self.task else { return 0 }
-        guard let timer = task.timer else { return  0 }
-        
-        let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
-
-        return CGFloat(completion)
-    }
-    
-    override func isDone() -> Bool {
-        
-        guard let task = self.task else { return false }
-        guard let timer = task.timer else { return  false }
-        
-        return timer.isDone()
-    }
 }

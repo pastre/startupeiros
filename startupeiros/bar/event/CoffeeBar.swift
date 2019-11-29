@@ -9,39 +9,10 @@
 import Foundation
 import UIKit
 
-class CoffeeBar: TimedProgressBar{
-
-    var supplicator: ProgressBarSupplicator?
-
-    override func startProgress() {
-        print("Configuring supplicator")
-//        self.supplicator = ProgressBarSupplicator(supplicant: self)
-//        self.supplicator?.supplicate()
+class CoffeeBar: ProgressBarView {
+    
+     func startProgress() {
+        EventBinder.bind(self, to: .coffeeStart)
     }
     
-    
-    override func onComplete() {
-        self.progressViewWidthConstraint?.constant = 0
-        self.supplicator?.complete()
-        self.supplicator = nil
-        
-    }
-    
-    override func getProgress() -> CGFloat {
-        
-        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return 0 }
-        guard let timer = task.taskTimer else { return  0 }
-        
-        let completion: TimeInterval = (timer.getCurrentTime()) / timer.getDuration()
-
-        return CGFloat(completion)
-    }
-    
-    override func isDone() -> Bool {
-        
-        guard let task = ResourceFacade.instance.coffeeManager.currentTask else { return false }
-        guard let timer = task.taskTimer else { return  false }
-        
-        return timer.isDone()
-    }
 }

@@ -13,6 +13,10 @@ class EventBinder {
     
     enum Event: String {
         
+        case coffeeStart = "coffeeStart"
+  
+        case workStart = "workStart"
+        
         case energy = "energy"
         case work = "work"
         
@@ -21,11 +25,27 @@ class EventBinder {
         }
     }
     
+    
     static func bind<T: BindedSupplicant>(_ clasz: T, to event: Event) {
         notificationCenter.addObserver(clasz, selector: #selector(clasz.update), name: event.asNotificationName(), object: nil)
     }
     
-    static func trigger(event: Event) {
+    static func unbind(clas: BindedSupplicant) {
+        notificationCenter.removeObserver(clas)
+    }
+    
+    
+    static func bind<T: BindedSupplicant>(_ clasz: T, to bindable: Bindable) {
+        notificationCenter.addObserver(clasz, selector: #selector(clasz.update), name: NSNotification.Name(rawValue: bindable.getQueueName()), object: nil)
+    }
+    
+    
+    
+    static func trigger(event: Event, payload: [String: Any]? = nil) {
+        if let payload = payload {
+            notificationCenter.post(name: event.asNotificationName(), object: nil, userInfo: payload)
+            return
+        }
         notificationCenter.post(name: event.asNotificationName(), object: nil)
     }
 }

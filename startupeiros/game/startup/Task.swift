@@ -8,9 +8,7 @@
 
 import Foundation
 
-
-
-class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
+class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable {
     var giver: Giver!
 
     var name: String
@@ -54,6 +52,7 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
     func coast(from giver: Giver) {
         giver.take(self.getCoastPerRun())
     }
+    
     // MARK: - Identifier
     func getName() -> String {
         return self.name
@@ -62,7 +61,6 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
     func getIconName() -> String {
         return self.iconName
     }
-    
     
     // MARK: - Upgradeable
 
@@ -91,8 +89,6 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
         self.timer?.run()
     }
     
-    
-    
     // MARK: - Timer  Delegate
     func onTrigger() {
         print("Trigger  ")
@@ -106,5 +102,10 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
         print("INVALIDOU")
     }
     
+    
+    
+    func getQueueName() -> String {
+        return self.getName()
+    }
 }
 

@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class SupplicantLabel: UILabel, BindedSupplicant {
+    func update(_ notification: NSNotification) {
+        self.update()
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -14,6 +14,14 @@ class Coffee: PlayerProducer {
         EventBinder.trigger(event: .energy)
     }
     
+    override func onStart() {
+        let payload = [
+            "duration": self.taskTimer?.getDuration(),
+//            "event": .coffeeStart
+        ]
+        EventBinder.trigger(event: .coffeeStart, payload: payload)
+    }
+    
     override func onTrigger() {
         print("Coffee triggered")
     }
@@ -21,6 +29,8 @@ class Coffee: PlayerProducer {
     override func onComplete() {
         let amount = CoffeeCoin()
         self.deliver(amount, to: self.profiter)
-        print("-------Coffee completed!!!")
+        
+        EventBinder.trigger(event: .energy)
+
     }
 }
