@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProgressBarView: UIView {
+class ProgressBarView: UIView, BindedSupplicant {
     
     var progressViewWidthConstraint: NSLayoutConstraint?
     var completion: CGFloat = 0
@@ -42,22 +42,35 @@ class ProgressBarView: UIView {
         self.progressView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.progressView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        self.progressViewWidthConstraint = self.progressView.widthAnchor.constraint(equalToConstant: 0)
+        self.progressViewWidthConstraint =  self.progressView.widthAnchor.constraint(equalToConstant: 0)
+            
         self.progressViewWidthConstraint?.isActive = true
     }
     
-    func updateProgressView(){
-        let completed = self.getProgress() * self.layer.frame.width
+    func update(_ notification: NSNotification) {
+        print("Notified by", notification.name)
+        guard let duration = notification.userInfo?["duration"] as? TimeInterval else { return }
         
-        self.progressViewWidthConstraint?.constant = completed
-        
-        self.layoutIfNeeded()
+        self.runAnimation(duration)
+    }
+    
+    func runAnimation(_ duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: {
+            self.progressViewWidthConstraint?.constant = self.frame.width
+            
+            self.layoutIfNeeded()
+        }) { (_) in
+            self.onComplete()
+        }
     }
     
     
-    func getProgress() -> CGFloat {
-        fatalError( "PROGRESS BAR SUBCLASS NOT IMPLEMENTING getProgress \(self)")
+     func onComplete() {
+        
+        EventBinder.unbind(clas: self)
+        
+        self.progressViewWidthConstraint?.constant = 0
+        self.layoutIfNeeded()
     }
 }
 

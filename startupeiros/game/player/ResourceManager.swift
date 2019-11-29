@@ -13,7 +13,7 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
     var currentTask: T?
     var accumulated: Double = 0
 
-    func runTask() {
+    func runTask(configure: @escaping() -> ()){
         let profiter = self
         if let task = self.currentTask  {
             if !(task.taskTimer?.isDone() ?? false)  { return }
@@ -24,6 +24,7 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
         }
         
         self.currentTask = T(profiter)
+        configure()
         self.currentTask?.run()
     }
     

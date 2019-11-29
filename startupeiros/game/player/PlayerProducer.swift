@@ -9,6 +9,18 @@
 import Foundation
 
 class PlayerProducer: Producer, TimerDelegate, BindedSupplicator {
+  
+    var profiter: Profiter!
+    var taskTimer: TaskTimer?
+    
+    required init(_  profiter: Profiter) {
+        self.profiter = profiter
+    }
+
+    func onStart() {
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
     func triggerUpdate() {
         
         // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
@@ -26,14 +38,7 @@ class PlayerProducer: Producer, TimerDelegate, BindedSupplicator {
         // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
     }
     
-    
-    var profiter: Profiter!
-    var taskTimer: TaskTimer?
-    
-    required init(_  profiter: Profiter) {
-        self.profiter = profiter
-    }
-    
+        
     func deliver(_ amount: Coin, to profiter: Profiter) {
         profiter.receive(amount, from: self)
     }

@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class SupplicantLabel: UILabel, BindedSupplicant {
+    func update(_ notification: NSNotification) {
+        self.update()
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,20 +32,6 @@ class SupplicantLabel: UILabel, BindedSupplicant {
     
     func update() {
         
-    }
-    
-}
-
-class WorkSupplicantLabel: SupplicantLabel  {
-    
-    override func setup() {
-        EventBinder.bind(self, to: .work)
-    }
-    
-    
-    override func update() {
-        let manager = ResourceFacade.instance.workManager
-        self.text = "\(manager.accumulated) WP"
     }
     
 }

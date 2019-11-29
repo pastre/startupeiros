@@ -44,18 +44,19 @@ class TaskTimer: Timeable {
     }
     
     func isRunning() -> Bool {
-        return self._isRunning
+        return self.timer != nil
     }
     
     func run() {
         let interval = TimeInterval(1/self.updateFrequency)
+        self.delegate?.onStart()
         self.timer  = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { (t) in
             
             self.currentTime += interval
             self.runCount += 1
         
             
-            if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
+             if TimeInterval(self.runCount).truncatingRemainder(dividingBy: self.updateFrequency) == 0 { self.onTrigger() }
             
             if self.isDone() {
                 self.delegate?.onComplete()

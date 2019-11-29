@@ -16,6 +16,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillNameLabel: UILabel!
     @IBOutlet weak var skillsCollectionView: UICollectionView!
     @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet weak var skillLevelBarSpace: UIView!
+    @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
     
     var skills: [Skill]!
     var currentSelected = 0
@@ -45,6 +47,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return bar
     }()
 
+    
+    let skillLevelProgressBar: SkillLevelBar = {
+        let bar = SkillLevelBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +65,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.setupSkillsCollectionView()
         self.setupTasksTableView()
+        self.setupSkillLevelBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Setup methods
-    
+
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
         self.tasksTableView.dataSource = self
@@ -73,32 +86,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.skillsCollectionView.dataSource = self
     }
     
+    func setupSkillLevelBar() {
+        self.spaceFiller(self.skillLevelBarSpace, self.skillLevelProgressBar)
+    }
+    
     func setupWorkBar() {
-        
-        self.workBarSpace.addSubview(self.workProgressBar)
-        
-        self.workProgressBar.topAnchor.constraint(equalTo: self.workBarSpace.topAnchor).isActive = true
-         self.workProgressBar.leadingAnchor.constraint(equalTo: self.workBarSpace.leadingAnchor).isActive = true
-         self.workProgressBar.trailingAnchor.constraint(equalTo: self.workBarSpace.trailingAnchor).isActive = true
-         self.workProgressBar.bottomAnchor.constraint(equalTo: self.workBarSpace.bottomAnchor).isActive = true
+        spaceFiller(workBarSpace, workProgressBar)
     }
 
     func setupEnergyBar() {
-        self.energyBarSpace.addSubview(self.energyProgressBar)
-        
-        self.energyProgressBar.topAnchor.constraint(equalTo: self.energyBarSpace.topAnchor).isActive = true
-        self.energyProgressBar.leadingAnchor.constraint(equalTo: self.energyBarSpace.leadingAnchor).isActive = true
-        self.energyProgressBar.bottomAnchor.constraint(equalTo: self.energyBarSpace.bottomAnchor).isActive = true
-        self.energyProgressBar.trailingAnchor.constraint(equalTo: self.energyBarSpace.trailingAnchor).isActive = true
+        self.spaceFiller(energyBarSpace, energyProgressBar)
     }
     
     func setupCoffeeProgressBar() {
-        self.coffeeProgressBarSpace.addSubview(self.coffeeProgressBar)
+        self.spaceFiller(coffeeProgressBarSpace, coffeeProgressBar)
+    }
+    
+    fileprivate func spaceFiller(_ space: UIView, _ view: UIView) {
+        space.addSubview(view)
         
-        self.coffeeProgressBar.topAnchor.constraint(equalTo: self.coffeeProgressBarSpace .topAnchor).isActive = true
-         self.coffeeProgressBar.leadingAnchor.constraint(equalTo: self.coffeeProgressBarSpace.leadingAnchor).isActive = true
-         self.coffeeProgressBar.trailingAnchor.constraint(equalTo: self.coffeeProgressBarSpace   .trailingAnchor).isActive = true
-         self.coffeeProgressBar.bottomAnchor.constraint(equalTo: self.coffeeProgressBarSpace .bottomAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: space.topAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: space.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: space.trailingAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: space.bottomAnchor).isActive = true
     }
     
     // MARK: - Table view methods
@@ -119,6 +129,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
         
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = self.getCurrentSkill().tasks[indexPath.item]
+        
+        if task.canRun() {
+            let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
+            task.profiter = self.getCurrentSkill()
+            task.runTask {
+                cell.runProgressBar(with: task)
+            }
+        }
     }
     
     // MARK: -  Collection view methods
@@ -165,18 +189,38 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.skillsCollectionView.reloadData()
         self.tasksTableView.reloadData()
+        self.updateSkillLevelBar()
+        self.updateSkillLevelLabel()
+    }
+    
+    func updateSkillLevelLabel() {
+        self.skillLevelLabel.invalidate()
+        
+        self.skillLevelLabel.skill = self.getCurrentSkill()
+        self.skillLevelLabel.setup()
+        self.skillLevelLabel.update()
+    }
+    
+    func updateSkillLevelBar() {
+        self.skillLevelProgressBar.invalidate()
+        
+        self.skillLevelProgressBar.skill = self.getCurrentSkill()
+        self.skillLevelProgressBar.setup()
+        self.skillLevelProgressBar.update()
     }
     
     // MARK: - Button callbacks
     
     @IBAction func onCoffee(_ sender: Any) {
-        self.coffeeProgressBar.startProgress()
-        ResourceFacade.instance.coffeeManager.runTask()
+        ResourceFacade.instance.coffeeManager.runTask {
+            self.coffeeProgressBar.startProgress()
+        }
     }
     
     @IBAction func onWork(_ sender: Any) {
-        self.workProgressBar.startProgress()
-        ResourceFacade.instance.workManager.runTask()
+        ResourceFacade.instance.workManager.runTask {
+             self.workProgressBar.startProgress()
+        }
     }
     
     

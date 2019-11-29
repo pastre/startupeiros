@@ -62,7 +62,7 @@ protocol Identifier {
 }
 
 @objc protocol BindedSupplicant {
-    @objc func update()
+    @objc func update(_ notification: NSNotification)
 }
 
 protocol BindedSupplicator {
@@ -74,4 +74,8 @@ protocol ProgressSupplicant {
     func getProgress() -> CGFloat
     func isDone() -> Bool
     func onComplete()
+}
+
+protocol Bindable {
+    func getQueueName() -> String
 }

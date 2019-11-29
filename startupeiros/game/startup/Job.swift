@@ -49,10 +49,5 @@ class Job: Profiter, Identifier {
         }.reduce(0, +)
     }
     
-    func debugJob() {
-        for skill in self.skills {
-            skill.debugSkill()
-        }
-    }
     
 }

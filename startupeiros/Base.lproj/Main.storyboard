@@ -259,7 +259,7 @@ Cg
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nível 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zK-6g-yip">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nível 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zK-6g-yip" customClass="SkillLevelLabel" customModule="startupeiros" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="54.5" width="56" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <nil key="textColor"/>
@@ -533,6 +533,7 @@ Cg
                                                 <connections>
                                                     <outlet property="taskIcon" destination="m8a-wE-2z9" id="W2M-Lb-Fth"/>
                                                     <outlet property="taskLabel" destination="M4v-B6-8b8" id="CpS-Hn-7zH"/>
+                                                    <outlet property="taskProgressBarSpace" destination="iy3-0Q-7N5" id="AxO-hI-Qxh"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -629,6 +630,8 @@ Cg
                     <connections>
                         <outlet property="coffeeProgressBarSpace" destination="WWj-TT-j1y" id="kLQ-WU-D1Q"/>
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
+                        <outlet property="skillLevelBarSpace" destination="Bh1-q0-Vj8" id="kW4-kn-zNh"/>
+                        <outlet property="skillLevelLabel" destination="3zK-6g-yip" id="2SE-Zg-Krd"/>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
                         <outlet property="skillsCollectionView" destination="8BJ-lD-gec" id="Ur6-n1-YWK"/>
                         <outlet property="tasksTableView" destination="G19-za-dnI" id="4jq-Do-cT2"/>
