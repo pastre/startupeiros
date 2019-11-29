@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillsCollectionView: UICollectionView!
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var skillLevelBarSpace: UIView!
+    @IBOutlet weak var skillLevelLabel: UILabel!
     
     var skills: [Skill]!
     var currentSelected = 0
