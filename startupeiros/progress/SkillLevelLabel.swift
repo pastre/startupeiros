@@ -11,4 +11,26 @@ import UIKit
 
 class SkillLevelLabel: SupplicantLabel {
     
+    var skill: Skill?
+    
+    override func setup() {
+        guard let skill = self.skill else { return }
+        
+        for task in skill.tasks {
+            EventBinder.bind(self, to: task)
+        }
+    }
+    
+    
+    override func update() {
+        guard let skill = self.skill else { return }
+        
+        self.text = "Level \(Int(skill.getCurrentAmount()))"
+    }
+    
+    func invalidate() {
+        EventBinder.unbind(clas: self)
+    }
+    
 }
+

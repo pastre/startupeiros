@@ -59,6 +59,4 @@ class Skill: Profiter, Producer , Identifier {
         self.profiter.receive(amount, from: self)
     }
     
-    
-    
 }

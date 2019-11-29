@@ -12,6 +12,11 @@ import UIKit
 class StepperBar: ProgressBarView {
     
     override func update(_ notification: NSNotification) {
+        self.update()
+    }
+    
+    func update() {
+        
         self.runAnimation(0.5)
     }
     

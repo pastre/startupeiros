@@ -17,7 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillsCollectionView: UICollectionView!
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var skillLevelBarSpace: UIView!
-    @IBOutlet weak var skillLevelLabel: UILabel!
+    @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
     
     var skills: [Skill]!
     var currentSelected = 0
@@ -66,6 +66,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupSkillsCollectionView()
         self.setupTasksTableView()
         self.setupSkillLevelBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -189,6 +190,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.skillsCollectionView.reloadData()
         self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
+        self.updateSkillLevelLabel()
+    }
+    
+    func updateSkillLevelLabel() {
+        self.skillLevelLabel.invalidate()
+        
+        self.skillLevelLabel.skill = self.getCurrentSkill()
+        self.skillLevelLabel.setup()
+        self.skillLevelLabel.update()
     }
     
     func updateSkillLevelBar() {
@@ -196,6 +206,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.skillLevelProgressBar.skill = self.getCurrentSkill()
         self.skillLevelProgressBar.setup()
+        self.skillLevelProgressBar.update()
     }
     
     // MARK: - Button callbacks
