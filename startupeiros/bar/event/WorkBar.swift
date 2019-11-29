@@ -15,8 +15,7 @@ class WorkBar: ProgressBarView{
     func startProgress() {
         EventBinder.bind(self, to: .workStart)
     }
-    
-    
+
 }
 
 

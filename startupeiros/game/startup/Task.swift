@@ -28,7 +28,11 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable 
     // MARK: - Coaster
     func onStart() {
         self.coast(from: self.giver)
-        EventBinder.trigger(event: .work)
+        
+        let payload = [
+            "duration": self.timer?.getDuration()
+        ]
+        EventBinder.trigger(event: self, payload: payload)
     }
     
     func canRun() -> Bool {
@@ -84,14 +88,15 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable 
     }
     
     // MARK: - Instance methods
-    func runTask() {
+    func runTask(configure: @escaping () -> () ) {
         self.timer =  TimerFactory.timer(delegate: self)
+        configure()
         self.timer?.run()
     }
     
     // MARK: - Timer  Delegate
     func onTrigger() {
-        print("Trigger  ")
+//        print("Trigger  ")
     }
     
     func onComplete() {

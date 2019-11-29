@@ -11,6 +11,7 @@ import UIKit
 
 class ProgressBarView: UIView, BindedSupplicant {
     
+    var progressViewWidthConstraint: NSLayoutConstraint?
     var completion: CGFloat = 0
     let progressView: UIView! = {
         let view  = UIView()
@@ -41,23 +42,23 @@ class ProgressBarView: UIView, BindedSupplicant {
         self.progressView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.progressView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        self.progressView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        
-        self.progressView.transform = self.progressView.transform.scaledBy(x: 0, y: 1)
-       
+        self.progressViewWidthConstraint =  self.progressView.widthAnchor.constraint(equalToConstant: 0)
+            
+        self.progressViewWidthConstraint?.isActive = true
     }
     
     func update(_ notification: NSNotification) {
-        
+        print("Notified by", notification.name)
         guard let duration = notification.userInfo?["duration"] as? TimeInterval else { return }
+        
         self.runAnimation(duration)
     }
     
     func runAnimation(_ duration: TimeInterval) {
-        
         UIView.animate(withDuration: duration, animations: {
-            self.progressView.transform = .identity
+            self.progressViewWidthConstraint?.constant = self.frame.width
+            
+            self.layoutIfNeeded()
         }) { (_) in
             self.onComplete()
         }
@@ -67,7 +68,9 @@ class ProgressBarView: UIView, BindedSupplicant {
      func onComplete() {
         
         EventBinder.unbind(clas: self)
-        self.progressView.transform = self.progressView.transform.scaledBy(x: 0, y: 1)
+        
+        self.progressViewWidthConstraint?.constant = 0
+        self.layoutIfNeeded()
     }
 }
 

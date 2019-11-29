@@ -51,7 +51,10 @@ class TaskTableViewCell: UITableViewCell {
         
         bar.topAnchor.constraint(equalTo: self.taskProgressBarSpace.topAnchor).isActive = true
         
+        self.layoutIfNeeded()
+        
         bar.startProgress()
+        
     }
 
 }

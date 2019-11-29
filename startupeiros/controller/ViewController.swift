@@ -59,6 +59,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updateCurrentSelectedSkill()
+        
+//        ResourceFacade.instance.workManager.accumulated = 1000
     }
     
     // MARK: - Setup methods
@@ -121,14 +123,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = self.getCurrentSkill().tasks[indexPath.item]
         
         if task.canRun() {
             let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
-//            cell.runProgressBar(with: task)
             task.profiter = self.getCurrentSkill()
-            task.runTask()
+            task.runTask {
+                cell.runProgressBar(with: task)
+            }
         }
     }
     
@@ -181,13 +188,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Button callbacks
     
     @IBAction func onCoffee(_ sender: Any) {
-        self.coffeeProgressBar.startProgress()
-        ResourceFacade.instance.coffeeManager.runTask()
+        ResourceFacade.instance.coffeeManager.runTask {
+            self.coffeeProgressBar.startProgress()
+        }
     }
     
     @IBAction func onWork(_ sender: Any) {
-        self.workProgressBar.startProgress()
-        ResourceFacade.instance.workManager.runTask()
+        ResourceFacade.instance.workManager.runTask {
+             self.workProgressBar.startProgress()
+        }
     }
     
     

@@ -48,4 +48,13 @@ class EventBinder {
         }
         notificationCenter.post(name: event.asNotificationName(), object: nil)
     }
+    
+    
+    static func trigger(event: Bindable, payload: [String: Any]? = nil) {
+        if let payload = payload {
+            notificationCenter.post(name: NSNotification.Name(rawValue: event.getQueueName()), object: nil, userInfo: payload)
+            return
+        }
+        notificationCenter.post(name: NSNotification.Name(rawValue: event.getQueueName()), object: nil)
+    }
 }

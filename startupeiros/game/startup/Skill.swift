@@ -56,10 +56,6 @@ class Skill: Profiter, Producer , Identifier {
         self.profiter.receive(amount, from: self)
     }
     
-    func debugSkill() {
-        for task in self.tasks {
-            task.runTask()
-        }
-    }
+    
     
 }

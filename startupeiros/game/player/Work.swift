@@ -56,7 +56,6 @@ class Work: PlayerProducer, Coaster {
         self.coast(from: self.giver)
 
         EventBinder.trigger(event: .energy)
-
     }
     
 }
