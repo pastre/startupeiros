@@ -33,4 +33,5 @@ extension Double: Coin {
     func getRawAmount() -> Double {
         return self
     }
+    
 }

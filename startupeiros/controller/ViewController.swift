@@ -59,8 +59,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updateCurrentSelectedSkill()
-        
-//        ResourceFacade.instance.workManager.accumulated = 1000
     }
     
     // MARK: - Setup methods

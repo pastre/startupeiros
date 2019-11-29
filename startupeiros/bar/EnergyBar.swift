@@ -9,12 +9,23 @@
 import Foundation
 import UIKit
 
-class EnergyBar: ProgressBarView {
+class EnergyBar: StepperBar {
+    
+    override func getProgress() -> CGFloat {
+        return CGFloat(ResourceFacade.instance.coffeeManager.accumulated / 10)
+    }
+    
+    override func update(_ notification: NSNotification) {
+        print("Energy bar is updated")
+        super.update(notification)
+    }
     
     func setup() {
         EventBinder.bind(self, to: .energy)
     }
     
-    
+    override func onComplete() {
+        
+    }
     
 }

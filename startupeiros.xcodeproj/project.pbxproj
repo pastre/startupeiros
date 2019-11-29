@@ -45,6 +45,8 @@
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
+		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
+		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
 		D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8613238A03B400A9843F /* PlayerFacade.swift */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
@@ -113,6 +115,8 @@
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
+		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
 		D7AF8613238A03B400A9843F /* PlayerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFacade.swift; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
@@ -217,10 +221,12 @@
 			isa = PBXGroup;
 			children = (
 				D7515A7B238F7F4300290A4A /* ProgressBarView.swift */,
+				D7A9A33E23914ED40061405A /* StepperBar.swift */,
 				D7515A76238F7EE300290A4A /* CoffeeBar.swift */,
 				D7515A74238F7EBB00290A4A /* EnergyBar.swift */,
 				D73CA57C23905ECC0085592D /* TaskBar.swift */,
 				D7515A80238FF94800290A4A /* WorkBar.swift */,
+				D7A9A34023915A9F0061405A /* SkillBar.swift */,
 				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 				D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */,
 			);
@@ -503,6 +509,7 @@
 				D75E34CC238C690800CD7482 /* Protocols.swift in Sources */,
 				D7EE5DCB23884C8A00399155 /* Model.swift in Sources */,
 				F097F71C238E22F100EA176E /* CreateGameViewController.swift in Sources */,
+				D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
 				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
@@ -526,6 +533,7 @@
 				D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */,
 				D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */,
 				D75E34D7238D772D00CD7482 /* Skill.swift in Sources */,
+				D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */,
 				D721941F238EF94B0069F11D /* Extensions.swift in Sources */,
 				F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,

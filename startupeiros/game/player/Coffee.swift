@@ -31,6 +31,5 @@ class Coffee: PlayerProducer {
         self.deliver(amount, to: self.profiter)
         
         EventBinder.trigger(event: .energy)
-
     }
 }
