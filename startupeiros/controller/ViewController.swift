@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillNameLabel: UILabel!
     @IBOutlet weak var skillsCollectionView: UICollectionView!
     @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet var coffeeButton: UIButton!
     
     var skills: [Skill]!
     var currentSelected = 0
@@ -54,6 +55,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.setupSkillsCollectionView()
         self.setupTasksTableView()
+        state(backView: self.view, view: self.workBarSpace)
     }
     
     override func viewDidAppear(_ animated: Bool) {
