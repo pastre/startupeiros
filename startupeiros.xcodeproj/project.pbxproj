@@ -69,6 +69,7 @@
 		F0D8537C23900BA1005CC468 /* bird-02.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537823900BA1005CC468 /* bird-02.png */; };
 		F0D8537D23900BA1005CC468 /* bird-01.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537923900BA1005CC468 /* bird-01.png */; };
 		F0D8537E23900BA1005CC468 /* bird-04.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537A23900BA1005CC468 /* bird-04.png */; };
+		F0D8538223917824005CC468 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8538123917824005CC468 /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		F0D8537823900BA1005CC468 /* bird-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-02.png"; sourceTree = "<group>"; };
 		F0D8537923900BA1005CC468 /* bird-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-01.png"; sourceTree = "<group>"; };
 		F0D8537A23900BA1005CC468 /* bird-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-04.png"; sourceTree = "<group>"; };
+		F0D8538123917824005CC468 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				F088F1682389A344006CCF49 /* Configurations.swift */,
 				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
 				D721941E238EF94B0069F11D /* Extensions.swift */,
+				F0D853832391782D005CC468 /* tutorial */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -377,6 +380,14 @@
 			path = bird.atlas;
 			sourceTree = "<group>";
 		};
+		F0D853832391782D005CC468 /* tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8538123917824005CC468 /* TutorialViewController.swift */,
+			);
+			path = tutorial;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -540,6 +551,7 @@
 				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
+				F0D8538223917824005CC468 /* TutorialViewController.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
 				D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */,
