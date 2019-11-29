@@ -15,8 +15,8 @@ class CoffeeBar: TimedProgressBar{
 
     override func startProgress() {
         print("Configuring supplicator")
-        self.supplicator = ProgressBarSupplicator(supplicant: self)
-        self.supplicator?.supplicate()
+//        self.supplicator = ProgressBarSupplicator(supplicant: self)
+//        self.supplicator?.supplicate()
     }
     
     
@@ -24,6 +24,7 @@ class CoffeeBar: TimedProgressBar{
         self.progressViewWidthConstraint?.constant = 0
         self.supplicator?.complete()
         self.supplicator = nil
+        
     }
     
     override func getProgress() -> CGFloat {

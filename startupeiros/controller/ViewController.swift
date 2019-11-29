@@ -126,7 +126,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if task.canRun() {
             let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
-            cell.runProgressBar(with: task)
+//            cell.runProgressBar(with: task)
+            task.profiter = self.getCurrentSkill()
             task.runTask()
         }
     }

@@ -24,6 +24,7 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
         self.name = name
         self.iconName = iconName
         self.giver = ResourceFacade.instance.workManager
+        
     }
     
     // MARK: - Coaster
@@ -98,7 +99,7 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster {
     }
     
     func onComplete() {
-//        self.deliver(10, to: self.profiter)
+        self.deliver(1, to: self.profiter)
     }
     
     func onInvalidated() {

@@ -15,9 +15,9 @@ class TaskBar: TimedProgressBar  {
     var task: Task?
 
     override func startProgress() {
-        print("Configuring supplicator")
-        self.supplicator = ProgressBarSupplicator(supplicant: self)
-        self.supplicator?.supplicate()
+//        print("Configuring supplicator")
+//        self.supplicator = ProgressBarSupplicator(supplicant: self)
+//        self.supplicator?.supplicate()
     }
     
     override func onComplete() {
