@@ -630,6 +630,7 @@ Cg
                     <connections>
                         <outlet property="coffeeProgressBarSpace" destination="WWj-TT-j1y" id="kLQ-WU-D1Q"/>
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
+                        <outlet property="skillLevelBarSpace" destination="Bh1-q0-Vj8" id="kW4-kn-zNh"/>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
                         <outlet property="skillsCollectionView" destination="8BJ-lD-gec" id="Ur6-n1-YWK"/>
                         <outlet property="tasksTableView" destination="G19-za-dnI" id="4jq-Do-cT2"/>

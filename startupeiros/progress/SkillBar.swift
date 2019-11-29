@@ -18,6 +18,17 @@ class SkillLevelBar: StepperBar {
     }
     
     func setup() {
-        EventBinder.bind(self, to: .energy)
+        for task in self.skill.tasks {
+            EventBinder.bind(self, to: task)
+        }
+    }
+    
+    func invalidate() {
+        EventBinder.unbind(clas: self)
+        
+    }
+    
+    override func onComplete() {
+        
     }
 }

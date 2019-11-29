@@ -26,7 +26,7 @@ class StepperBar: ProgressBarView {
             
             self.layoutIfNeeded()
         }) { (_) in
-            self.onComplete()
+//            self.onComplete()
         }
         
     }

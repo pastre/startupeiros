@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				D7515A8A23901D5700290A4A /* controller */,
-				D7515A73238F7EA900290A4A /* bar */,
+				D7515A73238F7EA900290A4A /* progress */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
 				D75E34C9238C682A00CD7482 /* game */,
 				F0D8536A238FFD3E005CC468 /* miniGames */,
@@ -217,20 +217,20 @@
 			path = startupeiros;
 			sourceTree = "<group>";
 		};
-		D7515A73238F7EA900290A4A /* bar */ = {
+		D7515A73238F7EA900290A4A /* progress */ = {
 			isa = PBXGroup;
 			children = (
+				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 				D7515A7B238F7F4300290A4A /* ProgressBarView.swift */,
 				D7A9A33E23914ED40061405A /* StepperBar.swift */,
 				D7515A76238F7EE300290A4A /* CoffeeBar.swift */,
 				D7515A74238F7EBB00290A4A /* EnergyBar.swift */,
+				D7A9A34023915A9F0061405A /* SkillBar.swift */,
 				D73CA57C23905ECC0085592D /* TaskBar.swift */,
 				D7515A80238FF94800290A4A /* WorkBar.swift */,
-				D7A9A34023915A9F0061405A /* SkillBar.swift */,
-				D7515A7E238F7F6800290A4A /* EventBinder.swift */,
 				D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */,
 			);
-			path = bar;
+			path = progress;
 			sourceTree = "<group>";
 		};
 		D7515A8A23901D5700290A4A /* controller */ = {

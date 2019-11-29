@@ -41,7 +41,10 @@ class Skill: Profiter, Producer , Identifier {
     func receive(_ amount: Coin, from producer: Producer) {
         
         self.currentValue.append(amount)
-        print("RECVD", amount, producer)
+        
+        if let task = producer as? Bindable {
+            EventBinder.trigger(event: task)
+        }
     }
     
     func getCurrentAmount() -> Double {

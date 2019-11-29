@@ -9,6 +9,7 @@
 import Foundation
 
 class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable {
+    
     var giver: Giver!
 
     var name: String
