@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBM-Hi-fw7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-576" y="694"/>
+            <point key="canvasLocation" x="-609" y="139"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -547,7 +547,7 @@ Cg
                                     <constraint firstItem="G19-za-dnI" firstAttribute="centerY" secondItem="0fi-bG-MLz" secondAttribute="centerY" id="ldP-QN-Aj2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIT-Wr-031">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIT-Wr-031" customClass="ButtonView" customModule="startupeiros" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="575.5" width="414" height="286.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGV-Hd-kwC">
@@ -556,7 +556,7 @@ Cg
                                             <color key="titleColor" red="0.07101624459028244" green="0.26519763469696045" blue="0.17851689457893372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="onCoffee:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iHU-hB-W5i"/>
+                                            <action selector="coffeeButton:" destination="XIT-Wr-031" eventType="touchUpInside" id="GyE-6f-j1c"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-Xv-IUh">
@@ -628,7 +628,6 @@ Cg
                     </view>
                     <connections>
                         <outlet property="buttonParents" destination="XIT-Wr-031" id="usU-0J-Y3g"/>
-                        <outlet property="coffeeButton" destination="xGV-Hd-kwC" id="WDP-Aq-aQ9"/>
                         <outlet property="coffeeProgressBarSpace" destination="WWj-TT-j1y" id="kLQ-WU-D1Q"/>
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
