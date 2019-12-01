@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aTe-V3-ChB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Drawing View Controller-->
+        <scene sceneID="71d-Hu-dr2">
+            <objects>
+                <viewController storyboardIdentifier="drawingView" id="aTe-V3-ChB" customClass="DrawingViewController" customModule="startupeiros" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GUJ-bd-UC1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="toC-cX-aE9">
+                                <rect key="frame" x="133" y="774" width="148" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="Wef-jA-91n"/>
+                                    <constraint firstAttribute="height" constant="30" id="tRO-MU-8aw"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="slider:" destination="pxm-Wo-uRd" eventType="valueChanged" id="zIh-wi-cB0"/>
+                                    <action selector="sliderChanged:" destination="pxm-Wo-uRd" eventType="valueChanged" id="OvR-2C-dMC"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="g6G-Xo-VaE" firstAttribute="bottom" secondItem="toC-cX-aE9" secondAttribute="bottom" constant="58" id="iAY-sf-CRI"/>
+                            <constraint firstItem="toC-cX-aE9" firstAttribute="centerX" secondItem="g6G-Xo-VaE" secondAttribute="centerX" id="k31-bi-6cq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g6G-Xo-VaE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HmZ-bf-zcE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pxm-Wo-uRd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="80.357142857142847"/>
+        </scene>
+    </scenes>
+</document>
