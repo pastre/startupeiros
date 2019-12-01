@@ -101,7 +101,7 @@ class PlayerProducer: Producer, TimerDelegate, BindedSupplicator, Upgradeable {
     
     func getProductionResult() -> Double {
         
-        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionOwned()
     }
     
     func getUpgradeCount() -> Double {
