@@ -116,7 +116,7 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable,
     }
     
     func getProductionResult() -> Double {
-        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionOwned()
     }
     
     // MARK: - Instance methods
