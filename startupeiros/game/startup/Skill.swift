@@ -9,6 +9,7 @@
 import Foundation
 
 class Skill: Profiter, Producer , Identifier {
+    
     func getName() -> String {
         return self.name
     }
@@ -57,6 +58,23 @@ class Skill: Profiter, Producer , Identifier {
     // MARK: - Producer
     func deliver(_ amount: Coin, to profiter: Profiter) {
         self.profiter.receive(amount, from: self)
+    }
+    
+    func getProductionMultiplier() -> Double {
+        
+        return 1
+    }
+    
+    func getProductionBase() -> Double {
+        return 1.67
+    }
+    
+    func getProductionOwned() -> Double {
+        return self.getCurrentAmount()
+    }
+    
+    func getProductionResult() -> Double {
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
     }
     
 }

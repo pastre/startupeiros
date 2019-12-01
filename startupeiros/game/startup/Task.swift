@@ -24,15 +24,13 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
         self.iconName = iconName
         self.giver = ResourceFacade.instance.workManager
         self.upgradeCount = 0
-        
-        
     }
     
     // MARK: - Coaster
     func onStart() {
         self.coast(from: self.giver)
         
-        let payload = [
+        let payload: [String : Any] = [
             "duration": self.timer?.getDuration()
         ]
         EventBinder.trigger(event: self, payload: payload)
@@ -49,11 +47,11 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     }
     
     func getCoastPerRun() -> Coin {
-        return 1 * getMultiplier()
+        return 1 * getCoastMultiplier()
     }
     
-    func getMultiplier() -> Double {
-        return 1
+    func getCoastMultiplier() -> Double {
+        return 2 - (1/self.upgradeCount)
     }
     
     func coast(from giver: Giver) {
@@ -98,8 +96,23 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     // MARK: - Producer
     
     func deliver(_ amount: Coin, to profiter: Profiter) {
-        
         profiter.receive(amount, from: self)
+    }
+    
+    
+    func getProductionBase() -> Double {
+        return 1.67
+    }
+    func getProductionMultiplier() -> Double {
+        return 1
+    }
+    
+    func getProductionOwned() -> Double {
+        return self.upgradeCount
+    }
+    
+    func getProductionResult() -> Double {
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
     }
     
     // MARK: - Instance methods
@@ -111,11 +124,11 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     
     // MARK: - Timer  Delegate
     func onTrigger() {
-//        print("Trigger  ")
+        
     }
     
     func onComplete() {
-        self.deliver(1, to: self.profiter)
+        self.deliver(self.getProductionResult(), to: self.profiter)
     }
     
     func onInvalidated() {

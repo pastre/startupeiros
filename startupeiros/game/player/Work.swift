@@ -10,6 +10,7 @@ import Foundation
 
 
 class Work: PlayerProducer, Coaster {
+    
     var giver: Giver!
     
     override func triggerUpdate() {
@@ -35,6 +36,10 @@ class Work: PlayerProducer, Coaster {
         return WorkCoin()
     }
     
+    func getCoastMultiplier() -> Double {
+        return 0.7887
+    }
+    
     func getMultiplier() -> Double {
         return 1
     }
@@ -50,7 +55,7 @@ class Work: PlayerProducer, Coaster {
     }
     
    override  func onComplete() {
-        let amount = WorkCoin()
+        let amount = self.getProductionResult()
     
         self.deliver(amount, to: self.profiter)
         self.coast(from: self.giver)
@@ -58,4 +63,34 @@ class Work: PlayerProducer, Coaster {
         EventBinder.trigger(event: .energy)
     }
     
+    
+    
+    // MARK: - Upgradeable
+    
+    override func isUpgradeable() -> Bool {
+        
+        // todo: - Implement this
+        return true
+    }
+    
+   override  func getBaseUpgradeCoast() -> Double {
+        return 4
+    }
+    
+    override func getUpgradeCoast() -> Double {
+        
+        return 4
+    }
+    
+   override  func getGrowthRate() -> Double {
+        return 1.07
+    }
+    
+   override  func getOwnedCount() -> Double {
+         return self.upgradeCount
+    }
+    
+   override  func getUpgradeMultiplier() -> Double {
+        return 1
+    }
 }
