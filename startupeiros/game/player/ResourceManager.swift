@@ -10,6 +10,11 @@ import Foundation
 
 class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
     
+    func canTake(_ amount: Coin) -> Bool {
+        return amount.getRawAmount() <= self.accumulated
+    }
+    
+    
     var currentTask: T?
     var accumulated: Double = 0
 

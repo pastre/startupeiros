@@ -8,21 +8,23 @@
 
 import Foundation
 
-class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable {
+class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable {
     
     var giver: Giver!
 
-    var name: String
-    var iconName: String
+    var upgradeCount: Double! = 0
+    var name: String!
+    var iconName: String!
     
     var timer: TaskTimer?
     var profiter: Profiter!
-    
     
     required init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
         self.giver = ResourceFacade.instance.workManager
+        self.upgradeCount = 0
+        
         
     }
     
@@ -68,13 +70,25 @@ class Task: Producer, Upgradeable, TimerDelegate, Identifier, Coaster, Bindable 
     }
     
     // MARK: - Upgradeable
-
+    
     func isUpgradeable() -> Bool {
-        return false
+        return self.giver.canTake(self.getUpgradeCoast()) 
+    }
+    
+    func getBaseUpgradeCoast() -> Double {
+        return 4
     }
     
     func getUpgradeCoast() -> Double {
-        return 0
+        return self.getBaseUpgradeCoast() *  pow(self.getGrowthRate(), self.getOwnedCount())
+    }
+    
+    func getGrowthRate() -> Double {
+        return 1.07
+    }
+    
+    func getOwnedCount() -> Double {
+        return self.upgradeCount
     }
     
     func getUpgradeMultiplier() -> Double {

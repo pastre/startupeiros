@@ -29,6 +29,7 @@ protocol Coaster {
 
 protocol Giver {
     func take(_ amount: Coin)
+    func canTake(_ amount: Coin) -> Bool
 }
 
 protocol Producer {
@@ -42,7 +43,10 @@ protocol Profiter {
 
 protocol Upgradeable {
     func isUpgradeable() -> Bool
+    func getBaseUpgradeCoast() -> Double
     func getUpgradeCoast() -> Double
+    func getGrowthRate() -> Double
+    func getOwnedCount() -> Double
     func getUpgradeMultiplier() -> Double
 }
 
