@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable {
-    
+class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable, Balanceable {
+
     var giver: Giver!
 
-    var upgradeCount: Double! = 0
+    var upgradeCount: Double! = 1
     var name: String!
     var iconName: String!
     
@@ -23,7 +23,7 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
         self.name = name
         self.iconName = iconName
         self.giver = ResourceFacade.instance.workManager
-        self.upgradeCount = 0
+        self.upgradeCount = 1
     }
     
     // MARK: - Coaster
@@ -51,7 +51,7 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     }
     
     func getCoastMultiplier() -> Double {
-        return 2 - (1/self.upgradeCount)
+        return 0.5 * self.getUpgradeCount()
     }
     
     func coast(from giver: Giver) {
@@ -93,6 +93,10 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
         return 1
     }
     
+    func upgrade() {
+        self.upgradeCount += 1
+    }
+    
     // MARK: - Producer
     
     func deliver(_ amount: Coin, to profiter: Profiter) {
@@ -117,7 +121,7 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     
     // MARK: - Instance methods
     func runTask(configure: @escaping () -> () ) {
-        self.timer =  TimerFactory.timer(delegate: self)
+        self.timer =  TimerFactory.timer(delegate: self, for: self)
         configure()
         self.timer?.run()
     }
@@ -129,6 +133,8 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     
     func onComplete() {
         self.deliver(self.getProductionResult(), to: self.profiter)
+        
+        self.upgrade()
     }
     
     func onInvalidated() {
@@ -139,6 +145,24 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable 
     
     func getQueueName() -> String {
         return self.getName()
+    }
+    
+    // MARK: - TimeBalanceable
+    func getDurationMultiplier() -> TimeInterval {
+        return 1 / (self.getUpgradeCount())
+    }
+    
+    func getBaseDuration() -> TimeInterval {
+        return 5
+    }
+    
+    func getDuration() -> TimeInterval {
+        return self.getDurationMultiplier() * self.getBaseDuration()
+    }
+    
+    func getUpgradeCount() -> Double {
+        print("----- task upgrade count", self.upgradeCount )
+        return self.upgradeCount
     }
 }
 

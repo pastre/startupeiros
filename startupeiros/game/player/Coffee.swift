@@ -15,6 +15,7 @@ class Coffee: PlayerProducer {
     }
     
     override func onStart() {
+        
         let payload = [
             "duration": self.taskTimer?.getDuration(),
 //            "event": .coffeeStart
@@ -31,10 +32,12 @@ class Coffee: PlayerProducer {
         self.deliver(amount, to: self.profiter)
         
         EventBinder.trigger(event: .energy)
+        
+        self.upgrade()
     }
     
     override func getProductionMultiplier() -> Double {
-        return 0.5
+        return 0.8
     }
     
     override func getProductionBase() -> Double {
@@ -42,11 +45,15 @@ class Coffee: PlayerProducer {
     }
     
     override func getProductionOwned() -> Double {
-        return self.upgradeCount
+        return self.getUpgradeCount()
     }
     
     override func getProductionResult() -> Double {
         return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
+    }
+    
+    override func upgrade() {
+        self.manager.upgrade()
     }
     
     // MARK: - Upgradeable
@@ -71,7 +78,7 @@ class Coffee: PlayerProducer {
     }
     
     override func getOwnedCount() -> Double {
-         return self.upgradeCount
+         return self.getUpgradeCount()
     }
     
     override func getUpgradeMultiplier() -> Double {

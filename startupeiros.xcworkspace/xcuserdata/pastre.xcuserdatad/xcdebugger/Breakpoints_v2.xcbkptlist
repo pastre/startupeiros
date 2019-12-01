@@ -21,16 +21,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CD0978F6-628C-4823-84DA-E1769AD7FAAA"
+            uuid = "8EA740BB-07EC-42F6-B8EE-130BD793CB95"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "startupeiros/progress/SupplicantLabel.swift"
+            filePath = "startupeiros/game/player/Coffee.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "update(_:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "onTrigger()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

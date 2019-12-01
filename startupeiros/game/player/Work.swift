@@ -13,6 +13,11 @@ class Work: PlayerProducer, Coaster {
     
     var giver: Giver!
     
+    required init(_ profiter: Profiter, manager: Balanceable) {
+        super.init(profiter, manager: manager)
+        self.giver  = ResourceFacade.instance.coffeeManager
+    }
+    
     override func triggerUpdate() {
         EventBinder.trigger(event: .work)
     }
@@ -49,10 +54,10 @@ class Work: PlayerProducer, Coaster {
     }
     
     
-    required init(_ profiter: Profiter) {
-        super.init(profiter)
-        self.giver = ResourceFacade.instance.coffeeManager
-    }
+//    required init(_ profiter: Profiter, manager: ResourceManager<PlayerProducer>) {
+//        super.init(profiter, manager: manager)
+//        self.giver = ResourceFacade.instance.coffeeManager
+//    }
     
    override  func onComplete() {
         let amount = self.getProductionResult()
@@ -61,6 +66,9 @@ class Work: PlayerProducer, Coaster {
         self.coast(from: self.giver)
 
         EventBinder.trigger(event: .energy)
+    
+
+        self.upgrade()
     }
     
     
@@ -87,10 +95,14 @@ class Work: PlayerProducer, Coaster {
     }
     
    override  func getOwnedCount() -> Double {
-         return self.upgradeCount
+         return self.getUpgradeCount()
     }
     
    override  func getUpgradeMultiplier() -> Double {
         return 1
+    }
+    
+    override func upgrade() {
+        self.manager.upgrade()
     }
 }

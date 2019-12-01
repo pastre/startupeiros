@@ -52,6 +52,7 @@ protocol Upgradeable {
     func getGrowthRate() -> Double
     func getOwnedCount() -> Double
     func getUpgradeMultiplier() -> Double
+    func upgrade()
 }
 
 protocol Levelable {

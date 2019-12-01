@@ -55,6 +55,7 @@ class ProgressBarView: UIView, BindedSupplicant {
     }
     
     func runAnimation(_ duration: TimeInterval) {
+        print("Running task", duration)
         UIView.animate(withDuration: duration, animations: {
             self.progressViewWidthConstraint?.constant = self.frame.width
             

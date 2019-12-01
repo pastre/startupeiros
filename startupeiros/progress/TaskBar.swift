@@ -16,4 +16,6 @@ class TaskBar: ProgressBarView  {
         EventBinder.bind(self, to: task)
     }
     
+    
+    
 }

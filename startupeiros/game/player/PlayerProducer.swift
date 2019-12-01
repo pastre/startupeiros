@@ -9,32 +9,14 @@
 import Foundation
 
 class PlayerProducer: Producer, TimerDelegate, BindedSupplicator, Upgradeable {
-    var upgradeCount: Double! = 0
-    
-    
-    func getProductionMultiplier() -> Double {
-        return 1
-    }
-    
-    func getProductionBase() -> Double {
-        return 1.67
-    }
-    
-    func getProductionOwned() -> Double {
-        return self.upgradeCount
-    }
-    
-    func getProductionResult() -> Double {
-        
-        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
-    }
-    
-  
+
+    var manager: Balanceable!
     var profiter: Profiter!
     var taskTimer: TaskTimer?
     
-    required init(_  profiter: Profiter) {
+    required init(_  profiter: Profiter, manager: Balanceable) {
         self.profiter = profiter
+        self.manager = manager
     }
 
     func onStart() {
@@ -64,7 +46,7 @@ class PlayerProducer: Producer, TimerDelegate, BindedSupplicator, Upgradeable {
     }
     
     func run() {
-        self.taskTimer = TimerFactory.timer(delegate: self)
+        self.taskTimer = TimerFactory.timer(delegate: self, for: self.manager)
         
         self.taskTimer?.run()
     }
@@ -98,5 +80,31 @@ class PlayerProducer: Producer, TimerDelegate, BindedSupplicator, Upgradeable {
     func getUpgradeMultiplier() -> Double {
         fatalError("\(self) did not implement this method!")
     }
+    
+    func upgrade() {
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    // MARK: - Producer
 
+    func getProductionMultiplier() -> Double {
+        return 1
+    }
+    
+    func getProductionBase() -> Double {
+        return 1.67
+    }
+    
+    func getProductionOwned() -> Double {
+        return self.getUpgradeCount()
+    }
+    
+    func getProductionResult() -> Double {
+        
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
+    }
+    
+    func getUpgradeCount() -> Double {
+        return self.manager.getUpgradeCount()
+    }
 }
