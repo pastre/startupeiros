@@ -18,7 +18,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var skillLevelBarSpace: UIView!
     @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
-    
+    @IBOutlet weak var energyView: UIView!
+    @IBOutlet weak var coffeeView: UIView!
+   
     var skills: [Skill]!
     var currentSelected = 0
     
@@ -71,10 +73,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        self.setupGestures()
         self.updateCurrentSelectedSkill()
     }
     
     // MARK: - Setup methods
+//
+//    func setupGestures() {
+//        let coffeeGesture = UIGestureRecognizer(target: self, action: #selector(self.onCoffee(_:)))
+//        let workGesture = UIGestureRecognizer(target: self, action: #selector(self.onWork(_:)))
+//
+//        self.coffeeView.isUserInteractionEnabled = true
+//        self.energyView.isUserInteractionEnabled = true
+//
+//        self.coffeeView.addGestureRecognizer(coffeeGesture)
+//        self.energyView.addGestureRecognizer(workGesture)
+//
+//        print("Configured gestures")
+//    }
 
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
@@ -163,9 +179,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.skillIcon.image = UIImage(named: "failedToLoadTexture")
         
         if indexPath.item == self.currentSelected {
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .clear
         }
         
         return cell
