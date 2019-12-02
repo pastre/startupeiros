@@ -23,16 +23,21 @@ protocol Coaster {
     
     func canRun() -> Bool
     func getCoastPerRun() -> Coin
-    func getMultiplier() -> Double
+    func getCoastMultiplier() -> Double
     func coast(from giver: Giver)
 }
 
 protocol Giver {
     func take(_ amount: Coin)
+    func canTake(_ amount: Coin) -> Bool
 }
 
 protocol Producer {
     var profiter: Profiter! { get set }
+    func getProductionMultiplier() -> Double
+    func getProductionBase() -> Double
+    func getProductionOwned() -> Double
+    func getProductionResult() -> Double
     func deliver(_ amount: Coin, to profiter: Profiter)
 }
 
@@ -42,8 +47,12 @@ protocol Profiter {
 
 protocol Upgradeable {
     func isUpgradeable() -> Bool
+    func getBaseUpgradeCoast() -> Double
     func getUpgradeCoast() -> Double
+    func getGrowthRate() -> Double
+    func getOwnedCount() -> Double
     func getUpgradeMultiplier() -> Double
+    func upgrade()
 }
 
 protocol Levelable {

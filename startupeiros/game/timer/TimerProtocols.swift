@@ -27,4 +27,15 @@ protocol Timeable {
     func isRunning() -> Bool
     func run()
     func stop()
+    
+}
+
+protocol Balanceable {
+    
+    func getDurationMultiplier() -> TimeInterval
+    func getBaseDuration() -> TimeInterval
+    
+    func getDuration() -> TimeInterval
+    func getUpgradeCount() -> Double
+    func upgrade()
 }

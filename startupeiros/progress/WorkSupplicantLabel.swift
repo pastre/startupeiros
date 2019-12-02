@@ -17,7 +17,7 @@ class WorkSupplicantLabel: SupplicantLabel  {
     
     override func update() {
         let manager = ResourceFacade.instance.workManager
-        self.text = "\(manager.accumulated) WP"
+        self.text = "\(Int(manager.accumulated)) WP"
     }
     
 }

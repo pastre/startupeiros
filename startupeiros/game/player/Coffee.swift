@@ -9,12 +9,13 @@
 import Foundation
 
 class Coffee: PlayerProducer {
-    
+
     override func triggerUpdate() {
         EventBinder.trigger(event: .energy)
     }
     
     override func onStart() {
+        
         let payload = [
             "duration": self.taskTimer?.getDuration(),
 //            "event": .coffeeStart
@@ -27,9 +28,61 @@ class Coffee: PlayerProducer {
     }
     
     override func onComplete() {
-        let amount = CoffeeCoin()
+        let amount = self.getProductionResult()
         self.deliver(amount, to: self.profiter)
         
         EventBinder.trigger(event: .energy)
+        
+        self.upgrade()
     }
+    
+    override func getProductionMultiplier() -> Double {
+        return 0.8
+    }
+    
+    override func getProductionBase() -> Double {
+        return 1.67
+    }
+    
+    override func getProductionOwned() -> Double {
+        return self.getUpgradeCount()
+    }
+    
+    override func getProductionResult() -> Double {
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
+    }
+    
+    override func upgrade() {
+        self.manager.upgrade()
+    }
+    
+    // MARK: - Upgradeable
+    
+    override func isUpgradeable() -> Bool {
+        
+        // todo: - Implement this
+        return true
+    }
+    
+    override func getBaseUpgradeCoast() -> Double {
+        return 4
+    }
+    
+    override func getUpgradeCoast() -> Double {
+        
+        return self.getBaseUpgradeCoast() * pow(self.getOwnedCount(), self.getUpgradeMultiplier())
+    }
+    
+    override func getGrowthRate() -> Double {
+        return 1.07
+    }
+    
+    override func getOwnedCount() -> Double {
+         return self.getUpgradeCount()
+    }
+    
+    override func getUpgradeMultiplier() -> Double {
+        return 1
+    }
+
 }

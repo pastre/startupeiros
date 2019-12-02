@@ -8,10 +8,11 @@
 
 import Foundation
 
-class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
-    
+class ResourceManager<T>: Profiter, Giver, Balanceable where T: PlayerProducer{
+
     var currentTask: T?
     var accumulated: Double = 0
+    var upgradeCount: Double = 1
 
     func runTask(configure: @escaping() -> ()){
         let profiter = self
@@ -23,7 +24,7 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
             if !task.canRun()  { return }
         }
         
-        self.currentTask = T(profiter)
+        self.currentTask = T.init(profiter, manager: self)
         configure()
         self.currentTask?.run()
     }
@@ -38,16 +39,44 @@ class ResourceManager<T>: Profiter, Giver where T: PlayerProducer{
         self.triggerIfPossible()
     }
     
+    // MARK: - Giver
+    
     func take(_ amount: Coin) {
         self.accumulated -= amount.getRawAmount()
         print(self, accumulated)
         self.triggerIfPossible()
     }
     
+    func canTake(_ amount: Coin) -> Bool {
+        return amount.getRawAmount() <= self.accumulated
+    }
+    
     func triggerIfPossible() {
         guard let task = self.currentTask, let supplicator = task as? BindedSupplicator else { return }
         
         supplicator.triggerUpdate()
+    }
+    
+    
+    // MARK: - TimeBalanceable
+    func getDuration() -> TimeInterval {
+        return self.getBaseDuration() * self.getDurationMultiplier()
+    }
+    
+    func getDurationMultiplier() -> TimeInterval {
+        
+        return 1/(2 * self.upgradeCount)
+    }
+    func getBaseDuration() -> TimeInterval {
+        return 2
+    }
+    
+    func getUpgradeCount() -> Double {
+        return self.upgradeCount
+    }
+    
+    func upgrade() {
+        self.upgradeCount += 1
     }
     
 }
