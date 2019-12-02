@@ -143,6 +143,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.taskLabel.text = task.getName()
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        cell.selectionStyle = .none
         
         return cell
     }
