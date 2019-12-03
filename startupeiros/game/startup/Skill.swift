@@ -8,22 +8,15 @@
 
 import Foundation
 
-class Skill: Profiter, Producer , Identifier {
+class Skill: Profiter, Producer , Identifier, Upgradeable {
     
-    func getName() -> String {
-        return self.name
-    }
-
-    func getIconName() -> String {
-        return self.iconName
-    }
-
     private var name: String
     private var iconName: String
     
-    var profiter: Profiter!
+    var currentLevel: Double! = 1
+    var levelProgress: Double! = 0.01
     
-    var currentValue: [Coin]! = []
+    var profiter: Profiter!
     var tasks: [Task] = []
     
     
@@ -41,19 +34,13 @@ class Skill: Profiter, Producer , Identifier {
     // MARK: - Profiter
     func receive(_ amount: Coin, from producer: Producer) {
         
-        self.currentValue.append(amount)
+//        self.currentValue.append(amount)
+        self.upgrade()
         
         if let task = producer as? Bindable {
             EventBinder.trigger(event: task)
         }
     }
-    
-    func getCurrentAmount() -> Double {
-        return self.currentValue.map { (coin) -> Double in
-            return coin.getRawAmount()
-        }.reduce(0, +)
-    }
-
     
     // MARK: - Producer
     func deliver(_ amount: Coin, to profiter: Profiter) {
@@ -70,11 +57,62 @@ class Skill: Profiter, Producer , Identifier {
     }
     
     func getProductionOwned() -> Double {
-        return self.getCurrentAmount()
+        return self.getLevel()
     }
     
     func getProductionResult() -> Double {
         return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionMultiplier()
     }
     
+    // MARK: - Identifier
+    
+    func getName() -> String {
+        return self.name
+    }
+
+    func getIconName() -> String {
+        return self.iconName
+    }
+    
+    // MARK: - Upgradeable
+
+    func isUpgradeable() -> Bool {
+        self.levelProgress > 1
+    }
+    
+    func getBaseUpgradeCoast() -> Double {
+        return self.currentLevel
+    }
+    
+    func getUpgradeCoast() -> Double {
+        return self.currentLevel
+    }
+    
+    func getGrowthRate() -> Double {
+        return 0
+    }
+    
+    func getOwnedCount() -> Double {
+        return self.currentLevel
+    }
+    
+    func getUpgradeMultiplier() -> Double {
+        return 2
+    }
+    
+    func upgrade() {
+        self.levelProgress += 0.1
+        if self.isUpgradeable() {
+            self.levelProgress = 0
+            self.currentLevel += 1
+        }
+    }
+    
+    func getLevel() -> Double {
+        return self.currentLevel
+    }
+    
+    func getLevelProgress() -> Double {
+        return self.levelProgress
+    }
 }
