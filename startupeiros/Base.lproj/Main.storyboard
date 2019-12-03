@@ -59,16 +59,25 @@ Name</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdu-Cw-3r0">
-                                        <rect key="frame" x="204.5" y="7.5" width="56" height="50.5"/>
+                                        <rect key="frame" x="204.5" y="5" width="56" height="55.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fdu-Cw-3r0" secondAttribute="height" id="egv-XL-51Y"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21I-kY-s5w">
-                                        <rect key="frame" x="270" y="7.5" width="56" height="50.5"/>
+                                        <rect key="frame" x="270" y="5" width="56" height="55.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="21I-kY-s5w" secondAttribute="height" id="Iak-vY-YnE"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-gf-wSn">
-                                        <rect key="frame" x="336" y="7.5" width="55.5" height="50.5"/>
+                                        <rect key="frame" x="336" y="5" width="55.5" height="55.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qHv-gf-wSn" secondAttribute="height" multiplier="1:1" id="oR6-3d-FfD"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,10 +86,7 @@ Name</string>
                                     <constraint firstItem="fdu-Cw-3r0" firstAttribute="leading" secondItem="mXM-ka-DEs" secondAttribute="trailing" constant="10" id="4uk-Cp-MLs"/>
                                     <constraint firstItem="fdu-Cw-3r0" firstAttribute="width" secondItem="mXM-ka-DEs" secondAttribute="width" id="7Gv-Zx-WOj"/>
                                     <constraint firstItem="mXM-ka-DEs" firstAttribute="leading" secondItem="q8m-Qy-z4b" secondAttribute="trailing" constant="7.5" id="8Np-dJ-5vF"/>
-                                    <constraint firstItem="fdu-Cw-3r0" firstAttribute="height" secondItem="mXM-ka-DEs" secondAttribute="height" multiplier="0.900901" id="AYs-q9-zj0"/>
                                     <constraint firstItem="qHv-gf-wSn" firstAttribute="leading" secondItem="21I-kY-s5w" secondAttribute="trailing" constant="10" id="BKT-ap-J7F"/>
-                                    <constraint firstItem="qHv-gf-wSn" firstAttribute="height" secondItem="21I-kY-s5w" secondAttribute="height" id="FDa-bt-Gy5"/>
-                                    <constraint firstItem="21I-kY-s5w" firstAttribute="height" secondItem="fdu-Cw-3r0" secondAttribute="height" id="RwW-kb-tx6"/>
                                     <constraint firstItem="21I-kY-s5w" firstAttribute="leading" secondItem="fdu-Cw-3r0" secondAttribute="trailing" constant="10" id="SBo-rg-7ce"/>
                                     <constraint firstItem="qHv-gf-wSn" firstAttribute="centerY" secondItem="21I-kY-s5w" secondAttribute="centerY" id="Ufv-Ga-zg5"/>
                                     <constraint firstItem="21I-kY-s5w" firstAttribute="width" secondItem="fdu-Cw-3r0" secondAttribute="width" id="X6e-ln-v7n"/>

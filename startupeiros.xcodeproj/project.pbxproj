@@ -53,6 +53,7 @@
 		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
 		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
 		D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8613238A03B400A9843F /* PlayerFacade.swift */; };
+		D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
@@ -126,6 +127,7 @@
 		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
 		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
 		D7AF8613238A03B400A9843F /* PlayerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFacade.swift; sourceTree = "<group>"; };
+		D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HustlerProgressCircle.swift; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				D727F5E72396E62A0025F22D /* CircularProgressBar.swift */,
 				D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */,
 				D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */,
+				D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */,
 			);
 			path = progress;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
+				D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */,
 				D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */,
 				D799B6B4239453AE00BD6198 /* TimerFactory.swift in Sources */,
 				D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */,
