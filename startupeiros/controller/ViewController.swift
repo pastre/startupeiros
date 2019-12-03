@@ -20,7 +20,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
     @IBOutlet weak var energyView: UIView!
     @IBOutlet weak var coffeeView: UIView!
-   
+    @IBOutlet weak var hackerJobProgressSpace: UIView!
+    @IBOutlet weak var hipsterJobProgressSpace: UIView!
+    @IBOutlet weak var hustlerJobProgressSpace: UIView!
+    
     var skills: [Skill]!
     var currentSelected = 0
     
@@ -56,6 +59,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return bar
     }()
+    
+    let hackerProgressCircle: HackerProgressCircle = {
+        let bar = HackerProgressCircle()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        return bar
+    }()
+    
+    let hipsterProgressCircle: HipsterProgressCircle = {
+        let bar = HipsterProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +87,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupTasksTableView()
         self.setupSkillLevelBar()
         
+        self.setupHackerProgressCircle()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.updateCurrentSelectedSkill()
+        self.setupHipsterProgressCircle()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let bar = self.hackerProgressCircle
+        bar.layer.cornerRadius = bar.layer.frame.width / 2
+        bar.setup()
+        print("frame is", bar.layer.frame)
     }
     
     // MARK: - Setup methods
+    func setupHipsterProgressCircle() {
+        self.spaceFiller(self.hipsterJobProgressSpace, self.hipsterProgressCircle)
+        self.hipsterProgressCircle.layoutIfNeeded()
+    }
+    func setupHackerProgressCircle() {
+        self.spaceFiller(self.hackerJobProgressSpace, self.hackerProgressCircle)
+        self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
         self.tasksTableView.dataSource = self
@@ -192,6 +233,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
+        
+        self.hackerProgressCircle.layoutIfNeeded()
     }
     
     func updateSkillLevelLabel() {

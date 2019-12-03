@@ -30,16 +30,41 @@ enum PlayerClass: String {
     }
 }
 
-class GameDatabaseFacade {
+class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
+    func onCurrentJobUpdated(to newJob: JobProgressUpdate?) {
+        guard let newJob = newJob else { return }
+        var event: EventBinder.Event
+        
+        switch newJob.onClass {
+        case .hacker:
+                event = .hackerProgress
+                self.hackerProgress = newJob.newValue
+        case .hipster:
+                event = .hipsterProgress
+                self.hipsterProgress = newJob.newValue
+        case .hustler:
+                event = .hustlerProgress
+                self.hustlerProgress = newJob.newValue
+        case .none:
+            fatalError("Failed to pick a job!!!")
+        }
+        
+        EventBinder.trigger(event: event)
+    }
+    
     
     static let instance = GameDatabaseFacade()
     
     var supplicant:  GameDatabaseSupplicant!
     var jobs: [Job]?
     
+    var hackerProgress: Double! = 0
+    var hipsterProgress: Double! = 0
+    var hustlerProgress: Double! = 0
+    
     private init() {
         self.supplicant =  GameDatabaseSupplicant()
-        
+        self.supplicant.delegate = self
     }
     
     

@@ -10,7 +10,12 @@ import Foundation
 import FirebaseDatabase
 
 class JobProgressUpdate {
-    var newValue: String!
+    internal init(newValue: Double?, onClass: PlayerClass?) {
+        self.newValue = newValue
+        self.onClass = onClass
+    }
+    
+    var newValue: Double!
     var onClass: PlayerClass!
 }
 
@@ -35,9 +40,15 @@ class GameDatabaseSupplicant {
     }
     
     func onCurrent(snap: DataSnapshot) {
-       guard let rawDict = snap as? NSDictionary else {
+        guard let rawDict = snap.value as? NSDictionary else {
             self.delegate?.onCurrentJobUpdated(to: nil)
             return
+        }
+        
+        for key in rawDict.allKeys {
+            let newValue = rawDict[key] as! Double
+            let update = JobProgressUpdate(newValue: newValue, onClass: PlayerClass(from: key as! String))
+            self.delegate?.onCurrentJobUpdated(to: update)
         }
         
         print("value changed to", rawDict)

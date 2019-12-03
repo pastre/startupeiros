@@ -51,64 +51,44 @@ Name</string>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hacker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZC-mO-iYw">
-                                        <rect key="frame" x="171.5" y="13" width="37" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyS-yb-mYH">
-                                        <rect key="frame" x="218.5" y="16.5" width="185.5" height="7"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXM-ka-DEs">
+                                        <rect key="frame" x="139" y="5" width="55.5" height="55.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="7" id="Ca6-uw-YOs"/>
+                                            <constraint firstAttribute="width" secondItem="mXM-ka-DEs" secondAttribute="height" id="Xnx-hw-1Ev"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hustler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey8-1M-KEC">
-                                        <rect key="frame" x="171.5" y="26.5" width="38" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDe-nw-YOj">
-                                        <rect key="frame" x="219.5" y="30" width="184.5" height="7"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="7" id="Mql-Mg-2Gj"/>
-                                        </constraints>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdu-Cw-3r0">
+                                        <rect key="frame" x="204.5" y="7.5" width="56" height="50.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hipster" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLs-im-r7K">
-                                        <rect key="frame" x="171.5" y="40" width="38.5" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbw-BX-ivF">
-                                        <rect key="frame" x="220" y="43.5" width="184" height="7"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="7" id="mkH-LY-MGz"/>
-                                        </constraints>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21I-kY-s5w">
+                                        <rect key="frame" x="270" y="7.5" width="56" height="50.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-gf-wSn">
+                                        <rect key="frame" x="336" y="7.5" width="55.5" height="50.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ey8-1M-KEC" firstAttribute="top" secondItem="QZC-mO-iYw" secondAttribute="bottom" id="5U4-Tb-Z29"/>
-                                    <constraint firstAttribute="trailing" secondItem="AyS-yb-mYH" secondAttribute="trailing" constant="10" id="83m-4P-98Q"/>
-                                    <constraint firstItem="hDe-nw-YOj" firstAttribute="centerY" secondItem="ey8-1M-KEC" secondAttribute="centerY" id="C3e-6n-CJV"/>
-                                    <constraint firstItem="Nbw-BX-ivF" firstAttribute="centerY" secondItem="lLs-im-r7K" secondAttribute="centerY" id="Gac-6g-Ay1"/>
-                                    <constraint firstItem="Nbw-BX-ivF" firstAttribute="leading" secondItem="lLs-im-r7K" secondAttribute="trailing" constant="10" id="K6b-Sm-7h4"/>
-                                    <constraint firstItem="AyS-yb-mYH" firstAttribute="centerY" secondItem="QZC-mO-iYw" secondAttribute="centerY" id="LPk-Tk-aLp"/>
-                                    <constraint firstItem="ey8-1M-KEC" firstAttribute="leading" secondItem="q8m-Qy-z4b" secondAttribute="trailing" constant="40" id="On0-mO-2ai"/>
-                                    <constraint firstItem="QZC-mO-iYw" firstAttribute="leading" secondItem="q8m-Qy-z4b" secondAttribute="trailing" constant="40" id="Ppe-4b-aPC"/>
-                                    <constraint firstItem="hDe-nw-YOj" firstAttribute="trailing" secondItem="AyS-yb-mYH" secondAttribute="trailing" id="VOu-KK-1I7"/>
-                                    <constraint firstItem="Nbw-BX-ivF" firstAttribute="trailing" secondItem="hDe-nw-YOj" secondAttribute="trailing" id="bRf-Qf-deP"/>
-                                    <constraint firstItem="QZC-mO-iYw" firstAttribute="top" secondItem="Okm-eS-XYM" secondAttribute="top" constant="13" id="bti-q3-6za"/>
-                                    <constraint firstItem="hDe-nw-YOj" firstAttribute="leading" secondItem="ey8-1M-KEC" secondAttribute="trailing" constant="10" id="c93-yX-gI1"/>
-                                    <constraint firstItem="AyS-yb-mYH" firstAttribute="leading" secondItem="QZC-mO-iYw" secondAttribute="trailing" constant="10" id="cpd-ah-bBy"/>
-                                    <constraint firstItem="lLs-im-r7K" firstAttribute="top" secondItem="ey8-1M-KEC" secondAttribute="bottom" id="een-sE-N55"/>
-                                    <constraint firstItem="lLs-im-r7K" firstAttribute="leading" secondItem="q8m-Qy-z4b" secondAttribute="trailing" constant="40" id="qHb-qL-XEV"/>
+                                    <constraint firstItem="fdu-Cw-3r0" firstAttribute="leading" secondItem="mXM-ka-DEs" secondAttribute="trailing" constant="10" id="4uk-Cp-MLs"/>
+                                    <constraint firstItem="fdu-Cw-3r0" firstAttribute="width" secondItem="mXM-ka-DEs" secondAttribute="width" id="7Gv-Zx-WOj"/>
+                                    <constraint firstItem="mXM-ka-DEs" firstAttribute="leading" secondItem="q8m-Qy-z4b" secondAttribute="trailing" constant="7.5" id="8Np-dJ-5vF"/>
+                                    <constraint firstItem="fdu-Cw-3r0" firstAttribute="height" secondItem="mXM-ka-DEs" secondAttribute="height" multiplier="0.900901" id="AYs-q9-zj0"/>
+                                    <constraint firstItem="qHv-gf-wSn" firstAttribute="leading" secondItem="21I-kY-s5w" secondAttribute="trailing" constant="10" id="BKT-ap-J7F"/>
+                                    <constraint firstItem="qHv-gf-wSn" firstAttribute="height" secondItem="21I-kY-s5w" secondAttribute="height" id="FDa-bt-Gy5"/>
+                                    <constraint firstItem="21I-kY-s5w" firstAttribute="height" secondItem="fdu-Cw-3r0" secondAttribute="height" id="RwW-kb-tx6"/>
+                                    <constraint firstItem="21I-kY-s5w" firstAttribute="leading" secondItem="fdu-Cw-3r0" secondAttribute="trailing" constant="10" id="SBo-rg-7ce"/>
+                                    <constraint firstItem="qHv-gf-wSn" firstAttribute="centerY" secondItem="21I-kY-s5w" secondAttribute="centerY" id="Ufv-Ga-zg5"/>
+                                    <constraint firstItem="21I-kY-s5w" firstAttribute="width" secondItem="fdu-Cw-3r0" secondAttribute="width" id="X6e-ln-v7n"/>
+                                    <constraint firstItem="fdu-Cw-3r0" firstAttribute="centerY" secondItem="mXM-ka-DEs" secondAttribute="centerY" id="YnL-vq-sld"/>
+                                    <constraint firstItem="mXM-ka-DEs" firstAttribute="height" secondItem="Okm-eS-XYM" secondAttribute="height" multiplier="0.85" id="cLT-XG-FUW"/>
+                                    <constraint firstItem="qHv-gf-wSn" firstAttribute="width" secondItem="21I-kY-s5w" secondAttribute="width" id="g9e-uR-BBF"/>
+                                    <constraint firstItem="mXM-ka-DEs" firstAttribute="centerY" secondItem="Okm-eS-XYM" secondAttribute="centerY" id="kQg-pp-AWN"/>
+                                    <constraint firstItem="21I-kY-s5w" firstAttribute="centerY" secondItem="fdu-Cw-3r0" secondAttribute="centerY" id="rAg-3a-JYo"/>
                                     <constraint firstItem="q8m-Qy-z4b" firstAttribute="centerY" secondItem="Okm-eS-XYM" secondAttribute="centerY" id="rnM-ZU-JHu"/>
                                 </constraints>
                             </view>
@@ -665,6 +645,9 @@ Name</string>
                         <outlet property="coffeeView" destination="7zK-A5-rDd" id="Yap-n6-bVY"/>
                         <outlet property="energyBarSpace" destination="MWq-v6-Piw" id="Krd-Ff-cxd"/>
                         <outlet property="energyView" destination="k6w-ov-9sI" id="HSY-KW-2gd"/>
+                        <outlet property="hackerJobProgressSpace" destination="mXM-ka-DEs" id="faC-am-iK9"/>
+                        <outlet property="hipsterJobProgressSpace" destination="fdu-Cw-3r0" id="qak-JR-aoB"/>
+                        <outlet property="hustlerJobProgressSpace" destination="21I-kY-s5w" id="h2L-aV-gEc"/>
                         <outlet property="skillLevelBarSpace" destination="Bh1-q0-Vj8" id="kW4-kn-zNh"/>
                         <outlet property="skillLevelLabel" destination="3zK-6g-yip" id="2SE-Zg-Krd"/>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
