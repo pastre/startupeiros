@@ -14,11 +14,10 @@ class Skill: Profiter, Producer , Identifier, Upgradeable {
     private var iconName: String
     
     var currentLevel: Double! = 1
-    var levelProgress: Double! = 0.01
+    var levelProgress: Double! = 0
     
     var profiter: Profiter!
     var tasks: [Task] = []
-    
     
     required init(name: String, iconName: String) {
         self.name = name
@@ -102,9 +101,12 @@ class Skill: Profiter, Producer , Identifier, Upgradeable {
     
     func upgrade() {
         self.levelProgress += 0.1
+        
         if self.isUpgradeable() {
             self.levelProgress = 0
             self.currentLevel += 1
+
+            self.deliver(0, to: self.profiter)
         }
     }
     

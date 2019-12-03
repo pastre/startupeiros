@@ -32,7 +32,7 @@ class DatabaseAdmin {
         }
     }
     
-    func loadJobs(completion: ((Bool, [DatabaseJob]) -> Void)? = nil) -> [DatabaseJob]{
+    func loadJobs(completion: ((Bool, [DatabaseJob]) -> Void)? = nil){
         let db = Firestore.firestore()
         var jobList: [DatabaseJob] = []
         db.collection("Jobs").getDocuments() { (querySnapshot, err) in
@@ -57,6 +57,5 @@ class DatabaseAdmin {
                 }
             }
         }
-        return jobList
     }
 }

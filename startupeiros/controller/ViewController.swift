@@ -49,7 +49,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return bar
     }()
 
-    
     let skillLevelProgressBar: SkillLevelBar = {
         let bar = SkillLevelBar()
         
@@ -73,25 +72,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.setupGestures()
         self.updateCurrentSelectedSkill()
     }
     
     // MARK: - Setup methods
-//
-//    func setupGestures() {
-//        let coffeeGesture = UIGestureRecognizer(target: self, action: #selector(self.onCoffee(_:)))
-//        let workGesture = UIGestureRecognizer(target: self, action: #selector(self.onWork(_:)))
-//
-//        self.coffeeView.isUserInteractionEnabled = true
-//        self.energyView.isUserInteractionEnabled = true
-//
-//        self.coffeeView.addGestureRecognizer(coffeeGesture)
-//        self.energyView.addGestureRecognizer(workGesture)
-//
-//        print("Configured gestures")
-//    }
-
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
         self.tasksTableView.dataSource = self

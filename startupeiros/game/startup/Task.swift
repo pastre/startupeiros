@@ -12,7 +12,7 @@ class Task: Producer, TimerDelegate, Identifier, Coster, Bindable, Upgradeable, 
 
     var giver: Giver!
 
-    var upgradeCount: Double! = 1
+    var upgradeCount: Double!
     var name: String!
     var iconName: String!
     

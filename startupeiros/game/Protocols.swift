@@ -81,3 +81,7 @@ protocol ProgressSupplicant {
 protocol Bindable {
     func getQueueName() -> String
 }
+
+protocol Completable {
+    func getCompletedPercentage() -> Double
+}
