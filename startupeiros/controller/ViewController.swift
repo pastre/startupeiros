@@ -88,6 +88,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupSkillLevelBar()
         
         self.setupHackerProgressCircle()
+        self.setupHipsterProgressCircle()
         
     }
     
@@ -95,16 +96,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidAppear(animated)
         
         self.updateCurrentSelectedSkill()
-        self.setupHipsterProgressCircle()
+    }
+    
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let bar = self.hackerProgressCircle
-        bar.layer.cornerRadius = bar.layer.frame.width / 2
-        bar.setup()
-        print("frame is", bar.layer.frame)
+        self.setupProgressCircle(self.hackerProgressCircle)
+        self.setupProgressCircle(self.hipsterProgressCircle)
     }
     
     // MARK: - Setup methods
