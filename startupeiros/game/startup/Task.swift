@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable, Balanceable {
+class Task: Producer, TimerDelegate, Identifier, Coster, Bindable, Upgradeable, Balanceable {
 
     var giver: Giver!
 
@@ -28,7 +28,7 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable,
     
     // MARK: - Coaster
     func onStart() {
-        self.coast(from: self.giver)
+        self.cost(from: self.giver)
         
         let payload: [String : Any] = [
             "duration": self.timer?.getDuration()
@@ -43,19 +43,19 @@ class Task: Producer, TimerDelegate, Identifier, Coaster, Bindable, Upgradeable,
             }
         }
         
-        return self.getCoastPerRun().getRawAmount() <= ResourceFacade.instance.workManager.accumulated
+        return self.getCostPerRun().getRawAmount() <= ResourceFacade.instance.workManager.accumulated
     }
     
-    func getCoastPerRun() -> Coin {
-        return 1 * getCoastMultiplier()
+    func getCostPerRun() -> Coin {
+        return 1 * getCostMultiplier()
     }
     
-    func getCoastMultiplier() -> Double {
+    func getCostMultiplier() -> Double {
         return 0.5 * self.getUpgradeCount()
     }
     
-    func coast(from giver: Giver) {
-        giver.take(self.getCoastPerRun())
+    func cost(from giver: Giver) {
+        giver.take(self.getCostPerRun())
     }
     
     // MARK: - Identifier

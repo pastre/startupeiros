@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Work: PlayerProducer, Coaster {
+class Work: PlayerProducer, Coster {
     
     var giver: Giver!
     
@@ -37,11 +37,11 @@ class Work: PlayerProducer, Coaster {
         return ResourceFacade.instance.coffeeManager.accumulated >= 1
     }
     
-    func getCoastPerRun() -> Coin {
+    func getCostPerRun() -> Coin {
         return WorkCoin()
     }
     
-    func getCoastMultiplier() -> Double {
+    func getCostMultiplier() -> Double {
         return 0.7887
     }
     
@@ -49,8 +49,8 @@ class Work: PlayerProducer, Coaster {
         return 1
     }
     
-    func coast(from giver: Giver) {
-        giver.take(self.getCoastPerRun())
+    func cost(from giver: Giver) {
+        giver.take(self.getCostPerRun())
     }
     
     
@@ -63,7 +63,7 @@ class Work: PlayerProducer, Coaster {
         let amount = self.getProductionResult()
     
         self.deliver(amount, to: self.profiter)
-        self.coast(from: self.giver)
+        self.cost(from: self.giver)
 
         EventBinder.trigger(event: .energy)
     

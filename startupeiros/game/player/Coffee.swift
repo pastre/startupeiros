@@ -33,7 +33,7 @@ class Coffee: PlayerProducer {
         
         EventBinder.trigger(event: .energy)
         
-        self.upgrade()
+//        self.upgrade()
     }
     
     override func getProductionMultiplier() -> Double {
@@ -84,5 +84,7 @@ class Coffee: PlayerProducer {
     override func getUpgradeMultiplier() -> Double {
         return 1
     }
+    
+    
 
 }

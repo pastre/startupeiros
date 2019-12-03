@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()
-
+//        let vc = DecideStartViewController()
         for window in scene.windows {
             window.rootViewController = vc
         }
