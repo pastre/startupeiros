@@ -210,6 +210,7 @@
 				D7811A18238821F200784268 /* newTeam */,
 				D7FB129B2387201500D8B19A /* auth */,
 				D720015B2384F1D00087ADCE /* Main.storyboard */,
+				D7FB129923871BD700D8B19A /* DecideStartViewController.swift */,
 				D72001552384F1D00087ADCE /* AppDelegate.swift */,
 				D72001572384F1D00087ADCE /* SceneDelegate.swift */,
 				D72001632384F1D10087ADCE /* Info.plist */,
@@ -328,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				D7D28BC823870F19002ACF82 /* AuthReference.swift */,
-				D7FB129923871BD700D8B19A /* DecideStartViewController.swift */,
 				D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */,
 			);
 			path = auth;

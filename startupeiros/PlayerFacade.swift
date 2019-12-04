@@ -13,6 +13,7 @@ class PlayerFacade: NSObject {
     enum PlayerKeys: String {
         case roomId = "roomId"
         case playerClass = "playerClass"
+        case created = "created"
     }
     
     static func setPlayerRoomId(_ roomId: String){
@@ -23,11 +24,21 @@ class PlayerFacade: NSObject {
         UserDefaults.standard.set(playerClass, forKey: PlayerKeys.playerClass.rawValue)
     }
     
+    static func setPlayerCreated() {
+        UserDefaults.standard.set(true, forKey: PlayerKeys.created.rawValue)
+    }
+    
     static func createPlayer(classed className: String, in room: String) {
         self.setPlayerClass(className)
         self.setPlayerRoomId(room)
         
+        
+        
         print("Created player!", className, room)
+    }
+    
+    static func hasCreated() -> Bool? {
+        return UserDefaults.standard.bool(forKey: PlayerKeys.created.rawValue)
     }
     
     static func getPlayerClass() -> PlayerClass? {

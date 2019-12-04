@@ -36,6 +36,11 @@ class DecideStartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let created = PlayerFacade.hasCreated(), created == true {
+            
+        }
+        
         if self.hasJustCreated {
             self.presentGameView()
         } else if Authenticator.instance.hasCreated() {
