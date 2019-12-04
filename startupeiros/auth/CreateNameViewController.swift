@@ -62,7 +62,7 @@ class CreateNameViewController: UIViewController {
             guard let navParent = (self.navParent as? DecideStartViewController) else  { return }
             navParent.hasJustCreated  = true
             self.dismiss(animated: true) {
-                navParent.presentGameView()
+                navParent.presentCreateTeamView()
             }
         }
     }
