@@ -14,7 +14,7 @@ class SkillLevelBar: StepperBar {
     var skill: Skill!
     
     override func getProgress() -> CGFloat {
-        return CGFloat(self.skill.getCurrentAmount() / 10)
+        return CGFloat(self.skill.getLevelProgress())
     }
     
     func setup() {

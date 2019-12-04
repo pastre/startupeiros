@@ -18,13 +18,13 @@ protocol Lockable {
     func unlock()
 }
 
-protocol Coaster {
+protocol Coster {
     var giver: Giver! { get set }
     
     func canRun() -> Bool
-    func getCoastPerRun() -> Coin
-    func getCoastMultiplier() -> Double
-    func coast(from giver: Giver)
+    func getCostPerRun() -> Coin
+    func getCostMultiplier() -> Double
+    func cost(from giver: Giver)
 }
 
 protocol Giver {
@@ -55,13 +55,6 @@ protocol Upgradeable {
     func upgrade()
 }
 
-protocol Levelable {
-    func getAbsoluteLevelPoints() -> Int
-    func getLevel() -> Int
-    func getLevelProgress() -> Int
-    func getNextLevelRequirement() -> Int
-}
-
 
 protocol Identifier {
     func getName() -> String
@@ -87,4 +80,8 @@ protocol ProgressSupplicant {
 
 protocol Bindable {
     func getQueueName() -> String
+}
+
+protocol Completable {
+    func getCompletedPercentage() -> Double
 }

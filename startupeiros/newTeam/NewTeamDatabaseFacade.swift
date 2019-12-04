@@ -15,6 +15,13 @@ public enum FirebaseKeys: String  {
     case pickingClass = "pickingClass"
     case playerClass = "class"
     case teams = "teams"
+    case teamJobs = "teamJobs"
+    case currentTeamJob = "current"
+    case completedTeamJobs = "completed"
+    case hackerJobProgress = "hacker"
+    case hipsterJobProgress = "hipster"
+    case hustlerJobProgress = "hustler"
+    case none = "None"
 }
 class NewTeamDatabaseFacade {
     
@@ -87,9 +94,14 @@ class NewTeamDatabaseFacade {
     
     static func joinTeam(_ roomId: String, classed className: String, completion: @escaping(Error?) ->  ()) {
         guard let userId =  Authenticator.instance.getUserId() else { return }
-    self.rootRef.child(FirebaseKeys.teams.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue(
+//    self.rootRef.child(FirebaseKeys.teams.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue(
+    self.rootRef.child(FirebaseKeys.teams.rawValue).child(roomId).setValue(
             [
-                FirebaseKeys.playerClass.rawValue: className
+                FirebaseKeys.playersInRoom.rawValue : [userId : className],
+                FirebaseKeys.teamJobs.rawValue : [
+                FirebaseKeys.currentTeamJob.rawValue : "None",
+                FirebaseKeys.completedTeamJobs.rawValue : "None",
+                ]
             ]) {
             (error, ref) in
             
@@ -98,10 +110,9 @@ class NewTeamDatabaseFacade {
                 print("Erro!!!!", error)
                 return
             }
+    self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).setValue(nil)
                 
-        self.rootRef.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).setValue(nil)
-                
-            PlayerFacade.createPlayer(classed: className, in: roomId)
+        PlayerFacade.createPlayer(classed: className, in: roomId)
         }
 
     }

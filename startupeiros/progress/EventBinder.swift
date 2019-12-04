@@ -20,6 +20,11 @@ class EventBinder {
         case energy = "energy"
         case work = "work"
         
+        case hackerProgress = "hackerProgress"
+        case hipsterProgress = "hipsterProgress"
+        case hustlerProgress = "hustlerProgress"
+        
+        
         func asNotificationName() -> NSNotification.Name {
             return NSNotification.Name.init(rawValue: self.rawValue)
         }

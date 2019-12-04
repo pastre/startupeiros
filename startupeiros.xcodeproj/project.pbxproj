@@ -15,6 +15,9 @@
 		D72001622384F1D10087ADCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72001602384F1D10087ADCE /* LaunchScreen.storyboard */; };
 		D721941F238EF94B0069F11D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721941E238EF94B0069F11D /* Extensions.swift */; };
 		D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7219420238EFDD50069F11D /* ResourceManager.swift */; };
+		D727F5E82396E62A0025F22D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E72396E62A0025F22D /* CircularProgressBar.swift */; };
+		D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */; };
+		D727F5EC2396F6240025F22D /* HipsterProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */; };
 		D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA578239022CD0085592D /* TaskTableViewCell.swift */; };
 		D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA57C23905ECC0085592D /* TaskBar.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
@@ -31,7 +34,6 @@
 		D75A6EC02391968400D682D1 /* WorkSupplicantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A6EBF2391968400D682D1 /* WorkSupplicantLabel.swift */; };
 		D75E34CC238C690800CD7482 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CB238C690800CD7482 /* Protocols.swift */; };
 		D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */; };
-		D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D0238CCFC100CD7482 /* GameViewController.swift */; };
 		D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */; };
 		D75E34D5238D6D8100CD7482 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D4238D6D8100CD7482 /* Task.swift */; };
 		D75E34D7238D772D00CD7482 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34D6238D772D00CD7482 /* Skill.swift */; };
@@ -42,7 +44,8 @@
 		D75E34E7238EEC2600CD7482 /* SkillCompletionCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34E6238EEC2600CD7482 /* SkillCompletionCoin.swift */; };
 		D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34E8238EEC4000CD7482 /* CoffeeCoin.swift */; };
 		D75E34EB238EEC5E00CD7482 /* WorkCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34EA238EEC5E00CD7482 /* WorkCoin.swift */; };
-		D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C4DB223861888008CD453 /* SkillsSliderView.swift */; };
+		D76CFC7B23968F6A00ACA264 /* GameDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CFC7A23968F6A00ACA264 /* GameDatabaseFacade.swift */; };
+		D76CFC7D23969A6B00ACA264 /* GameDatabaseSupplicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CFC7C23969A6B00ACA264 /* GameDatabaseSupplicant.swift */; };
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
@@ -50,6 +53,7 @@
 		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
 		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
 		D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8613238A03B400A9843F /* PlayerFacade.swift */; };
+		D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
@@ -57,11 +61,9 @@
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */; };
-		F088F1692389A344006CCF49 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088F1682389A344006CCF49 /* Configurations.swift */; };
 		F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72001592384F1D00087ADCE /* ViewController.swift */; };
 		F088F16C238A0D5A006CCF49 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F088F16B238A0D5A006CCF49 /* CoreML.framework */; };
 		F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F719238E225A00EA176E /* DatabaseJob.swift */; };
-		F097F71C238E22F100EA176E /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71B238E22F100EA176E /* CreateGameViewController.swift */; };
 		F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71D238E236900EA176E /* DatabaseTask.swift */; };
 		F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71F238E238200EA176E /* DatabaseSkill.swift */; };
 		F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85366238FFC48005CC468 /* FlappyGameScene.swift */; };
@@ -87,6 +89,9 @@
 		D72001632384F1D10087ADCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D721941E238EF94B0069F11D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7219420238EFDD50069F11D /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		D727F5E72396E62A0025F22D /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerProgressCircle.swift; sourceTree = "<group>"; };
+		D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipsterProgressCircle.swift; sourceTree = "<group>"; };
 		D73CA578239022CD0085592D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D73CA57C23905ECC0085592D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
@@ -103,7 +108,6 @@
 		D75A6EBF2391968400D682D1 /* WorkSupplicantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSupplicantLabel.swift; sourceTree = "<group>"; };
 		D75E34CB238C690800CD7482 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75E34CE238CCE6D00CD7482 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
-		D75E34D0238CCFC100CD7482 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D75E34D2238CD2B000CD7482 /* TimerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProtocols.swift; sourceTree = "<group>"; };
 		D75E34D4238D6D8100CD7482 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D75E34D6238D772D00CD7482 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
@@ -114,7 +118,8 @@
 		D75E34E6238EEC2600CD7482 /* SkillCompletionCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCompletionCoin.swift; sourceTree = "<group>"; };
 		D75E34E8238EEC4000CD7482 /* CoffeeCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCoin.swift; sourceTree = "<group>"; };
 		D75E34EA238EEC5E00CD7482 /* WorkCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCoin.swift; sourceTree = "<group>"; };
-		D76C4DB223861888008CD453 /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
+		D76CFC7A23968F6A00ACA264 /* GameDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDatabaseFacade.swift; sourceTree = "<group>"; };
+		D76CFC7C23969A6B00ACA264 /* GameDatabaseSupplicant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDatabaseSupplicant.swift; sourceTree = "<group>"; };
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
 		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
 		D7AF8613238A03B400A9843F /* PlayerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFacade.swift; sourceTree = "<group>"; };
+		D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HustlerProgressCircle.swift; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -129,10 +135,8 @@
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdmin.swift; sourceTree = "<group>"; };
-		F088F1682389A344006CCF49 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		F088F16B238A0D5A006CCF49 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F097F719238E225A00EA176E /* DatabaseJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseJob.swift; sourceTree = "<group>"; };
-		F097F71B238E22F100EA176E /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		F097F71D238E236900EA176E /* DatabaseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTask.swift; sourceTree = "<group>"; };
 		F097F71F238E238200EA176E /* DatabaseSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSkill.swift; sourceTree = "<group>"; };
 		F0D85366238FFC48005CC468 /* FlappyGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameScene.swift; sourceTree = "<group>"; };
@@ -208,14 +212,11 @@
 				D720015B2384F1D00087ADCE /* Main.storyboard */,
 				D72001552384F1D00087ADCE /* AppDelegate.swift */,
 				D72001572384F1D00087ADCE /* SceneDelegate.swift */,
-				D76C4DB223861888008CD453 /* SkillsSliderView.swift */,
 				D72001632384F1D10087ADCE /* Info.plist */,
 				D720015E2384F1D10087ADCE /* Assets.xcassets */,
 				D72001602384F1D10087ADCE /* LaunchScreen.storyboard */,
 				D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */,
 				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
-				F088F1682389A344006CCF49 /* Configurations.swift */,
-				F097F71B238E22F100EA176E /* CreateGameViewController.swift */,
 				D721941E238EF94B0069F11D /* Extensions.swift */,
 			);
 			path = startupeiros;
@@ -235,6 +236,10 @@
 				D7515A82238FFD2A00290A4A /* SupplicantLabel.swift */,
 				D75A6EBD2391962D00D682D1 /* SkillLevelLabel.swift */,
 				D75A6EBF2391968400D682D1 /* WorkSupplicantLabel.swift */,
+				D727F5E72396E62A0025F22D /* CircularProgressBar.swift */,
+				D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */,
+				D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */,
+				D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */,
 			);
 			path = progress;
 			sourceTree = "<group>";
@@ -258,7 +263,8 @@
 				D75E34E0238EEB7D00CD7482 /* player */,
 				D75E34CD238CCE5700CD7482 /* timer */,
 				D75E34CB238C690800CD7482 /* Protocols.swift */,
-				D75E34D0238CCFC100CD7482 /* GameViewController.swift */,
+				D76CFC7A23968F6A00ACA264 /* GameDatabaseFacade.swift */,
+				D76CFC7C23969A6B00ACA264 /* GameDatabaseSupplicant.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
 				D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */,
 				D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */,
@@ -509,12 +516,8 @@
 				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
-				D75E34D1238CCFC100CD7482 /* GameViewController.swift in Sources */,
-				F088F1692389A344006CCF49 /* Configurations.swift in Sources */,
-				D76C4DB323861888008CD453 /* SkillsSliderView.swift in Sources */,
 				D75E34CC238C690800CD7482 /* Protocols.swift in Sources */,
 				D7EE5DCB23884C8A00399155 /* Model.swift in Sources */,
-				F097F71C238E22F100EA176E /* CreateGameViewController.swift in Sources */,
 				D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
@@ -523,8 +526,10 @@
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
 				D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */,
 				F0D85369238FFC88005CC468 /* FlappyGameViewController.swift in Sources */,
+				D727F5EC2396F6240025F22D /* HipsterProgressCircle.swift in Sources */,
 				D75E34DB238D8BB100CD7482 /* Job.swift in Sources */,
 				D75E34E7238EEC2600CD7482 /* SkillCompletionCoin.swift in Sources */,
+				D727F5E82396E62A0025F22D /* CircularProgressBar.swift in Sources */,
 				D7515A8923901D4D00290A4A /* SkillCollectionViewCell.swift in Sources */,
 				D75E34EB238EEC5E00CD7482 /* WorkCoin.swift in Sources */,
 				D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */,
@@ -536,6 +541,7 @@
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
+				D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */,
 				D75E34E9238EEC4000CD7482 /* CoffeeCoin.swift in Sources */,
 				D799B6B4239453AE00BD6198 /* TimerFactory.swift in Sources */,
 				D7219421238EFDD50069F11D /* ResourceManager.swift in Sources */,
@@ -546,7 +552,9 @@
 				D75A6EC02391968400D682D1 /* WorkSupplicantLabel.swift in Sources */,
 				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 				D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */,
+				D76CFC7B23968F6A00ACA264 /* GameDatabaseFacade.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
+				D76CFC7D23969A6B00ACA264 /* GameDatabaseSupplicant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

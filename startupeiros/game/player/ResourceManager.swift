@@ -20,7 +20,7 @@ class ResourceManager<T>: Profiter, Giver, Balanceable where T: PlayerProducer{
             if !(task.taskTimer?.isDone() ?? false)  { return }
         }
         
-        if let task = self.currentTask as? Coaster {
+        if let task = self.currentTask as? Coster {
             if !task.canRun()  { return }
         }
         

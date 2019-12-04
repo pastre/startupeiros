@@ -27,7 +27,7 @@ class StepperBar: ProgressBarView {
     override func runAnimation(_ duration: TimeInterval) {
         
         UIView.animate(withDuration: duration, animations: {
-            self.progressViewWidthConstraint?.constant = self.frame.width * self.getProgress()
+            self.progressViewConstraint?.constant = self.frame.width * self.getProgress()
             
             self.layoutIfNeeded()
         }) { (_) in

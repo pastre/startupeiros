@@ -20,7 +20,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
     @IBOutlet weak var energyView: UIView!
     @IBOutlet weak var coffeeView: UIView!
-   
+    @IBOutlet weak var hackerJobProgressSpace: UIView!
+    @IBOutlet weak var hipsterJobProgressSpace: UIView!
+    @IBOutlet weak var hustlerJobProgressSpace: UIView!
+    
     var skills: [Skill]!
     var currentSelected = 0
     
@@ -49,11 +52,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return bar
     }()
 
-    
     let skillLevelProgressBar: SkillLevelBar = {
         let bar = SkillLevelBar()
         
         bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+    
+    let hackerProgressCircle: HackerProgressCircle = {
+        let bar = HackerProgressCircle()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        return bar
+    }()
+    
+    let hipsterProgressCircle: HipsterProgressCircle = {
+        let bar = HipsterProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
+    
+    
+    
+    let hustlerProgressCircle: HustlerProgressCircle = {
+        let bar = HustlerProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
         
         return bar
     }()
@@ -69,29 +97,47 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupTasksTableView()
         self.setupSkillLevelBar()
         
+        self.setupHackerProgressCircle()
+        self.setupHipsterProgressCircle()
+        self.setupHustlerProgressCircle()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.setupGestures()
+        
         self.updateCurrentSelectedSkill()
     }
     
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.setupProgressCircle(self.hackerProgressCircle)
+        self.setupProgressCircle(self.hipsterProgressCircle)
+        self.setupProgressCircle(self.hustlerProgressCircle)
+    }
+    
     // MARK: - Setup methods
-//
-//    func setupGestures() {
-//        let coffeeGesture = UIGestureRecognizer(target: self, action: #selector(self.onCoffee(_:)))
-//        let workGesture = UIGestureRecognizer(target: self, action: #selector(self.onWork(_:)))
-//
-//        self.coffeeView.isUserInteractionEnabled = true
-//        self.energyView.isUserInteractionEnabled = true
-//
-//        self.coffeeView.addGestureRecognizer(coffeeGesture)
-//        self.energyView.addGestureRecognizer(workGesture)
-//
-//        print("Configured gestures")
-//    }
-
+    
+    func setupHustlerProgressCircle() {
+        self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
+        self.hustlerProgressCircle.layoutIfNeeded()
+    }
+    
+    func setupHipsterProgressCircle() {
+        self.spaceFiller(self.hipsterJobProgressSpace, self.hipsterProgressCircle)
+        self.hipsterProgressCircle.layoutIfNeeded()
+    }
+    func setupHackerProgressCircle() {
+        self.spaceFiller(self.hackerJobProgressSpace, self.hackerProgressCircle)
+        self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
         self.tasksTableView.dataSource = self
@@ -208,6 +254,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
+        
+        self.hackerProgressCircle.layoutIfNeeded()
     }
     
     func updateSkillLevelLabel() {

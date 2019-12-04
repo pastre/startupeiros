@@ -29,4 +29,16 @@ class PlayerFacade: NSObject {
         
         print("Created player!", className, room)
     }
+    
+    static func getPlayerClass() -> PlayerClass? {
+        guard let rawClass =  UserDefaults.standard.string(forKey: PlayerKeys.playerClass.rawValue) else { return nil }
+        
+        return PlayerClass(from: rawClass)
+    }
+    
+    static func getPlayerTeamId() -> String?{
+        return UserDefaults.standard.string(forKey: PlayerKeys.roomId.rawValue)
+    }
+    
+    
 }
