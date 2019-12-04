@@ -19,6 +19,11 @@ class HackerProgressCircle: CircularProgressBar {
     
     
     
+    override func getIconName() -> String {
+        return "hacker"
+    }
+    
+    
     override func getProgress() -> CGFloat {
         return CGFloat(GameDatabaseFacade.instance.hackerProgress)
     }

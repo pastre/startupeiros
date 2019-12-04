@@ -17,7 +17,9 @@ class HipsterProgressCircle: CircularProgressBar {
         super.commonInit()
     }
     
-    
+    override func getIconName() -> String {
+        return "hipster"
+    }
     
     override func getProgress() -> CGFloat {
         return CGFloat(GameDatabaseFacade.instance.hipsterProgress)
