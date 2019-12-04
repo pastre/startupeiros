@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
+
     
     @IBOutlet weak var workBarSpace: UIView!
     @IBOutlet weak var energyBarSpace: UIView!
@@ -101,6 +102,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupHipsterProgressCircle()
         self.setupHustlerProgressCircle()
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -277,6 +280,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Button callbacks
     
     @IBAction func onCoffee(_ sender: Any) {
+        
         ResourceFacade.instance.coffeeManager.runTask {
             self.coffeeProgressBar.startProgress()
         }
@@ -288,6 +292,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    
+    @objc func onCoffeeCompleted() {
+    }
     
     func getCurrentSkill() -> Skill {
         return self.skills[self.currentSelected]

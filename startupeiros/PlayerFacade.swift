@@ -32,7 +32,7 @@ class PlayerFacade: NSObject {
         self.setPlayerClass(className)
         self.setPlayerRoomId(room)
         
-        
+        self.setPlayerCreated()
         
         print("Created player!", className, room)
     }

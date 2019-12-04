@@ -124,10 +124,18 @@ class PickClassViewController: UIViewController {
         for player in self.players {
             if !player.isReady { return }
         }
-        
         NewTeamDatabaseFacade.joinTeam(self.roomId, classed: currentClass) { (erro) in
             if let error = erro {
                 print("Erro ao entrar para o time", error)
+            }
+            
+            for window in UIApplication.shared.windows {
+                if let vc = window.rootViewController as? DecideStartViewController {
+                    vc.currentChild?.dismiss(animated: true, completion: {
+                        vc.presentGameView()
+                    })
+                }
+//                print("ROOT VC", window.rootViewController)
             }
         }
     }
