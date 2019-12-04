@@ -75,6 +75,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return bar
     }()
+    
+    
+    
+    let hustlerProgressCircle: HustlerProgressCircle = {
+        let bar = HustlerProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +99,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.setupHackerProgressCircle()
         self.setupHipsterProgressCircle()
-        
+        self.setupHustlerProgressCircle()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,9 +119,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.setupProgressCircle(self.hackerProgressCircle)
         self.setupProgressCircle(self.hipsterProgressCircle)
+        self.setupProgressCircle(self.hustlerProgressCircle)
     }
     
     // MARK: - Setup methods
+    
+    func setupHustlerProgressCircle() {
+        self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
+        self.hustlerProgressCircle.layoutIfNeeded()
+    }
+    
     func setupHipsterProgressCircle() {
         self.spaceFiller(self.hipsterJobProgressSpace, self.hipsterProgressCircle)
         self.hipsterProgressCircle.layoutIfNeeded()
