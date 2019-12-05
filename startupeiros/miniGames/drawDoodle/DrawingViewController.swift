@@ -40,7 +40,7 @@ struct Challenge {
 }
 
 
-class DrawingViewController: UIViewController {
+class DrawingViewController: UIViewController, PKCanvasViewDelegate {
 
     var canvas = Canvas()
     var timerLabel: String = ""
@@ -226,4 +226,3 @@ extension UIView {
         return screenShot!
     }
 }
-
