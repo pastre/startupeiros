@@ -14,6 +14,13 @@ struct Line {
 }
 class Canvas: UIView {
     
+    var timeStart: Int = 0
+    var timeEnd: TimeInterval?
+    var matrixDraw: [[Any]] = []
+    var tVector: [Int] = []
+    var xVector: [CGFloat] = []
+    var yVector: [CGFloat] = []
+    
     var lines = [Line]()
     var strokeWidth: Float = 5.0
     
@@ -23,11 +30,19 @@ class Canvas: UIView {
     
     public func undo(){
         _ = lines.popLast()
+        _ = matrixDraw.popLast()
+        _ = tVector.popLast()
+        _ = xVector.popLast()
+        _ = yVector.popLast()
         setNeedsDisplay()
     }
     
     public func clear(){
         lines.removeAll()
+        matrixDraw.removeAll()
+        tVector.removeAll()
+        xVector.removeAll()
+        yVector.removeAll()
         setNeedsDisplay()
     }
     
@@ -52,14 +67,23 @@ class Canvas: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchBegan")
+        timeStart = ((event?.timestamp.milliseconds)!)
         lines.append(Line.init(stroke: strokeWidth, points: []))
+        tVector = []
+        xVector = []
+        yVector = []
     }
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard let point = touches.first?.location(in: nil) else {return}
-//        print(point)
+        
+        tVector.append(abs((event?.timestamp.milliseconds)! - timeStart))
+        xVector.append(point.x)
+        yVector.append(point.y)
+        
+        
         guard var lastLine = lines.popLast() else {return}
         lastLine.points.append(point)
         lines.append(lastLine)
@@ -69,8 +93,18 @@ class Canvas: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         _ = self.screenshot
-        
+        timeStart = 0
+        let matrixStroke: [Any] = [xVector, yVector, tVector]
+        print("stroke \(touches.count)")
+        matrixDraw.append(matrixStroke)
+        print(matrixDraw)
         print("jogar na MobileNet")
     }
     
+}
+
+extension TimeInterval {
+    var milliseconds: Int {
+        return Int((truncatingRemainder(dividingBy: 1)) * 1000)
+    }
 }
