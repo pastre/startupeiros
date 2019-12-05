@@ -18,6 +18,36 @@ class CreateGameViewController: UIViewController {
     }
     
 //    func createGame(){
+//
+//        let moodboard =  DatabaseTask(name: "Moodboard", icon: "moodboard.png")
+//        let benchmarking =  DatabaseTask(name: "Benchmarking", icon: "benchmarking.png")
+//        let briefing =  DatabaseTask(name: "Briefing", icon: "briefing.png")
+//        let brainstorming =  DatabaseTask(name: "Brainstorming", icon: "brainstorming.png")
+//
+//        let naming = DatabaseSkill(name: "Naming", icon: "naming.png", tasks: [moodboard, benchmarking, briefing, brainstorming])
+//
+//        let paletadecor =  DatabaseTask(name: "Paleta de cor", icon: "paletadecor.png")
+//        let tipografia =  DatabaseTask(name: "Tipografia", icon: "tipografia.png")
+//        let estilo =  DatabaseTask(name: "Estil", icon: "estilo.png")
+//
+//        let identidadevisual = DatabaseSkill(name: "Naming", icon: "naming.png", tasks: [moodboard, paletadecor, tipografia, estilo])
+//
+//        let jornadadousuário =  DatabaseTask(name: "Jornada do Usuário", icon: "jornadadousuário.png")
+//        let serviceblueprint =  DatabaseTask(name: "Service Blueprint", icon: "serviceblueprint.png")
+//        let grupofocal =  DatabaseTask(name: "Grupo Focal", icon: "grupofocal.png")
+//        let userhistories =  DatabaseTask(name: "User Histories", icon: "userhistories.png")
+//        let mapadaexperiência =  DatabaseTask(name: "Mapa da experiência", icon: "mapadaexperiência.png")
+//
+//        let ux = DatabaseSkill(name: "User Experience (UX)", icon: "ux.png", tasks: [jornadadousuário, grupofocal, userhistories, mapadaexperiência, serviceblueprint])
+//
+//
+//        let wireframe =  DatabaseTask(name: "Wireframe", icon: "wireframe.png")
+//        let wireflow =  DatabaseTask(name: "Wireflow", icon: "wireflow.png")
+//        let mockup =  DatabaseTask(name: "Mockup", icon: "mockup.png")
+//        let ilustração =  DatabaseTask(name: "Ilustração", icon: "ilustração.png")
+//
+//        let ui = DatabaseSkill(name: "User Interface (UI)", icon: "ui.png", tasks: [wireframe, wireflow, mockup, ilustração])
+//
 //        let entities =  DatabaseTask(name: "Entities", icon: "entities.png")
 //        let attributes =  DatabaseTask(name: "Attributes", icon: "attributes.png")
 //        let relationship =  DatabaseTask(name: "Relationship", icon: "relationship.png")
@@ -25,6 +55,8 @@ class CreateGameViewController: UIViewController {
 //        let performance =  DatabaseTask(name: "Performance", icon: "performance.png")
 //
 //        let modelling = DatabaseSkill(name: "Modelling", icon: "modelling.png", tasks: [entities, attributes, relationship, classDiagram, performance])
+//
+//        // MARK: - Programing
 //
 //        // Back-End
 //        let programmingBack =  DatabaseTask(name: "Programming", icon: "programmingBack.png")
@@ -60,10 +92,49 @@ class CreateGameViewController: UIViewController {
 //
 //        let embeddedEletronics = DatabaseSkill(name: "Embedded Electronics", icon: "embeddedEletronics.png", tasks: [design, datasheet, schematic, prototyping, testing, layout, manufacture, assembly])
 //
-//        // Create a JOB
-//        let mvp = DatabaseJob(name: "Create a Minimal Viable Product (MVP)", icon: "mvp.png", hackerSkills: [backEnd, frontEnd, embeddedEletronics, modelling], hustlerSkills: [], hipsterSkills: [])
 //
-//        mvp.saveGame()
+//
+//        // MARK: - Hustler
+//
+//
+//        let Pesquisar =  DatabaseTask(name: "Pesquisar", icon: "Pesquisar.png")
+//        let Benchmarking =  DatabaseTask(name: "Benchmarking", icon: "Benchmarking.png")
+//        let Networking =  DatabaseTask(name: "Networking", icon: "Networking.png")
+//        let thegift =  DatabaseTask(name: "The Gift", icon: "TheGift.png")
+//
+//        let Visão = DatabaseSkill(name: "Visão", icon: "Visão.png", tasks: [Pesquisar, Benchmarking, Networking, thegift])
+//
+//
+//        let Speaker =  DatabaseTask(name: "Speaker", icon: "Speaker.png")
+//        let Keynote =  DatabaseTask(name: "Keynote", icon: "Keynote.png")
+//        let Idea =  DatabaseTask(name: "Idea", icon: "Idea.png")
+//        let Storytelling =  DatabaseTask(name: "Storytelling", icon: "Storytelling.png")
+//
+//        let pitch = DatabaseSkill(name: "Pitch Elevator", icon: "PitchElevator.png", tasks: [Speaker, Keynote, Idea, Storytelling])
+//
+//
+//        let BusinessCanvas =  DatabaseTask(name: "Business Canvas", icon: "BusinessCanvas.png")
+//        let Audience =  DatabaseTask(name: "Audience", icon: "Audience.png")
+//        let Precificação =  DatabaseTask(name: "Precificação", icon: "Precificação.png")
+//        let Rededevalor =  DatabaseTask(name: "Rede de valor", icon: "Rede de valor.png")
+//
+//        let modelodenegocio = DatabaseSkill(name: "Modelo de Negócio", icon: "ModelodeNegócio.png", tasks: [BusinessCanvas, Benchmarking, Audience, Precificação, Rededevalor])
+//
+//
+//        let DataMining =  DatabaseTask(name: "Data Mining", icon: "Data Mining.png")
+//        let Pesquisa =  DatabaseTask(name: "Pesquisa", icon: "Pesquisa.png")
+//        let DataAnalysis =  DatabaseTask(name: "Data Analysis", icon: "Data Analysis.png")
+//        let Beachead =  DatabaseTask(name: "Beachead", icon: "Beachead.png")
+//
+//        let AnálisesEstatísticas = DatabaseSkill(name: "Análises Estatísticas", icon: "AnálisesEstatísticas.png", tasks: [DataMining, Pesquisa, DataAnalysis, Beachead])
+//
+//
+//
+//
+//        // Create a JOB
+//        let mvp = DatabaseJob(name: "Create a Minimal Viable Product (MVP)", icon: "mvp.png", hackerSkills: [backEnd, frontEnd, embeddedEletronics, modelling], hustlerSkills: [Visão, pitch, modelodenegocio, AnálisesEstatísticas], hipsterSkills: [naming, identidadevisual, ux, ui])
+//
+//        DatabaseAdmin.shared.saveJob(job: mvp)
 //    }
 
     /*
