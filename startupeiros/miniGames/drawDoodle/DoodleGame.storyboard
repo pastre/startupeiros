@@ -17,6 +17,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="g6G-Xo-VaE"/>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="GUJ-bd-UC1" id="cJC-dI-vlf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmZ-bf-zcE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
