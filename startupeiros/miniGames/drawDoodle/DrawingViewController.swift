@@ -8,39 +8,7 @@
 
 import UIKit
 
-struct Challenge {
-    
-    var drawList = [
-        "key":"🗝",
-        "rabbit":"🐇",
-        "shoe":"👞",
-        "penguin":"🐧",
-        "camel":"🐫",
-        "bridge":"🌉",
-        "monkey":"🐒",
-        "pig":"🐖",
-        "shark":"🦈",
-        "microphone":"🎤",
-        "lantern":"🔦",
-        "book":"📖",
-        "pizza":"🍕",
-        "bicycle":"🚲",
-        "mouse":"🐁"
-    ]
-    
-    var drawCurrent: (key: String, value: String)! = (key: "" , value: "" )
-    
-    init(){
-        self.chooseChallenge()
-    }
-    
-    mutating func chooseChallenge() {
-        drawCurrent = drawList.randomElement()
-    }
-}
-
-
-class DrawingViewController: UIViewController, PKCanvasViewDelegate {
+class DrawingViewController: UIViewController {
 
     var canvas = Canvas()
     var timerLabel: String = ""
