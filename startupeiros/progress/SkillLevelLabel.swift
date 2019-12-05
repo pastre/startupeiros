@@ -25,7 +25,7 @@ class SkillLevelLabel: SupplicantLabel {
     override func update() {
         guard let skill = self.skill else { return }
         
-        self.text = "Level \(Int(skill.getCurrentAmount()))"
+        self.text = "Level \(Int(skill.getLevel()))"
     }
     
     func invalidate() {

@@ -11,6 +11,7 @@ import UIKit
 class DecideStartViewController: UIViewController {
 
     var hasJustCreated: Bool!  = false
+    var currentChild: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,8 @@ class DecideStartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.hasJustCreated {
+        
+        if PlayerFacade.hasCreated() ?? false {
             self.presentGameView()
         } else if Authenticator.instance.hasCreated() {
             Authenticator.instance.login { (error) in
@@ -44,23 +46,34 @@ class DecideStartViewController: UIViewController {
                     print("Erro ao fazer login!", error)
                 }
             }
-            self.presentGameView()
+            self.presentCreateTeamView()
         } else {
-            self.presentFirstView()
+            self.presentNameView()
         }
     }
     
-    func presentGameView()  {
+    func presentGameView() {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
+        self.currentChild = vc
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
+    
+    func presentCreateTeamView()  {
         let vc = NewTeamViewController()
         
+        self.currentChild = vc
         self.present(vc, animated: true, completion: nil)
     }
     
-    func presentFirstView(){
+    func presentNameView(){
         let vc = CreateNameViewController()
         vc.navParent = self
         vc.modalPresentationStyle = .overCurrentContext
         self.modalPresentationStyle = .overCurrentContext
+        self.currentChild = vc
         self.present(vc, animated: true, completion: nil)
     }
     

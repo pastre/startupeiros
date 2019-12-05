@@ -18,21 +18,26 @@ protocol Lockable {
     func unlock()
 }
 
-protocol Coaster {
+protocol Coster {
     var giver: Giver! { get set }
     
     func canRun() -> Bool
-    func getCoastPerRun() -> Coin
-    func getMultiplier() -> Double
-    func coast(from giver: Giver)
+    func getCostPerRun() -> Coin
+    func getCostMultiplier() -> Double
+    func cost(from giver: Giver)
 }
 
 protocol Giver {
     func take(_ amount: Coin)
+    func canTake(_ amount: Coin) -> Bool
 }
 
 protocol Producer {
     var profiter: Profiter! { get set }
+    func getProductionMultiplier() -> Double
+    func getProductionBase() -> Double
+    func getProductionOwned() -> Double
+    func getProductionResult() -> Double
     func deliver(_ amount: Coin, to profiter: Profiter)
 }
 
@@ -42,15 +47,12 @@ protocol Profiter {
 
 protocol Upgradeable {
     func isUpgradeable() -> Bool
+    func getBaseUpgradeCoast() -> Double
     func getUpgradeCoast() -> Double
+    func getGrowthRate() -> Double
+    func getOwnedCount() -> Double
     func getUpgradeMultiplier() -> Double
-}
-
-protocol Levelable {
-    func getAbsoluteLevelPoints() -> Int
-    func getLevel() -> Int
-    func getLevelProgress() -> Int
-    func getNextLevelRequirement() -> Int
+    func upgrade()
 }
 
 
@@ -78,4 +80,8 @@ protocol ProgressSupplicant {
 
 protocol Bindable {
     func getQueueName() -> String
+}
+
+protocol Completable {
+    func getCompletedPercentage() -> Double
 }

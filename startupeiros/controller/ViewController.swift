@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
+
     
     @IBOutlet weak var workBarSpace: UIView!
     @IBOutlet weak var energyBarSpace: UIView!
@@ -18,6 +19,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var skillLevelBarSpace: UIView!
     @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
+    @IBOutlet weak var energyView: UIView!
+    @IBOutlet weak var coffeeView: UIView!
+    @IBOutlet weak var hackerJobProgressSpace: UIView!
+    @IBOutlet weak var hipsterJobProgressSpace: UIView!
+    @IBOutlet weak var hustlerJobProgressSpace: UIView!
     
     var skills: [Skill]!
     var currentSelected = 0
@@ -47,11 +53,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return bar
     }()
 
-    
     let skillLevelProgressBar: SkillLevelBar = {
         let bar = SkillLevelBar()
         
         bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+    
+    let hackerProgressCircle: HackerProgressCircle = {
+        let bar = HackerProgressCircle()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        return bar
+    }()
+    
+    let hipsterProgressCircle: HipsterProgressCircle = {
+        let bar = HipsterProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
+    
+    
+    
+    let hustlerProgressCircle: HustlerProgressCircle = {
+        let bar = HustlerProgressCircle()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
         
         return bar
     }()
@@ -67,15 +98,49 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupTasksTableView()
         self.setupSkillLevelBar()
         
+        self.setupHackerProgressCircle()
+        self.setupHipsterProgressCircle()
+        self.setupHustlerProgressCircle()
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.updateCurrentSelectedSkill()
     }
     
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.setupProgressCircle(self.hackerProgressCircle)
+        self.setupProgressCircle(self.hipsterProgressCircle)
+        self.setupProgressCircle(self.hustlerProgressCircle)
+    }
+    
     // MARK: - Setup methods
-
+    
+    func setupHustlerProgressCircle() {
+        self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
+        self.hustlerProgressCircle.layoutIfNeeded()
+    }
+    
+    func setupHipsterProgressCircle() {
+        self.spaceFiller(self.hipsterJobProgressSpace, self.hipsterProgressCircle)
+        self.hipsterProgressCircle.layoutIfNeeded()
+    }
+    func setupHackerProgressCircle() {
+        self.spaceFiller(self.hackerJobProgressSpace, self.hackerProgressCircle)
+        self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
     func setupTasksTableView(){
         self.tasksTableView.delegate = self
         self.tasksTableView.dataSource = self
@@ -127,6 +192,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.taskLabel.text = task.getName()
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -163,9 +229,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.skillIcon.image = UIImage(named: "failedToLoadTexture")
         
         if indexPath.item == self.currentSelected {
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .clear
         }
         
         return cell
@@ -191,6 +257,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
+        
+        self.hackerProgressCircle.layoutIfNeeded()
     }
     
     func updateSkillLevelLabel() {
@@ -212,6 +280,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Button callbacks
     
     @IBAction func onCoffee(_ sender: Any) {
+        
         ResourceFacade.instance.coffeeManager.runTask {
             self.coffeeProgressBar.startProgress()
         }
@@ -223,6 +292,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    
+    @objc func onCoffeeCompleted() {
+    }
     
     func getCurrentSkill() -> Skill {
         return self.skills[self.currentSelected]

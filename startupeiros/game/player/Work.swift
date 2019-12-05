@@ -9,8 +9,14 @@
 import Foundation
 
 
-class Work: PlayerProducer, Coaster {
+class Work: PlayerProducer, Coster {
+    
     var giver: Giver!
+    
+    required init(_ profiter: Profiter, manager: Balanceable) {
+        super.init(profiter, manager: manager)
+        self.giver  = ResourceFacade.instance.coffeeManager
+    }
     
     override func triggerUpdate() {
         EventBinder.trigger(event: .work)
@@ -31,31 +37,72 @@ class Work: PlayerProducer, Coaster {
         return ResourceFacade.instance.coffeeManager.accumulated >= 1
     }
     
-    func getCoastPerRun() -> Coin {
+    func getCostPerRun() -> Coin {
         return WorkCoin()
+    }
+    
+    func getCostMultiplier() -> Double {
+        return 0.7887
     }
     
     func getMultiplier() -> Double {
         return 1
     }
     
-    func coast(from giver: Giver) {
-        giver.take(self.getCoastPerRun())
+    func cost(from giver: Giver) {
+        giver.take(self.getCostPerRun())
     }
     
     
-    required init(_ profiter: Profiter) {
-        super.init(profiter)
-        self.giver = ResourceFacade.instance.coffeeManager
-    }
+//    required init(_ profiter: Profiter, manager: ResourceManager<PlayerProducer>) {
+//        super.init(profiter, manager: manager)
+//        self.giver = ResourceFacade.instance.coffeeManager
+//    }
     
    override  func onComplete() {
-        let amount = WorkCoin()
+        let amount = self.getProductionResult()
     
         self.deliver(amount, to: self.profiter)
-        self.coast(from: self.giver)
+        self.cost(from: self.giver)
 
         EventBinder.trigger(event: .energy)
+    
+
+        self.upgrade()
     }
     
+    
+    
+    // MARK: - Upgradeable
+    
+    override func isUpgradeable() -> Bool {
+        
+        // todo: - Implement this
+        return true
+    }
+    
+   override  func getBaseUpgradeCoast() -> Double {
+        return 4
+    }
+    
+    override func getUpgradeCoast() -> Double {
+        
+        return 4
+    }
+    
+   override  func getGrowthRate() -> Double {
+        return 1.07
+    }
+    
+   override  func getOwnedCount() -> Double {
+         return self.getUpgradeCount()
+    }
+    
+   override  func getUpgradeMultiplier() -> Double {
+        return 1
+    }
+    
+    override func upgrade() {
+        self.manager.upgrade()
+    }
 }
