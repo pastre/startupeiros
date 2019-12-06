@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickingJob {
+class Vote {
     
     internal init(name: String?, whoPicked: PlayerClass?) {
         self.name = name
@@ -21,13 +21,18 @@ class PickingJob {
 
 class MeetupCollectionViewCell: UICollectionViewCell {
     
+    
+    func setup(jobName: String, voteCount: Int){
+        
+    }
+    
 }
 
 class MeetupViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     
-    
-    var jobs: [PickingJobs] = []
+    var votes: [Vote]! = []
+    var jobs: [Job]!
 
     let registerId = "register"
     lazy var collectionView: UICollectionView = {
@@ -43,6 +48,7 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     }()
     
     override func viewDidLoad() {
+        self.jobs = GameDatabaseFacade.instance.jobs
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -58,7 +64,11 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.registerId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.registerId, for: indexPath) as! MeetupCollectionViewCell
+        
+        let job = self.jobs[indexPath.item]
+        
+        cell.setup(jobName: job.getName(), voteCount: 0)
         
         return cell
     }
