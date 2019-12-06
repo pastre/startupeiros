@@ -26,9 +26,9 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
+    var verticalMove: Float = 0
     
     override func didMove(to view: SKView) {
-        
         canRestart = true
         
         // setup physics
@@ -62,7 +62,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         // skyline
-        let skyTexture = SKTexture(imageNamed: "sky")
+        let skyTexture = SKTexture(imageNamed: "sky2")
         skyTexture.filteringMode = .nearest
         
         let moveSkySprite = SKAction.moveBy(x: -skyTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.1 * skyTexture.size().width * 2.0))
@@ -72,7 +72,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
             let i = CGFloat(i)
             let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(2.0)
+            sprite.setScale(1.0)
             sprite.zPosition = -20
             sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0 + groundTexture.size().height * 2.0)
             sprite.run(moveSkySpritesForever)
@@ -108,7 +108,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         let flap = SKAction.repeatForever(anim)
         
         bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(2.0)
+        bird.setScale(1.5)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.run(flap)
         
@@ -137,6 +137,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         scoreLabelNode.position = CGPoint( x: self.frame.midX, y: 3 * self.frame.size.height / 4 )
         scoreLabelNode.zPosition = 100
         scoreLabelNode.text = String(score)
+        scoreLabelNode.fontColor = .black
         self.addChild(scoreLabelNode)
         
     }
@@ -148,11 +149,10 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         let height = UInt32( self.frame.size.height / 4)
         let y = Double(arc4random_uniform(height) + height)
-        
+
         let pipeDown = SKSpriteNode(texture: pipeTextureDown)
-        pipeDown.setScale(2.0)
+        pipeDown.setScale(1.0)
         pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
-        
         
         pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
         pipeDown.physicsBody?.isDynamic = false
@@ -161,7 +161,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         pipePair.addChild(pipeDown)
         
         let pipeUp = SKSpriteNode(texture: pipeTextureUp)
-        pipeUp.setScale(2.0)
+        pipeUp.setScale(1.0)
         pipeUp.position = CGPoint(x: 0.0, y: y)
         
         pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
@@ -208,7 +208,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         if moving.speed > 0  {
             for _ in touches { // do we need all touches?
                 bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
             }
         } else if canRestart {
             self.resetScene()
