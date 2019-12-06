@@ -69,6 +69,7 @@ class Canvas: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         timeStart = ((event?.timestamp.milliseconds)!)
         lines.append(Line.init(stroke: strokeWidth, points: []))
+//        lines.append(CGMutablePath)
         tVector = []
         xVector = []
         yVector = []
@@ -94,17 +95,87 @@ class Canvas: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         _ = self.screenshot
         timeStart = 0
+        
+//        var xBuff: [CGPath] = []
+//        var yBuff: [CGPath] = []
+//        var tBuff: [Float] = []
+//        lines[0].path.
+//        xVector.forEach { (x) in
+//            print(x/255)
+            
+//            xBuff.append(x/255 as! CGPath)
+//        }
+//        yVector.forEach { (y) in
+//            yBuff.append(CGPath(y/255))
+//        }
+        
         let matrixStroke: [Any] = [xVector, yVector, tVector]
-        print("stroke \(touches.count)")
+//        print("stroke \(touches.count)")
         matrixDraw.append(matrixStroke)
-        print(matrixDraw)
-        print("jogar na MobileNet")
+        
+//        let image: UIImage = self.makeImage(from: matrixDraw)!
+//        matrixDraw.append(matrixStroke)
+//        print(matrixDraw as! CGMutablePath)
+        
+        
+//        let model = quick_doodle()
+//
+//        let prediction = try! model.prediction(drawing: self.matrixDraw as! CVPixelBuffer)
+//        print(prediction)
+        
+        
     }
+    
+//    private var imageViewSize: CGSize { return UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 600)).frame.size }
+//
+//    func makeImage(from strokes: [[Any]]) -> UIImage? {
+//        let image = CGContext.create(size: imageViewSize) { context in
+//            context.setStrokeColor(UIColor.black.cgColor)
+//            context.setLineWidth(8.0)
+//            context.setLineJoin(.round)
+//            context.setLineCap(.round)
+//
+//
+//            for stroke in strokes {
+//                context.beginPath()
+//                context.addPath(stroke as! CGPath)
+//                context.strokePath()
+//            }
+//
+////            for stroke in strokes {
+////                context.beginPath()
+////                context.addPath(stroke.points)
+////                context.strokePath()
+////            }
+//        }
+//
+//        return image
+//    }
     
 }
 
 extension TimeInterval {
     var milliseconds: Int {
         return Int((truncatingRemainder(dividingBy: 1)) * 1000)
+    }
+}
+
+extension CGContext {
+    static func create(size: CGSize,
+        action: (inout CGContext) -> ()) -> UIImage? {
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+
+        guard var context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        action(&context)
+
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return result
     }
 }
