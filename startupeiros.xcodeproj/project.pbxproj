@@ -49,6 +49,7 @@
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
+		D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */; };
 		D799B6B4239453AE00BD6198 /* TimerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799B6B3239453AE00BD6198 /* TimerFactory.swift */; };
 		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
 		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
@@ -133,6 +134,7 @@
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		D799B6B3239453AE00BD6198 /* TimerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFactory.swift; sourceTree = "<group>"; };
 		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
 		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */,
 				D73CA578239022CD0085592D /* TaskTableViewCell.swift */,
+				D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */,
 				D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */,
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */,
 				D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */,
 				D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */,
 				D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */,
@@ -748,7 +752,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -768,7 +772,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
