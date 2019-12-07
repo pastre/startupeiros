@@ -617,6 +617,13 @@ Name</string>
                                     <constraint firstItem="SNZ-vM-Qg4" firstAttribute="centerY" secondItem="Ah9-eu-drB" secondAttribute="centerY" id="yv3-iT-nly"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-kd-Par">
+                                <rect key="frame" x="336" y="49" width="55.5" height="55.5"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onMeetup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVU-i1-KGf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.91694647070000002" green="0.97890454530000004" blue="0.78428548570000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -626,11 +633,15 @@ Name</string>
                             <constraint firstItem="0fi-bG-MLz" firstAttribute="top" secondItem="hYI-bB-fFA" secondAttribute="bottom" id="Cyy-Sc-R1G"/>
                             <constraint firstItem="0fi-bG-MLz" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FwU-XP-MGj"/>
                             <constraint firstItem="XIT-Wr-031" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.35" id="I0U-Qr-hcH"/>
+                            <constraint firstItem="ygq-kd-Par" firstAttribute="height" secondItem="qHv-gf-wSn" secondAttribute="height" id="JLt-Dq-9ju"/>
                             <constraint firstItem="hYI-bB-fFA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NbX-ik-eu5"/>
                             <constraint firstItem="fIY-jc-fRR" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.08" id="NpO-6A-5kh"/>
                             <constraint firstItem="hYI-bB-fFA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="TII-r4-aRk"/>
                             <constraint firstItem="fIY-jc-fRR" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UPu-lb-NuV"/>
+                            <constraint firstItem="ygq-kd-Par" firstAttribute="centerY" secondItem="qHv-gf-wSn" secondAttribute="centerY" id="XuN-qW-FjO"/>
+                            <constraint firstItem="ygq-kd-Par" firstAttribute="centerX" secondItem="qHv-gf-wSn" secondAttribute="centerX" id="aJf-Ce-hPC"/>
                             <constraint firstItem="fIY-jc-fRR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cfw-LV-4hx"/>
+                            <constraint firstItem="ygq-kd-Par" firstAttribute="width" secondItem="qHv-gf-wSn" secondAttribute="width" id="daD-Yn-nsc"/>
                             <constraint firstItem="0fi-bG-MLz" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.35" id="eaj-or-Pmz"/>
                             <constraint firstItem="Yeg-F5-0be" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="fB1-h3-JqC"/>
                             <constraint firstItem="Okm-eS-XYM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fwU-dR-JAB"/>
@@ -660,6 +671,7 @@ Name</string>
                         <outlet property="skillsCollectionView" destination="8BJ-lD-gec" id="Ur6-n1-YWK"/>
                         <outlet property="tasksTableView" destination="G19-za-dnI" id="4jq-Do-cT2"/>
                         <outlet property="workBarSpace" destination="7EN-g8-Ta6" id="7Ei-xY-nFZ"/>
+                        <segue destination="iKo-PI-28k" kind="presentation" identifier="meetup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="tuu-im-LWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -670,7 +682,82 @@ Name</string>
                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </collectionViewFlowLayout>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="117" y="157"/>
+        </scene>
+        <!--Meetup View Controller-->
+        <scene sceneID="lo4-s6-FnO">
+            <objects>
+                <viewController id="iKo-PI-28k" customClass="MeetupViewController" customModule="startupeiros" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i1j-W4-LYy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hul-UF-G0z">
+                                <rect key="frame" x="41.5" y="274" width="331" height="358"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pbZ-ov-ZlC">
+                                        <rect key="frame" x="10" y="102.5" width="311" height="245.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BfK-PV-IrW">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="register" id="y34-lF-ulw" customClass="MeetupCollectionViewCell" customModule="startupeiros" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5PG-PK-yag">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meetup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txg-WZ-Ab3">
+                                        <rect key="frame" x="101.5" y="10" width="128.5" height="43"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvS-4E-EYt">
+                                        <rect key="frame" x="130" y="63" width="71.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pbZ-ov-ZlC" secondAttribute="bottom" constant="10" id="4mX-yo-gWG"/>
+                                    <constraint firstItem="txg-WZ-Ab3" firstAttribute="centerX" secondItem="hul-UF-G0z" secondAttribute="centerX" id="BUJ-YQ-dK4"/>
+                                    <constraint firstItem="IvS-4E-EYt" firstAttribute="top" secondItem="txg-WZ-Ab3" secondAttribute="bottom" constant="10" id="fxd-yn-wb6"/>
+                                    <constraint firstItem="pbZ-ov-ZlC" firstAttribute="top" secondItem="IvS-4E-EYt" secondAttribute="bottom" constant="20" id="gyv-On-6Qn"/>
+                                    <constraint firstItem="txg-WZ-Ab3" firstAttribute="top" secondItem="hul-UF-G0z" secondAttribute="top" constant="10" id="jiJ-jb-PzD"/>
+                                    <constraint firstItem="IvS-4E-EYt" firstAttribute="centerX" secondItem="txg-WZ-Ab3" secondAttribute="centerX" id="klY-BH-uiN"/>
+                                    <constraint firstItem="pbZ-ov-ZlC" firstAttribute="leading" secondItem="hul-UF-G0z" secondAttribute="leading" constant="10" id="tvW-qX-0nz"/>
+                                    <constraint firstAttribute="trailing" secondItem="pbZ-ov-ZlC" secondAttribute="trailing" constant="10" id="wq3-I8-Bhs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hul-UF-G0z" firstAttribute="centerX" secondItem="2aY-Wl-XG0" secondAttribute="centerX" id="6Kg-Wh-5ev"/>
+                            <constraint firstItem="hul-UF-G0z" firstAttribute="centerY" secondItem="2aY-Wl-XG0" secondAttribute="centerY" id="9gl-Io-eSu"/>
+                            <constraint firstItem="hul-UF-G0z" firstAttribute="height" secondItem="i1j-W4-LYy" secondAttribute="height" multiplier="0.4" id="YeW-a2-b0t"/>
+                            <constraint firstItem="hul-UF-G0z" firstAttribute="width" secondItem="i1j-W4-LYy" secondAttribute="width" multiplier="0.8" id="cWP-Sh-3Fi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2aY-Wl-XG0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gT0-By-had"/>
+                    <connections>
+                        <outlet property="collectionView" destination="pbZ-ov-ZlC" id="2HM-2t-cGt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIj-dQ-hUb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950.72463768115949" y="156.69642857142856"/>
         </scene>
     </scenes>
     <resources>

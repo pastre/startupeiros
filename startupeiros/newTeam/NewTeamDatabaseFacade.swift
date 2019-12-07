@@ -22,6 +22,7 @@ public enum FirebaseKeys: String  {
     case hipsterJobProgress = "hipster"
     case hustlerJobProgress = "hustler"
     case none = "None"
+    case meetup = "meetup"
 }
 class NewTeamDatabaseFacade {
     

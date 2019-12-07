@@ -18,6 +18,8 @@
 		D727F5E82396E62A0025F22D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E72396E62A0025F22D /* CircularProgressBar.swift */; };
 		D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */; };
 		D727F5EC2396F6240025F22D /* HipsterProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */; };
+		D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */; };
+		D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */; };
 		D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA578239022CD0085592D /* TaskTableViewCell.swift */; };
 		D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA57C23905ECC0085592D /* TaskBar.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
@@ -49,6 +51,7 @@
 		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
+		D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */; };
 		D799B6B4239453AE00BD6198 /* TimerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799B6B3239453AE00BD6198 /* TimerFactory.swift */; };
 		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
 		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
@@ -102,6 +105,8 @@
 		D727F5E72396E62A0025F22D /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerProgressCircle.swift; sourceTree = "<group>"; };
 		D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipsterProgressCircle.swift; sourceTree = "<group>"; };
+		D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupCollectionViewCell.swift; sourceTree = "<group>"; };
+		D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferenceFactory.swift; sourceTree = "<group>"; };
 		D73CA578239022CD0085592D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D73CA57C23905ECC0085592D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		D799B6B3239453AE00BD6198 /* TimerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFactory.swift; sourceTree = "<group>"; };
 		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
 		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				D7309ABC239BEFCA0099373A /* utils */,
 				D7515A8A23901D5700290A4A /* controller */,
 				D7515A73238F7EA900290A4A /* progress */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
@@ -238,9 +245,26 @@
 				D72001602384F1D10087ADCE /* LaunchScreen.storyboard */,
 				D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */,
 				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
-				D721941E238EF94B0069F11D /* Extensions.swift */,
 			);
 			path = startupeiros;
+			sourceTree = "<group>";
+		};
+		D7309AB9239BE9420099373A /* meetup */ = {
+			isa = PBXGroup;
+			children = (
+				D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */,
+				D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */,
+			);
+			path = meetup;
+			sourceTree = "<group>";
+		};
+		D7309ABC239BEFCA0099373A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D721941E238EF94B0069F11D /* Extensions.swift */,
+				D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		D7515A73238F7EA900290A4A /* progress */ = {
@@ -268,6 +292,7 @@
 		D7515A8A23901D5700290A4A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D7309AB9239BE9420099373A /* meetup */,
 				D7515A8623901BE000290A4A /* LoadingViewController.swift */,
 				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */,
@@ -547,6 +572,7 @@
 				D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */,
 				D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */,
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */,
 				D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */,
 				D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */,
 				D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */,
@@ -556,6 +582,7 @@
 				D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */,
 				D75E34D5238D6D8100CD7482 /* Task.swift in Sources */,
 				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
+				D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */,
 				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */,
@@ -583,6 +610,7 @@
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
+				D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */,
 				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
 				F03DDDFF2399EB0B001B4612 /* quick-doodle.mlmodel in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
@@ -748,7 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -768,7 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D684SCS2D;
+				DEVELOPMENT_TEAM = QM43B7QRF9;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
