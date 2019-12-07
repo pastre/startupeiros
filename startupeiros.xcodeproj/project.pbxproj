@@ -19,6 +19,7 @@
 		D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */; };
 		D727F5EC2396F6240025F22D /* HipsterProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */; };
 		D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */; };
+		D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */; };
 		D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA578239022CD0085592D /* TaskTableViewCell.swift */; };
 		D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA57C23905ECC0085592D /* TaskBar.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
@@ -105,6 +106,7 @@
 		D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerProgressCircle.swift; sourceTree = "<group>"; };
 		D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipsterProgressCircle.swift; sourceTree = "<group>"; };
 		D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupCollectionViewCell.swift; sourceTree = "<group>"; };
+		D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferenceFactory.swift; sourceTree = "<group>"; };
 		D73CA578239022CD0085592D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D73CA57C23905ECC0085592D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				D7309ABC239BEFCA0099373A /* utils */,
 				D7515A8A23901D5700290A4A /* controller */,
 				D7515A73238F7EA900290A4A /* progress */,
 				F07BC3E9238EEC6E00556997 /* databaseGameCreator */,
@@ -242,7 +245,6 @@
 				D72001602384F1D10087ADCE /* LaunchScreen.storyboard */,
 				D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */,
 				D7AF8613238A03B400A9843F /* PlayerFacade.swift */,
-				D721941E238EF94B0069F11D /* Extensions.swift */,
 			);
 			path = startupeiros;
 			sourceTree = "<group>";
@@ -254,6 +256,15 @@
 				D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */,
 			);
 			path = meetup;
+			sourceTree = "<group>";
+		};
+		D7309ABC239BEFCA0099373A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D721941E238EF94B0069F11D /* Extensions.swift */,
+				D7309ABD239BEFD90099373A /* FirebaseReferenceFactory.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		D7515A73238F7EA900290A4A /* progress */ = {
@@ -599,6 +610,7 @@
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
+				D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */,
 				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
 				F03DDDFF2399EB0B001B4612 /* quick-doodle.mlmodel in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,

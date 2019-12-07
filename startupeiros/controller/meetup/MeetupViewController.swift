@@ -34,8 +34,16 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.setupFirebase()
         // Do any additional setup after loading the view.
     }
+    
+    func setupFirebase(){
+        
+    }
+    
+    // MARK: - Firebase functions
     
     // MARK: - CollectionView Data source
     
