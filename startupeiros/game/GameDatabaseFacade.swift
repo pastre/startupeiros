@@ -116,7 +116,8 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
     func updateJobCompletion(to completable: Completable){
         guard let playerClass = PlayerFacade.getPlayerClass() else { return }
         guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
-        Database.database().reference().root.child(FirebaseKeys.teams.rawValue).child(teamId).child(FirebaseKeys.teamJobs.rawValue).child(FirebaseKeys.currentTeamJob.rawValue).child(playerClass.rawValue).setValue(completable.getCompletedPercentage())
+        
+        FirebaseReferenceFactory.getPlayerJobs(teamId, playerClass).setValue(completable.getCompletedPercentage())
 
     }
     
