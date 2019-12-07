@@ -518,7 +518,7 @@ Name</string>
                                 <rect key="frame" x="0.0" y="575.5" width="414" height="286.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgTable" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-F5-0be">
-                                        <rect key="frame" x="0.0" y="0.0" width="414.00000000000045" height="320.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="320.5"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6w-ov-9sI" userLabel="energyView">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="286.5"/>
