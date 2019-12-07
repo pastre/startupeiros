@@ -184,7 +184,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let skill = self.getCurrentSkill() {
-            skill.tasks.count
+            return skill.tasks.count
         }
         return 0
     }
@@ -201,8 +201,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let skill = self.getCurrentSkill() else { return }
         let task = skill.tasks[indexPath.item]
@@ -214,6 +212,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 cell.runProgressBar(with: task)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height * 0.3
     }
     
     // MARK: -  Collection view methods
@@ -265,10 +267,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.skillNameLabel.text = skill.getName()
         
         self.skillsCollectionView.reloadData()
-        self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
         
+        self.tasksTableView.reloadData()
         self.hackerProgressCircle.layoutIfNeeded()
     }
     
@@ -319,11 +321,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return self.job?.skills
     }
     
-    // MARK: -
+    // MARK: - Navigation
     
     func setCurrentJob(to job: Job) {
         self.job = job
-        
+    
         updateCurrentSelectedSkill()
     }
  
