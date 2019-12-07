@@ -71,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let hipsterProgressCircle: HipsterProgressCircle = {
         let bar = HipsterProgressCircle()
-    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.translatesAutoresizingMaskIntoConstraints = false
         bar.backgroundColor = .lightGray
         
         return bar
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let hustlerProgressCircle: HustlerProgressCircle = {
         let bar = HustlerProgressCircle()
-    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.translatesAutoresizingMaskIntoConstraints = false
         bar.backgroundColor = .lightGray
         
         return bar
@@ -103,10 +103,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupHustlerProgressCircle()
     }
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.job = GameDatabaseFacade.instance.getCurrentJob()
         
         self.updateCurrentSelectedSkill()
     }
@@ -304,13 +304,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func onMeetup(_ sender: Any) {
-        print("IMPRIMI")
         self.performSegue(withIdentifier: "meetup", sender: nil)
-//        let vc = MeetupViewController()
-//
-//        vc.modalPresentationStyle = .overCurrentContext
-//
-//        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func onCoffeeCompleted() {

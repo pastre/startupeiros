@@ -9,28 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
-enum PlayerClass: String {
-    case hacker = "hacker"
-    case hustler = "hustler"
-    case hipster = "hipster"
-    
-    init(from str: String) {
-        switch str {
-            case "hacker":
-                self = .hacker
-
-            case "hustler":
-                self = .hustler
-
-            case "hipster":
-                self = .hipster
-            
-            default: fatalError("Inicialitou PlayerClass com um valor invalido: \(str)")
-        }
-    }
-}
-
 class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
+    
     func onCurrentJobUpdated(to newJob: JobProgressUpdate?) {
         guard let newJob = newJob else { return }
         var event: EventBinder.Event
@@ -57,6 +37,7 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
     
     var supplicant:  GameDatabaseSupplicant!
     var jobs: [Job]?
+    private var currentJob: Job?
     
     var hackerProgress: Double! = 0
     var hipsterProgress: Double! = 0
@@ -119,6 +100,16 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
         
         FirebaseReferenceFactory.getPlayerJobs(teamId, playerClass).setValue(completable.getCompletedPercentage())
 
+    }
+    
+    func getCurrentJob() -> Job? {
+        return self.currentJob
+    }
+    
+    func startJob(_ job: Job) {
+        self.currentJob = job
+        
+        print("Configured job!")
     }
     
 }

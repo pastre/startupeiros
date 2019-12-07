@@ -108,7 +108,9 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func electJob(job: Job) {
-        print("Elect job pls!", job.getName())
+        GameDatabaseFacade.instance.startJob(job)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - CollectionView Data source
