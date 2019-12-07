@@ -37,7 +37,6 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
     
     var supplicant:  GameDatabaseSupplicant!
     var jobs: [Job]?
-    private var currentJob: Job?
     
     var hackerProgress: Double! = 0
     var hipsterProgress: Double! = 0
@@ -102,12 +101,10 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
 
     }
     
-    func getCurrentJob() -> Job? {
-        return self.currentJob
-    }
-    
     func startJob(_ job: Job) {
-        self.currentJob = job
+        guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
+        FirebaseReferenceFactory.currentTeamJob(teamId).setValue(job.getName())
+        
         
         print("Configured job!")
     }

@@ -27,6 +27,7 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     var votes: [Vote]! = []
     var jobs: [Job]!
     var currentSelectedJob: String?
+    var delegate: ViewController?
 
     let registerId = "register"
     
@@ -109,7 +110,7 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func electJob(job: Job) {
         GameDatabaseFacade.instance.startJob(job)
-        
+        self.delegate?.setCurrentJob(to: job)
         self.dismiss(animated: true, completion: nil)
     }
     

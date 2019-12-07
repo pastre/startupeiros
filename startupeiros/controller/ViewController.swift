@@ -106,7 +106,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.job = GameDatabaseFacade.instance.getCurrentJob()
+//        self.job = GameDatabaseFacade.instance.getCurrentJob()
         
         self.updateCurrentSelectedSkill()
     }
@@ -317,6 +317,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func getSkills() -> [Skill]? {
         return self.job?.skills
+    }
+    
+    // MARK: -
+    
+    func setCurrentJob(to job: Job) {
+        self.job = job
+        
+        updateCurrentSelectedSkill()
+    }
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? MeetupViewController {
+            dest.delegate = self
+        }
     }
 }
 
