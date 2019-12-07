@@ -1,23 +1,14 @@
 //
-//  MeetupViewController.swift
+//  MeetupCollectionViewCell.swift
 //  startupeiros
 //
-//  Created by Bruno Pastre on 06/12/19.
+//  Created by Bruno Pastre on 07/12/19.
 //  Copyright © 2019 Bruno Pastre. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class Vote {
-    
-    internal init(name: String?, whoPicked: PlayerClass?) {
-        self.name = name
-        self.whoPicked = whoPicked
-    }
-    
-    var name: String!
-    var whoPicked: PlayerClass?
-}
 
 class MeetupCollectionViewCell: UICollectionViewCell {
     
@@ -29,15 +20,18 @@ class MeetupCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     let votesLabel: UILabel = {
         let label = UILabel()
         
+        label.textAlignment = .right
+        label.textColor = .systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.font = UIFont.boldSystemFont(ofSize: 11)
         
         return label
     }()
@@ -46,7 +40,7 @@ class MeetupCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
         
         return image
     }()
@@ -79,12 +73,12 @@ class MeetupCollectionViewCell: UICollectionViewCell {
         backgroundImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         backgroundImage.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
-        votesLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        votesLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
         votesLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         votesLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5).isActive = true
         votesLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.3).isActive = true
         
-        nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5).isActive = true
         nameLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor).isActive = true
@@ -93,51 +87,3 @@ class MeetupCollectionViewCell: UICollectionViewCell {
     
 }
 
-class MeetupViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    
-    var votes: [Vote]! = []
-    var jobs: [Job]!
-
-    let registerId = "register"
-    lazy var collectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(MeetupCollectionViewCell.self, forCellWithReuseIdentifier: self.registerId)
-        
-        view.delegate = self
-        view.dataSource = self
-        
-        return view
-    }()
-    
-    override func viewDidLoad() {
-        self.jobs = GameDatabaseFacade.instance.jobs
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    // MARK: - CollectionView Data source
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.jobs.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.registerId, for: indexPath) as! MeetupCollectionViewCell
-        
-        let job = self.jobs[indexPath.item]
-        
-        cell.setup(jobName: job.getName(), voteCount: 0)
-        
-        return cell
-    }
-    
-    
-    
-}

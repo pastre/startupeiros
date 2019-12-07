@@ -18,6 +18,7 @@
 		D727F5E82396E62A0025F22D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E72396E62A0025F22D /* CircularProgressBar.swift */; };
 		D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */; };
 		D727F5EC2396F6240025F22D /* HipsterProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */; };
+		D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */; };
 		D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA578239022CD0085592D /* TaskTableViewCell.swift */; };
 		D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA57C23905ECC0085592D /* TaskBar.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
@@ -103,6 +104,7 @@
 		D727F5E72396E62A0025F22D /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		D727F5E92396EB0C0025F22D /* HackerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerProgressCircle.swift; sourceTree = "<group>"; };
 		D727F5EB2396F6240025F22D /* HipsterProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipsterProgressCircle.swift; sourceTree = "<group>"; };
+		D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupCollectionViewCell.swift; sourceTree = "<group>"; };
 		D73CA578239022CD0085592D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D73CA57C23905ECC0085592D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
@@ -245,6 +247,15 @@
 			path = startupeiros;
 			sourceTree = "<group>";
 		};
+		D7309AB9239BE9420099373A /* meetup */ = {
+			isa = PBXGroup;
+			children = (
+				D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */,
+				D7309ABA239BE95A0099373A /* MeetupCollectionViewCell.swift */,
+			);
+			path = meetup;
+			sourceTree = "<group>";
+		};
 		D7515A73238F7EA900290A4A /* progress */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,11 +281,11 @@
 		D7515A8A23901D5700290A4A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D7309AB9239BE9420099373A /* meetup */,
 				D7515A8623901BE000290A4A /* LoadingViewController.swift */,
 				D72001592384F1D00087ADCE /* ViewController.swift */,
 				D7515A8823901D4D00290A4A /* SkillCollectionViewCell.swift */,
 				D73CA578239022CD0085592D /* TaskTableViewCell.swift */,
-				D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -560,6 +571,7 @@
 				D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */,
 				D75E34D5238D6D8100CD7482 /* Task.swift in Sources */,
 				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
+				D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */,
 				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */,

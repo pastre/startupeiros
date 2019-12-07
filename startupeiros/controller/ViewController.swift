@@ -305,11 +305,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBAction func onMeetup(_ sender: Any) {
         print("IMPRIMI")
-        let vc = MeetupViewController()
-        
-        vc.modalPresentationStyle = .overCurrentContext
-        
-        self.present(vc, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "meetup", sender: nil)
+//        let vc = MeetupViewController()
+//
+//        vc.modalPresentationStyle = .overCurrentContext
+//
+//        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func onCoffeeCompleted() {

@@ -101,10 +101,12 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
                     loadedSkills = GameDatabaseFacade.loadSkills(from: databaseJob.hustlerSkills, with: job)
                 }
 
+                
                 job.setSkills(to: loadedSkills)
                 
                 return job
             }
+            self.jobs = jobs
             print("JOBS ARE", jobs)
             completion(jobs)
         }
