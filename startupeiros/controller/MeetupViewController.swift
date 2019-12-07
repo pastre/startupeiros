@@ -138,4 +138,6 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
+    
+    
 }

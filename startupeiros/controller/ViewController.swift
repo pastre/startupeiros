@@ -25,7 +25,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var hipsterJobProgressSpace: UIView!
     @IBOutlet weak var hustlerJobProgressSpace: UIView!
     
-    var skills: [Skill]!
+    var job: Job?
     var currentSelected = 0
     
     let coffeeProgressBar: CoffeeBar = {
@@ -183,12 +183,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getCurrentSkill().tasks.count
+        if let skill = self.getCurrentSkill() {
+            skill.tasks.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskRow") as! TaskTableViewCell
-        let task = self.getCurrentSkill().tasks[indexPath.item]
+        guard let skill = self.getCurrentSkill() else { return cell }
+        let task = skill.tasks[indexPath.item]
         
         cell.taskLabel.text = task.getName()
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
@@ -200,7 +204,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = self.getCurrentSkill().tasks[indexPath.item]
+        guard let skill = self.getCurrentSkill() else { return }
+        let task = skill.tasks[indexPath.item]
         
         if task.canRun() {
             let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
@@ -218,11 +223,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.skills.count
+        if let skills = self.getSkills() {
+            return skills.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skillCell", for: indexPath) as! SkillCollectionViewCell
+        guard let skills = self.getSkills() else { return cell}
         let skill = skills[indexPath.item]
         
         cell.skillNameLabel.text = skill.getName()
@@ -251,7 +261,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func updateCurrentSelectedSkill() {
-        self.skillNameLabel.text = self.getCurrentSkill().getName()
+        guard let skill = self.getCurrentSkill() else { return }
+        self.skillNameLabel.text = skill.getName()
         
         self.skillsCollectionView.reloadData()
         self.tasksTableView.reloadData()
@@ -292,12 +303,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    @IBAction func onMeetup(_ sender: Any) {
+        print("IMPRIMI")
+        let vc = MeetupViewController()
+        
+        vc.modalPresentationStyle = .overCurrentContext
+        
+        self.present(vc, animated: true, completion: nil)
+    }
     
     @objc func onCoffeeCompleted() {
     }
     
-    func getCurrentSkill() -> Skill {
-        return self.skills[self.currentSelected]
+    func getCurrentSkill() -> Skill? {
+        guard let skills = self.getSkills() else { return nil }
+        return skills[self.currentSelected]
+    }
+    
+    func getSkills() -> [Skill]? {
+        return self.job?.skills
     }
 }
 

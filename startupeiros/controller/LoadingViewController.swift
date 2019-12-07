@@ -23,7 +23,12 @@ class LoadingViewController: UIViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "viewController") as! ViewController
-            vc.skills = jobs.first!.skills
+            for job in jobs {
+                if job.skills.count > 0 {
+                    vc.job = job
+                }
+            }
+            
             vc.modalPresentationStyle = .overFullScreen
             
             self.present(vc, animated: true, completion: nil)
