@@ -64,6 +64,8 @@ class MeetupCollectionViewCell: UICollectionViewCell {
         
         if self.hasSetup { return }
         
+        self.hasSetup = true
+        
         self.contentView.addSubview(self.backgroundImage)
         self.contentView.addSubview(self.votesLabel)
         self.contentView.addSubview(self.nameLabel)
@@ -82,7 +84,6 @@ class MeetupCollectionViewCell: UICollectionViewCell {
         nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5).isActive = true
         nameLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor).isActive = true
-        
     }
     
 }

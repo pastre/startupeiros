@@ -9,21 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
-public enum FirebaseKeys: String  {
-    case newRooms = "newRooms"
-    case playersInRoom = "players"
-    case pickingClass = "pickingClass"
-    case playerClass = "class"
-    case teams = "teams"
-    case teamJobs = "teamJobs"
-    case currentTeamJob = "current"
-    case completedTeamJobs = "completed"
-    case hackerJobProgress = "hacker"
-    case hipsterJobProgress = "hipster"
-    case hustlerJobProgress = "hustler"
-    case none = "None"
-    case meetup = "meetup"
-}
+
 class NewTeamDatabaseFacade {
     
     static let rootRef = Database.database().reference().root

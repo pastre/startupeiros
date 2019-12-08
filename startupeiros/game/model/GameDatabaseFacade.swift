@@ -86,7 +86,9 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
                 
                 return job
             }
+            self.getCurrentJob()
             self.jobs = jobs
+
             print("JOBS ARE", jobs)
             completion(jobs)
         }
@@ -101,9 +103,17 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
 
     }
     
+    func getCurrentJob() {
+         guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
+        FirebaseReferenceFactory.currentJobName(teamId).observeSingleEvent(of: .value) { (snap) in
+            
+            print("Value is", snap.value)
+        }
+    }
+    
     func startJob(_ job: Job) {
         guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
-        FirebaseReferenceFactory.currentTeamJob(teamId).setValue(job.getName())
+        FirebaseReferenceFactory.currentJobName(teamId).setValue(job.getName())
         
         
         print("Configured job!")

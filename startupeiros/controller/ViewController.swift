@@ -12,7 +12,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     
     @IBOutlet weak var workBarSpace: UIView!
-    @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
     @IBOutlet weak var skillNameLabel: UILabel!
     @IBOutlet weak var skillsCollectionView: UICollectionView!
@@ -24,6 +23,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var hackerJobProgressSpace: UIView!
     @IBOutlet weak var hipsterJobProgressSpace: UIView!
     @IBOutlet weak var hustlerJobProgressSpace: UIView!
+    @IBOutlet weak var jobNameLabel: UILabel!
+    @IBOutlet weak var energyLabel: UILabel!
     
     var job: Job?
     var currentSelected = 0
@@ -90,6 +91,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupBackgroundGradient()
+        
         self.setupCoffeeProgressBar()
         self.setupEnergyBar()
         self.setupWorkBar()
@@ -111,12 +114,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.updateCurrentSelectedSkill()
     }
     
-    func setupProgressCircle(_ circle: CircularProgressBar) {
-        
-        circle.layer.cornerRadius = circle.layer.frame.width / 2
-        circle.setup()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -126,6 +123,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Setup methods
+    
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
+    }
+    
+    func setupBackgroundGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [UIColor.white.cgColor, CGColor(srgbRed: 219/255, green: 246/255, blue: 211/255, alpha: 1)]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
     
     func setupHustlerProgressCircle() {
         self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
@@ -160,7 +175,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     func setupEnergyBar() {
-        self.spaceFiller(energyBarSpace, energyProgressBar)
+//        self.spaceFiller(energyBarSpace, energyProgressBar)
     }
     
     func setupCoffeeProgressBar() {
@@ -196,6 +211,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.taskLabel.text = task.getName()
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        cell.setup()
         cell.selectionStyle = .none
         
         return cell
@@ -262,16 +278,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.updateCurrentSelectedSkill()
     }
     
+    // MARK: - Model helper methos
+    
     func updateCurrentSelectedSkill() {
+        self.updateJobName()
+
         guard let skill = self.getCurrentSkill() else { return }
         self.skillNameLabel.text = skill.getName()
-        
+               
         self.skillsCollectionView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
         
         self.tasksTableView.reloadData()
         self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
+    
+    func updateJobName() {
+        if let job = self.job {
+            self.jobNameLabel.text = job.getName()
+        } else {
+            self.jobNameLabel.text = "Click the phone to pick a job"
+        }
     }
     
     func updateSkillLevelLabel() {

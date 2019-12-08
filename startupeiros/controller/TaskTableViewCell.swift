@@ -10,6 +10,7 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var taskIcon: UIImageView!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var taskProgressBarSpace: UIView!
@@ -55,6 +56,23 @@ class TaskTableViewCell: UITableViewCell {
         
         bar.startProgress()
         
+    }
+    
+    func setup() {
+
+        backgroundColor = UIColor.clear
+
+        self.backView.layer.borderWidth = 1
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.borderColor = UIColor.clear.cgColor
+        self.backView.layer.masksToBounds = true
+        self.backView.backgroundColor = #colorLiteral(red: 0.3818710744, green: 0.6760137677, blue: 0.9938718677, alpha: 1)
+
+//        self.layer.shadowOpacity = 0.6
+////        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        self.layer.shadowRadius = 10
+//        self.layer.shadowColor = UIColor.gray.cgColor
+//        self.layer.masksToBounds = false
     }
 
 }

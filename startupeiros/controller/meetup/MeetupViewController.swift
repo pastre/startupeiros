@@ -134,6 +134,20 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         cell.setup(jobName: job.getName(), voteCount: voteCount)
         
+        cell.contentView.layer.cornerRadius = 5.0
+        cell.contentView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        cell.contentView.layer.borderWidth = 0.5
+
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.darkGray.cgColor
+        border.frame = CGRect(x: 0, y: cell.contentView.frame.size.height - width, width:  cell.contentView.frame.size.width, height: cell.contentView.frame.size.height)
+
+        border.borderWidth = width
+        cell.contentView.layer.addSublayer(border)
+        cell.contentView.layer.masksToBounds = true
+        cell.contentView.clipsToBounds = true
+        
         return cell
     }
     
