@@ -133,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func setupBackgroundGradient() {
         let gradient: CAGradientLayer = CAGradientLayer()
 
-        gradient.colors = [UIColor.white.cgColor, CGColor(srgbRed: 219/255, green: 246/255, blue: 211/255, alpha: 1)]
+        gradient.colors = [UIColor.white.cgColor, CGColor(srgbRed: 230/255, green: 249/255, blue: 224/255, alpha: 1)]
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
