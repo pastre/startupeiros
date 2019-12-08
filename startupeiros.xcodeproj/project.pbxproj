@@ -71,7 +71,6 @@
 		F03DDDF523994079001B4612 /* seta-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF123994079001B4612 /* seta-1.png */; };
 		F03DDDF723994079001B4612 /* seta-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF323994079001B4612 /* seta-2.png */; };
 		F03DDDF9239943BF001B4612 /* seta-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF8239943BF001B4612 /* seta-4.png */; };
-		F03DDDFF2399EB0B001B4612 /* quick-doodle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F03DDDFE2399EB0A001B4612 /* quick-doodle.mlmodel */; };
 		F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */; };
 		F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E498423933CE900419E36 /* DrawingViewController.swift */; };
 		F07E49872393432C00419E36 /* DoodleGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F07E49862393432C00419E36 /* DoodleGame.storyboard */; };
@@ -161,7 +160,6 @@
 		F03DDDF123994079001B4612 /* seta-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-1.png"; sourceTree = "<group>"; };
 		F03DDDF323994079001B4612 /* seta-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-2.png"; sourceTree = "<group>"; };
 		F03DDDF8239943BF001B4612 /* seta-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-4.png"; sourceTree = "<group>"; };
-		F03DDDFE2399EB0A001B4612 /* quick-doodle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "quick-doodle.mlmodel"; sourceTree = "<group>"; };
 		F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdmin.swift; sourceTree = "<group>"; };
 		F07E498423933CE900419E36 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		F07E49862393432C00419E36 /* DoodleGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoodleGame.storyboard; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 		F07E498323932F7200419E36 /* drawDoodle */ = {
 			isa = PBXGroup;
 			children = (
-				F03DDDFE2399EB0A001B4612 /* quick-doodle.mlmodel */,
 				F09B62142397F20200FABB87 /* UpdatableDrawingClassifier.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
@@ -629,7 +626,6 @@
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
 				D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */,
 				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
-				F03DDDFF2399EB0B001B4612 /* quick-doodle.mlmodel in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
