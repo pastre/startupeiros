@@ -80,7 +80,6 @@
 		F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F719238E225A00EA176E /* DatabaseJob.swift */; };
 		F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71D238E236900EA176E /* DatabaseTask.swift */; };
 		F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71F238E238200EA176E /* DatabaseSkill.swift */; };
-		F09B62152397F20300FABB87 /* UpdatableDrawingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F09B62142397F20200FABB87 /* UpdatableDrawingClassifier.mlmodel */; };
 		F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85366238FFC48005CC468 /* FlappyGameScene.swift */; };
 		F0D85369238FFC88005CC468 /* FlappyGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */; };
 		F0D8536D238FFDDE005CC468 /* FlappyGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */; };
@@ -168,7 +167,6 @@
 		F097F719238E225A00EA176E /* DatabaseJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseJob.swift; sourceTree = "<group>"; };
 		F097F71D238E236900EA176E /* DatabaseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTask.swift; sourceTree = "<group>"; };
 		F097F71F238E238200EA176E /* DatabaseSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSkill.swift; sourceTree = "<group>"; };
-		F09B62142397F20200FABB87 /* UpdatableDrawingClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpdatableDrawingClassifier.mlmodel; sourceTree = "<group>"; };
 		F0D85366238FFC48005CC468 /* FlappyGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameScene.swift; sourceTree = "<group>"; };
 		F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameViewController.swift; sourceTree = "<group>"; };
 		F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlappyGame.storyboard; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 		F07E498323932F7200419E36 /* drawDoodle */ = {
 			isa = PBXGroup;
 			children = (
-				F09B62142397F20200FABB87 /* UpdatableDrawingClassifier.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
 				F07E49882393602100419E36 /* Canvas.swift */,
@@ -607,7 +604,6 @@
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
 				F03DDDEF23992842001B4612 /* Challenge.swift in Sources */,
-				F09B62152397F20300FABB87 /* UpdatableDrawingClassifier.mlmodel in Sources */,
 				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
