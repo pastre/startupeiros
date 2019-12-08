@@ -46,6 +46,7 @@ class GameDatabaseSupplicant {
         }
         
         for key in rawDict.allKeys {
+            if (key as? String) == FirebaseKeys.jobName.rawValue { continue }
             let newValue = rawDict[key] as! Double
             let update = JobProgressUpdate(newValue: newValue, onClass: PlayerClass(from: key as! String))
             self.delegate?.onCurrentJobUpdated(to: update)

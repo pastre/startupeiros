@@ -63,7 +63,7 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
         }
     
     
-    func load(completion: @escaping ([Job]) -> ()) {
+    func load(completion: @escaping ([Job], Job?) -> ()) {
         guard let playerClass = PlayerFacade.getPlayerClass() else { return }
         DatabaseAdmin.shared.loadJobs { (i, jobList) in
             
@@ -86,11 +86,11 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
                 
                 return job
             }
-            self.getCurrentJob()
             self.jobs = jobs
 
-            print("JOBS ARE", jobs)
-            completion(jobs)
+            self.getCurrentJob { (currentJob) in
+                completion(jobs, currentJob)
+            }
         }
     }
     
@@ -103,11 +103,17 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
 
     }
     
-    func getCurrentJob() {
+    func getCurrentJob(completion: @escaping (Job?) -> ()) {
          guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
         FirebaseReferenceFactory.currentJobName(teamId).observeSingleEvent(of: .value) { (snap) in
             
-            print("Value is", snap.value)
+            if let rawName = snap.value as? String {
+                let pickedJob = self.jobs?.filter({ (job) -> Bool in
+                    return job.getName() == rawName
+                    }).first
+                completion(pickedJob)
+            }
+            completion(nil)
         }
     }
     
