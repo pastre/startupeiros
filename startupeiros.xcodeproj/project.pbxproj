@@ -67,7 +67,6 @@
 		D7F3F24A239C1D890078A5E6 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3F249239C1D890078A5E6 /* PlayerClass.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
-		F03DDDEF23992842001B4612 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03DDDEE23992842001B4612 /* Challenge.swift */; };
 		F03DDDF423994079001B4612 /* seta-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF023994078001B4612 /* seta-3.png */; };
 		F03DDDF523994079001B4612 /* seta-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF123994079001B4612 /* seta-1.png */; };
 		F03DDDF723994079001B4612 /* seta-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF323994079001B4612 /* seta-2.png */; };
@@ -75,7 +74,6 @@
 		F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */; };
 		F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E498423933CE900419E36 /* DrawingViewController.swift */; };
 		F07E49872393432C00419E36 /* DoodleGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F07E49862393432C00419E36 /* DoodleGame.storyboard */; };
-		F07E49892393602100419E36 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E49882393602100419E36 /* Canvas.swift */; };
 		F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72001592384F1D00087ADCE /* ViewController.swift */; };
 		F088F16C238A0D5A006CCF49 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F088F16B238A0D5A006CCF49 /* CoreML.framework */; };
 		F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F719238E225A00EA176E /* DatabaseJob.swift */; };
@@ -156,7 +154,6 @@
 		D7F3F249239C1D890078A5E6 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
-		F03DDDEE23992842001B4612 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		F03DDDF023994078001B4612 /* seta-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-3.png"; sourceTree = "<group>"; };
 		F03DDDF123994079001B4612 /* seta-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-1.png"; sourceTree = "<group>"; };
 		F03DDDF323994079001B4612 /* seta-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-2.png"; sourceTree = "<group>"; };
@@ -164,7 +161,6 @@
 		F07BC3E7238EE84C00556997 /* DatabaseAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdmin.swift; sourceTree = "<group>"; };
 		F07E498423933CE900419E36 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		F07E49862393432C00419E36 /* DoodleGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoodleGame.storyboard; sourceTree = "<group>"; };
-		F07E49882393602100419E36 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		F088F16B238A0D5A006CCF49 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F097F719238E225A00EA176E /* DatabaseJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseJob.swift; sourceTree = "<group>"; };
 		F097F71D238E236900EA176E /* DatabaseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTask.swift; sourceTree = "<group>"; };
@@ -411,8 +407,6 @@
 				D78D780B239D718200C95B6F /* Doodle 1.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
-				F07E49882393602100419E36 /* Canvas.swift */,
-				F03DDDEE23992842001B4612 /* Challenge.swift */,
 			);
 			path = drawDoodle;
 			sourceTree = "<group>";
@@ -604,10 +598,8 @@
 				D7EE5DCB23884C8A00399155 /* Model.swift in Sources */,
 				D78D780C239D718200C95B6F /* Doodle 1.mlmodel in Sources */,
 				D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */,
-				F07E49892393602100419E36 /* Canvas.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
-				F03DDDEF23992842001B4612 /* Challenge.swift in Sources */,
 				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,

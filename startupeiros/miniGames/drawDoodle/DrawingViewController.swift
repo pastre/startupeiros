@@ -20,7 +20,7 @@ class DrawingViewController: UIViewController {
     private var strokes: [CGMutablePath] = []
     private var currentStroke: CGMutablePath? { return strokes.last }
     private var imageViewSize: CGSize { return imageView.frame.size }
-    private let classifier = DrawingClassifierModel()
+    private let classifier = Doodle_1()
     // END dd_new_vars
 
      
