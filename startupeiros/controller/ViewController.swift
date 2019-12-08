@@ -12,7 +12,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     
     @IBOutlet weak var workBarSpace: UIView!
-    @IBOutlet weak var energyBarSpace: UIView!
     @IBOutlet weak var coffeeProgressBarSpace: UIView!
     @IBOutlet weak var skillNameLabel: UILabel!
     @IBOutlet weak var skillsCollectionView: UICollectionView!
@@ -24,6 +23,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var hackerJobProgressSpace: UIView!
     @IBOutlet weak var hipsterJobProgressSpace: UIView!
     @IBOutlet weak var hustlerJobProgressSpace: UIView!
+    @IBOutlet weak var jobNameLabel: UILabel!
+    @IBOutlet weak var energyLabel: UILabel!
     
     var job: Job?
     var currentSelected = 0
@@ -71,7 +72,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let hipsterProgressCircle: HipsterProgressCircle = {
         let bar = HipsterProgressCircle()
-    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.translatesAutoresizingMaskIntoConstraints = false
         bar.backgroundColor = .lightGray
         
         return bar
@@ -81,7 +82,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let hustlerProgressCircle: HustlerProgressCircle = {
         let bar = HustlerProgressCircle()
-    bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.translatesAutoresizingMaskIntoConstraints = false
         bar.backgroundColor = .lightGray
         
         return bar
@@ -89,6 +90,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupBackgroundGradient()
         
         self.setupCoffeeProgressBar()
         self.setupEnergyBar()
@@ -103,18 +106,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupHustlerProgressCircle()
     }
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.updateCurrentSelectedSkill()
-    }
-    
-    func setupProgressCircle(_ circle: CircularProgressBar) {
+//        self.job = GameDatabaseFacade.instance.getCurrentJob()
         
-        circle.layer.cornerRadius = circle.layer.frame.width / 2
-        circle.setup()
+        self.updateCurrentSelectedSkill()
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,6 +123,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Setup methods
+    
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
+    }
+    
+    func setupBackgroundGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [UIColor.white.cgColor, CGColor(srgbRed: 219/255, green: 246/255, blue: 211/255, alpha: 1)]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
     
     func setupHustlerProgressCircle() {
         self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
@@ -160,7 +175,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     func setupEnergyBar() {
-        self.spaceFiller(energyBarSpace, energyProgressBar)
+//        self.spaceFiller(energyBarSpace, energyProgressBar)
     }
     
     func setupCoffeeProgressBar() {
@@ -184,7 +199,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let skill = self.getCurrentSkill() {
-            skill.tasks.count
+            return skill.tasks.count
         }
         return 0
     }
@@ -196,12 +211,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.taskLabel.text = task.getName()
         cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        cell.setup()
         cell.selectionStyle = .none
         
         return cell
     }
-    
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let skill = self.getCurrentSkill() else { return }
@@ -214,6 +228,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 cell.runProgressBar(with: task)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height * 0.3
     }
     
     // MARK: -  Collection view methods
@@ -260,16 +278,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.updateCurrentSelectedSkill()
     }
     
+    // MARK: - Model helper methos
+    
     func updateCurrentSelectedSkill() {
+        self.updateJobName()
+
         guard let skill = self.getCurrentSkill() else { return }
         self.skillNameLabel.text = skill.getName()
-        
+               
         self.skillsCollectionView.reloadData()
-        self.tasksTableView.reloadData()
         self.updateSkillLevelBar()
         self.updateSkillLevelLabel()
         
+        self.tasksTableView.reloadData()
         self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
+    
+    func updateJobName() {
+        if let job = self.job {
+            self.jobNameLabel.text = job.getName()
+        } else {
+            self.jobNameLabel.text = "Click the phone to pick a job"
+        }
     }
     
     func updateSkillLevelLabel() {
@@ -304,13 +335,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func onMeetup(_ sender: Any) {
-        print("IMPRIMI")
         self.performSegue(withIdentifier: "meetup", sender: nil)
-//        let vc = MeetupViewController()
-//
-//        vc.modalPresentationStyle = .overCurrentContext
-//
-//        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func onCoffeeCompleted() {
@@ -323,6 +348,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func getSkills() -> [Skill]? {
         return self.job?.skills
+    }
+    
+    // MARK: - Navigation
+    
+    func setCurrentJob(to job: Job) {
+        self.job = job
+    
+        updateCurrentSelectedSkill()
+    }
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? MeetupViewController {
+            dest.delegate = self
+        }
     }
 }
 

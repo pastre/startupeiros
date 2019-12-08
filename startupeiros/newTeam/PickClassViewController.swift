@@ -76,14 +76,17 @@ class PickClassViewController: UIViewController {
     
     func setupObservers() {
         baseRef.observe(.childAdded) { (snap) in
+            self.createTeamIfAllReady()
             self.onAdded(snap)
         }
         
         baseRef.observe(.childChanged) { (snap) in
+            self.createTeamIfAllReady()
             self.onChanged(snap)
         }
         
         baseRef.observe(.childRemoved) { (snap) in
+            self.createTeamIfAllReady()
             self.onRemoved(snap)
         }
     }

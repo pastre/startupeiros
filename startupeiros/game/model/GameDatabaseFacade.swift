@@ -9,28 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
-enum PlayerClass: String {
-    case hacker = "hacker"
-    case hustler = "hustler"
-    case hipster = "hipster"
-    
-    init(from str: String) {
-        switch str {
-            case "hacker":
-                self = .hacker
-
-            case "hustler":
-                self = .hustler
-
-            case "hipster":
-                self = .hipster
-            
-            default: fatalError("Inicialitou PlayerClass com um valor invalido: \(str)")
-        }
-    }
-}
-
 class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
+    
     func onCurrentJobUpdated(to newJob: JobProgressUpdate?) {
         guard let newJob = newJob else { return }
         var event: EventBinder.Event
@@ -83,7 +63,7 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
         }
     
     
-    func load(completion: @escaping ([Job]) -> ()) {
+    func load(completion: @escaping ([Job], Job?) -> ()) {
         guard let playerClass = PlayerFacade.getPlayerClass() else { return }
         DatabaseAdmin.shared.loadJobs { (i, jobList) in
             
@@ -107,8 +87,10 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
                 return job
             }
             self.jobs = jobs
-            print("JOBS ARE", jobs)
-            completion(jobs)
+
+            self.getCurrentJob { (currentJob) in
+                completion(jobs, currentJob)
+            }
         }
     }
     
@@ -119,6 +101,28 @@ class GameDatabaseFacade: GameDatabaseSupplicantDelegate {
         
         FirebaseReferenceFactory.getPlayerJobs(teamId, playerClass).setValue(completable.getCompletedPercentage())
 
+    }
+    
+    func getCurrentJob(completion: @escaping (Job?) -> ()) {
+         guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
+        FirebaseReferenceFactory.currentJobName(teamId).observeSingleEvent(of: .value) { (snap) in
+            
+            if let rawName = snap.value as? String {
+                let pickedJob = self.jobs?.filter({ (job) -> Bool in
+                    return job.getName() == rawName
+                    }).first
+                completion(pickedJob)
+            }
+            completion(nil)
+        }
+    }
+    
+    func startJob(_ job: Job) {
+        guard let teamId = PlayerFacade.getPlayerTeamId() else { return }
+        FirebaseReferenceFactory.currentJobName(teamId).setValue(job.getName())
+        
+        
+        print("Configured job!")
     }
     
 }

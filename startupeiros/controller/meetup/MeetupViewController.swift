@@ -27,6 +27,7 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     var votes: [Vote]! = []
     var jobs: [Job]!
     var currentSelectedJob: String?
+    var delegate: ViewController?
 
     let registerId = "register"
     
@@ -108,7 +109,9 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func electJob(job: Job) {
-        print("Elect job pls!", job.getName())
+        GameDatabaseFacade.instance.startJob(job)
+        self.delegate?.setCurrentJob(to: job)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - CollectionView Data source
@@ -130,6 +133,20 @@ class MeetupViewController: UIViewController, UICollectionViewDataSource, UIColl
         }.count
         
         cell.setup(jobName: job.getName(), voteCount: voteCount)
+        
+        cell.contentView.layer.cornerRadius = 5.0
+        cell.contentView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        cell.contentView.layer.borderWidth = 0.5
+
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.darkGray.cgColor
+        border.frame = CGRect(x: 0, y: cell.contentView.frame.size.height - width, width:  cell.contentView.frame.size.width, height: cell.contentView.frame.size.height)
+
+        border.borderWidth = width
+        cell.contentView.layer.addSublayer(border)
+        cell.contentView.layer.masksToBounds = true
+        cell.contentView.clipsToBounds = true
         
         return cell
     }

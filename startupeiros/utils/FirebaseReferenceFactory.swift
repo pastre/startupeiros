@@ -18,6 +18,10 @@ class FirebaseReferenceFactory {
         return self.currentTeamJob(teamId).child(playerClass.rawValue)
     }
     
+    static func currentJobName(_ teamId: String) -> DatabaseReference {
+        return self.currentTeamJob(teamId).child(FirebaseKeys.jobName.rawValue)
+    }
+    
     static func currentTeamJob(_ teamId: String) -> DatabaseReference {
         return self.teamJobs(teamId).child(FirebaseKeys.currentTeamJob.rawValue)
     }
