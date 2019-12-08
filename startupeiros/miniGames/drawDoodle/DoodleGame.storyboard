@@ -173,12 +173,19 @@
                                     <constraint firstItem="8pe-hv-4eW" firstAttribute="height" secondItem="Qav-8Y-n91" secondAttribute="height" multiplier="0.954545" id="z4k-gP-mbE"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOf-Or-JYc">
+                                <rect key="frame" x="0.0" y="310" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1s7-0z-E2y" firstAttribute="centerX" secondItem="g6G-Xo-VaE" secondAttribute="centerX" id="0Yg-lt-VRv"/>
                             <constraint firstItem="1s7-0z-E2y" firstAttribute="height" secondItem="GUJ-bd-UC1" secondAttribute="height" multiplier="0.1" id="4qF-rg-uqj"/>
                             <constraint firstItem="VR3-ng-QcU" firstAttribute="centerX" secondItem="W7K-FY-Rzi" secondAttribute="centerX" id="5p2-ag-JKk"/>
+                            <constraint firstItem="sOf-Or-JYc" firstAttribute="leading" secondItem="g6G-Xo-VaE" secondAttribute="leading" id="5zF-yj-tJg"/>
                             <constraint firstItem="qcf-EU-vg1" firstAttribute="centerX" secondItem="1s7-0z-E2y" secondAttribute="centerX" id="8gt-I3-AsM"/>
                             <constraint firstItem="1s7-0z-E2y" firstAttribute="top" secondItem="qcf-EU-vg1" secondAttribute="bottom" constant="20" id="Afh-4R-bS7"/>
                             <constraint firstItem="Yl5-Ig-8WF" firstAttribute="height" secondItem="GUJ-bd-UC1" secondAttribute="height" multiplier="0.142857" id="CGN-1G-Wqk"/>
@@ -190,12 +197,14 @@
                             <constraint firstItem="W7K-FY-Rzi" firstAttribute="width" secondItem="GUJ-bd-UC1" secondAttribute="width" multiplier="0.8" id="S2d-m5-w2x"/>
                             <constraint firstItem="W7K-FY-Rzi" firstAttribute="top" secondItem="g6G-Xo-VaE" secondAttribute="top" id="SYG-XY-8SZ"/>
                             <constraint firstItem="lxi-5Y-YbR" firstAttribute="centerY" secondItem="1s7-0z-E2y" secondAttribute="centerY" id="TiI-Ue-pLh"/>
+                            <constraint firstItem="g6G-Xo-VaE" firstAttribute="trailing" secondItem="sOf-Or-JYc" secondAttribute="trailing" id="Tj2-0h-e5l"/>
                             <constraint firstItem="VR3-ng-QcU" firstAttribute="top" secondItem="W7K-FY-Rzi" secondAttribute="bottom" constant="20" id="ZIf-4U-NgJ"/>
                             <constraint firstItem="VR3-ng-QcU" firstAttribute="width" secondItem="W7K-FY-Rzi" secondAttribute="width" multiplier="0.8" id="hlC-2S-sT7"/>
                             <constraint firstItem="qcf-EU-vg1" firstAttribute="top" secondItem="VR3-ng-QcU" secondAttribute="bottom" constant="20" id="oij-Zs-naB"/>
                             <constraint firstItem="Yl5-Ig-8WF" firstAttribute="bottom" secondItem="g6G-Xo-VaE" secondAttribute="bottom" id="owh-B4-GPx"/>
                             <constraint firstItem="W7K-FY-Rzi" firstAttribute="centerX" secondItem="g6G-Xo-VaE" secondAttribute="centerX" id="qZD-S4-1RV"/>
                             <constraint firstItem="VR3-ng-QcU" firstAttribute="height" secondItem="GUJ-bd-UC1" secondAttribute="height" multiplier="0.15" id="qkb-Lj-3B4"/>
+                            <constraint firstItem="sOf-Or-JYc" firstAttribute="top" secondItem="VR3-ng-QcU" secondAttribute="bottom" constant="40" id="ufG-KD-o9H"/>
                             <constraint firstItem="1s7-0z-E2y" firstAttribute="width" secondItem="GUJ-bd-UC1" secondAttribute="width" multiplier="0.8" id="xCg-W5-97Z"/>
                             <constraint firstItem="g6G-Xo-VaE" firstAttribute="trailing" secondItem="Yl5-Ig-8WF" secondAttribute="trailing" id="xKU-J2-fou"/>
                         </constraints>
@@ -203,6 +212,10 @@
                     </view>
                     <connections>
                         <outlet property="canvasView" destination="GUJ-bd-UC1" id="cJC-dI-vlf"/>
+                        <outlet property="classLabel" destination="sOf-Or-JYc" id="Mjj-f8-i15"/>
+                        <outlet property="clearButton" destination="lxi-5Y-YbR" id="SgG-Bj-e0Z"/>
+                        <outlet property="imageView" destination="qcf-EU-vg1" id="s9f-ze-Emt"/>
+                        <outlet property="undoButton" destination="5ee-Xh-XuC" id="ef5-hj-pCP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmZ-bf-zcE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
