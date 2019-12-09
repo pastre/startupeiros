@@ -39,6 +39,11 @@ class StateMachine {
         return self.states[self.currentState]
     }
     
+    func revertState() {
+        self.currentState -= 1
+        self.delegate?.onStateChanged(to: self.getCurrentState())
+    }
+    
     func passState() {
         switch self.getCurrentState() {
             
