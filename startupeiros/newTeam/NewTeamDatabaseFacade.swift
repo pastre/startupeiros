@@ -40,8 +40,8 @@ class NewTeamDatabaseFacade {
         ]
         
         self.rootRef.child(FirebaseKeys.newRooms.rawValue).childByAutoId().setValue(payload) { (error, ref) in
-            completion(error)
             newRoomId = ref.key
+            completion(error)
         }
         
     }

@@ -7,85 +7,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-enum ConfiguringState {
-    case start
-    case creating
-    case joining
-    case inLobby
-    case pickingClass
-}
-
-protocol StateMachineDelegate {
-    func onStateChanged(to newState: ConfiguringState)
-    func getPlayerName() -> String?
-    func getRoomName() -> String?
-}
-
-class StateMachine {
-    
-    var states: [ConfiguringState]
-    var delegate: StateMachineDelegate?
-    var currentState = 0
-    
-    init(state: [ConfiguringState]) {
-        self.states = state
-    }
-    
-    func getCurrentState() -> ConfiguringState {
-        return self.states[self.currentState]
-    }
-    
-    func passState() {
-        switch self.getCurrentState() {
-            
-        case .creating:
-            self.createRoom {
-                error in
-                if let error = error  {
-                    // TODO
-                }  else {
-                    self._passState()
-                }
-            }
-        default:break
-        }
-    }
-    
-    private func _passState() {
-        
-        self.currentState += 1
-        self.delegate?.onStateChanged(to: self.getCurrentState())
-    }
-    
-    func setup() {
-        self.delegate?.onStateChanged(to: self.getCurrentState())
-    }
-    
-    func createRoom(completion: @escaping (Error?) -> ()) {
-        guard let playerName = self.delegate?.getPlayerName() else { return }
-        guard let startupName = self.delegate?.getPlayerName() else { return }
-        Authenticator.instance.createPlayer(named: playerName) { (error) in
-            NewTeamDatabaseFacade.createRoom(named: startupName) { (creationError) in
-                if error != nil {
-                    completion(error)
-                    return
-                }
-                
-                if creationError != nil {
-                    completion(creationError)
-                    return
-                }
-                
-                completion(nil)
-            }
-        }
-    }
-    
-}
-
-class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFieldDelegate {
-
+class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFieldDelegate, FirebaseObserverDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var cardView: UIView!
     @IBOutlet var heightConstraint: NSLayoutConstraint!
@@ -142,6 +66,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         text.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
         text.textColor = .black
         text.placeholder = ""
+        text.text = "Debug name"
         text.borderStyle = .line
         return text
     }()
@@ -152,6 +77,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         text.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
         text.textColor = .black
         text.placeholder = ""
+        text.text = "Debug startup"
         text.borderStyle = .line
         return text
     }()
@@ -164,7 +90,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         button.backgroundColor =  UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0)
 //        button.backgroundColor =  UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
         button.addTarget(self, action: #selector(onNext), for: .touchUpInside)
-        button.isEnabled = false
+//        button.isEnabled = false
         return button
     }()
     
@@ -178,9 +104,14 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         return button
     }()
     
+    var collectionView: UICollectionView!
+    
     var stateMachine: StateMachine?
     
     var tap: UITapGestureRecognizer!
+    var firebaseObserver: FirebaseObserver?
+    
+    var playersInLobby: [JoiningPlayer]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,7 +126,41 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         self.view.layoutIfNeeded()
     }
     
+//    override func didLayoutSubviews() {
+//        super.didLayoutSubviews()
+//        self.setupCard()
+//    }
+    
     // MARK: - Setup methods
+    
+    func setupCollectionView() {
+        
+        let layout =  UICollectionViewFlowLayout()
+        
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+        self.cardView.removeGestureRecognizer(self.tap)
+        self.collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.showsHorizontalScrollIndicator = false
+        
+        self.collectionView.register(RolesCollectionViewCell.self, forCellWithReuseIdentifier: "default")
+        self.collectionView.register(LobbyCollectionViewCell.self, forCellWithReuseIdentifier: "lobby")
+        self.collectionView.backgroundColor = .clear
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        self.cardView.addSubview(collectionView)
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionView.topAnchor.constraint(equalTo: self.labelTitle.bottomAnchor, constant: 50).isActive  = true
+        self.collectionView.leadingAnchor.constraint(equalTo: self.labelTitle.leadingAnchor).isActive = true
+        self.collectionView.trailingAnchor.constraint(equalTo: self.cardView.trailingAnchor).isActive = true
+        self.collectionView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+        
+        layout.invalidateLayout()
+    }
     
     func setupCard(){
         cardView.layer.cornerRadius = 15.0
@@ -330,6 +295,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             switch newState {
             case .creating:
                 self.onCreateState()
+            case .inLobby:
+                self.inLobbyState()
             default:
                 break
             }
@@ -342,6 +309,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         switch state {
         case .creating:
             self.stateMachine?.passState()
+        
         default:
             break
         }
@@ -373,6 +341,23 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         
         // show the next button
         self.setupNavigationButton("Próximo")
+    }
+    
+    
+    func inLobbyState()  {
+        
+        self.updateCardHeight(0.28)
+        self.clearCard() {
+
+            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue))
+            self.firebaseObserver?.setup()
+            
+            self.setupSessionTitle("Aguardando...")
+            self.setupCollectionView()
+            self.collectionView.reloadData()
+            self.setupNavigationButton("Pronto")
+        }
+
     }
     
     
@@ -441,6 +426,81 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
 //        self.tap.
     }
     
+    // MARK: - FirebaseObserverDelegate
+    
+    
+    func onAdded(_ snap: DataSnapshot) {
+        let parsedDict = (snap.value as! NSDictionary)["players"]  as! NSDictionary
+        for (k, v )in parsedDict{
+            print("Players are",k , "value", v)
+        }
+        
+        self.playersInLobby = parsedDict.map({ (k,  v) -> JoiningPlayer in
+            return JoiningPlayer(k as! String, from: v as! NSDictionary)
+        })
+        
+//        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+//
+//        self.playersInLobby.append(newPlayer)
+        
+        self.collectionView.reloadData()
+    }
+    
+    func onChanged(_ snap: DataSnapshot) {
+        
+        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+        
+        for (i, player) in self.playersInLobby.enumerated()  {
+            if player.id == newPlayer.id {
+                self.playersInLobby[i] = newPlayer
+                break
+            }
+        }
+
+//        self.createTeamIfAllReady()
+        self.collectionView.reloadData()
+    }
+    
+    func onRemoved(_ snap: DataSnapshot) {
+        
+        self.playersInLobby.removeAll { (player) -> Bool in
+            player.id == snap.key
+        }
+        self.collectionView.reloadData()
+    }
+    
+
+    // MARK: - CollectionView methods
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let currentState = self.stateMachine?.getCurrentState() else  { return 0 }
+        
+        if currentState == .inLobby {
+            return self.playersInLobby.count
+        }
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let currentState = self.stateMachine?.getCurrentState() else  { return UICollectionViewCell() }
+        
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "lobby", for: indexPath)  as! LobbyCollectionViewCell
+        
+        cell.setup()
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let size = collectionView.frame.size
+            return CGSize(width: size.width * 0.4,  height: size.height)
+        
+    }
     
     
     /*
