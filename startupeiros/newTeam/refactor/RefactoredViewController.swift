@@ -11,6 +11,8 @@ import FirebaseDatabase
 
 class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFieldDelegate, FirebaseObserverDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    let classes = ["hacker", "hustler", "hipster"]
+    
     @IBOutlet var cardView: UIView!
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     
@@ -97,7 +99,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     let returnButton: UIButton = {
         let button = UIButton()
         button.setTitle("Voltar", for: .normal)
-        button.titleLabel?.font  = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.backgroundColor = UIColor(red: 235/255, green: 4/255, blue: 4/255, alpha: 1.0)
         button.addTarget(self, action: #selector(onReturn), for: .touchUpInside)
@@ -113,8 +115,15 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     var isReady = false
     var playersInLobby: [JoiningPlayer]! = []
+    var playersPickingClass: [PickingClassPlayer] = []
+
     var rooms: [Room]! = []
-    
+
+    var currentClass: String? {
+        didSet {
+            self.nextButton.isEnabled = self.currentClass != nil
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -292,10 +301,11 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     
     func createTeamIfAllReady() {
-//        for player in self.playersInLobby {
-//            if !player.isReady { return }
-//        }
-//
+        
+        for player in self.playersInLobby {
+            if !player.isReady { return }
+        }
+
         self.stateMachine?.passState()
     }
     // MARK: - State Machine Delegate
@@ -425,9 +435,13 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     func pickingClassState() {
-        
+        guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
         self.updateCardHeight(0.28)
         self.clearCard() {
+            self.firebaseObserver?.invalidate()
+            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players"))
+            self.firebaseObserver?.setup()
+            
             self.cardView.removeGestureRecognizer(self.tap)
             self.cardView.addSubview(self.labelTitle)
             self.setupSessionTitle("Choose your role")
@@ -545,10 +559,14 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
 
             self.playersInLobby.append(newPlayer)
             
+        } else if state  == .pickingClass {
+            let newPlayer = PickingClassPlayer(snap.key, from: snap.value as! NSDictionary)
+            
+            self.playersPickingClass.append(newPlayer)
+            self.updateSelectedClasses()
         } else {
             let room = Room(snap.key, from: snap.value as! NSDictionary)
             self.rooms.append(room)
-            
         }
         
             
@@ -556,6 +574,24 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     func onChanged(_ snap: DataSnapshot) {
+        
+        guard let state = self.stateMachine?.getCurrentState() else { return }
+    
+        if state == .pickingClass {
+            let newPlayer = PickingClassPlayer(snap.key, from: snap.value as! NSDictionary)
+            
+            for (i, player) in self.playersPickingClass.enumerated()  {
+                if player.id == newPlayer.id {
+                    self.playersPickingClass[i] = newPlayer
+                    break
+                }
+            }
+            
+            self.updateSelectedClasses()
+            self.createTeamIfAllReady()
+            
+            return
+        }
         
         print("ONCHANGED")
         let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
@@ -567,19 +603,51 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             }
         }
 
-//        self.createTeamIfAllReady()
+        self.createTeamIfAllReady()
         self.collectionView.reloadData()
     }
     
     func onRemoved(_ snap: DataSnapshot) {
         
-        print("ONREMOVED")
+        guard let state = self.stateMachine?.getCurrentState() else { return }
+        
+        if state == .pickingClass {
+            self.playersPickingClass.removeAll { (player) -> Bool in
+                return player.id == snap.key
+            }
+            self.updateSelectedClasses()
+            return
+        }
         self.playersInLobby.removeAll { (player) -> Bool in
             player.id == snap.key
         }
         self.collectionView.reloadData()
     }
     
+    var currentSelectedClass: String?
+    func updateSelectedClasses() {
+        self.collectionView.reloadData()
+        self.collectionView.layoutIfNeeded()
+        
+        for i in 0..<self.collectionView.numberOfItems(inSection: 0) {
+            print("Clearing cell at", i)
+            let indexPath = IndexPath(item: i, section: 0)
+            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+            
+            cell.cardView.alpha = 0.5
+            
+            print("Cleared cell at", i)
+        }
+        
+        for (i, player) in self.playersPickingClass.enumerated() {
+            if player.currentClass == "none"  { continue }
+            let playerClass = self.classes.firstIndex(of: player.currentClass)!
+            let indexPath = IndexPath(item: playerClass, section: 0)
+            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+            
+            cell.cardView.alpha = 1
+        }
+    }
 
     // MARK: - CollectionView methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -607,7 +675,6 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         guard let playerName = self.getPlayerName()   else { return UICollectionViewCell()}
         guard let startupName =  self.getRoomName() else { return UICollectionViewCell()}
 
-        let rolesList: [String]  = ["hustler", "hipster", "hacker"]
         let colors = [
             UIColor(red: 71/255, green: 83/255, blue: 191/255, alpha: 1.0),
             UIColor(red: 190/255, green: 86/255, blue: 215/255, alpha: 1.0),
@@ -615,9 +682,10 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         ]
         
         if currentState == .pickingClass {
-
+            
             let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)  as! RolesCollectionViewCell
-            let  currentRole = rolesList[indexPath.item]
+            let  currentRole = self.classes[indexPath.item]
+
             
             cell.imageView.image = UIImage(named: currentRole)
             cell.labelView.text = currentRole
@@ -648,7 +716,6 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let currentState = self.stateMachine?.getCurrentState() else  { return  }
-        
         if currentState  == .joining {
             let currentRoom = self.rooms[indexPath.item]
             
@@ -663,16 +730,38 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             }
         } else if currentState == .pickingClass{
             let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+
+            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+            let currentRole = self.classes[indexPath.item]
+            
+            for player in self.playersPickingClass {
+                if player.name == self.getPlayerName() { continue }
+                if player.currentClass == currentRole { return }
+            }
+            
+            if let current = self.currentSelectedClass {
+                if current == currentRole {
+                    NewTeamDatabaseFacade.pickClass(roomId, class: "none")
+                    self.currentSelectedClass = "none"
+                    return
+                }
+            }
+            
+            
+            
+            self.currentSelectedClass = currentRole
+            NewTeamDatabaseFacade.pickClass(roomId, class: currentRole)
             UIView.animate(withDuration: 0.5) {
-//                cell.transform = cell.transform.scaledBy(x: 1.1, y: 1.1)
                 cell.cardView.alpha = 1
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let currentState = self.stateMachine?.getCurrentState() else  { return  }
+        guard let currentState = self.stateMachine?.getCurrentState() else  { return }
+        guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
         if currentState == .pickingClass{
+            NewTeamDatabaseFacade.pickClass(roomId, class: "none")
             let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
             UIView.animate(withDuration: 0.5) {
                 cell.transform = .identity

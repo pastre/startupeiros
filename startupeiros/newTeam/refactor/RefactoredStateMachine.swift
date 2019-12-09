@@ -22,6 +22,7 @@ protocol StateMachineDelegate {
     func onStateChanged(to newState: ConfiguringState)
     func getPlayerName() -> String?
     func getRoomName() -> String?
+    
 }
 
 class StateMachine {
@@ -62,23 +63,32 @@ class StateMachine {
         case .joining:
             self._passState()
         case .inLobby:
-            self._passState()
+            self.pickClass { error in
+                if let error = error {
+                    print("Error picking class!", error)
+                    return
+                }
+                self._passState()
+            }
         default: break
         }
     }
     
     private func _passState() {
-        
-        self.currentState += 1
+        self.currentState += self.getCurrentState() == .pickingClass ? 0 :  1
         self.delegate?.onStateChanged(to: self.getCurrentState())
+        print("Passed state", self.getCurrentState())
     }
     
     func setup() {
         self.delegate?.onStateChanged(to: self.getCurrentState())
     }
     
-    func pickClass() {
-        
+    func pickClass(completion: @escaping (Error?) -> ()) {
+        guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+        NewTeamDatabaseFacade.startPickingClass(roomId) { (error) in
+            completion(error)
+        }
     }
     
     func createPlayer(completion: @escaping (Error?) -> ()) {
