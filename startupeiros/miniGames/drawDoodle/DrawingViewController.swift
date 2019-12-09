@@ -21,6 +21,7 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var toDoCollectionView: UICollectionView!
     @IBOutlet weak var doneCollectionView: UICollectionView!
     
+    @IBOutlet weak var timerLabel: UILabel!
     
     var classification: String? = nil
     private var strokes: [CGMutablePath] = []
@@ -33,6 +34,8 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var currentGuess: String?
     var currentEmoji: String?
+    
+    var currentTimer: Int = 30
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +53,10 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.passEmoji()
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+            self.passEmoji()
+            self.runTimer()
+        }
     }
     
     func setupToDoCollectionView() {
@@ -64,7 +70,30 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.toDoCollectionView.layer.cornerRadius = self.toDoCollectionView.frame.height / 2
     }
     
+    // MARK: - Timer methods
+    
+    func runTimer(){
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            self.updateTimerLabel()
+            self.currentTimer -= 1
+            
+            if self.currentTimer == 0 {
+                timer.invalidate()
+                self.gameOver()
+            }
+        }
+    }
+    
+    func updateTimerLabel() {
+        self.timerLabel.text = "\(self.currentTimer)"
+    }
+    
     //MARK: - Game mechanics
+    
+    func gameOver() {
+        print("GAME OVER BRO!")
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func passEmoji() {
         let newEmoji = self.todoEmojis.removeFirst()

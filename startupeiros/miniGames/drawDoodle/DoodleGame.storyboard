@@ -320,6 +320,7 @@
                         <outlet property="currentEmojiLabel" destination="Lm8-FU-oiq" id="ZTk-AL-56K"/>
                         <outlet property="doneCollectionView" destination="GSI-YR-S7N" id="k1a-Aw-ckF"/>
                         <outlet property="imageView" destination="qcf-EU-vg1" id="s9f-ze-Emt"/>
+                        <outlet property="timerLabel" destination="0gf-jj-wMe" id="eiQ-ye-76K"/>
                         <outlet property="toDoCollectionView" destination="D8r-dU-cDr" id="dhZ-3I-88M"/>
                         <outlet property="undoButton" destination="5ee-Xh-XuC" id="ef5-hj-pCP"/>
                     </connections>
