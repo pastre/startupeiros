@@ -72,9 +72,6 @@
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		F0175BFF239E9770005E990A /* RefactoredStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */; };
 		F0278EF2239A94FB0064EB2E /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0278EF1239A94FB0064EB2E /* Start.storyboard */; };
-		F0278EF8239AF5880064EB2E /* quick-doodle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */; };
-		F03DDDEF23992842001B4612 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03DDDEE23992842001B4612 /* Challenge.swift */; };
-		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F03DDDF423994079001B4612 /* seta-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF023994078001B4612 /* seta-3.png */; };
 		F03DDDF523994079001B4612 /* seta-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF123994079001B4612 /* seta-1.png */; };
 		F03DDDF723994079001B4612 /* seta-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF323994079001B4612 /* seta-2.png */; };
@@ -173,7 +170,6 @@
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		F0278EF1239A94FB0064EB2E /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
-		F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "quick-doodle.mlmodel"; sourceTree = "<group>"; };
 		F03DDDEE23992842001B4612 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		F03DDDF023994078001B4612 /* seta-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-3.png"; sourceTree = "<group>"; };
 		F03DDDF123994079001B4612 /* seta-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-1.png"; sourceTree = "<group>"; };
@@ -241,6 +237,7 @@
 				D72001532384F1D00087ADCE /* Products */,
 				D4E71A242F93D19E87FBC910 /* Pods */,
 				605E7FF5F0219DE990302AB2 /* Frameworks */,
+				F0850DE9239EF3B5004896B4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,7 +449,6 @@
 		F07E498323932F7200419E36 /* drawDoodle */ = {
 			isa = PBXGroup;
 			children = (
-				F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */,
 				D78D780B239D718200C95B6F /* Doodle 1.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
@@ -460,6 +456,14 @@
 				D78D780F239D8B2F00C95B6F /* LabelCollectionViewCell.swift */,
 			);
 			path = drawDoodle;
+			sourceTree = "<group>";
+		};
+		F0850DE9239EF3B5004896B4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F03DDDEE23992842001B4612 /* Challenge.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F0BFD6E1239E8A66003E1AF2 /* refactor */ = {
@@ -671,8 +675,6 @@
 				D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
-				F03DDDEF23992842001B4612 /* Challenge.swift in Sources */,
-				F0278EF8239AF5880064EB2E /* quick-doodle.mlmodel in Sources */,
 				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
@@ -858,7 +860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM43B7QRF9;
+				DEVELOPMENT_TEAM = 3D684SCS2D;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -878,7 +880,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM43B7QRF9;
+				DEVELOPMENT_TEAM = 3D684SCS2D;
 				INFOPLIST_FILE = startupeiros/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (

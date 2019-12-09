@@ -99,7 +99,7 @@ class Authenticator {
     }
     
     func setCreated() {
-        UserDefaults.standard.set(true, forKey: "created")
+//        UserDefaults.standard.set(true, forKey: "created")
     }
     
 }

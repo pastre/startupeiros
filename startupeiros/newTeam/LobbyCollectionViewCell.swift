@@ -119,7 +119,7 @@ class LobbyCollectionViewCell: UICollectionViewCell {
         self.cardView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.cardView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor).isActive = true
         self.cardView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
-        self.cardView.layer.applySketchShadow(color: UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0), alpha: 1.0, x: 7, y: 5, blur: 0, spread: 0)
+//        self.cardView.layer.applySketchShadow(color: UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0), alpha: 1.0, x: 7, y: 5, blur: 0, spread: 0)
         
         self.cardView.addSubview(self.headView)
         self.headView.layer.cornerRadius = 20.0

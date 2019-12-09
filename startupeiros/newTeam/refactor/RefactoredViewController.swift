@@ -170,7 +170,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     func setupCard(){
         cardView.layer.cornerRadius = 15.0
-        cardView.layer.applySketchShadow()
+//        cardView.layer.applySketchShadow()
     }
     
     func setupStartButtons()  {
@@ -640,7 +640,19 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         }
         
         print("ONCHANGED")
-        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+        var dict: NSDictionary!
+        let rawDict =  snap.value as! [String: Any]
+        
+        if rawDict.keys.contains(where: { (val) -> Bool in
+            return val == "players"
+        }) {
+            dict = rawDict["players"] as! NSDictionary
+        } else{
+            dict = rawDict as! NSDictionary
+        }
+        
+        
+        let newPlayer = JoiningPlayer(snap.key, from: dict)
         
         for (i, player) in self.playersInLobby.enumerated()  {
             if player.id == newPlayer.id {
@@ -672,6 +684,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     var currentSelectedClass: String?
+    
     func updateSelectedClasses() {
         self.collectionView.reloadData()
         self.collectionView.layoutIfNeeded()
