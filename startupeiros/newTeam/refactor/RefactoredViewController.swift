@@ -68,8 +68,20 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         text.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
         text.textColor = .black
         text.placeholder = ""
-        text.text = "Debug name"
-        text.borderStyle = .line
+        
+        let lineView = UIView()
+        
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        text.addSubview(lineView)
+        
+        lineView.leadingAnchor.constraint(equalTo: text.leadingAnchor).isActive = true
+        lineView.bottomAnchor.constraint(equalTo: text.bottomAnchor).isActive = true
+        lineView.trailingAnchor.constraint(equalTo: text.trailingAnchor).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        lineView.backgroundColor = UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
+        
         return text
     }()
 
@@ -79,8 +91,22 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         text.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
         text.textColor = .black
         text.placeholder = ""
-        text.text = "Debug startup"
-        text.borderStyle = .line
+        
+        
+        let lineView = UIView()
+        
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        text.addSubview(lineView)
+        
+        lineView.leadingAnchor.constraint(equalTo: text.leadingAnchor).isActive = true
+        lineView.bottomAnchor.constraint(equalTo: text.bottomAnchor).isActive = true
+        lineView.trailingAnchor.constraint(equalTo: text.trailingAnchor).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        lineView.backgroundColor = UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
+        
+        
         return text
     }()
     
@@ -92,7 +118,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         button.backgroundColor =  UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0)
 //        button.backgroundColor =  UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
         button.addTarget(self, action: #selector(onNext), for: .touchUpInside)
-//        button.isEnabled = false
+        button.isEnabled = false
         return button
     }()
     
@@ -296,7 +322,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     
     func createTeamIfAllReady() {
-        
+        if self.playersInLobby.count != 3 { return }
         for player in self.playersInLobby {
             if !player.isReady { return }
         }
@@ -487,7 +513,9 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     @objc func onReturn()  {
+        self.stateMachine = nil
         
+        self.setupStartButtons()
     }
     
     @objc func onNext() {
@@ -540,6 +568,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     func xega() {
+        
+        if self.playersPickingClass.count != 3 { return }
         guard let currentClass = self.currentSelectedClass else { return }
         guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
         for player in self.playersPickingClass {
@@ -767,6 +797,11 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         
         if currentState != .joining {
             cell.joinButton.isHidden = true
+        }
+        
+        if self.rooms.count > 0 {
+
+            cell.startupNameLabel.text = rooms[indexPath.item].name
         }
         
         

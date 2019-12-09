@@ -230,6 +230,11 @@ class LobbyCollectionViewCell: UICollectionViewCell {
             playerTwo.isHidden = false
             playerThree.isHidden = true
         }
+        if players.count == 3 {
+            playerOne.isHidden = false
+            playerTwo.isHidden = false
+            playerThree.isHidden = false
+        }
     }
     
     

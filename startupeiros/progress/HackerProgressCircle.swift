@@ -13,9 +13,10 @@ class HackerProgressCircle: CircularProgressBar {
     
     override func commonInit() {
         EventBinder.bind(self, to: .hackerProgress)
-        
+//        self.progressView.backgroundColor = 
         super.commonInit()
     }
+    
     
     
     
