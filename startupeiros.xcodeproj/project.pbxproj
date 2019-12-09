@@ -52,6 +52,8 @@
 		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
 		D78D780C239D718200C95B6F /* Doodle 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D78D780B239D718200C95B6F /* Doodle 1.mlmodel */; };
+		D78D780E239D7D3A00C95B6F /* PredictionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D780D239D7D3A00C95B6F /* PredictionResult.swift */; };
+		D78D7810239D8B2F00C95B6F /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D780F239D8B2F00C95B6F /* LabelCollectionViewCell.swift */; };
 		D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */; };
 		D799B6B4239453AE00BD6198 /* TimerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799B6B3239453AE00BD6198 /* TimerFactory.swift */; };
 		D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A33E23914ED40061405A /* StepperBar.swift */; };
@@ -139,6 +141,8 @@
 		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D78D780B239D718200C95B6F /* Doodle 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Doodle 1.mlmodel"; sourceTree = "<group>"; };
+		D78D780D239D7D3A00C95B6F /* PredictionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionResult.swift; sourceTree = "<group>"; };
+		D78D780F239D8B2F00C95B6F /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		D78E53F2239ADCFA00CCF4DD /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		D799B6B3239453AE00BD6198 /* TimerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFactory.swift; sourceTree = "<group>"; };
 		D7A9A33E23914ED40061405A /* StepperBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperBar.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				D78D780B239D718200C95B6F /* Doodle 1.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
+				D78D780D239D7D3A00C95B6F /* PredictionResult.swift */,
+				D78D780F239D8B2F00C95B6F /* LabelCollectionViewCell.swift */,
 			);
 			path = drawDoodle;
 			sourceTree = "<group>";
@@ -575,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				D78D780E239D7D3A00C95B6F /* PredictionResult.swift in Sources */,
 				D7DD9A7E239C45AB00D26858 /* EnergyLabel.swift in Sources */,
 				D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */,
 				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
@@ -584,6 +591,7 @@
 				D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */,
 				D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */,
 				D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */,
+				D78D7810239D8B2F00C95B6F /* LabelCollectionViewCell.swift in Sources */,
 				D75A6EBE2391962D00D682D1 /* SkillLevelLabel.swift in Sources */,
 				F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */,
 				D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */,
