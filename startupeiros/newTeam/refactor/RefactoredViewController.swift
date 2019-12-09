@@ -119,11 +119,6 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
 
     var rooms: [Room]! = []
 
-    var currentClass: String? {
-        didSet {
-            self.nextButton.isEnabled = self.currentClass != nil
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -438,6 +433,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
         self.updateCardHeight(0.28)
         self.clearCard() {
+            self.isReady = false
             self.firebaseObserver?.invalidate()
             self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players"))
             self.firebaseObserver?.setup()
@@ -512,8 +508,58 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             }
             return
         }
+        
+        if self.stateMachine?.getCurrentState() == .pickingClass {
+            
+            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+            guard let username = Authenticator.instance.getUserId() else { return }
+            
+            self.isReady = !self.isReady
+            
+            if self.isReady {
+                self.nextButton.setTitle("Cancel", for: .normal)
+            } else {
+                self.nextButton.setTitle("Ready", for: .normal)
+            }
+            
+            
+            Database.database().reference().root.child(FirebaseKeys.pickingClass.rawValue).child(roomId).child("players")
+                .child(username).child("isReady").setValue(self.isReady) {
+                (error, ref ) in
+                if let error = error {
+                    print("Erro pra atualizar a ready!", error)
+                    return
+                }
+                    
+                self.xega()
+                
+            }
+            return
+        }
         self.passState()
     }
+    
+    func xega() {
+        guard let currentClass = self.currentSelectedClass else { return }
+        guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+        for player in self.playersPickingClass {
+            if !player.isReady { return }
+        }
+        NewTeamDatabaseFacade.joinTeam(roomId, classed: currentClass) { (erro) in
+            if let error = erro {
+                print("Erro ao entrar para o time", error)
+            }
+            
+            for window in UIApplication.shared.windows {
+                if let vc = window.rootViewController as? DecideStartViewController {
+                    vc.currentChild?.dismiss(animated: true, completion: {
+                        vc.presentGameView()
+                    })
+                }
+            }
+        }
+    }
+    
     
     @objc func onTextFieldChanged(_ view: UITextView) {
         guard let state = self.stateMachine?.getCurrentState() else { return }
@@ -588,8 +634,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             }
             
             self.updateSelectedClasses()
-            self.createTeamIfAllReady()
             
+            self.xega()
             return
         }
         
@@ -602,6 +648,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
                 break
             }
         }
+        
 
         self.createTeamIfAllReady()
         self.collectionView.reloadData()

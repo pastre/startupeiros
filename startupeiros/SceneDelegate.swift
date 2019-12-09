@@ -19,9 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name: "RefactoredStart", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
-//        let vc = DecideStartViewController()
+        let vc = DecideStartViewController()
 //        let vc = InitialViewController()
 //        let nav = UINavigationController(rootViewController: vc)
         

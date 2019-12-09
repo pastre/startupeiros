@@ -46,9 +46,8 @@ class DecideStartViewController: UIViewController {
                     print("Erro ao fazer login!", error)
                 }
             }
-            self.presentCreateTeamView()
         } else {
-            self.presentNameView()
+            self.presentCreateTeamView()
         }
     }
     
@@ -62,10 +61,14 @@ class DecideStartViewController: UIViewController {
     }
     
     func presentCreateTeamView()  {
-//        let vc = NewTeamViewController()
+        let storyboard = UIStoryboard(name: "RefactoredStart", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()!
         
-//        self.currentChild = vc
-//        self.present(vc, animated: true, completion: nil)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.modalPresentationStyle = .overCurrentContext
+        
+        self.currentChild = vc
+        self.present(vc, animated: true, completion: nil)
     }
     
     func presentNameView(){
