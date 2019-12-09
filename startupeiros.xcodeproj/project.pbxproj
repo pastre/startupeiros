@@ -70,6 +70,10 @@
 		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
 		D7F3F24A239C1D890078A5E6 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3F249239C1D890078A5E6 /* PlayerClass.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
+		F0175BFF239E9770005E990A /* RefactoredStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */; };
+		F0278EF2239A94FB0064EB2E /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0278EF1239A94FB0064EB2E /* Start.storyboard */; };
+		F0278EF8239AF5880064EB2E /* quick-doodle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */; };
+		F03DDDEF23992842001B4612 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03DDDEE23992842001B4612 /* Challenge.swift */; };
 		D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F03DDDF423994079001B4612 /* seta-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF023994078001B4612 /* seta-3.png */; };
 		F03DDDF523994079001B4612 /* seta-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F03DDDF123994079001B4612 /* seta-1.png */; };
@@ -83,6 +87,10 @@
 		F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F719238E225A00EA176E /* DatabaseJob.swift */; };
 		F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71D238E236900EA176E /* DatabaseTask.swift */; };
 		F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71F238E238200EA176E /* DatabaseSkill.swift */; };
+		F0BFD6DA239BE4F2003E1AF2 /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
+		F0BFD6DC239C4078003E1AF2 /* LobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DB239C4077003E1AF2 /* LobbyCollectionViewCell.swift */; };
+		F0BFD6DE239D3372003E1AF2 /* RolesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DD239D3372003E1AF2 /* RolesCollectionViewCell.swift */; };
+		F0BFD6E0239E8A62003E1AF2 /* RefactoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */; };
 		F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85366238FFC48005CC468 /* FlappyGameScene.swift */; };
 		F0D85369238FFC88005CC468 /* FlappyGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */; };
 		F0D8536D238FFDDE005CC468 /* FlappyGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */; };
@@ -91,12 +99,14 @@
 		F0D8537C23900BA1005CC468 /* bird-02.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537823900BA1005CC468 /* bird-02.png */; };
 		F0D8537D23900BA1005CC468 /* bird-01.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537923900BA1005CC468 /* bird-01.png */; };
 		F0D8537E23900BA1005CC468 /* bird-04.png in Resources */ = {isa = PBXBuildFile; fileRef = F0D8537A23900BA1005CC468 /* bird-04.png */; };
+		F0DD317A239EA5CB001A75E5 /* RefactoredStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD3179239EA5CB001A75E5 /* RefactoredStateMachine.swift */; };
+		F0DD317C239EA64F001A75E5 /* FirebaseObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD317B239EA64F001A75E5 /* FirebaseObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		49826972E7F313DA36094907 /* Pods_startupeiros.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_startupeiros.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7211E529DE5FEB8D171F387 /* Pods-startupeiros.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.release.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.release.xcconfig"; sourceTree = "<group>"; };
-		D72001522384F1D00087ADCE /* startupeiros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = startupeiros.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D72001522384F1D00087ADCE /* Cube H.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cube H.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72001552384F1D00087ADCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D72001572384F1D00087ADCE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D72001592384F1D00087ADCE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +172,9 @@
 		D7F3F249239C1D890078A5E6 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
 		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
+		F0278EF1239A94FB0064EB2E /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "quick-doodle.mlmodel"; sourceTree = "<group>"; };
+		F03DDDEE23992842001B4612 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		F03DDDF023994078001B4612 /* seta-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-3.png"; sourceTree = "<group>"; };
 		F03DDDF123994079001B4612 /* seta-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-1.png"; sourceTree = "<group>"; };
 		F03DDDF323994079001B4612 /* seta-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-2.png"; sourceTree = "<group>"; };
@@ -173,6 +186,10 @@
 		F097F719238E225A00EA176E /* DatabaseJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseJob.swift; sourceTree = "<group>"; };
 		F097F71D238E236900EA176E /* DatabaseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTask.swift; sourceTree = "<group>"; };
 		F097F71F238E238200EA176E /* DatabaseSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSkill.swift; sourceTree = "<group>"; };
+		F0BFD6DB239C4077003E1AF2 /* LobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyCollectionViewCell.swift; sourceTree = "<group>"; };
+		F0BFD6DD239D3372003E1AF2 /* RolesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolesCollectionViewCell.swift; sourceTree = "<group>"; };
+		F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefactoredViewController.swift; sourceTree = "<group>"; };
+		F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RefactoredStart.storyboard; sourceTree = "<group>"; };
 		F0D85366238FFC48005CC468 /* FlappyGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameScene.swift; sourceTree = "<group>"; };
 		F0D85368238FFC88005CC468 /* FlappyGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyGameViewController.swift; sourceTree = "<group>"; };
 		F0D8536C238FFDDE005CC468 /* FlappyGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlappyGame.storyboard; sourceTree = "<group>"; };
@@ -181,6 +198,8 @@
 		F0D8537823900BA1005CC468 /* bird-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-02.png"; sourceTree = "<group>"; };
 		F0D8537923900BA1005CC468 /* bird-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-01.png"; sourceTree = "<group>"; };
 		F0D8537A23900BA1005CC468 /* bird-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-04.png"; sourceTree = "<group>"; };
+		F0DD3179239EA5CB001A75E5 /* RefactoredStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefactoredStateMachine.swift; sourceTree = "<group>"; };
+		F0DD317B239EA64F001A75E5 /* FirebaseObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseObserver.swift; sourceTree = "<group>"; };
 		F380B18EEAD894FE951A99DF /* Pods-startupeiros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-startupeiros.debug.xcconfig"; path = "Target Support Files/Pods-startupeiros/Pods-startupeiros.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,7 +247,7 @@
 		D72001532384F1D00087ADCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D72001522384F1D00087ADCE /* startupeiros.app */,
+				D72001522384F1D00087ADCE /* Cube H.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +255,7 @@
 		D72001542384F1D00087ADCE /* startupeiros */ = {
 			isa = PBXGroup;
 			children = (
+				F0278EF0239A94D00064EB2E /* views */,
 				D7309ABC239BEFCA0099373A /* utils */,
 				D7515A8A23901D5700290A4A /* controller */,
 				D7515A73238F7EA900290A4A /* progress */,
@@ -367,6 +387,9 @@
 		D7811A18238821F200784268 /* newTeam */ = {
 			isa = PBXGroup;
 			children = (
+				F0BFD6E1239E8A66003E1AF2 /* refactor */,
+				F0BFD6DD239D3372003E1AF2 /* RolesCollectionViewCell.swift */,
+				F0BFD6DB239C4077003E1AF2 /* LobbyCollectionViewCell.swift */,
 				D7FB129C238730C400D8B19A /* NewTeamViewController.swift */,
 				D7811A1B2388224F00784268 /* CreateTeamViewController.swift */,
 				D7811A192388223400784268 /* PickTeamViewController.swift */,
@@ -407,6 +430,14 @@
 			path = auth;
 			sourceTree = "<group>";
 		};
+		F0278EF0239A94D00064EB2E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F0278EF1239A94FB0064EB2E /* Start.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		F07BC3E9238EEC6E00556997 /* databaseGameCreator */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +452,7 @@
 		F07E498323932F7200419E36 /* drawDoodle */ = {
 			isa = PBXGroup;
 			children = (
+				F0278EF7239AF5880064EB2E /* quick-doodle.mlmodel */,
 				D78D780B239D718200C95B6F /* Doodle 1.mlmodel */,
 				F07E498423933CE900419E36 /* DrawingViewController.swift */,
 				F07E49862393432C00419E36 /* DoodleGame.storyboard */,
@@ -428,6 +460,17 @@
 				D78D780F239D8B2F00C95B6F /* LabelCollectionViewCell.swift */,
 			);
 			path = drawDoodle;
+			sourceTree = "<group>";
+		};
+		F0BFD6E1239E8A66003E1AF2 /* refactor */ = {
+			isa = PBXGroup;
+			children = (
+				F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */,
+				F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */,
+				F0DD3179239EA5CB001A75E5 /* RefactoredStateMachine.swift */,
+				F0DD317B239EA64F001A75E5 /* FirebaseObserver.swift */,
+			);
+			path = refactor;
 			sourceTree = "<group>";
 		};
 		F0D8536A238FFD3E005CC468 /* miniGames */ = {
@@ -486,7 +529,7 @@
 			);
 			name = startupeiros;
 			productName = startupeiros;
-			productReference = D72001522384F1D00087ADCE /* startupeiros.app */;
+			productReference = D72001522384F1D00087ADCE /* Cube H.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -532,12 +575,14 @@
 				F0D8536D238FFDDE005CC468 /* FlappyGame.storyboard in Resources */,
 				F03DDDF9239943BF001B4612 /* seta-4.png in Resources */,
 				F0D8537B23900BA1005CC468 /* bird-03.png in Resources */,
+				F0278EF2239A94FB0064EB2E /* Start.storyboard in Resources */,
 				D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */,
 				F0D8537E23900BA1005CC468 /* bird-04.png in Resources */,
 				F0D8537D23900BA1005CC468 /* bird-01.png in Resources */,
 				D7CD0D4F239DD495009DC299 /* HackerContent.txt in Resources */,
 				F03DDDF723994079001B4612 /* seta-2.png in Resources */,
 				F07E49872393432C00419E36 /* DoodleGame.storyboard in Resources */,
+				F0175BFF239E9770005E990A /* RefactoredStart.storyboard in Resources */,
 				D720015F2384F1D10087ADCE /* Assets.xcassets in Resources */,
 				F0D85371239006C9005CC468 /* GameScene.sks in Resources */,
 				F0D8537C23900BA1005CC468 /* bird-02.png in Resources */,
@@ -596,10 +641,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
+				F0BFD6E0239E8A62003E1AF2 /* RefactoredViewController.swift in Sources */,
 				D78D780E239D7D3A00C95B6F /* PredictionResult.swift in Sources */,
 				D7DD9A7E239C45AB00D26858 /* EnergyLabel.swift in Sources */,
 				D727F5EA2396EB0C0025F22D /* HackerProgressCircle.swift in Sources */,
-				D7FB129D238730C400D8B19A /* NewTeamViewController.swift in Sources */,
+				F0BFD6DC239C4078003E1AF2 /* LobbyCollectionViewCell.swift in Sources */,
 				D75E34E4238EEBAA00CD7482 /* Work.swift in Sources */,
 				D7515A7F238F7F6800290A4A /* EventBinder.swift in Sources */,
 				D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */,
@@ -617,6 +663,7 @@
 				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
 				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */,
+				F0DD317C239EA64F001A75E5 /* FirebaseObserver.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
 				D75E34CC238C690800CD7482 /* Protocols.swift in Sources */,
 				D7EE5DCB23884C8A00399155 /* Model.swift in Sources */,
@@ -624,6 +671,8 @@
 				D7A9A33F23914ED50061405A /* StepperBar.swift in Sources */,
 				D72001562384F1D00087ADCE /* AppDelegate.swift in Sources */,
 				F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */,
+				F03DDDEF23992842001B4612 /* Challenge.swift in Sources */,
+				F0278EF8239AF5880064EB2E /* quick-doodle.mlmodel in Sources */,
 				D7515A81238FF94800290A4A /* WorkBar.swift in Sources */,
 				D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */,
 				D72001582384F1D00087ADCE /* SceneDelegate.swift in Sources */,
@@ -637,14 +686,17 @@
 				D7515A8923901D4D00290A4A /* SkillCollectionViewCell.swift in Sources */,
 				D75E34EB238EEC5E00CD7482 /* WorkCoin.swift in Sources */,
 				D75E34CF238CCE6D00CD7482 /* TaskTimer.swift in Sources */,
+				F0BFD6DE239D3372003E1AF2 /* RolesCollectionViewCell.swift in Sources */,
 				F088F16A2389EA76006CCF49 /* ViewController.swift in Sources */,
 				D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */,
 				D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */,
 				D7309ABE239BEFD90099373A /* FirebaseReferenceFactory.swift in Sources */,
 				F0D85367238FFC48005CC468 /* FlappyGameScene.swift in Sources */,
+				F0DD317A239EA5CB001A75E5 /* RefactoredStateMachine.swift in Sources */,
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
+				F0BFD6DA239BE4F2003E1AF2 /* NewTeamViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
 				D7F3F24A239C1D890078A5E6 /* PlayerClass.swift in Sources */,
 				D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */,
@@ -814,7 +866,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.pastre.startupeiros;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cube H";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -834,7 +886,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.pastre.startupeiros;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cube H";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

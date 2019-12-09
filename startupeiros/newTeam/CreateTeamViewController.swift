@@ -17,19 +17,19 @@ class CreateTeamViewController: CreateNameViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func onNext() {
-        NewTeamDatabaseFacade.createRoom(named: self.textView.text) { (error) in
-            if let error  = error {
-                print("Erro ao criar a sala", error)
-                return
-            }
-
-            self.dismiss(animated: true)  {
-                guard let navParent = self.navParent as? NewTeamViewController else { return }
-                navParent.joinRoom(NewTeamDatabaseFacade.newRoomId!)
-            }
-        }
-    }
+//    override func onNext() {
+//        NewTeamDatabaseFacade.createRoom(named: self.textView.text) { (error) in
+//            if let error  = error {
+//                print("Erro ao criar a sala", error)
+//                return
+//            }
+//
+//            self.dismiss(animated: true)  {
+////                guard let navParent = self.navParent as? NewTeamViewController else { return }
+////                navParent.joinRoom(NewTeamDatabaseFacade.newRoomId!)
+//            }
+//        }
+//    }
     
 
     /*
