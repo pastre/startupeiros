@@ -260,7 +260,7 @@ class NewTeamViewController: UIViewController, UICollectionViewDelegate, UIColle
             if rooms.count == 0 {
                 self.collectionView.addSubview(self.noRoomLabel)
             } else {
-                cell2.setup()
+//                cell2.setup()
                 cell2.startupNameLabel.text = rooms[indexPath.row].name
                 cell2.ownerNameLabel.text = rooms[indexPath.row].players[0].name
                 cell2.numberLabel.text = "\(players.count)/3"

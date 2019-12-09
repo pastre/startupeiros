@@ -107,7 +107,7 @@ class LobbyCollectionViewCell: UICollectionViewCell {
     
 
     
-    func setup() {
+    func setup(_ players: [JoiningPlayer]) {
 //        self.contentView.translatesAutoresizingMaskIntoConstraints = false
 //        self.contentView.heightAnchor.constraint(equalToConstant: 250).isActive = true
 //        self.contentView.widthAnchor.constraint(equalToConstant: 145).isActive = true
@@ -208,5 +208,24 @@ class LobbyCollectionViewCell: UICollectionViewCell {
         self.playerThreeImage.heightAnchor.constraint(equalTo: self.playerThree.heightAnchor).isActive = true
         self.playerThreeImage.widthAnchor.constraint(equalTo: self.playerThree.widthAnchor).isActive = true
          
+        let images = [playerOneImage, playerTwoImage, playerThreeImage, ]
+        
+        for (i, player) in players.enumerated() {
+            if player.isReady {
+                images[i].image = UIImage(named: "withPlayer")
+            } else {
+                images[i].image = UIImage(named: "withoutPlayer")
+            }
+        }
+        
+        if players.count == 1 {
+            playerTwo.isHidden = true
+            playerThree.isHidden = true
+        }
+        if players.count == 2 {
+            playerThree.isHidden = true
+        }
     }
+    
+    
 }

@@ -111,6 +111,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     var tap: UITapGestureRecognizer!
     var firebaseObserver: FirebaseObserver?
     
+    var isReady = false
     var playersInLobby: [JoiningPlayer]! = []
     
     override func viewDidLoad() {
@@ -348,16 +349,26 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         
         self.updateCardHeight(0.28)
         self.clearCard() {
-
-            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue))
+            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue))
             self.firebaseObserver?.setup()
             
             self.setupSessionTitle("Aguardando...")
             self.setupCollectionView()
             self.collectionView.reloadData()
             self.setupNavigationButton("Pronto")
+            self.returnButton.isHidden = true
+            
         }
 
+    }
+    
+    func updateReadyState() {
+        if self.isReady {
+            self.nextButton.setTitle("Cancel", for: .normal)
+        } else {
+            self.nextButton.setTitle("Ready", for: .normal)
+        }
     }
     
     
@@ -393,6 +404,23 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     @objc func onNext() {
+        if self.stateMachine?.getCurrentState() == .inLobby {
+            guard let username = Authenticator.instance.getUserId() else { return }
+            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
+                self.isReady = !self.isReady
+            
+            self.updateReadyState()
+            Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(username).child("isReady").setValue(self.isReady) {
+                (error, ref ) in
+                if let error = error {
+                    print("Erro pra atualizar a ready!", error)
+                    return
+                }
+                
+//                self.createTeamIfAllReady()
+            }
+            return
+        }
         self.passState()
     }
     
@@ -430,20 +458,13 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     
     func onAdded(_ snap: DataSnapshot) {
-        let parsedDict = (snap.value as! NSDictionary)["players"]  as! NSDictionary
-        for (k, v )in parsedDict{
-            print("Players are",k , "value", v)
-        }
         
-        self.playersInLobby = parsedDict.map({ (k,  v) -> JoiningPlayer in
-            return JoiningPlayer(k as! String, from: v as! NSDictionary)
-        })
-        
-//        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
-//
-//        self.playersInLobby.append(newPlayer)
+        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+
+        self.playersInLobby.append(newPlayer)
         
         self.collectionView.reloadData()
+        
     }
     
     func onChanged(_ snap: DataSnapshot) {
@@ -487,10 +508,19 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let currentState = self.stateMachine?.getCurrentState() else  { return UICollectionViewCell() }
+        guard let playerName = self.getPlayerName()   else { return UICollectionViewCell()}
+        guard let startupName =  self.getRoomName() else { return UICollectionViewCell()}
         
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "lobby", for: indexPath)  as! LobbyCollectionViewCell
         
-        cell.setup()
+        
+        cell.setup(self.playersInLobby)
+        
+        cell.ownerNameLabel.text = playerName
+        cell.startupNameLabel.text = startupName
+        cell.joinButton.isHidden = true
+        
+        
         
         return cell
     }
@@ -498,8 +528,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let size = collectionView.frame.size
-            return CGSize(width: size.width * 0.4,  height: size.height)
-        
+            return CGSize(width: size.width * 0.4,  height: size.height * 0.8)
     }
     
     
