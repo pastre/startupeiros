@@ -35,3 +35,85 @@ extension Double: Coin {
     }
     
 }
+
+extension CGContext {
+    static func create(size: CGSize,
+        action: (inout CGContext) -> ()) -> UIImage? {
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+        
+        guard var context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        action(&context)
+
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        
+        return result
+    }
+}
+// END dd_new_extensions_cgcontext
+
+// BEGIN dd_new_extensions_uibutton
+extension UIButton {
+    func enable() {
+        self.isEnabled = true
+        self.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func disable() {
+        self.isEnabled = false
+        self.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+}
+// END dd_new_extensions_uibutton
+
+// BEGIN dd_new_extensions_uibarbuttonitem
+extension UIBarButtonItem {
+    func enable() { self.isEnabled = true }
+    func disable() { self.isEnabled = false }
+}
+// END dd_new_extensions_uibarbuttonitem
+
+extension UIImage {
+
+    func resize(to newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newSize.width, height: newSize.height), true, 1.0)
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        UIColor.white.setFill()
+        UIRectFill(rect)
+        self.draw(in: rect)
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return resizedImage
+    }
+    
+    func applying(filter: CIFilter) -> UIImage? {
+        filter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
+
+        let context = CIContext(options: nil)
+        guard let output = filter.outputImage,
+            let cgImage = context.createCGImage(
+                    output, from: output.extent
+                ) else {
+                    return nil
+        }
+
+        return UIImage(
+            cgImage: cgImage,
+            scale: scale,
+            orientation: imageOrientation)
+    }
+
+}
+
+extension CIFilter {
+    static let mono = CIFilter(name: "CIPhotoEffectMono")!
+    static let noir = CIFilter(name: "CIPhotoEffectNoir")!
+    static let tonal = CIFilter(name: "CIPhotoEffectTonal")!
+}
+
