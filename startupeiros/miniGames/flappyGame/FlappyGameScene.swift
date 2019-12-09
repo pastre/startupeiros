@@ -80,7 +80,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         // create the pipes textures
-        pipeTextureUp = SKTexture(imageNamed: "PipeUp")
+        pipeTextureUp = SKTexture(imageNamed: "maoegrana")
         pipeTextureUp.filteringMode = .nearest
         pipeTextureDown = SKTexture(imageNamed: "PipeDown")
         pipeTextureDown.filteringMode = .nearest
@@ -149,9 +149,24 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         let height = UInt32( self.frame.size.height / 4)
         let y = Double(arc4random_uniform(height) + height)
-
-        let pipeDown = SKSpriteNode(texture: pipeTextureDown)
-        pipeDown.setScale(1.0)
+        
+        let pipeUp = SKSpriteNode(texture: pipeTextureUp)
+        pipeUp.setScale(0.5)
+        pipeUp.position = CGPoint(x: 0.0, y: y)
+        pipeUp.zRotation = 0
+        pipeUp.name = "pipeUp"
+        
+        pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
+        pipeUp.physicsBody?.isDynamic = false
+        pipeUp.physicsBody?.categoryBitMask = pipeCategory
+        pipeUp.physicsBody?.contactTestBitMask = birdCategory
+        pipePair.addChild(pipeUp)
+        
+        
+        let pipeDown = (pipeUp.copy() as! SKSpriteNode)
+        
+        pipeUp.name = "pipeDown"
+        pipeUp.zRotation = .pi
         pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
         
         pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
@@ -160,15 +175,6 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         pipeDown.physicsBody?.contactTestBitMask = birdCategory
         pipePair.addChild(pipeDown)
         
-        let pipeUp = SKSpriteNode(texture: pipeTextureUp)
-        pipeUp.setScale(1.0)
-        pipeUp.position = CGPoint(x: 0.0, y: y)
-        
-        pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
-        pipeUp.physicsBody?.isDynamic = false
-        pipeUp.physicsBody?.categoryBitMask = pipeCategory
-        pipeUp.physicsBody?.contactTestBitMask = birdCategory
-        pipePair.addChild(pipeUp)
         
         let contactNode = SKNode()
         contactNode.position = CGPoint( x: pipeDown.size.width + bird.size.width / 2, y: self.frame.midY )
@@ -220,6 +226,29 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
         bird.zRotation = min( max(-1, value), 0.5 )
     }
+    var currentHands: SKNode?
+    func updateHands() {
+        if let curr = self.currentHands {
+            curr.removeFromParent()
+        }
+        
+        let currentHands = self.pipes.children.first!
+        guard let up = currentHands.childNode(withName: "pipeUp") else { return }
+        guard let down = currentHands.childNode(withName: "pipeDown") else { return }
+        
+
+        let upTexture = SKTexture(imageNamed: "mao")
+        upTexture.filteringMode = .nearest
+        
+        
+        let upAction = SKAction.setTexture(upTexture)
+        
+            
+        up.run(upAction)
+        down.run(upAction)
+        
+        self.currentHands = currentHands
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         if moving.speed > 0 {
@@ -228,8 +257,10 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
                 score += 1
                 scoreLabelNode.text = String(score)
                 
+                self.updateHands()
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
+                
             } else {
                 
                 moving.speed = 0

@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name: "DoodleGame", bundle: nil)
-//        let vc = storyboard.instantiateInitialViewController()!
-        let vc = HackerViewController()
+        let storyboard = UIStoryboard(name: "FlappyGame", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()!
+//        let vc = HackerViewController()
 //        let nav = UINavigationController(rootViewController: vc)
         
         for window in scene.windows {
