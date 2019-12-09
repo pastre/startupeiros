@@ -23,7 +23,6 @@
 		D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA578239022CD0085592D /* TaskTableViewCell.swift */; };
 		D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA57C23905ECC0085592D /* TaskBar.swift */; };
 		D742EB402388231B00E5A2D6 /* NewTeamDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */; };
-		D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EB412388271D00E5A2D6 /* RoomViewController.swift */; };
 		D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A74238F7EBB00290A4A /* EnergyBar.swift */; };
 		D7515A77238F7EE300290A4A /* CoffeeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A76238F7EE300290A4A /* CoffeeBar.swift */; };
 		D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7515A7B238F7F4300290A4A /* ProgressBarView.swift */; };
@@ -48,8 +47,6 @@
 		D75E34EB238EEC5E00CD7482 /* WorkCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E34EA238EEC5E00CD7482 /* WorkCoin.swift */; };
 		D76CFC7B23968F6A00ACA264 /* GameDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CFC7A23968F6A00ACA264 /* GameDatabaseFacade.swift */; };
 		D76CFC7D23969A6B00ACA264 /* GameDatabaseSupplicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CFC7C23969A6B00ACA264 /* GameDatabaseSupplicant.swift */; };
-		D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A192388223400784268 /* PickTeamViewController.swift */; };
-		D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7811A1B2388224F00784268 /* CreateTeamViewController.swift */; };
 		D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */; };
 		D78D780C239D718200C95B6F /* Doodle 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D78D780B239D718200C95B6F /* Doodle 1.mlmodel */; };
 		D78D780E239D7D3A00C95B6F /* PredictionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D780D239D7D3A00C95B6F /* PredictionResult.swift */; };
@@ -67,7 +64,6 @@
 		D7DD9A7E239C45AB00D26858 /* EnergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9A7D239C45AB00D26858 /* EnergyLabel.swift */; };
 		D7DD9A80239D268600D26858 /* FirebaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9A7F239D268500D26858 /* FirebaseKeys.swift */; };
 		D7EE5DCB23884C8A00399155 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCA23884C8A00399155 /* Model.swift */; };
-		D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE5DCC23887F8900399155 /* PickClassViewController.swift */; };
 		D7F3F24A239C1D890078A5E6 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3F249239C1D890078A5E6 /* PlayerClass.swift */; };
 		D7FB129A23871BD700D8B19A /* DecideStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129923871BD700D8B19A /* DecideStartViewController.swift */; };
 		F0175BFF239E9770005E990A /* RefactoredStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */; };
@@ -84,7 +80,6 @@
 		F097F71A238E225A00EA176E /* DatabaseJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F719238E225A00EA176E /* DatabaseJob.swift */; };
 		F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71D238E236900EA176E /* DatabaseTask.swift */; };
 		F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097F71F238E238200EA176E /* DatabaseSkill.swift */; };
-		F0BFD6DA239BE4F2003E1AF2 /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB129C238730C400D8B19A /* NewTeamViewController.swift */; };
 		F0BFD6DC239C4078003E1AF2 /* LobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DB239C4077003E1AF2 /* LobbyCollectionViewCell.swift */; };
 		F0BFD6DE239D3372003E1AF2 /* RolesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DD239D3372003E1AF2 /* RolesCollectionViewCell.swift */; };
 		F0BFD6E0239E8A62003E1AF2 /* RefactoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */; };
@@ -121,7 +116,6 @@
 		D73CA578239022CD0085592D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D73CA57C23905ECC0085592D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
 		D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamDatabaseFacade.swift; sourceTree = "<group>"; };
-		D742EB412388271D00E5A2D6 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		D7515A74238F7EBB00290A4A /* EnergyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBar.swift; sourceTree = "<group>"; };
 		D7515A76238F7EE300290A4A /* CoffeeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBar.swift; sourceTree = "<group>"; };
 		D7515A7B238F7F4300290A4A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
@@ -146,8 +140,6 @@
 		D75E34EA238EEC5E00CD7482 /* WorkCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCoin.swift; sourceTree = "<group>"; };
 		D76CFC7A23968F6A00ACA264 /* GameDatabaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDatabaseFacade.swift; sourceTree = "<group>"; };
 		D76CFC7C23969A6B00ACA264 /* GameDatabaseSupplicant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDatabaseSupplicant.swift; sourceTree = "<group>"; };
-		D7811A192388223400784268 /* PickTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeamViewController.swift; sourceTree = "<group>"; };
-		D7811A1B2388224F00784268 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		D783A1EF23870C4E000F1271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D78D780B239D718200C95B6F /* Doodle 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Doodle 1.mlmodel"; sourceTree = "<group>"; };
 		D78D780D239D7D3A00C95B6F /* PredictionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionResult.swift; sourceTree = "<group>"; };
@@ -165,10 +157,8 @@
 		D7DD9A7D239C45AB00D26858 /* EnergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyLabel.swift; sourceTree = "<group>"; };
 		D7DD9A7F239D268500D26858 /* FirebaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseKeys.swift; sourceTree = "<group>"; };
 		D7EE5DCA23884C8A00399155 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		D7EE5DCC23887F8900399155 /* PickClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickClassViewController.swift; sourceTree = "<group>"; };
 		D7F3F249239C1D890078A5E6 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		D7FB129923871BD700D8B19A /* DecideStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecideStartViewController.swift; sourceTree = "<group>"; };
-		D7FB129C238730C400D8B19A /* NewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		F0278EF1239A94FB0064EB2E /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		F03DDDEE23992842001B4612 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		F03DDDF023994078001B4612 /* seta-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seta-3.png"; sourceTree = "<group>"; };
@@ -384,14 +374,12 @@
 		D7811A18238821F200784268 /* newTeam */ = {
 			isa = PBXGroup;
 			children = (
-				F0BFD6E1239E8A66003E1AF2 /* refactor */,
+				F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */,
+				F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */,
+				F0DD3179239EA5CB001A75E5 /* RefactoredStateMachine.swift */,
+				F0DD317B239EA64F001A75E5 /* FirebaseObserver.swift */,
 				F0BFD6DD239D3372003E1AF2 /* RolesCollectionViewCell.swift */,
 				F0BFD6DB239C4077003E1AF2 /* LobbyCollectionViewCell.swift */,
-				D7FB129C238730C400D8B19A /* NewTeamViewController.swift */,
-				D7811A1B2388224F00784268 /* CreateTeamViewController.swift */,
-				D7811A192388223400784268 /* PickTeamViewController.swift */,
-				D742EB412388271D00E5A2D6 /* RoomViewController.swift */,
-				D7EE5DCC23887F8900399155 /* PickClassViewController.swift */,
 				D742EB3F2388231B00E5A2D6 /* NewTeamDatabaseFacade.swift */,
 				D7EE5DCA23884C8A00399155 /* Model.swift */,
 			);
@@ -464,17 +452,6 @@
 				F03DDDEE23992842001B4612 /* Challenge.swift */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		F0BFD6E1239E8A66003E1AF2 /* refactor */ = {
-			isa = PBXGroup;
-			children = (
-				F0BFD6E2239E8C1E003E1AF2 /* RefactoredStart.storyboard */,
-				F0BFD6DF239E8A62003E1AF2 /* RefactoredViewController.swift */,
-				F0DD3179239EA5CB001A75E5 /* RefactoredStateMachine.swift */,
-				F0DD317B239EA64F001A75E5 /* FirebaseObserver.swift */,
-			);
-			path = refactor;
 			sourceTree = "<group>";
 		};
 		F0D8536A238FFD3E005CC468 /* miniGames */ = {
@@ -644,7 +621,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7811A1A2388223400784268 /* PickTeamViewController.swift in Sources */,
 				F0BFD6E0239E8A62003E1AF2 /* RefactoredViewController.swift in Sources */,
 				D78D780E239D7D3A00C95B6F /* PredictionResult.swift in Sources */,
 				D7DD9A7E239C45AB00D26858 /* EnergyLabel.swift in Sources */,
@@ -662,10 +638,8 @@
 				F097F720238E238200EA176E /* DatabaseSkill.swift in Sources */,
 				D73CA579239022CD0085592D /* TaskTableViewCell.swift in Sources */,
 				D75E34D5238D6D8100CD7482 /* Task.swift in Sources */,
-				D7EE5DCD23887F8900399155 /* PickClassViewController.swift in Sources */,
 				D7309ABB239BE95A0099373A /* MeetupCollectionViewCell.swift in Sources */,
 				D7515A75238F7EBB00290A4A /* EnergyBar.swift in Sources */,
-				D742EB422388271D00E5A2D6 /* RoomViewController.swift in Sources */,
 				F07E498523933CE900419E36 /* DrawingViewController.swift in Sources */,
 				F0DD317C239EA64F001A75E5 /* FirebaseObserver.swift in Sources */,
 				D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */,
@@ -698,7 +672,6 @@
 				D7515A8723901BE000290A4A /* LoadingViewController.swift in Sources */,
 				F097F71E238E236900EA176E /* DatabaseTask.swift in Sources */,
 				D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */,
-				F0BFD6DA239BE4F2003E1AF2 /* NewTeamViewController.swift in Sources */,
 				D75E34DD238DB9A700CD7482 /* Coffee.swift in Sources */,
 				D7F3F24A239C1D890078A5E6 /* PlayerClass.swift in Sources */,
 				D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */,
@@ -710,7 +683,6 @@
 				D721941F238EF94B0069F11D /* Extensions.swift in Sources */,
 				F07BC3E8238EE84C00556997 /* DatabaseAdmin.swift in Sources */,
 				D75A6EC02391968400D682D1 /* WorkSupplicantLabel.swift in Sources */,
-				D7811A1C2388224F00784268 /* CreateTeamViewController.swift in Sources */,
 				D7515A83238FFD2A00290A4A /* SupplicantLabel.swift in Sources */,
 				D76CFC7B23968F6A00ACA264 /* GameDatabaseFacade.swift in Sources */,
 				D75E34D3238CD2B000CD7482 /* TimerProtocols.swift in Sources */,
