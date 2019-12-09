@@ -39,4 +39,8 @@ class FirebaseObserver {
             self.delegate.onRemoved(snap)
         }
     }
+    
+    func invalidate() {
+        self.reference.removeAllObservers()
+    }
 }

@@ -12,6 +12,7 @@ import Foundation
 enum ConfiguringState {
     case start
     case creating
+    case naming
     case joining
     case inLobby
     case pickingClass
@@ -49,7 +50,20 @@ class StateMachine {
                     self._passState()
                 }
             }
-        default:break
+        case .naming:
+            self.createPlayer { error in
+                if let error = error {
+                    
+                } else {
+                    self._passState()
+                }
+                
+            }
+        case .joining:
+            self._passState()
+        case .inLobby:
+            self._passState()
+        default: break
         }
     }
     
@@ -61,6 +75,17 @@ class StateMachine {
     
     func setup() {
         self.delegate?.onStateChanged(to: self.getCurrentState())
+    }
+    
+    func pickClass() {
+        
+    }
+    
+    func createPlayer(completion: @escaping (Error?) -> ()) {
+        guard let playerName = self.delegate?.getPlayerName() else { return }
+        Authenticator.instance.createPlayer(named: playerName) { (error) in
+            completion(error)
+        }
     }
     
     func createRoom(completion: @escaping (Error?) -> ()) {

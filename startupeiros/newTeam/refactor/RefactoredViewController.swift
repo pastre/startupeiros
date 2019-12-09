@@ -113,6 +113,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     var isReady = false
     var playersInLobby: [JoiningPlayer]! = []
+    var rooms: [Room]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -269,7 +270,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         }
     }
     
-    // MARK: - StateDelegate functions
+    // MARK: - State functions
     
     func createStateMachine(with states: [ConfiguringState]) {
         let newStateMachine = StateMachine(state: states)
@@ -288,6 +289,15 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         return self.textStartupName.text
     }
     
+    
+    
+    func createTeamIfAllReady() {
+//        for player in self.playersInLobby {
+//            if !player.isReady { return }
+//        }
+//
+        self.stateMachine?.passState()
+    }
     // MARK: - State Machine Delegate
     func onStateChanged(to newState: ConfiguringState) {
 
@@ -298,6 +308,12 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
                 self.onCreateState()
             case .inLobby:
                 self.inLobbyState()
+            case .naming:
+                self.onNamingState()
+            case .joining:
+                self.joiningState()
+            case .pickingClass:
+                self.pickingClassState()
             default:
                 break
             }
@@ -310,7 +326,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         switch state {
         case .creating:
             self.stateMachine?.passState()
-        
+        case .naming:
+            self.stateMachine?.passState()
         default:
             break
         }
@@ -325,6 +342,26 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             self.nextButton.backgroundColor =  UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0)
         }
         print("NEXT BUTTON IS", self.nextButton.isEnabled)
+    }
+    
+    
+    func validateNaming(){
+        self.nextButton.isEnabled =  self.textName.text != ""
+        
+        if self.nextButton.isEnabled{
+            self.nextButton.backgroundColor =  UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
+        }else {
+            self.nextButton.backgroundColor =  UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0)
+        }
+        print("NEXT BUTTON IS", self.nextButton.isEnabled)
+    }
+    
+    func onNamingState() {
+        self.updateCardHeight(0.28)
+        self.setupKeyboardDismissGesture()
+        self.setupSessionTitle("Whats your name?")
+        self.setupCreatingForm(labelTop: self.labelTitle, constant: 80.0, label: self.labelInsertName, textField: self.textName)
+        self.setupNavigationButton("Próximo")
     }
     
     func onCreateState()  {
@@ -344,13 +381,19 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         self.setupNavigationButton("Próximo")
     }
     
-    
+    var  currentRoom: Room?
     func inLobbyState()  {
         
+        guard let currentState = self.stateMachine?.getCurrentState() else { return }
         self.updateCardHeight(0.28)
         self.clearCard() {
-            guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
-            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue))
+            
+            if let roomId = NewTeamDatabaseFacade.newRoomId {
+                self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue))
+
+            } else if let roomId = self.currentRoom?.id {
+                self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue))
+            }
             self.firebaseObserver?.setup()
             
             self.setupSessionTitle("Aguardando...")
@@ -358,7 +401,41 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             self.collectionView.reloadData()
             self.setupNavigationButton("Pronto")
             self.returnButton.isHidden = true
+            self.nextButton.isHidden = false
             
+        }
+
+    }
+    
+    func joiningState(){
+        self.updateCardHeight(0.28)
+        self.clearCard() {
+            self.firebaseObserver = FirebaseObserver(delegate: self, reference: Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue))
+            self.firebaseObserver?.setup()
+            self.setupSessionTitle("Join a startup")
+            self.setupCollectionView()
+            
+            self.collectionView.reloadData()
+            self.setupNavigationButton("Pronto")
+            self.returnButton.isHidden = true
+            self.nextButton.isHidden = true
+            
+            print("Configured joining state")
+        }
+    }
+    
+    func pickingClassState() {
+        
+        self.updateCardHeight(0.28)
+        self.clearCard() {
+            self.cardView.removeGestureRecognizer(self.tap)
+            self.cardView.addSubview(self.labelTitle)
+            self.setupSessionTitle("Choose your role")
+            self.setupCollectionView()
+            self.collectionView.reloadData()
+            self.setupNavigationButton("Ready")
+            self.returnButton.isHidden = true
+            self.nextButton.isHidden = false
         }
 
     }
@@ -379,7 +456,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         UIView.animate(withDuration: 0.5, animations: {
             self.updateCardHeight(0.28)
         }) { _  in
-        self.createStateMachine(with: [.creating, .inLobby, .pickingClass])
+            self.createStateMachine(with: [.creating, .inLobby, .pickingClass])
         }
     }
     
@@ -387,7 +464,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         UIView.animate(withDuration: 1.0, animations: {
             self.updateCardHeight(0.28)
         }) { _  in
-            self.createStateMachine(with: [.joining, .inLobby, .pickingClass])
+            self.createStateMachine(with: [.naming, .joining, .inLobby, .pickingClass])
         }
     }
     
@@ -409,7 +486,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
                 self.isReady = !self.isReady
             
-            self.updateReadyState()
+                self.updateReadyState()
             Database.database().reference().root.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(username).child("isReady").setValue(self.isReady) {
                 (error, ref ) in
                 if let error = error {
@@ -417,7 +494,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
                     return
                 }
                 
-//                self.createTeamIfAllReady()
+                self.createTeamIfAllReady()
             }
             return
         }
@@ -429,6 +506,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         switch state {
         case .creating:
             self.validateCreating()
+        case .naming:
+            self.validateNaming()
         default:
             break
         }
@@ -459,16 +538,26 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     func onAdded(_ snap: DataSnapshot) {
         
-        let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
+        print("ONADDED")
+        guard let state = self.stateMachine?.getCurrentState() else { return }
+        if state == .inLobby {
+            let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
 
-        self.playersInLobby.append(newPlayer)
+            self.playersInLobby.append(newPlayer)
+            
+        } else {
+            let room = Room(snap.key, from: snap.value as! NSDictionary)
+            self.rooms.append(room)
+            
+        }
         
+            
         self.collectionView.reloadData()
-        
     }
     
     func onChanged(_ snap: DataSnapshot) {
         
+        print("ONCHANGED")
         let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
         
         for (i, player) in self.playersInLobby.enumerated()  {
@@ -484,6 +573,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     func onRemoved(_ snap: DataSnapshot) {
         
+        print("ONREMOVED")
         self.playersInLobby.removeAll { (player) -> Bool in
             player.id == snap.key
         }
@@ -499,7 +589,13 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         guard let currentState = self.stateMachine?.getCurrentState() else  { return 0 }
         
         if currentState == .inLobby {
-            return self.playersInLobby.count
+            return 1
+        }
+        if currentState == .joining {
+            return self.rooms.count
+        }
+        if currentState == .pickingClass {
+            return 3
         }
         
         return 0
@@ -510,6 +606,27 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         guard let currentState = self.stateMachine?.getCurrentState() else  { return UICollectionViewCell() }
         guard let playerName = self.getPlayerName()   else { return UICollectionViewCell()}
         guard let startupName =  self.getRoomName() else { return UICollectionViewCell()}
+
+        let rolesList: [String]  = ["hustler", "hipster", "hacker"]
+        let colors = [
+            UIColor(red: 71/255, green: 83/255, blue: 191/255, alpha: 1.0),
+            UIColor(red: 190/255, green: 86/255, blue: 215/255, alpha: 1.0),
+            UIColor(red: 88/255, green: 86/255, blue: 91/255, alpha: 1.0)
+        ]
+        
+        if currentState == .pickingClass {
+
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)  as! RolesCollectionViewCell
+            let  currentRole = rolesList[indexPath.item]
+            
+            cell.imageView.image = UIImage(named: currentRole)
+            cell.labelView.text = currentRole
+            cell.labelView.backgroundColor = colors[indexPath.item]
+            
+            cell.setup()
+            
+            return cell
+        }
         
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "lobby", for: indexPath)  as! LobbyCollectionViewCell
         
@@ -518,17 +635,64 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         
         cell.ownerNameLabel.text = playerName
         cell.startupNameLabel.text = startupName
-        cell.joinButton.isHidden = true
+        
+        if currentState != .joining {
+            cell.joinButton.isHidden = true
+        }
         
         
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let currentState = self.stateMachine?.getCurrentState() else  { return  }
+        
+        if currentState  == .joining {
+            let currentRoom = self.rooms[indexPath.item]
+            
+            self.firebaseObserver?.invalidate()
+            NewTeamDatabaseFacade.joinRoom(currentRoom.id) { (error) in
+                if let error = error {
+                    print("Error joining room", error)
+                    return
+                }
+                self.currentRoom = currentRoom
+                self.stateMachine?.passState()
+            }
+        } else if currentState == .pickingClass{
+            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+            UIView.animate(withDuration: 0.5) {
+//                cell.transform = cell.transform.scaledBy(x: 1.1, y: 1.1)
+                cell.cardView.alpha = 1
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let currentState = self.stateMachine?.getCurrentState() else  { return  }
+        if currentState == .pickingClass{
+            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+            UIView.animate(withDuration: 0.5) {
+                cell.transform = .identity
+                cell.cardView.alpha = 0.5
+            }
+            
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let size = collectionView.frame.size
-            return CGSize(width: size.width * 0.4,  height: size.height * 0.8)
+        
+        
+        let size = collectionView.frame.size
+        
+        guard let state = self.stateMachine?.getCurrentState() else { fatalError()}
+        if state == .pickingClass {
+            return CGSize(width: size.width * 0.4,  height: size.height)
+        }
+        return CGSize(width: size.width * 0.4,  height: size.height * 0.8)
+
     }
     
     

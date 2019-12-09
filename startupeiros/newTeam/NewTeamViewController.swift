@@ -100,6 +100,7 @@ class NewTeamViewController: UIViewController, UICollectionViewDelegate, UIColle
             let newPlayer = JoiningPlayer(snap.key, from: snap.value as! NSDictionary)
             self.players.append(newPlayer)
         }
+        self.createTeamIfAllReady()
         self.collectionView.reloadData()
     }
     
@@ -121,15 +122,17 @@ class NewTeamViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func createTeamIfAllReady() {
         // TODO: VER QUE TEM 3 PLAYERS
-        for player in self.players {
-            if !player.isReady { return }
-        }
+//        for player in self.players {
+//            if !player.isReady { return }
+//        }
         
         NewTeamDatabaseFacade.completeRoom(self.roomId) {
             error in
             if let error = error{
                 print("Erro ao remover a sala!", error)
             }
+            
+//            self.state.pass
         }
     }
 

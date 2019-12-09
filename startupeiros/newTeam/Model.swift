@@ -50,7 +50,12 @@ class Room: NSObject {
     init(_ id: String, from dict: NSDictionary ) {
         self.id = id
         self.name = dict["name"] as! String
-//        self.players =  JSONDecoder().decode([Player].self, from: d)
+        self.players =  (dict["players"] as! NSDictionary).map({ (arg0) -> JoiningPlayer in
+            
+            
+            let (key, value) = arg0
+            return JoiningPlayer(key as! String, from: value as! NSDictionary)
+        })
     }
     
 }

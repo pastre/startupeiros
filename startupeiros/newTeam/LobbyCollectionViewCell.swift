@@ -208,6 +208,8 @@ class LobbyCollectionViewCell: UICollectionViewCell {
         self.playerThreeImage.heightAnchor.constraint(equalTo: self.playerThree.heightAnchor).isActive = true
         self.playerThreeImage.widthAnchor.constraint(equalTo: self.playerThree.widthAnchor).isActive = true
          
+        
+        print("CONfIGURING CELL FOR PLAYERS", players.count)
         let images = [playerOneImage, playerTwoImage, playerThreeImage, ]
         
         for (i, player) in players.enumerated() {
@@ -219,10 +221,13 @@ class LobbyCollectionViewCell: UICollectionViewCell {
         }
         
         if players.count == 1 {
+            playerOne.isHidden = false
             playerTwo.isHidden = true
             playerThree.isHidden = true
         }
         if players.count == 2 {
+            playerOne.isHidden = false
+            playerTwo.isHidden = false
             playerThree.isHidden = true
         }
     }

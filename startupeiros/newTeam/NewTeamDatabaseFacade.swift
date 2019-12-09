@@ -49,7 +49,7 @@ class NewTeamDatabaseFacade {
     static func joinRoom(_ roomId: String, completion: @escaping (Error?) -> ()) {
         guard let userId =  Authenticator.instance.getUserId() else { return }
         guard let playerName = Authenticator.instance.getUsername() else { return }
-        
+            self.newRoomId = roomId
         self.rootRef.child(FirebaseKeys.newRooms.rawValue).child(roomId).child(FirebaseKeys.playersInRoom.rawValue).child(userId).setValue([
             "isReady": false,
             "username": playerName,
