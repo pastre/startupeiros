@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
+// VC THAT HANDLES TEAM CREATION
 class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFieldDelegate, FirebaseObserverDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     let classes = ["hacker", "hustler", "hipster"]
