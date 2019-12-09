@@ -60,6 +60,8 @@
 		D7A9A34123915A9F0061405A /* SkillBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9A34023915A9F0061405A /* SkillBar.swift */; };
 		D7AF8614238A03B400A9843F /* PlayerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8613238A03B400A9843F /* PlayerFacade.swift */; };
 		D7B57CE723970644009E8AFC /* HustlerProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */; };
+		D7CD0D43239DCFC0009DC299 /* HackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CD0D42239DCFC0009DC299 /* HackerViewController.swift */; };
+		D7CD0D4F239DD495009DC299 /* HackerContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7CD0D4E239DD495009DC299 /* HackerContent.txt */; };
 		D7D28BC923870F19002ACF82 /* AuthReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BC823870F19002ACF82 /* AuthReference.swift */; };
 		D7D28BCB238714C7002ACF82 /* CreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */; };
 		D7DD9A7E239C45AB00D26858 /* EnergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9A7D239C45AB00D26858 /* EnergyLabel.swift */; };
@@ -149,6 +151,8 @@
 		D7A9A34023915A9F0061405A /* SkillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillBar.swift; sourceTree = "<group>"; };
 		D7AF8613238A03B400A9843F /* PlayerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFacade.swift; sourceTree = "<group>"; };
 		D7B57CE623970644009E8AFC /* HustlerProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HustlerProgressCircle.swift; sourceTree = "<group>"; };
+		D7CD0D42239DCFC0009DC299 /* HackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerViewController.swift; sourceTree = "<group>"; };
+		D7CD0D4E239DD495009DC299 /* HackerContent.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HackerContent.txt; sourceTree = "<group>"; };
 		D7D28BC823870F19002ACF82 /* AuthReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReference.swift; sourceTree = "<group>"; };
 		D7D28BCA238714C7002ACF82 /* CreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameViewController.swift; sourceTree = "<group>"; };
 		D7DD9A7D239C45AB00D26858 /* EnergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyLabel.swift; sourceTree = "<group>"; };
@@ -374,6 +378,15 @@
 			path = newTeam;
 			sourceTree = "<group>";
 		};
+		D7CD0D41239DCF07009DC299 /* hacker */ = {
+			isa = PBXGroup;
+			children = (
+				D7CD0D42239DCFC0009DC299 /* HackerViewController.swift */,
+				D7CD0D4E239DD495009DC299 /* HackerContent.txt */,
+			);
+			path = hacker;
+			sourceTree = "<group>";
+		};
 		D7F3F248239C1D690078A5E6 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +433,7 @@
 		F0D8536A238FFD3E005CC468 /* miniGames */ = {
 			isa = PBXGroup;
 			children = (
+				D7CD0D41239DCF07009DC299 /* hacker */,
 				F07E498323932F7200419E36 /* drawDoodle */,
 				F0D8536B238FFD53005CC468 /* flappyGame */,
 			);
@@ -521,6 +535,7 @@
 				D783A1F023870C4E000F1271 /* GoogleService-Info.plist in Resources */,
 				F0D8537E23900BA1005CC468 /* bird-04.png in Resources */,
 				F0D8537D23900BA1005CC468 /* bird-01.png in Resources */,
+				D7CD0D4F239DD495009DC299 /* HackerContent.txt in Resources */,
 				F03DDDF723994079001B4612 /* seta-2.png in Resources */,
 				F07E49872393432C00419E36 /* DoodleGame.storyboard in Resources */,
 				D720015F2384F1D10087ADCE /* Assets.xcassets in Resources */,
@@ -590,6 +605,7 @@
 				D78E53F3239ADCFA00CCF4DD /* MeetupViewController.swift in Sources */,
 				D73CA57D23905ECC0085592D /* TaskBar.swift in Sources */,
 				D7515A7C238F7F4300290A4A /* ProgressBarView.swift in Sources */,
+				D7CD0D43239DCFC0009DC299 /* HackerViewController.swift in Sources */,
 				D75E34E2238EEB9500CD7482 /* PlayerProducer.swift in Sources */,
 				D78D7810239D8B2F00C95B6F /* LabelCollectionViewCell.swift in Sources */,
 				D75A6EBE2391962D00D682D1 /* SkillLevelLabel.swift in Sources */,

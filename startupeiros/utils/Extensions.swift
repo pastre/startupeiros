@@ -116,4 +116,3 @@ extension CIFilter {
     static let noir = CIFilter(name: "CIPhotoEffectNoir")!
     static let tonal = CIFilter(name: "CIPhotoEffectTonal")!
 }
-
