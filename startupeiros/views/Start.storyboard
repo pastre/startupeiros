@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PBi-Ad-obh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Team View Controller-->
+        <scene sceneID="wCQ-ZB-gZU">
+            <objects>
+                <viewController storyboardIdentifier="initial" id="PBi-Ad-obh" customClass="NewTeamViewController" customModule="startupeiros" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Go-TO-5xv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmz-hI-YsD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicial" translatesAutoresizingMaskIntoConstraints="NO" id="32l-Ac-yZg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="32l-Ac-yZg" firstAttribute="centerX" secondItem="cmz-hI-YsD" secondAttribute="centerX" id="EqJ-By-J92"/>
+                                    <constraint firstItem="32l-Ac-yZg" firstAttribute="height" secondItem="cmz-hI-YsD" secondAttribute="height" id="L1N-7y-do4"/>
+                                    <constraint firstItem="32l-Ac-yZg" firstAttribute="centerY" secondItem="cmz-hI-YsD" secondAttribute="centerY" id="YEh-a4-j2H"/>
+                                    <constraint firstItem="32l-Ac-yZg" firstAttribute="width" secondItem="cmz-hI-YsD" secondAttribute="width" id="nnV-1L-Bmy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLB-Jb-KKa">
+                                <rect key="frame" x="0.0" y="665" width="414" height="197"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PD8-3R-KGy">
+                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cmz-hI-YsD" firstAttribute="height" secondItem="7Go-TO-5xv" secondAttribute="height" multiplier="0.8" id="1wq-om-FzJ"/>
+                            <constraint firstItem="dLB-Jb-KKa" firstAttribute="height" secondItem="7Go-TO-5xv" secondAttribute="height" multiplier="0.22" id="4wE-Om-Oe7"/>
+                            <constraint firstItem="PD8-3R-KGy" firstAttribute="top" secondItem="dLB-Jb-KKa" secondAttribute="bottom" constant="-10" id="56d-J4-PjY"/>
+                            <constraint firstItem="4i6-N9-AMi" firstAttribute="bottom" secondItem="dLB-Jb-KKa" secondAttribute="bottom" id="8Qx-lz-deJ"/>
+                            <constraint firstItem="dLB-Jb-KKa" firstAttribute="width" secondItem="7Go-TO-5xv" secondAttribute="width" id="CrC-Sj-raK"/>
+                            <constraint firstAttribute="top" secondItem="cmz-hI-YsD" secondAttribute="top" id="Egt-ak-8sp"/>
+                            <constraint firstItem="PD8-3R-KGy" firstAttribute="bottom" secondItem="7Go-TO-5xv" secondAttribute="bottom" id="LmT-m6-Geq"/>
+                            <constraint firstItem="dLB-Jb-KKa" firstAttribute="centerX" secondItem="4i6-N9-AMi" secondAttribute="centerX" id="WIn-Et-boh"/>
+                            <constraint firstItem="cmz-hI-YsD" firstAttribute="centerX" secondItem="4i6-N9-AMi" secondAttribute="centerX" id="bt0-xH-aJK"/>
+                            <constraint firstItem="PD8-3R-KGy" firstAttribute="centerX" secondItem="4i6-N9-AMi" secondAttribute="centerX" id="im8-X3-n5n"/>
+                            <constraint firstItem="cmz-hI-YsD" firstAttribute="width" secondItem="7Go-TO-5xv" secondAttribute="width" id="ngj-EB-QNS"/>
+                            <constraint firstItem="PD8-3R-KGy" firstAttribute="width" secondItem="7Go-TO-5xv" secondAttribute="width" id="vXz-bE-Xmn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4i6-N9-AMi"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardView" destination="dLB-Jb-KKa" id="7cU-9J-sFu"/>
+                        <outlet property="heightConstraint" destination="4wE-Om-Oe7" id="TE7-Jz-pOa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QPN-89-Xwm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-303" y="23"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="inicial" width="414" height="688"/>
+    </resources>
+</document>

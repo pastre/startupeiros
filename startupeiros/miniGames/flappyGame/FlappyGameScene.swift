@@ -99,16 +99,16 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         self.run(spawnThenDelayForever)
         
         // setup our bird
-        let birdTexture1 = SKTexture(imageNamed: "bird-01")
+        let birdTexture1 = SKTexture(imageNamed: "seta-1")
         birdTexture1.filteringMode = .nearest
-        let birdTexture2 = SKTexture(imageNamed: "bird-02")
+        let birdTexture2 = SKTexture(imageNamed: "seta-2")
         birdTexture2.filteringMode = .nearest
         
         let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
         let flap = SKAction.repeatForever(anim)
         
         bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(1.5)
+        bird.setScale(0.5)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.run(flap)
         

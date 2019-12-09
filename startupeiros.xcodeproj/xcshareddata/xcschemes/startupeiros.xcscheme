@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D72001512384F1D00087ADCE"
-               BuildableName = "startupeiros.app"
+               BuildableName = "Cube H.app"
                BlueprintName = "startupeiros"
                ReferencedContainer = "container:startupeiros.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D72001512384F1D00087ADCE"
-            BuildableName = "startupeiros.app"
+            BuildableName = "Cube H.app"
             BlueprintName = "startupeiros"
             ReferencedContainer = "container:startupeiros.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D72001512384F1D00087ADCE"
-            BuildableName = "startupeiros.app"
+            BuildableName = "Cube H.app"
             BlueprintName = "startupeiros"
             ReferencedContainer = "container:startupeiros.xcodeproj">
          </BuildableReference>

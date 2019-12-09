@@ -62,10 +62,10 @@ class DecideStartViewController: UIViewController {
     }
     
     func presentCreateTeamView()  {
-        let vc = NewTeamViewController()
+//        let vc = NewTeamViewController()
         
-        self.currentChild = vc
-        self.present(vc, animated: true, completion: nil)
+//        self.currentChild = vc
+//        self.present(vc, animated: true, completion: nil)
     }
     
     func presentNameView(){
