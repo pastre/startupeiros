@@ -632,11 +632,12 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         for i in 0..<self.collectionView.numberOfItems(inSection: 0) {
             print("Clearing cell at", i)
             let indexPath = IndexPath(item: i, section: 0)
-            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
+            if let cell = collectionView.cellForItem(at: indexPath) as? RolesCollectionViewCell{
             
-            cell.cardView.alpha = 0.5
-            
-            print("Cleared cell at", i)
+                cell.cardView.alpha = 0.5
+                
+                print("Cleared cell at", i)
+            }
         }
         
         for (i, player) in self.playersPickingClass.enumerated() {
@@ -729,14 +730,18 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
                 self.stateMachine?.passState()
             }
         } else if currentState == .pickingClass{
-            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
-
+            
             guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
             let currentRole = self.classes[indexPath.item]
             
             for player in self.playersPickingClass {
-                if player.name == self.getPlayerName() { continue }
-                if player.currentClass == currentRole { return }
+                
+                if player.currentClass == currentRole {
+                    NewTeamDatabaseFacade.pickClass(roomId, class: "none")
+                    self.currentSelectedClass = "none"
+                    print("Configured to none")
+                    return
+                }
             }
             
             if let current = self.currentSelectedClass {
@@ -751,23 +756,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             
             self.currentSelectedClass = currentRole
             NewTeamDatabaseFacade.pickClass(roomId, class: currentRole)
-            UIView.animate(withDuration: 0.5) {
-                cell.cardView.alpha = 1
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let currentState = self.stateMachine?.getCurrentState() else  { return }
-        guard let roomId = NewTeamDatabaseFacade.newRoomId else { return }
-        if currentState == .pickingClass{
-            NewTeamDatabaseFacade.pickClass(roomId, class: "none")
-            let cell = collectionView.cellForItem(at: indexPath) as! RolesCollectionViewCell
-            UIView.animate(withDuration: 0.5) {
-                cell.transform = .identity
-                cell.cardView.alpha = 0.5
-            }
-            
+
         }
     }
     
