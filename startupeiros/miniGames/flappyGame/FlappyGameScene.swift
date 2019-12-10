@@ -129,7 +129,8 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         // create the ground
         
         let ground = SKShapeNode(rectOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
-        ground.fillColor = .blue
+        ground.fillColor = .clear
+        ground.strokeColor = .clear
         ground.position = CGPoint(x: 0, y: self.frame.size.height * 0.1)
         ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
         ground.physicsBody?.isDynamic = false
@@ -142,7 +143,8 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         let ceiling = SKShapeNode(rectOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
         
-        ceiling.fillColor = .red
+        ceiling.fillColor = .clear
+        ceiling.strokeColor = .clear
         ceiling.position = CGPoint(x: 0, y: self.frame.size.height * 0.9)
         ceiling.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
         ceiling.physicsBody?.isDynamic = false
@@ -152,13 +154,21 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         // Initialize label and create a label which holds the score
         score = 0
-        scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
-        scoreLabelNode.position = CGPoint( x: self.frame.midX, y: 3 * self.frame.size.height / 4 )
+        scoreLabelNode = SKLabelNode(fontNamed: UIFont.boldSystemFont(ofSize: 24).fontName)
+        scoreLabelNode.fontColor = .white
+
+        scoreLabelNode.fontSize = 40
+        scoreLabelNode.position = CGPoint( x: self.frame.width * 0.6, y: self.frame.height * 0.05)
         scoreLabelNode.zPosition = 100
-        scoreLabelNode.text = String(score)
-        scoreLabelNode.fontColor = .black
+        self.updateScoreLabel()
         self.addChild(scoreLabelNode)
         
+    }
+    var modifiedScore: Double! = 0
+    func updateScoreLabel() {
+        self.modifiedScore += Double(self.score)
+        modifiedScore = (Double(modifiedScore) + (0.05 * Double(modifiedScore)).rounded(toPlaces: 2))
+        scoreLabelNode.text = "USD \(modifiedScore.rounded(toPlaces: 2))"
     }
     
     func spawnPipes() {
@@ -276,7 +286,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
             if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory {
                 // Bird has contact with score entity
                 score += 1
-                scoreLabelNode.text = String(score)
+                self.updateScoreLabel()
                 
                 self.updateHands()
                 // Add a little visual feedback for the score increment
