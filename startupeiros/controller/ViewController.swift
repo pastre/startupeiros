@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseUI
+import FirebaseStorage
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
 
@@ -254,8 +256,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let skill = skills[indexPath.item]
         
         cell.skillNameLabel.text = skill.getName()
-        cell.skillIcon.image = UIImage(named: "failedToLoadTexture")
-        
+        guard let ref: StorageReference = Storage.storage().reference(withPath: "skill-icons/hacker/\(skill.getIconName())") else { return UICollectionViewCell() }
+    
+        cell.skillIcon.sd_setImage(with: ref, placeholderImage: UIImage(named: "failedToLoadTexture"))
+            
         if indexPath.item == self.currentSelected {
             cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         } else {
