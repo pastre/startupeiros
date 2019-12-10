@@ -19,7 +19,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let newGame: UIButton = {
         let button = UIButton()
-        button.setTitle("Criar uma startup", for: .normal)
+        button.setTitle("Create a startup", for: .normal)
         button.titleLabel?.font  = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .left
@@ -30,7 +30,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let joinGame: UIButton = {
         let button = UIButton()
-        button.setTitle("Entrar em uma startup", for: .normal)
+        button.setTitle("Join a startup", for: .normal)
         button.titleLabel?.font  = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .left
@@ -42,7 +42,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let labelTitle: UILabel = {
         let label = UILabel()
-        label.text = "Criando uma startup"
+        label.text = "Creating a startup"
         label.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         label.textColor = UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
         return label
@@ -50,7 +50,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let labelInsertName: UILabel = {
         let label = UILabel()
-        label.text = "Insira o seu nome"
+        label.text = "Insert your name"
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor =  UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
         return label
@@ -58,7 +58,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     lazy var labelInsertStartupName: UILabel = {
         let label = UILabel()
-        label.text = "Insira o nome da sua startup"
+        label.text = "Insert your startup name"
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor =  UIColor(red: 4/255, green: 119/255, blue: 235/255, alpha: 1.0)
         return label
@@ -113,7 +113,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Próximo", for: .normal)
+        button.setTitle("Next", for: .normal)
         button.titleLabel?.font  = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.backgroundColor =  UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1.0)
@@ -125,7 +125,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     let returnButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Voltar", for: .normal)
+        button.setTitle("Back", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.backgroundColor = UIColor(red: 235/255, green: 4/255, blue: 4/255, alpha: 1.0)
@@ -389,7 +389,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         self.setupKeyboardDismissGesture()
         self.setupSessionTitle("Whats your name?")
         self.setupCreatingForm(labelTop: self.labelTitle, constant: 80.0, label: self.labelInsertName, textField: self.textName)
-        self.setupNavigationButton("Próximo")
+        self.setupNavigationButton("Next")
     }
     
     func onCreateState()  {
@@ -406,7 +406,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         self.setupCreatingForm(labelTop: self.textName, constant: 30.0, label: self.labelInsertStartupName, textField: self.textStartupName)
         
         // show the next button
-        self.setupNavigationButton("Próximo")
+        self.setupNavigationButton("Next")
     }
     
     var  currentRoom: Room?
@@ -424,10 +424,10 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             }
             self.firebaseObserver?.setup()
             
-            self.setupSessionTitle("Aguardando...")
+            self.setupSessionTitle("Waiting...")
             self.setupCollectionView()
             self.collectionView.reloadData()
-            self.setupNavigationButton("Pronto")
+            self.setupNavigationButton("Ready")
             self.returnButton.isHidden = true
             self.nextButton.isHidden = false
             
@@ -444,7 +444,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             self.setupCollectionView()
             
             self.collectionView.reloadData()
-            self.setupNavigationButton("Pronto")
+            self.setupNavigationButton("Ready")
             self.returnButton.isHidden = true
             self.nextButton.isHidden = true
             

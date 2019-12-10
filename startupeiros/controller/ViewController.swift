@@ -389,10 +389,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let skill = skills[indexPath.item]
         
         cell.skillNameLabel.text = skill.getName()
-        guard let ref: StorageReference = Storage.storage().reference(withPath: "skill-icons/hacker/\(skill.getIconName())") else { return UICollectionViewCell() }
-    
+        guard let className = PlayerFacade.getPlayerClass() else { return UICollectionViewCell() }
+        guard let ref: StorageReference = Storage.storage().reference(withPath: "skill-icons/\(className.rawValue)/\(skill.getIconName())") else { return UICollectionViewCell() }
+        
         cell.skillIcon.sd_setImage(with: ref, placeholderImage: UIImage(named: "failedToLoadTexture"))
-            
+        cell.reloadInputViews()
+        
         if indexPath.item == self.currentSelected {
             cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         } else {
