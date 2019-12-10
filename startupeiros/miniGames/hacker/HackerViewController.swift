@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HackerViewController: UIViewController {
+class HackerViewController: MiniGameViewController {
 
 
     let textView: UITextView = {
@@ -66,7 +66,6 @@ class HackerViewController: UIViewController {
     var currentTime: TimeInterval! = 30
     
     override func viewDidLoad() {
-        super.viewDidLoad()
 
         self.lines = self.getLoadedFiles()
         
@@ -94,22 +93,20 @@ class HackerViewController: UIViewController {
         textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: self.imageView.topAnchor).isActive = true
+        
+        super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.startTimer()
-    }
     
     // MARK: - Game mechanics
     
-    func startTimer() {
+    func startCountdownTimer() {
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (t) in
             self.currentTime -= 0.01
             self.timeLabel.text = "TRACE: \n 00:\(self.currentTime.rounded(toPlaces: 2))"
             if self.currentTime <= 0    {
                 self.timeLabel.text = "TRACE: \n 00:00.00"
+                self.onGameOver(self.currentScore)
                 t.invalidate()
             }
         }
@@ -153,8 +150,25 @@ class HackerViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        for _ in touches {
-            self.onTouch()
+        if self.hasStartedGame && !self.isGameOver{
+            for _ in touches {
+                self.onTouch()
+            }
         }
     }
+    
+
+        
+    override func startGame() {
+        self.startCountdownTimer()
+    }
+    
+    override func getMultiplierTransform() -> Double {
+        return 0.1
+    }
+    
+    override func getFinalMessage() -> String {
+        return "Type!"
+    }
+
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class MiniGameViewController: UIViewController {
     var currentTimerValue: TimeInterval = 3
+    var hasStartedGame: Bool! = false
+    var isGameOver: Bool! = false
     
     let timerLabel: UILabel = {
        let label = UILabel()
@@ -73,6 +75,7 @@ class MiniGameViewController: UIViewController {
             if self.currentTimerValue < -1 {
                 timer.invalidate()
                 self.labelOverlay.removeFromSuperview()
+                self.hasStartedGame = true
                 self.startGame()
             }
         }
@@ -89,7 +92,7 @@ class MiniGameViewController: UIViewController {
     // MARK: - Game over methods
     
     func onGameOver(_ score: Double) {
-        
+        self.isGameOver = true
         let multiplier = ((score * self.getMultiplierTransform()).truncatingRemainder(dividingBy: 10))
         
         self.setupLabelOverlay()
