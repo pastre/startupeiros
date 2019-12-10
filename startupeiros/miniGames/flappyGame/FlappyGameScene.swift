@@ -164,6 +164,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(scoreLabelNode)
         
     }
+    
     var modifiedScore: Double! = 0
     func updateScoreLabel() {
         self.modifiedScore += Double(self.score)
@@ -249,11 +250,14 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
             self.resetScene()
         }
     }
-    
+    var hasStarted: Bool! = false
     override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
-        let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
-        bird.zRotation = min( max(-1, value), 0.5 )
+        
+        if self.hasStarted {
+            let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
+            bird.zRotation = min( max(-1, value), 0.5 )
+        }
     }
     var currentHands: SKNode?
     func updateHands() {
@@ -278,6 +282,10 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         self.currentHands = currentHands
     }
+    var vc: MiniGameViewController!
+    func gameOver() {
+        self.vc.onGameOver(self.modifiedScore)
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -298,17 +306,17 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
                 
                 bird.physicsBody?.collisionBitMask = worldCategory
                 bird.run(  SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
-                
+                self.gameOver()
                 
                 // Flash background if contact is detected
-                self.removeAction(forKey: "flash")
-                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
-                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
-                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
-                        self.backgroundColor = self.skyColor
-                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
-                            self.canRestart = true
-                            })]), withKey: "flash")
+//                self.removeAction(forKey: "flash")
+//                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
+//                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
+//                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
+//                        self.backgroundColor = self.skyColor
+//                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
+//                            self.canRestart = true
+//                            })]), withKey: "flash")
             }
         }
     }

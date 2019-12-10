@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 extension CGFloat  {
     static func * (lhr: Float, rhr: Self) -> CGFloat  {
@@ -173,4 +174,25 @@ extension UIImage {
         }
     }
 
+}
+
+
+
+extension SKNode {
+    class func unarchiveFromFile(_ file : String) -> SKNode? {
+        
+        let path = Bundle.main.path(forResource: file, ofType: "sks")
+        
+        let sceneData: Data?
+        do {
+            sceneData = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        } catch _ {
+            sceneData = nil
+        }
+        let archiver = NSKeyedUnarchiver(forReadingWith: sceneData!)
+        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+        let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! FlappyGameScene
+        archiver.finishDecoding()
+        return scene
+    }
 }

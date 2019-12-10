@@ -9,26 +9,7 @@
 import UIKit
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFile(_ file : String) -> SKNode? {
-        
-        let path = Bundle.main.path(forResource: file, ofType: "sks")
-        
-        let sceneData: Data?
-        do {
-            sceneData = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
-        } catch _ {
-            sceneData = nil
-        }
-        let archiver = NSKeyedUnarchiver(forReadingWith: sceneData!)
-        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! FlappyGameScene
-        archiver.finishDecoding()
-        return scene
-    }
-}
-
-class FlappyGameViewController: UIViewController {
+class FlappyGameViewController: MiniGameViewController {
 
     override func loadView() {
         self.view = SKView()
@@ -37,20 +18,6 @@ class FlappyGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = FlappyGameScene.unarchiveFromFile("GameScene") as? FlappyGameScene {
-            // Configure the view.
-            let skView = self.view as! SKView
-//            skView.showsFPS = true
-//            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .aspectFill
-            
-            skView.presentScene(scene)
-        }
     }
 
     override var shouldAutorotate : Bool {
@@ -68,6 +35,34 @@ class FlappyGameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    
+    
+    override func startGame() {
+        if let scene = FlappyGameScene.unarchiveFromFile("GameScene") as? FlappyGameScene {
+            // Configure the view.
+            let skView = self.view as! SKView
+            scene.vc = self
+//            skView.showsFPS = true
+//            skView.showsNodeCount = true
+            
+            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            skView.ignoresSiblingOrder = true
+            
+            /* Set the scale mode to scale to fit the window */
+            scene.scaleMode = .aspectFill
+            
+            skView.presentScene(scene)
+        }
+    }
+    
+    override func getMultiplierTransform() -> Double {
+        return 0.1
+    }
+    
+    override func getFinalMessage() -> String {
+        return "Jump!"
     }
     
 }

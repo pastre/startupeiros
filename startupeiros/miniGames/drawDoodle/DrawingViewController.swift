@@ -10,7 +10,7 @@ import UIKit
 import Vision
 import CoreML
 
-class DrawingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class DrawingViewController: MiniGameViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
@@ -38,7 +38,6 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     var currentTimer: Int = 30
  
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         self.todoEmojis = getClasses().shuffled()
         
@@ -48,16 +47,10 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.doneCollectionView.dataSource = self
         
         undoButton.disable()
+        
+        super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
-            self.passEmoji()
-            self.runTimer()
-        }
-    }
     
     func setupToDoCollectionView() {
        
@@ -91,8 +84,7 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: - Game mechanics
     
     func gameOver() {
-        print("GAME OVER BRO!")
-        self.dismiss(animated: true, completion: nil)
+        self.onGameOver(Double(self.doneEmojis.count + 1))
     }
     
     func passEmoji() {
@@ -331,4 +323,23 @@ class DrawingViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBAction func onClear(_ sender: Any) {
         self.clear()
     }
+    
+    // MARK: - MinigameViewcontroller
+    
+    override func startGame() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+            self.passEmoji()
+            self.runTimer()
+        }
+    }
+    
+    override func getMultiplierTransform() -> Double {
+        
+        return 1
+    }
+    
+    override func getFinalMessage() -> String {
+        return "Draw!"
+    }
+    
 }
