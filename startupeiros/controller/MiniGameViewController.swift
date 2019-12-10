@@ -41,6 +41,8 @@ class MiniGameViewController: UIViewController {
         self.startTimer()
     }
     
+    // MARK: - Setup Methods
+    
     func setupTimerLabel() {
         self.labelOverlay.addSubview(timerLabel)
         
@@ -60,11 +62,13 @@ class MiniGameViewController: UIViewController {
         self.labelOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5).isActive = true
     }
     
+    // MARK: - Timer methods
+    
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             self.updateTimerLabel(self.currentTimerValue == 0)
             self.currentTimerValue -= 1
-            if self.currentTimerValue < 0 {
+            if self.currentTimerValue < -1 {
                 timer.invalidate()
                 self.labelOverlay.removeFromSuperview()
                 self.startGame()
@@ -80,9 +84,9 @@ class MiniGameViewController: UIViewController {
         }
     }
     
+    // MARK: - Game over methods
     
-    
-    // MARK: - ABSTRACT METHODS
+    // MARK: - Abstract methods
     func startGame() {
         
         fatalError("\(self) did not implement startGame")
