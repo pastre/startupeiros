@@ -43,6 +43,7 @@ class FlappyGameViewController: MiniGameViewController {
         if let scene = FlappyGameScene.unarchiveFromFile("GameScene") as? FlappyGameScene {
             // Configure the view.
             let skView = self.view as! SKView
+            scene.vc = self
 //            skView.showsFPS = true
 //            skView.showsNodeCount = true
             
@@ -56,9 +57,8 @@ class FlappyGameViewController: MiniGameViewController {
         }
     }
     
-    override func onGameOver() {
-        
-        fatalError("\(self) did not implement onGameOver")
+    override func getMultiplierTransform() -> Double {
+        return 0.1
     }
     
     override func getFinalMessage() -> String {

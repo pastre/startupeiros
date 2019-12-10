@@ -15,6 +15,8 @@ class MiniGameViewController: UIViewController {
        let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
         
         return label
     }()
@@ -80,21 +82,40 @@ class MiniGameViewController: UIViewController {
         if isLast {
             self.timerLabel.text = self.getFinalMessage()
         } else {
-            self.timerLabel.text = "\(self.currentTimerValue.rounded(toPlaces: 0))"
+            self.timerLabel.text = "\(Int(self.currentTimerValue))"
         }
     }
     
     // MARK: - Game over methods
     
+    func onGameOver(_ score: Double) {
+        
+        let multiplier = ((score * self.getMultiplierTransform()).truncatingRemainder(dividingBy: 10))
+        
+        self.setupLabelOverlay()
+        
+        self.timerLabel.text = "Congrats!\nYou scored\n\(score.rounded(toPlaces: 2))\nWhich converts to a\n \(multiplier.rounded(toPlaces: 2))X\n multiplier"
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(3))) {
+            self.dismiss(animated: true) {
+                print("Dismissed MinigameViewController")
+            }
+        }
+        
+    }
+    
+    
+    
+
     // MARK: - Abstract methods
     func startGame() {
         
         fatalError("\(self) did not implement startGame")
     }
     
-    func onGameOver() {
+    func getMultiplierTransform() -> Double {
         
-        fatalError("\(self) did not implement onGameOver")
+        fatalError("\(self) did not implement getMultiplierTransform")
     }
     
     func getFinalMessage() -> String {

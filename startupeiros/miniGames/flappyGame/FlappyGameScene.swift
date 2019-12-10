@@ -282,6 +282,10 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         
         self.currentHands = currentHands
     }
+    var vc: MiniGameViewController!
+    func gameOver() {
+        self.vc.onGameOver(self.modifiedScore)
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -302,17 +306,17 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
                 
                 bird.physicsBody?.collisionBitMask = worldCategory
                 bird.run(  SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
-                
+                self.gameOver()
                 
                 // Flash background if contact is detected
-                self.removeAction(forKey: "flash")
-                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
-                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
-                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
-                        self.backgroundColor = self.skyColor
-                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
-                            self.canRestart = true
-                            })]), withKey: "flash")
+//                self.removeAction(forKey: "flash")
+//                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
+//                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
+//                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
+//                        self.backgroundColor = self.skyColor
+//                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
+//                            self.canRestart = true
+//                            })]), withKey: "flash")
             }
         }
     }
