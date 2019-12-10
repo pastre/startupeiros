@@ -13,7 +13,7 @@ class MiniGameViewController: UIViewController {
     var hasStartedGame: Bool! = false
     var isGameOver: Bool! = false
     
-    let timerLabel: UILabel = {
+    let startTimerLabel: UILabel = {
        let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,6 @@ class MiniGameViewController: UIViewController {
         
         return label
     }()
-    
     
     let labelOverlay: UIView = {
         let view = UIView()
@@ -48,12 +47,12 @@ class MiniGameViewController: UIViewController {
     // MARK: - Setup Methods
     
     func setupTimerLabel() {
-        self.labelOverlay.addSubview(timerLabel)
+        self.labelOverlay.addSubview(startTimerLabel)
         
-        self.timerLabel.topAnchor.constraint(equalTo: self.labelOverlay.topAnchor).isActive = true
-        self.timerLabel.leadingAnchor.constraint(equalTo: self.labelOverlay.leadingAnchor).isActive = true
-        self.timerLabel.trailingAnchor.constraint(equalTo: self.labelOverlay.trailingAnchor).isActive = true
-        self.timerLabel.bottomAnchor.constraint(equalTo: self.labelOverlay.bottomAnchor).isActive = true
+        self.startTimerLabel.topAnchor.constraint(equalTo: self.labelOverlay.topAnchor).isActive = true
+        self.startTimerLabel.leadingAnchor.constraint(equalTo: self.labelOverlay.leadingAnchor).isActive = true
+        self.startTimerLabel.trailingAnchor.constraint(equalTo: self.labelOverlay.trailingAnchor).isActive = true
+        self.startTimerLabel.bottomAnchor.constraint(equalTo: self.labelOverlay.bottomAnchor).isActive = true
     }
     
     func setupLabelOverlay() {
@@ -83,9 +82,9 @@ class MiniGameViewController: UIViewController {
     
     func updateTimerLabel(_ isLast: Bool = false) {
         if isLast {
-            self.timerLabel.text = self.getFinalMessage()
+            self.startTimerLabel.text = self.getFinalMessage()
         } else {
-            self.timerLabel.text = "\(Int(self.currentTimerValue))"
+            self.startTimerLabel.text = "\(Int(self.currentTimerValue))"
         }
     }
     
@@ -97,7 +96,7 @@ class MiniGameViewController: UIViewController {
         
         self.setupLabelOverlay()
         
-        self.timerLabel.text = "Congrats!\nYou scored\n\(score.rounded(toPlaces: 2))\nWhich converts to a\n \(multiplier.rounded(toPlaces: 2))X\n multiplier"
+        self.startTimerLabel.text = "Congrats!\nYou scored\n\(score.rounded(toPlaces: 2))\nWhich converts to a\n \(multiplier.rounded(toPlaces: 2))X\n multiplier"
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(3))) {
             self.dismiss(animated: true) {
