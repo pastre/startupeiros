@@ -109,7 +109,7 @@ class HackerViewController: UIViewController {
             self.currentTime -= 0.01
             self.timeLabel.text = "TRACE: \n 00:\(self.currentTime.rounded(toPlaces: 2))"
             if self.currentTime <= 0    {
-                self.timeLabel.text = "TRACE: \n 00:00.0)"
+                self.timeLabel.text = "TRACE: \n 00:00.00"
                 t.invalidate()
             }
         }
@@ -157,6 +157,4 @@ class HackerViewController: UIViewController {
             self.onTouch()
         }
     }
-    
-    
 }
