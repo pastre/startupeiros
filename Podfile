@@ -10,7 +10,8 @@ target 'startupeiros' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI'
 
 
   # Pods for startupeiros
