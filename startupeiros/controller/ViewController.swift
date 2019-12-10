@@ -28,6 +28,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var jobNameLabel: UILabel!
     @IBOutlet weak var energyLabel: UILabel!
     
+    @IBOutlet weak var handsImageView: UIImageView!
+    
+    @IBOutlet weak var toolImageView: UIImageView!
+    
     var job: Job?
     var currentSelected = 0
     
@@ -106,6 +110,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.setupHackerProgressCircle()
         self.setupHipsterProgressCircle()
         self.setupHustlerProgressCircle()
+        
+        self.setupClassTheme()
+        
+        self.setupMinigameDice()
+
+        self.becomeFirstResponder() // To get shake gesture
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -125,6 +135,35 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Setup methods
+    
+    func setupClassTheme() {
+        guard let pClass = PlayerFacade.getPlayerClass() else { return }
+      
+        switch pClass {
+        case .hipster:
+            self.setupHipsterTheme()
+        case .hustler:
+            self.setupHustlerTheme()
+        case .hacker:
+            self.setupHackerTheme()
+        }
+    }
+    
+    func setupHipsterTheme() {
+        self.handsImageView.image = UIImage(named: "maos_hipster")
+        self.toolImageView.image = UIImage(named: "tablet")
+    }
+    
+    func setupHackerTheme() {
+        print("Configuring hacker!!")
+        self.handsImageView.image = UIImage(named: "maos_hacker")
+        self.toolImageView.image = UIImage(named: "pc")
+    }
+    
+    func setupHustlerTheme() {
+        self.handsImageView.image = UIImage(named: "maos_hustler")
+        self.toolImageView.image = UIImage(named: "notebook")
+    }
     
     func setupProgressCircle(_ circle: CircularProgressBar) {
         
@@ -191,6 +230,100 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         view.leadingAnchor.constraint(equalTo: space.leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: space.trailingAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: space.bottomAnchor).isActive = true
+    }
+    
+    // MARK: - Minigame methods
+    
+    var isMinigameEnabled: Bool! = false
+    
+    func setupMinigameDice() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            let random = Int.random(in: 0..<99)
+            
+            if random == 1 || true {
+                self.onMinigameAvaiable()
+                timer.invalidate()
+            }
+        }
+    }
+    
+    func onMinigameAvaiable() {
+        self.isMinigameEnabled = true
+        self.blinkTool()
+    }
+    
+    func blinkTool() {
+        guard let toolPlaying = self.getMinigameTool() else { return }
+        guard let defaultTool = self.getDefaultTool() else { return }
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
+            self.toolImageView.image = defaultTool
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+                self.toolImageView.image = toolPlaying
+            }
+        }
+    }
+    
+
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+
+    // Enable detection of shake motion
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            self.startMinigame()
+        }
+    }
+    
+    func startMinigame() {
+        if !self.isMinigameEnabled { return }
+        guard let vc = self.getMinigameVc() else { return }
+        
+        vc.modalPresentationStyle = .overFullScreen
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func getDefaultTool() -> UIImage? {
+          guard let pClass = PlayerFacade.getPlayerClass() else { return nil }
+        
+          switch pClass {
+          case .hipster:
+            return UIImage(named: "tablet")
+          case .hustler:
+            return UIImage(named: "notebook")
+          case .hacker:
+            return UIImage(named: "pc")
+          }
+    }
+    
+    func getMinigameTool() -> UIImage? {
+          guard let pClass = PlayerFacade.getPlayerClass() else { return nil }
+        
+          switch pClass {
+          case .hipster:
+            return UIImage(named: "play_tablet")
+          case .hustler:
+            return UIImage(named: "play_note")
+          case .hacker:
+            return UIImage(named: "play_pc")
+          }
+    }
+    
+    
+    func getMinigameVc() -> MiniGameViewController? {
+          guard let pClass = PlayerFacade.getPlayerClass() else { return nil }
+        
+          switch pClass {
+          case .hipster:
+            return UIStoryboard(name: "DoodleGame", bundle: nil).instantiateInitialViewController() as? DrawingViewController
+          case .hustler:
+            return FlappyGameViewController()
+          case .hacker:
+            return HackerViewController()
+          }
     }
     
     // MARK: - Table view methods
@@ -367,5 +500,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             dest.delegate = self
         }
     }
+    
 }
 

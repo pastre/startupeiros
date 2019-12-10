@@ -627,13 +627,19 @@ Name</string>
                                 <rect key="frame" x="0.0" y="860" width="414" height="36"/>
                                 <color key="backgroundColor" red="0.60705572370000005" green="0.46209537979999998" blue="0.46068859099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AiG-qD-1Ck">
+                                <rect key="frame" x="87" y="814" width="240" height="82"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AiG-qD-1Ck" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.1" id="02i-4T-YGM"/>
                             <constraint firstItem="ygq-kd-Par" firstAttribute="trailing" secondItem="Okm-eS-XYM" secondAttribute="trailing" constant="-20" id="1G2-EV-2fm"/>
                             <constraint firstItem="wKp-L3-pBL" firstAttribute="leading" secondItem="MhB-EF-xvN" secondAttribute="leading" id="3Pa-LL-pbS"/>
                             <constraint firstItem="fIY-jc-fRR" firstAttribute="top" secondItem="Okm-eS-XYM" secondAttribute="bottom" id="7g9-AD-PLC"/>
+                            <constraint firstItem="AiG-qD-1Ck" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="9C9-eZ-3Kz"/>
                             <constraint firstAttribute="trailing" secondItem="FDx-Ak-luE" secondAttribute="trailing" id="9js-mj-7el"/>
+                            <constraint firstItem="AiG-qD-1Ck" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="APp-TN-KoX"/>
                             <constraint firstItem="Okm-eS-XYM" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.08" id="B6q-hm-AOC"/>
                             <constraint firstItem="0fi-bG-MLz" firstAttribute="top" secondItem="hYI-bB-fFA" secondAttribute="bottom" constant="10" id="Cyy-Sc-R1G"/>
                             <constraint firstItem="0fi-bG-MLz" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FwU-XP-MGj"/>
@@ -657,6 +663,7 @@ Name</string>
                             <constraint firstItem="hYI-bB-fFA" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.14" id="jHf-DO-V3s"/>
                             <constraint firstItem="XIT-Wr-031" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kZf-9T-lJb"/>
                             <constraint firstItem="Okm-eS-XYM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lno-E2-gGI"/>
+                            <constraint firstItem="AiG-qD-1Ck" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.57971" id="lwP-EI-zuN"/>
                             <constraint firstItem="q8m-Qy-z4b" firstAttribute="leading" secondItem="MYI-jl-WwT" secondAttribute="leading" constant="5" id="nhx-VA-ibT"/>
                             <constraint firstItem="XIT-Wr-031" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="pLi-5p-bdi"/>
                             <constraint firstItem="FDx-Ak-luE" firstAttribute="top" secondItem="XIT-Wr-031" secondAttribute="bottom" constant="-12" id="qYn-zr-MpY"/>
@@ -686,6 +693,7 @@ Name</string>
                         <outlet property="energyLabel" destination="PbM-Rm-Tpu" id="8ac-Rj-qGK"/>
                         <outlet property="energyView" destination="k6w-ov-9sI" id="HSY-KW-2gd"/>
                         <outlet property="hackerJobProgressSpace" destination="mXM-ka-DEs" id="faC-am-iK9"/>
+                        <outlet property="handsImageView" destination="AiG-qD-1Ck" id="fNd-Yh-EL2"/>
                         <outlet property="hipsterJobProgressSpace" destination="fdu-Cw-3r0" id="qak-JR-aoB"/>
                         <outlet property="hustlerJobProgressSpace" destination="21I-kY-s5w" id="h2L-aV-gEc"/>
                         <outlet property="jobNameLabel" destination="q8m-Qy-z4b" id="YiF-Y8-Gtl"/>
@@ -694,6 +702,7 @@ Name</string>
                         <outlet property="skillNameLabel" destination="wKp-L3-pBL" id="d8t-Ub-hSj"/>
                         <outlet property="skillsCollectionView" destination="8BJ-lD-gec" id="Ur6-n1-YWK"/>
                         <outlet property="tasksTableView" destination="G19-za-dnI" id="4jq-Do-cT2"/>
+                        <outlet property="toolImageView" destination="SNZ-vM-Qg4" id="4Zo-M7-Wgm"/>
                         <outlet property="workBarSpace" destination="7EN-g8-Ta6" id="7Ei-xY-nFZ"/>
                         <segue destination="iKo-PI-28k" kind="presentation" identifier="meetup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="tuu-im-LWc"/>
                     </connections>
@@ -706,7 +715,7 @@ Name</string>
                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </collectionViewFlowLayout>
             </objects>
-            <point key="canvasLocation" x="115.94202898550725" y="156.69642857142856"/>
+            <point key="canvasLocation" x="65" y="-1"/>
         </scene>
         <!--Meetup View Controller-->
         <scene sceneID="lo4-s6-FnO">
