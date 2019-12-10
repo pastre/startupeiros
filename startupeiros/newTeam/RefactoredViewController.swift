@@ -214,7 +214,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
             self.newGame.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60.0).isActive = true
             
             self.joinGame.heightAnchor.constraint(equalToConstant: 45).isActive = true
-            self.joinGame.widthAnchor.constraint(equalToConstant: 280).isActive = true
+            self.joinGame.widthAnchor.constraint(equalToConstant: 220).isActive = true
 
             self.joinGame.topAnchor.constraint(equalTo: self.newGame.bottomAnchor, constant: 8.0).isActive = true
             self.joinGame.leadingAnchor.constraint(equalTo: self.newGame.leadingAnchor).isActive = true
