@@ -45,21 +45,24 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         moving.addChild(pipes)
         
         // ground
-        let groundTexture = SKTexture(imageNamed: "land")
-        groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
-        
-        let moveGroundSprite = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
-        let resetGroundSprite = SKAction.moveBy(x: groundTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite,resetGroundSprite]))
-        
-        for i in 0 ..< 2 + Int(self.frame.size.width / ( groundTexture.size().width * 2 )) {
-            let i = CGFloat(i)
-            let sprite = SKSpriteNode(texture: groundTexture)
-            sprite.setScale(2.0)
-            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0)
-            sprite.run(moveGroundSpritesForever)
-            moving.addChild(sprite)
-        }
+//        let groundTexture = SKTexture(image: (UIImage(named: "land")?.maskWithColor(color: UIColor(red: 45.0/255.0, green: 49.0/255.0, blue: 77.0/255.0, alpha: 1.0))!)!)
+//        let groundTexture = SKTexture(imageNamed: "land")
+//
+//
+//        groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
+//
+//        let moveGroundSprite = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
+//        let resetGroundSprite = SKAction.moveBy(x: groundTexture.size().width * 2.0, y: 0, duration: 0.0)
+//        let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite,resetGroundSprite]))
+////
+//        for i in 0 ..< 2 + Int(self.frame.size.width / ( groundTexture.size().width * 2 )) {
+//            let i = CGFloat(i)
+//            let sprite = SKSpriteNode(texture: groundTexture)
+//            sprite.setScale(1.0)
+//            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height)
+//            sprite.run(moveGroundSpritesForever)
+//            moving.addChild(sprite)
+//        }
         
         // skyline
         let skyTexture = SKTexture(imageNamed: "sky2")
@@ -69,15 +72,15 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         let resetSkySprite = SKAction.moveBy(x: skyTexture.size().width * 2.0, y: 0, duration: 0.0)
         let moveSkySpritesForever = SKAction.repeatForever(SKAction.sequence([moveSkySprite,resetSkySprite]))
         
-        for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
-            let i = CGFloat(i)
-            let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(1.0)
-            sprite.zPosition = -20
-            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0 + groundTexture.size().height * 2.0)
-            sprite.run(moveSkySpritesForever)
-            moving.addChild(sprite)
-        }
+//        for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
+//            let i = CGFloat(i)
+//            let sprite = SKSpriteNode(texture: skyTexture)
+//            sprite.setScale(1.0)
+//            sprite.zPosition = -20
+//            sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height / 2.0 + groundTexture.size().height * 2.0)
+//            sprite.run(moveSkySpritesForever)
+//            moving.addChild(sprite)
+//        }
         
         // create the pipes textures
         pipeTextureUp = SKTexture(imageNamed: "maoegrana")
@@ -124,12 +127,28 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(bird)
         
         // create the ground
-        let ground = SKNode()
-        ground.position = CGPoint(x: 0, y: groundTexture.size().height)
-        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: groundTexture.size().height * 2.0))
+        
+        let ground = SKShapeNode(rectOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
+        ground.fillColor = .blue
+        ground.position = CGPoint(x: 0, y: self.frame.size.height * 0.1)
+        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = worldCategory
+        ground.name = "ground"
         self.addChild(ground)
+        
+        
+        // create the ceiling
+        
+        let ceiling = SKShapeNode(rectOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
+        
+        ceiling.fillColor = .red
+        ceiling.position = CGPoint(x: 0, y: self.frame.size.height * 0.9)
+        ceiling.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height * 0.1))
+        ceiling.physicsBody?.isDynamic = false
+        ceiling.physicsBody?.categoryBitMask = worldCategory
+        ceiling.name = "ceiling"
+        self.addChild(ceiling)
         
         // Initialize label and create a label which holds the score
         score = 0
@@ -251,6 +270,8 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        if contact.bodyA.categoryBitMask == self.worldCategory || contact.bodyB.categoryBitMask == self.worldCategory { return }
         if moving.speed > 0 {
             if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory {
                 // Bird has contact with score entity
