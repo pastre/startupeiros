@@ -164,6 +164,7 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(scoreLabelNode)
         
     }
+    
     var modifiedScore: Double! = 0
     func updateScoreLabel() {
         self.modifiedScore += Double(self.score)
@@ -249,11 +250,14 @@ class FlappyGameScene: SKScene, SKPhysicsContactDelegate{
             self.resetScene()
         }
     }
-    
+    var hasStarted: Bool! = false
     override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
-        let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
-        bird.zRotation = min( max(-1, value), 0.5 )
+        
+        if self.hasStarted {
+            let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
+            bird.zRotation = min( max(-1, value), 0.5 )
+        }
     }
     var currentHands: SKNode?
     func updateHands() {

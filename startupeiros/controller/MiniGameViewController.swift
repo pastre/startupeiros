@@ -1,0 +1,111 @@
+//
+//  MiniGameViewController.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 10/12/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import UIKit
+
+class MiniGameViewController: UIViewController {
+    var currentTimerValue: TimeInterval = 3
+    
+    let timerLabel: UILabel = {
+       let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    
+    let labelOverlay: UIView = {
+        let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        
+        return view
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.setupTimerLabel()
+        self.setupLabelOverlay()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.startTimer()
+    }
+    
+    func setupTimerLabel() {
+        self.labelOverlay.addSubview(timerLabel)
+        
+        self.timerLabel.topAnchor.constraint(equalTo: self.labelOverlay.topAnchor).isActive = true
+        self.timerLabel.leadingAnchor.constraint(equalTo: self.labelOverlay.leadingAnchor).isActive = true
+        self.timerLabel.trailingAnchor.constraint(equalTo: self.labelOverlay.trailingAnchor).isActive = true
+        self.timerLabel.bottomAnchor.constraint(equalTo: self.labelOverlay.bottomAnchor).isActive = true
+    }
+    
+    func setupLabelOverlay() {
+        
+        self.view.addSubview(self.labelOverlay)
+        
+        self.labelOverlay.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.labelOverlay.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.labelOverlay.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
+        self.labelOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            self.updateTimerLabel(self.currentTimerValue == 0)
+            self.currentTimerValue -= 1
+            if self.currentTimerValue < 0 {
+                timer.invalidate()
+                self.labelOverlay.removeFromSuperview()
+                self.startGame()
+            }
+        }
+    }
+    
+    func updateTimerLabel(_ isLast: Bool = false) {
+        if isLast {
+            self.timerLabel.text = self.getFinalMessage()
+        } else {
+            self.timerLabel.text = "\(self.currentTimerValue.rounded(toPlaces: 0))"
+        }
+    }
+    
+    
+    
+    // MARK: - ABSTRACT METHODS
+    func startGame() {
+        
+        fatalError("\(self) did not implement startGame")
+    }
+    
+    func onGameOver() {
+        
+        fatalError("\(self) did not implement onGameOver")
+    }
+    
+    func getFinalMessage() -> String {
+        fatalError("\(self) did not implement getFinalMessage")
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
