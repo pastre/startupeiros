@@ -148,7 +148,8 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupCard()
+        
         self.textStartupName.addTarget(self, action: #selector(self.onTextFieldChanged(_:)), for: .editingChanged)
         self.textName.addTarget(self, action: #selector(self.onTextFieldChanged(_:)), for: .editingChanged)
         // Do any additional setup after loading the view
@@ -158,11 +159,6 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         self.setupStartButtons()
         self.view.layoutIfNeeded()
     }
-    
-//    override func didLayoutSubviews() {
-//        super.didLayoutSubviews()
-//        self.setupCard()
-//    }
     
     // MARK: - Setup methods
     
@@ -197,7 +193,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     
     func setupCard(){
         cardView.layer.cornerRadius = 15.0
-//        cardView.layer.applySketchShadow()
+        cardView.layer.applySketchShadow()
     }
     
     func setupStartButtons()  {
@@ -498,7 +494,7 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     @objc func onJoin() {
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.updateCardHeight(0.28)
         }) { _  in
             self.createStateMachine(with: [.naming, .joining, .inLobby, .pickingClass])
@@ -514,9 +510,11 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
     }
     
     @objc func onReturn()  {
-        self.stateMachine = nil
-        
-        self.setupStartButtons()
+        UIView.animate(withDuration: 0.5) {
+        self.updateCardHeight(0)
+            self.stateMachine = nil
+            self.setupStartButtons()
+        }
     }
     
     @objc func onNext() {
@@ -768,9 +766,9 @@ class RefactoredViewController: UIViewController, StateMachineDelegate, UITextFi
         guard let startupName =  self.getRoomName() else { return UICollectionViewCell()}
 
         let colors = [
+            UIColor(red: 88/255, green: 86/255, blue: 91/255, alpha: 1.0),
             UIColor(red: 71/255, green: 83/255, blue: 191/255, alpha: 1.0),
-            UIColor(red: 190/255, green: 86/255, blue: 215/255, alpha: 1.0),
-            UIColor(red: 88/255, green: 86/255, blue: 91/255, alpha: 1.0)
+            UIColor(red: 190/255, green: 86/255, blue: 215/255, alpha: 1.0)
         ]
         
         if currentState == .pickingClass {
