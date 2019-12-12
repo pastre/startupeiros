@@ -19,6 +19,9 @@ class MiniGameViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -27,7 +30,7 @@ class MiniGameViewController: UIViewController {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         
         return view
     }()
@@ -61,8 +64,8 @@ class MiniGameViewController: UIViewController {
         
         self.labelOverlay.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.labelOverlay.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        self.labelOverlay.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
-        self.labelOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5).isActive = true
+        self.labelOverlay.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
+        self.labelOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2).isActive = true
     }
     
     // MARK: - Timer methods

@@ -41,7 +41,7 @@ class HackerViewController: MiniGameViewController {
         
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.textColor  = UIColor(displayP3Red: 223/255, green: 92/255, blue: 77/255, alpha: 1)
+        view.textColor  = .black
         view.font = UIFont(name: "Andale-Mono", size: 14)
         view.numberOfLines = 0
         
@@ -69,6 +69,7 @@ class HackerViewController: MiniGameViewController {
 
         self.lines = self.getLoadedFiles()
         
+        self.view.backgroundColor = .black
         self.view.addSubview(imageView)
         self.view.addSubview(textView)
         self.view.addSubview(scoreLabel)

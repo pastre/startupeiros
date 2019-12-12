@@ -17,7 +17,7 @@ class NewPlayer: NSObject {
     
     init(_ id: String, from dict: NSDictionary ) {
         self.id = id
-        self.name = dict["username"] as! String
+        self.name = dict["username"] as? String ?? "Username"
         
     }
 }
