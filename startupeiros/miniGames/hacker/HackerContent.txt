@@ -1,0 +1,863 @@
+
+//
+//  SceneDelegate.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 20/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+
+//    let skill = Skill()
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let scene = (scene as? UIWindowScene) else { return }
+        
+        let storyboard = UIStoryboard(name: "DoodleGame", bundle: nil)
+//        let vc = storyboard.instantiateInitialViewController()!
+        let vc = HackerViewController()
+//        let nav = UINavigationController(rootViewController: vc)
+        
+        for window in scene.windows {
+            window.rootViewController = vc
+        }
+        
+    }
+
+    func sceneDidDisconnect(_ scene: UIScene) {
+        // Called as the scene is being released by the system.
+        // This occurs shortly after the scene enters the background, or when its session is discarded.
+        // Release any resources associated with this scene that can be re-created the next time the scene connects.
+        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        // Called when the scene has moved from an inactive state to an active state.
+        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    }
+
+    func sceneWillResignActive(_ scene: UIScene) {
+        // Called when the scene will move from an active state to an inactive state.
+        // This may occur due to temporary interruptions (ex. an incoming phone call).
+    }
+
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        // Called as the scene transitions from the background to the foreground.
+        // Use this method to undo the changes made on entering the background.
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        // Called as the scene transitions from the foreground to the background.
+        // Use this method to save data, release shared resources, and store enough scene-specific state information
+        // to restore the scene back to its current state.
+    }
+
+
+}
+
+//
+//  PlayerFacade.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 23/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import Foundation
+
+class PlayerFacade: NSObject {
+    
+    enum PlayerKeys: String {
+        case roomId = "roomId"
+        case playerClass = "playerClass"
+        case created = "created"
+    }
+    
+    static func setPlayerRoomId(_ roomId: String){
+        UserDefaults.standard.set(roomId, forKey: PlayerKeys.roomId.rawValue)
+    }
+    
+    static func setPlayerClass(_ playerClass: String) {
+        UserDefaults.standard.set(playerClass, forKey: PlayerKeys.playerClass.rawValue)
+    }
+    
+    static func setPlayerCreated() {
+        UserDefaults.standard.set(true, forKey: PlayerKeys.created.rawValue)
+    }
+    
+    static func createPlayer(classed className: String, in room: String) {
+        self.setPlayerClass(className)
+        self.setPlayerRoomId(room)
+        
+        self.setPlayerCreated()
+        
+        print("Created player!", className, room)
+    }
+    
+    static func hasCreated() -> Bool? {
+        return UserDefaults.standard.bool(forKey: PlayerKeys.created.rawValue)
+    }
+    
+    static func getPlayerClass() -> PlayerClass? {
+        guard let rawClass =  UserDefaults.standard.string(forKey: PlayerKeys.playerClass.rawValue) else { return nil }
+        
+        return PlayerClass(from: rawClass)
+    }
+    
+    static func getPlayerTeamId() -> String?{
+        return UserDefaults.standard.string(forKey: PlayerKeys.roomId.rawValue)
+    }
+    
+    
+}
+//
+//  FirebaseReferenceFactory.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 07/12/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import Foundation
+import FirebaseDatabase
+
+class FirebaseReferenceFactory {
+    static func meetup(_ teamId: String) -> DatabaseReference {
+        return self.team(teamId).child(FirebaseKeys.meetup.rawValue)
+    }
+    
+    static func getPlayerJobs(_ teamId: String, _ playerClass: PlayerClass) -> DatabaseReference {
+        return self.currentTeamJob(teamId).child(playerClass.rawValue)
+    }
+    
+    static func currentJobName(_ teamId: String) -> DatabaseReference {
+        return self.currentTeamJob(teamId).child(FirebaseKeys.jobName.rawValue)
+    }
+    
+    static func currentTeamJob(_ teamId: String) -> DatabaseReference {
+        return self.teamJobs(teamId).child(FirebaseKeys.currentTeamJob.rawValue)
+    }
+    
+    static func teamJobs(_ teamId: String) -> DatabaseReference {
+        return Database.database().reference().root.child(FirebaseKeys.teams.rawValue).child(teamId).child(FirebaseKeys.teamJobs.rawValue)
+    }
+    
+    static func team(_ teamId: String) -> DatabaseReference {
+        return self.teams().child(teamId)
+    }
+    
+    static func teams() -> DatabaseReference {
+        return self.root().child(FirebaseKeys.teams.rawValue)
+    }
+    static func root() -> DatabaseReference {
+        return Database.database().reference().root
+    }
+}
+//
+//  Extensions.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 27/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+extension CGFloat  {
+    static func * (lhr: Float, rhr: Self) -> CGFloat  {
+        return CGFloat(lhr) * rhr
+    }
+    
+    static func * (lhr: Double, rhr: Self) -> CGFloat  {
+        return CGFloat(lhr) * rhr
+    }
+    
+}
+
+
+extension Int: Coin {
+    func getRawAmount() -> Double {
+        return Double(self)
+    }
+}
+
+
+
+extension Double: Coin {
+    func getRawAmount() -> Double {
+        return self
+    }
+    
+}
+
+extension CGContext {
+    static func create(size: CGSize,
+        action: (inout CGContext) -> ()) -> UIImage? {
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+        
+        guard var context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        action(&context)
+
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        
+        return result
+    }
+}
+// END dd_new_extensions_cgcontext
+
+// BEGIN dd_new_extensions_uibutton
+extension UIButton {
+    func enable() {
+        self.isEnabled = true
+        self.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func disable() {
+        self.isEnabled = false
+        self.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+}
+// END dd_new_extensions_uibutton
+
+// BEGIN dd_new_extensions_uibarbuttonitem
+extension UIBarButtonItem {
+    func enable() { self.isEnabled = true }
+    func disable() { self.isEnabled = false }
+}
+// END dd_new_extensions_uibarbuttonitem
+
+extension UIImage {
+
+    func resize(to newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newSize.width, height: newSize.height), true, 1.0)
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        UIColor.white.setFill()
+        UIRectFill(rect)
+        self.draw(in: rect)
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return resizedImage
+    }
+    
+    func applying(filter: CIFilter) -> UIImage? {
+        filter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
+
+        let context = CIContext(options: nil)
+        guard let output = filter.outputImage,
+            let cgImage = context.createCGImage(
+                    output, from: output.extent
+                ) else {
+                    return nil
+        }
+
+        return UIImage(
+            cgImage: cgImage,
+            scale: scale,
+            orientation: imageOrientation)
+    }
+
+}
+
+extension CIFilter {
+    static let mono = CIFilter(name: "CIPhotoEffectMono")!
+    static let noir = CIFilter(name: "CIPhotoEffectNoir")!
+    static let tonal = CIFilter(name: "CIPhotoEffectTonal")!
+}
+
+//
+//  ViewController.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 20/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
+
+    
+    @IBOutlet weak var workBarSpace: UIView!
+    @IBOutlet weak var coffeeProgressBarSpace: UIView!
+    @IBOutlet weak var skillNameLabel: UILabel!
+    @IBOutlet weak var skillsCollectionView: UICollectionView!
+    @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet weak var skillLevelBarSpace: UIView!
+    @IBOutlet weak var skillLevelLabel: SkillLevelLabel!
+    @IBOutlet weak var energyView: UIView!
+    @IBOutlet weak var coffeeView: UIView!
+    @IBOutlet weak var hackerJobProgressSpace: UIView!
+    @IBOutlet weak var hipsterJobProgressSpace: UIView!
+    @IBOutlet weak var hustlerJobProgressSpace: UIView!
+    @IBOutlet weak var jobNameLabel: UILabel!
+    @IBOutlet weak var energyLabel: UILabel!
+    
+    var job: Job?
+    var currentSelected = 0
+    
+    let coffeeProgressBar: CoffeeBar = {
+        let bar = CoffeeBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+    
+    let energyProgressBar: EnergyBar =  {
+        let bar = EnergyBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.setup()
+        
+        return bar
+    }()
+    
+    let workProgressBar: WorkBar = {
+        let bar = WorkBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+
+    let skillLevelProgressBar: SkillLevelBar = {
+        let bar = SkillLevelBar()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return bar
+    }()
+    
+    let hackerProgressCircle: HackerProgressCircle = {
+        let bar = HackerProgressCircle()
+        
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        return bar
+    }()
+    
+    let hipsterProgressCircle: HipsterProgressCircle = {
+        let bar = HipsterProgressCircle()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
+    
+    
+    
+    let hustlerProgressCircle: HustlerProgressCircle = {
+        let bar = HustlerProgressCircle()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = .lightGray
+        
+        return bar
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupBackgroundGradient()
+        
+        self.setupCoffeeProgressBar()
+        self.setupEnergyBar()
+        self.setupWorkBar()
+        
+        self.setupSkillsCollectionView()
+        self.setupTasksTableView()
+        self.setupSkillLevelBar()
+        
+        self.setupHackerProgressCircle()
+        self.setupHipsterProgressCircle()
+        self.setupHustlerProgressCircle()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.job = GameDatabaseFacade.instance.getCurrentJob()
+        
+        self.updateCurrentSelectedSkill()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.setupProgressCircle(self.hackerProgressCircle)
+        self.setupProgressCircle(self.hipsterProgressCircle)
+        self.setupProgressCircle(self.hustlerProgressCircle)
+    }
+    
+    // MARK: - Setup methods
+    
+    func setupProgressCircle(_ circle: CircularProgressBar) {
+        
+        circle.layer.cornerRadius = circle.layer.frame.width / 2
+        circle.setup()
+    }
+    
+    func setupBackgroundGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [UIColor.white.cgColor, CGColor(srgbRed: 230/255, green: 249/255, blue: 224/255, alpha: 1)]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func setupHustlerProgressCircle() {
+        self.spaceFiller(self.hustlerJobProgressSpace, self.hustlerProgressCircle)
+        self.hustlerProgressCircle.layoutIfNeeded()
+    }
+    
+    func setupHipsterProgressCircle() {
+        self.spaceFiller(self.hipsterJobProgressSpace, self.hipsterProgressCircle)
+        self.hipsterProgressCircle.layoutIfNeeded()
+    }
+    func setupHackerProgressCircle() {
+        self.spaceFiller(self.hackerJobProgressSpace, self.hackerProgressCircle)
+        self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
+    func setupTasksTableView(){
+        self.tasksTableView.delegate = self
+        self.tasksTableView.dataSource = self
+    }
+    
+    func setupSkillsCollectionView()  {
+        self.skillsCollectionView.delegate = self
+        self.skillsCollectionView.dataSource = self
+    }
+    
+    func setupSkillLevelBar() {
+        self.spaceFiller(self.skillLevelBarSpace, self.skillLevelProgressBar)
+    }
+    
+    func setupWorkBar() {
+        spaceFiller(workBarSpace, workProgressBar)
+    }
+
+    func setupEnergyBar() {
+//        self.spaceFiller(energyBarSpace, energyProgressBar)
+    }
+    
+    func setupCoffeeProgressBar() {
+        self.spaceFiller(coffeeProgressBarSpace, coffeeProgressBar)
+    }
+    
+    fileprivate func spaceFiller(_ space: UIView, _ view: UIView) {
+        space.addSubview(view)
+        
+        view.topAnchor.constraint(equalTo: space.topAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: space.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: space.trailingAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: space.bottomAnchor).isActive = true
+    }
+    
+    // MARK: - Table view methods
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let skill = self.getCurrentSkill() {
+            return skill.tasks.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskRow") as! TaskTableViewCell
+        guard let skill = self.getCurrentSkill() else { return cell }
+        let task = skill.tasks[indexPath.item]
+        
+        cell.taskLabel.text = task.getName()
+        cell.taskIcon.image = UIImage(named: "failedToLoadTexture")
+        cell.setup()
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let skill = self.getCurrentSkill() else { return }
+        let task = skill.tasks[indexPath.item]
+        
+        if task.canRun() {
+            let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
+            task.profiter = self.getCurrentSkill()
+            task.runTask {
+                cell.runProgressBar(with: task)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height * 0.3
+    }
+    
+    // MARK: -  Collection view methods
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let skills = self.getSkills() {
+            return skills.count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skillCell", for: indexPath) as! SkillCollectionViewCell
+        guard let skills = self.getSkills() else { return cell}
+        let skill = skills[indexPath.item]
+        
+        cell.skillNameLabel.text = skill.getName()
+        cell.skillIcon.image = UIImage(named: "failedToLoadTexture")
+        
+        if indexPath.item == self.currentSelected {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        } else {
+            cell.backgroundColor = .clear
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width * 0.25
+        let heitgh = collectionView.frame.height * 0.9
+        
+        return CGSize(width: width, height: heitgh)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.currentSelected = indexPath.item
+        self.updateCurrentSelectedSkill()
+    }
+    
+    // MARK: - Model helper methos
+    
+    func updateCurrentSelectedSkill() {
+        self.updateJobName()
+
+        guard let skill = self.getCurrentSkill() else { return }
+        self.skillNameLabel.text = skill.getName()
+               
+        self.skillsCollectionView.reloadData()
+        self.updateSkillLevelBar()
+        self.updateSkillLevelLabel()
+        
+        self.tasksTableView.reloadData()
+        self.hackerProgressCircle.layoutIfNeeded()
+    }
+    
+    
+    func updateJobName() {
+        if let job = self.job {
+            self.jobNameLabel.text = job.getName()
+        } else {
+            self.jobNameLabel.text = "Click the phone to pick a job"
+        }
+    }
+    
+    func updateSkillLevelLabel() {
+        self.skillLevelLabel.invalidate()
+        
+        self.skillLevelLabel.skill = self.getCurrentSkill()
+        self.skillLevelLabel.setup()
+        self.skillLevelLabel.update()
+    }
+    
+    func updateSkillLevelBar() {
+        self.skillLevelProgressBar.invalidate()
+        
+        self.skillLevelProgressBar.skill = self.getCurrentSkill()
+        self.skillLevelProgressBar.setup()
+        self.skillLevelProgressBar.update()
+    }
+    
+    // MARK: - Button callbacks
+    
+    @IBAction func onCoffee(_ sender: Any) {
+        
+        ResourceFacade.instance.coffeeManager.runTask {
+            self.coffeeProgressBar.startProgress()
+        }
+    }
+    
+    @IBAction func onWork(_ sender: Any) {
+        ResourceFacade.instance.workManager.runTask {
+             self.workProgressBar.startProgress()
+        }
+    }
+    
+    @IBAction func onMeetup(_ sender: Any) {
+        self.performSegue(withIdentifier: "meetup", sender: nil)
+    }
+    
+    @objc func onCoffeeCompleted() {
+    }
+    
+    func getCurrentSkill() -> Skill? {
+        guard let skills = self.getSkills() else { return nil }
+        return skills[self.currentSelected]
+    }
+    
+    func getSkills() -> [Skill]? {
+        return self.job?.skills
+    }
+    
+    // MARK: - Navigation
+    
+    func setCurrentJob(to job: Job) {
+        self.job = job
+    
+        updateCurrentSelectedSkill()
+    }
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? MeetupViewController {
+            dest.delegate = self
+        }
+    }
+}
+
+//
+//  AuthReference.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 21/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import Foundation
+import FirebaseAuth
+import FirebaseDatabase
+
+class AuthPlayer {
+    
+    enum FirebaseKeys: String {
+        case name = "name"
+    }
+    
+    private let firebaseRef = Database.database().reference()
+
+    internal init(user: User?, name: String) {
+        self.user = user
+        self.name = name
+    }
+    
+    init(user: User) {
+        self.user = user
+    }
+    
+    
+    func sync() {
+        
+        self.firebaseRef.child("users").child(self.user.uid).observe(.value) { (snap) in
+            guard let playerDict = snap.value as? NSDictionary else { return }
+            self.name = playerDict[FirebaseKeys.name.rawValue] as! String
+        }
+    }
+    
+    func create() {
+        self.firebaseRef.child("users").child(self.user.uid).setValue([FirebaseKeys.name.rawValue : self.name!])
+        Authenticator.instance.setCreated()
+    }
+    
+    var name: String?
+    var user: User!
+}
+
+class Authenticator {
+    
+    static var instance = Authenticator()
+
+    private var player: AuthPlayer?
+    
+    private init() { }
+    
+    func getUsername() -> String? {
+        return self.player?.name
+    }
+    
+    func getUserId() -> String? {
+        return self.player?.user.uid
+    }
+    
+    func isLoggedIn() ->  Bool {
+        return (self.player != nil)
+    }
+    
+    func login(completion: @escaping (_ error:  Error?) -> ()) {
+        Auth.auth().signInAnonymously { (authResult, error) in
+            guard let auth = authResult  else {
+                // TODO: - Avisar o erro para o  usuario
+                print("Erro ao autenticar!", error!)
+                completion(error)
+                return
+            }
+            self.player = AuthPlayer(user: auth.user)
+            self.player?.sync()
+        }
+    }
+    
+    func createPlayer(named name: String, completion: @escaping (_ error:  Error?) -> ()) {
+        Auth.auth().signInAnonymously { (authResult, error) in
+            guard let auth = authResult  else {
+                // TODO: - Avisar o erro para o  usuario
+                print("Erro ao autenticar!", error!)
+                completion(error)
+                return
+            }
+            
+            self.player = AuthPlayer(user: auth.user, name: name)
+            self.player?.create()
+            self.player?.sync()
+            completion(nil)
+        }
+    }
+    
+    func hasCreated() -> Bool {
+        return UserDefaults.standard.bool(forKey: "created")
+    }
+    
+    func setCreated() {
+        UserDefaults.standard.set(true, forKey: "created")
+    }
+    
+}
+//
+//  PlayerProducer.swift
+//  startupeiros
+//
+//  Created by Bruno Pastre on 27/11/19.
+//  Copyright © 2019 Bruno Pastre. All rights reserved.
+//
+
+import Foundation
+
+class PlayerProducer: Producer, TimerDelegate, BindedSupplicator, Upgradeable {
+
+    var manager: Balanceable!
+    var profiter: Profiter!
+    var taskTimer: TaskTimer?
+    
+    required init(_  profiter: Profiter, manager: Balanceable) {
+        self.profiter = profiter
+        self.manager = manager
+    }
+
+    func onStart() {
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
+    func triggerUpdate() {
+        
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
+    func onTrigger() {
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
+    func onComplete() {
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
+    func onInvalidated() {
+        // METODO EM BRANCO, IMPLEMENTADO PELAS SUBCLASSES
+    }
+    
+        
+    func deliver(_ amount: Coin, to profiter: Profiter) {
+        profiter.receive(amount, from: self)
+    }
+    
+    func run() {
+        self.taskTimer = TimerFactory.timer(delegate: self, for: self.manager)
+        
+        self.taskTimer?.run()
+    }
+    
+    
+    // MARK: - Upgradeable
+    
+    func isUpgradeable() -> Bool {
+        
+        // todo: - Implement this
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    func getBaseUpgradeCoast() -> Double {
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    func getUpgradeCoast() -> Double {
+        
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    func getGrowthRate() -> Double {
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    func getOwnedCount() -> Double {
+         fatalError("\(self) did not implement this method!")
+    }
+    
+    func getUpgradeMultiplier() -> Double {
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    func upgrade() {
+        fatalError("\(self) did not implement this method!")
+    }
+    
+    // MARK: - Producer
+
+    func getProductionMultiplier() -> Double {
+        return 1
+    }
+    
+    func getProductionBase() -> Double {
+        return 1.67
+    }
+    
+    func getProductionOwned() -> Double {
+        return self.getUpgradeCount()
+    }
+    
+    func getProductionResult() -> Double {
+        
+        return self.getProductionBase() * self.getProductionMultiplier() * self.getProductionOwned()
+    }
+    
+    func getUpgradeCount() -> Double {
+        return self.manager.getUpgradeCount()
+    }
+}
